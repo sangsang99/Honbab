@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mabits.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.web.honbab.mybatis.promo.PromoMapper">
+	<resultMap type="com.web.honbab.promo.dto.PromoDTO" id="promotion">
+		<id property="writeNo" column="write_no" />
+		<result property="title" column="title" />
+		<result property="content" column="content" />
+		<result property="savaDate" column="savadate" />
+		<result property="hit" column="hit" />
+		<result property="imageFileName" column="image_file_name" />
+		<result property="id" column="id" />
+	</resultMap>
+
+	<resultMap type="com.web.honbab.promo.dto.PromoRepDTO" id="reply">
+		<result property="id" column="id" />
+		<result property="title" column="title" />
+		<result property="content" column="content" />
+		<result property="write_group" column="write_group" />
+		<result property="write_date" column="write_date" />
+	</resultMap> 
+
+	<select id="promoList" resultMap="promotion">
+		select B.* from <!-- 시작번호 끝번호만 뽑기 -->
+		(select rownum rn, A.* from <!-- 페이지가 거꾸로 나와야 해서 rownum으로 재정렬 -->
+		(select * from PROMO_BOARD order by write_no desc) A) B <!-- 우선 글번호 대로 정렬 -->
+		where rn between #{s} and #{e}
+	</select>
+
+	<insert id="writeSave">
+		insert into PROMO_BOARD(write_no, id, title, content,
+		image_file_name)
+		values(PROMO_BOARD_seq.nextval, #{id}, #{title},
+		#{content}, #{imageFileName})
+	</insert>
+
+	<select id="contentView" resultMap="promotion">
+		select * from PROMO_BOARD where
+		write_no=#{writeNo}
+	</select>
+
+	<update id="upHit">
+		update PROMO_BOARD set hit=hit+1 where
+		write_no=#{writeNo}
+	</update>
+
+	<update id="modify">
+		update PROMO_BOARD set
+		title=#{title},
+		content=#{content},
+		image_file_name=#{imageFileName}
+		where write_no=#{writeNo}
+	</update>
+
+	<delete id="delete">
+		delete from PROMO_BOARD
+		where write_no=#{writeNo}
+	</delete>
+
+	<select id="selectBoardCount" resultType="Integer">
+		select count(*) from
+		PROMO_BOARD
+	</select>
+
+	<insert id="addReply">
+		insert into PROMO_REPLY(id, title, content, write_group)
+		values(#{id}, #{title}, #{content}, #{write_group})
+	</insert>
+
+	<select id="getRepList" resultMap="reply">
+		select * from PROMO_REPLY where
+		write_group=#{write_group}
+		order by write_date desc
+	</select> 
+</mapper>
