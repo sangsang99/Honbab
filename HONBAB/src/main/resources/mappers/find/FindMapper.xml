@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.web.honbab.mybatis.find.FindMapper">
+
+	 <resultMap type="com.web.honbab.find.dto.FindDTO" id="find">
+		<id property="uSeq" column="U_SEQ" />
+		<result property="uNickName" column="U_NICKNAME" />
+		<result property="uTitle" column="U_TITLE" />
+		<result property="uContent" column="U_CONTENT" />
+		<result property="uDate" column="U_DATE" />
+		<result property="uAge" column="U_AGE" />
+		<result property="uRegion" column="U_REGION" />
+		<result property="uGen" column="U_GENDER" />
+		<result property="uViews" column="U_VIEWS" />
+	</resultMap>
+	
+	<resultMap type="com.web.honbab.find.dto.FindRepDTO" id="findRep">
+		<id property="uSeqGroup" column="U_SEQ_GROUP" />
+		<result property="uReNick" column="U_RE_NICK" />
+		<result property="uReDate" column="U_RE_DATE" />
+		<result property="uReComent" column="U_RE_COMENT" />
+	</resultMap>
+	
+	 <insert id="findSave">
+		INSERT INTO FIND(U_SEQ, U_NICKNAME, U_TITLE, U_CONTENT, U_AGE, U_REGION, U_GENDER, U_DATE, U_VIEWS)
+		VALUES(U_SEQ.NEXTVAL, #{uNickName}, #{uTitle}, #{uContent}, #{uAge}, #{uRegion}, #{uGen}, SYSDATE, 0)
+	</insert> 
+	
+	
+	
+	<select id="findAllList" resultMap="find">
+		SELECT B.* FROM
+		(SELECT ROWNUM RN, A.* FROM
+		(SELECT * FROM FIND ORDER BY U_SEQ DESC) A) B 
+		WHERE RN between #{s} and #{e}
+	</select>
+	
+    <select id="findBestList" resultMap="find">
+		SELECT *
+		FROM (SELECT * FROM FIND ORDER BY U_VIEWS DESC) A
+		<![CDATA[WHERE ROWNUM <= 5]]> 
+	</select>
+	
+	<select id="findContent" resultMap="find">
+		SELECT * FROM find
+		WHERE U_SEQ=#{uSeq}
+	</select>
+	
+	<update id="upViews">
+		UPDATE FIND SET U_VIEWS=U_VIEWS+1 WHERE U_SEQ=#{uSeq}
+	</update>
+	
+	<delete id="findDelete">
+		DELETE FROM FIND WHERE
+		U_SEQ=#{uSeq}	
+	</delete>
+	
+	<select id="selectFindCount" resultType="Integer">
+		SELECT COUNT(*) FROM FIND
+		</select>
+		
+	 <select id="findPgCount" resultType="Integer">
+		SELECT COUNT(*) FROM
+		FIND
+	</select>
+	
+	<update id="modifyFind">
+		UPDATE FIND SET 
+		U_TITLE=#{uTitle},
+		U_CONTENT=#{uContent},
+		U_AGE=#{uAge},
+		U_REGION=#{uRegion},
+		U_GENDER=#{uGen}
+		WHERE U_SEQ=#{uSeq}
+	</update>
+	
+	<insert id="addReply">
+		INSERT INTO REPLY_TEST(U_RE_NICK, U_RE_COMENT, U_SEQ_GROUP)
+		VALUES(#{uReNick}, #{uReComent}, #{uSeqGroup})
+	</insert>
+	
+	<select id="getRepList" resultMap="findRep">
+		SELECT * FROM REPLY_TEST
+		WHERE U_SEQ_GROUP = #{uSeq}
+		ORDER BY U_RE_DATE DESC
+	</select>
+	 
+</mapper>
