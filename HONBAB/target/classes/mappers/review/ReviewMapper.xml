@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.web.honbab.mybatis.review.ReviewMapper">
+
+	<resultMap type="com.web.honbab.review.dto.ReviewDTO" id="review">
+		<id property="uSeq" column="U_SEQ" />
+		<result property="uNickName" column="U_NICKNAME" />
+		<result property="uTitle" column="U_TITLE" />
+		<result property="uContent" column="U_CONTENT" />
+		<result property="uViews" column="U_VIEWS" />
+		<result property="uDate" column="U_DATE" />
+		<result property="uImageName" column="U_IMAGENAME" />
+		<result property="uLike" column="U_LIKE" />
+	</resultMap>
+
+	<resultMap type="com.web.honbab.review.dto.ReviewRepDTO" id="reviewRep">
+		<id property="uSeqGroup" column="U_SEQ_GROUP" />
+		<result property="uReNick" column="U_RE_NICK" />
+		<result property="uReDate" column="U_RE_DATE" />
+		<result property="uReComent" column="U_RE_COMENT" />
+	</resultMap>
+
+	<insert id="reviewSave">
+		INSERT INTO
+		REVIEW_TEST(U_SEQ, U_NICKNAME, U_TITLE, U_CONTENT, U_DATE, U_IMAGENAME, U_VIEWS)
+		VALUES(U_SEQ.NEXTVAL, #{uNickName}, #{uTitle}, #{uContent}, SYSDATE, #{uImageName}, 0)
+	</insert>
+	
+	
+<!--<select id="reviewAllList" resultMap="review">
+		SELECT * FROM REVIEW_TEST
+	</select> -->
+	<select id="reviewAllList" resultMap="review">
+		SELECT B.* FROM
+		(SELECT ROWNUM RN, A.* FROM
+		(SELECT * FROM REVIEW_TEST ORDER BY U_SEQ DESC) A) B 
+		WHERE RN between #{s} and #{e}
+	</select>
+
+	<select id="reviewBestList" resultMap="review">
+		SELECT *
+		FROM (SELECT * FROM REVIEW_TEST ORDER BY U_VIEWS DESC) A
+		<![CDATA[WHERE ROWNUM <= 5]]> <!-- <![CDATA[ XML내에서 부등호 식별문장 ]]> -->
+	</select>
+	
+	<select id="reviewContent" resultMap="review">
+		SELECT * FROM REVIEW_TEST WHERE U_SEQ=#{uSeq}
+	</select>
+
+	<update id="upViews">
+		UPDATE REVIEW_TEST SET U_VIEWS=U_VIEWS+1 WHERE U_SEQ=#{uSeq}
+	</update>
+	
+	<delete id="reviewDelete">
+		DELETE FROM REVIEW_TEST WHERE U_SEQ=#{uSeq}
+	</delete>
+	
+	<update id="modifyReview">
+		UPDATE REVIEW_TEST SET 
+			U_TITLE = #{uTitle},
+			U_Content = #{uContent},
+			U_IMAGENAME = #{uImageName}
+		WHERE U_SEQ=#{uSeq}
+	</update>
+	
+	<insert id="addReply">
+		INSERT INTO REPLY_TEST(U_RE_NICK, U_RE_COMENT, U_SEQ_GROUP)
+		VALUES(#{uReNick}, #{uReComent}, #{uSeqGroup})
+	</insert>
+	
+	<select id="getRepList" resultMap="reviewRep">
+		SELECT * FROM REPLY_TEST
+		WHERE U_SEQ_GROUP = #{uSeq}
+		ORDER BY U_RE_DATE DESC
+	</select>
+	
+	<select id="selectReviewCount" resultType="Integer">
+		SELECT COUNT(*) FROM REVIEW_TEST
+	</select>
+
+	<update id="reviewLike">
+		UPDATE REVIEW_TEST SET 
+		U_LIKE = NVL(U_LIKE, 0) + 1
+		WHERE U_SEQ = #{uSeq}
+	</update>
+
+
+</mapper>

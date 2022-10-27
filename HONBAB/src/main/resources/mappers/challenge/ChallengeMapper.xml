@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.web.honbab.mybatis.challenge.ChallengeMapper">
+
+	<resultMap type="com.web.honbab.challenge.dto.ChallengeDTO" id="challenge">
+		<id property="uWriteNo" column="U_WRITENO" />
+		<result property="uLevel" column="U_LEVEL" />
+		<result property="uTitle" column="U_TITLE" />
+		<result property="uContent" column="U_CONTENT" />
+		<result property="uSaveDate" column="U_SAVEDATE" />
+		<result property="uViews" column="U_VIEWS" />
+		<result property="uImgName" column="U_IMGNAME" />
+		<result property="uWriter" column="U_WRITER" />
+	</resultMap>
+		<!-- writer는 user의 닉네임 또는 id를 참조해 받아온다. -->
+
+	<insert id="challengeSave">
+		INSERT INTO level_challenge
+		(U_WRITENO,U_LEVEL,U_TITLE,U_CONTENT,U_WRITER,U_IMGNAME)
+		VALUES(level_challenge_seq.nextval,#{uLevel},#{uTitle},#{uContent},#{uWriter},#{uImgName, jdbcType=VARCHAR})
+	</insert>
+
+	<select id="challengeView" resultMap="challenge">
+		SELECT * FROM level_challenge
+		WHERE U_WRITENO=#{uWriteNo}
+	</select>
+
+	<select id="challengeAllList" resultMap="challenge">
+		SELECT B.* FROM
+		(SELECT ROWNUM RN, A.* FROM
+		(SELECT * FROM level_challenge ORDER BY U_WRITENO DESC) A) B 
+		WHERE RN between #{s} and #{e}
+	</select>
+
+	<update id="challengeModify">
+		UPDATE level_challenge SET 
+		U_LEVEL=#{uLevel},
+		U_TITLE=#{uTitle},
+		U_CONTENT=#{uContent},
+		U_IMGNAME=#{uImgName, jdbcType=VARCHAR}
+		WHERE U_WRITENO=#{uWriteNo}
+	</update>
+
+	<delete id="challengeDelete">
+		DELETE FROM level_challenge WHERE
+		U_WRITENO=#{uWriteNo}
+	</delete>
+
+	<select id="challengePgCount" resultType="Integer">
+		SELECT count(*) FROM
+		level_challenge
+	</select>
+	
+	<update id="upView">
+		UPDATE level_challenge SET U_VIEWS=U_VIEWS +1 WHERE
+		U_WRITENO=#{uWriteNo}
+	</update>
+
+
+
+</mapper>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mabits.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.web.honbab.mybatis.member.MemberMapper">
+
+	<resultMap type="com.web.honbab.member.dto.MemberDTO" id="member">
+		<id property = "id" column="id"></id>
+		<result property = "pw" column="pw"></result>
+		<result property = "addr" column="addr"></result>
+	</resultMap>
+	
+	
+	<select id="user_check" resultMap="member">
+		select * from testuser where id=#{id}
+	</select>
+	
+	<select id="memberInfo" resultMap="member">
+		select * from testuser
+	</select>
+	
+	<select id="getMember" resultMap="member">
+		select * from testuser where id=#{userid}
+	</select>
+	
+	<insert id="register">
+		insert into testuser values(#{id}, #{pw}, #{addr})
+	</insert>
+	
+	
+
+</mapper>

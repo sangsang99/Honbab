@@ -1,0 +1,37 @@
+package com.web.honbab.review.service;
+
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.ui.Model;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+
+import com.web.honbab.review.dto.ReviewRepDTO;
+
+public interface ReviewService {
+
+	String reviewSave(MultipartHttpServletRequest mul, HttpServletRequest request);
+
+	String reviewModify(MultipartHttpServletRequest mul, HttpServletRequest request);
+	
+	public void reviewBestList(Model model);
+	
+	public void reviewAllList(Model model, int num);
+
+	public void reviewContent(int uSeq, Model model);
+
+	String reviewDelete(int uSeq, String imageFileName, HttpServletRequest request);
+
+	public void addReply(ReviewRepDTO dto);
+
+	public List<ReviewRepDTO> getRepList(int uSeq);
+
+	public void upViews(int uSeq);
+
+	public void reviewLike(int uSeq);
+
+
+
+	
+}
