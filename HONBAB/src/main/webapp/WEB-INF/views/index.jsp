@@ -47,7 +47,7 @@ flex: 1;
 			<c:import url="main/Board01.jsp"/>
 		</div>
 		<div>
-			<!--<c:import url="main/Board02.jsp"/>-->
+			<c:import url="main/Board02.jsp"/>
 			<b>[혼밥후기 = board2]</b>
 			<a id="review" href="${contextPath}/review/reviewAllList">더 많은 혼밥 후기</a>
 			<c:import url="review/bestReview.jsp"/>
