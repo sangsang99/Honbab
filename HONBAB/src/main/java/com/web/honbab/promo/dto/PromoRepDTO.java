@@ -8,6 +8,7 @@ public class PromoRepDTO {
 	private String content;
 	private int write_group;
 	private Timestamp write_date;
+	private String reNick;
 	
 	
 	public String getId() {
@@ -40,6 +41,13 @@ public class PromoRepDTO {
 	public void setWrite_date(Timestamp write_date) {
 		this.write_date = write_date;
 	}
+	public String getReNick() {
+		return reNick;
+	}
+	public void setReNick(String reNick) {
+		this.reNick = reNick;
+	}
+	
 	
 	
 	
