@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
+import com.web.honbab.member.dto.BizMemberDTO;
 import com.web.honbab.member.dto.MemberDTO;
 import com.web.honbab.member.service.MemberService;
 import com.web.honbab.mybatis.member.MemberMapper;
@@ -27,7 +28,15 @@ public class MemberServiceImpl implements MemberService {
 		}
 		return 1;
 	}
-	
+	public int bizuser_check(HttpServletRequest request) {
+		BizMemberDTO dto = mapper.bizuser_check(request.getParameter("id"));
+		if(dto != null) {
+			if(request.getParameter("pw").equals(dto.getPw())) {
+				return 0;
+			}
+		}
+		return 1;
+	}
 
 	
 	@Override
