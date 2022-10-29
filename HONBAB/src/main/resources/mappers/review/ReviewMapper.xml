@@ -5,27 +5,29 @@
 <mapper namespace="com.web.honbab.mybatis.review.ReviewMapper">
 
 	<resultMap type="com.web.honbab.review.dto.ReviewDTO" id="review">
-		<id property="uSeq" column="U_SEQ" />
-		<result property="uNickName" column="U_NICKNAME" />
-		<result property="uTitle" column="U_TITLE" />
-		<result property="uContent" column="U_CONTENT" />
-		<result property="uViews" column="U_VIEWS" />
-		<result property="uDate" column="U_DATE" />
-		<result property="uImageName" column="U_IMAGENAME" />
-		<result property="uLike" column="U_LIKE" />
+		<id property="writeNo" column="WRITE_NO" />
+		<result property="nickname" column="NICKNAME" />
+		<result property="title" column="TITLE" />
+		<result property="content" column="CONTENT" />
+		<result property="views" column="VIEWS" />
+		<result property="writeDate" column="WRITE_DATE" />
+		<result property="imgName" column="IMGNAME" />
+		<result property="likes" column="LIKES" />
+		<result property="id" column="ID" />
 	</resultMap>
 
 	<resultMap type="com.web.honbab.review.dto.ReviewRepDTO" id="reviewRep">
-		<id property="uSeqGroup" column="U_SEQ_GROUP" />
-		<result property="uReNick" column="U_RE_NICK" />
-		<result property="uReDate" column="U_RE_DATE" />
-		<result property="uReComent" column="U_RE_COMENT" />
+		<id property="writeGroup" column="WRITE_GROUP" />
+		<result property="reNick" column="RE_NICK" />
+		<result property="reDate" column="RE_DATE" />
+		<result property="reComent" column="RE_COMENT" />
+		<result property="reId" column="RE_ID" />
 	</resultMap>
 
 	<insert id="reviewSave">
 		INSERT INTO
-		REVIEW_TEST(U_SEQ, U_NICKNAME, U_TITLE, U_CONTENT, U_DATE, U_IMAGENAME, U_VIEWS)
-		VALUES(U_SEQ.NEXTVAL, #{uNickName}, #{uTitle}, #{uContent}, SYSDATE, #{uImageName}, 0)
+		REVIEW_BOARD(WRITE_NO, NICKNAME, TITLE, CONTENT, IMGNAME, ID)
+		VALUES(REVIEW_BOARD_SEQ.NEXTVAL, #{nickname}, #{title}, #{content}, #{imgName}, #{id})
 	</insert>
 	
 	
@@ -35,55 +37,55 @@
 	<select id="reviewAllList" resultMap="review">
 		SELECT B.* FROM
 		(SELECT ROWNUM RN, A.* FROM
-		(SELECT * FROM REVIEW_TEST ORDER BY U_SEQ DESC) A) B 
-		WHERE RN between #{s} and #{e}
+		(SELECT * FROM REVIEW_BOARD ORDER BY WRITE_NO DESC) A) B 
+		WHERE RN BETWEEN #{s} AND #{e}
 	</select>
 
 	<select id="reviewBestList" resultMap="review">
 		SELECT *
-		FROM (SELECT * FROM REVIEW_TEST ORDER BY U_VIEWS DESC) A
+		FROM (SELECT * FROM REVIEW_BOARD ORDER BY VIEWS DESC) A
 		<![CDATA[WHERE ROWNUM <= 5]]> <!-- <![CDATA[ XML내에서 부등호 식별문장 ]]> -->
 	</select>
 	
 	<select id="reviewContent" resultMap="review">
-		SELECT * FROM REVIEW_TEST WHERE U_SEQ=#{uSeq}
+		SELECT * FROM REVIEW_BOARD WHERE WRITE_NO=#{writeNo}
 	</select>
 
 	<update id="upViews">
-		UPDATE REVIEW_TEST SET U_VIEWS=U_VIEWS+1 WHERE U_SEQ=#{uSeq}
+		UPDATE REVIEW_BOARD SET VIEWS=VIEWS+1 WHERE WRITE_NO=#{writeNo}
 	</update>
 	
 	<delete id="reviewDelete">
-		DELETE FROM REVIEW_TEST WHERE U_SEQ=#{uSeq}
+		DELETE FROM REVIEW_BOARD WHERE WRITE_NO=#{writeNo}
 	</delete>
 	
 	<update id="modifyReview">
-		UPDATE REVIEW_TEST SET 
-			U_TITLE = #{uTitle},
-			U_Content = #{uContent},
-			U_IMAGENAME = #{uImageName}
-		WHERE U_SEQ=#{uSeq}
+		UPDATE REVIEW_BOARD SET 
+			TITLE = #{title},
+			CONTENT = #{content},
+			IMGNAME = #{imgName}
+		WHERE WRITE_NO=#{writeNo}
 	</update>
 	
 	<insert id="addReply">
-		INSERT INTO REPLY_TEST(U_RE_NICK, U_RE_COMENT, U_SEQ_GROUP)
-		VALUES(#{uReNick}, #{uReComent}, #{uSeqGroup})
+		INSERT INTO REVIEW_RE(RE_NICK, RE_COMENT, WRITE_GROUP, RE_ID)
+		VALUES(#{reNick}, #{reComent}, #{writeGroup}, #{reId})
 	</insert>
 	
 	<select id="getRepList" resultMap="reviewRep">
-		SELECT * FROM REPLY_TEST
-		WHERE U_SEQ_GROUP = #{uSeq}
-		ORDER BY U_RE_DATE DESC
+		SELECT * FROM REVIEW_RE
+		WHERE WRITE_GROUP = #{writeNo}
+		ORDER BY RE_DATE DESC
 	</select>
 	
 	<select id="selectReviewCount" resultType="Integer">
-		SELECT COUNT(*) FROM REVIEW_TEST
+		SELECT COUNT(*) FROM REVIEW_BOARD
 	</select>
 
 	<update id="reviewLike">
-		UPDATE REVIEW_TEST SET 
-		U_LIKE = NVL(U_LIKE, 0) + 1
-		WHERE U_SEQ = #{uSeq}
+		UPDATE REVIEW_BOARD SET 
+		LIKES = LIKES + 1
+		WHERE WRITE_NO=#{writeNo}
 	</update>
 
 

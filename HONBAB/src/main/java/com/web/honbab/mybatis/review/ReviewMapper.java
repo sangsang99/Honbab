@@ -13,22 +13,22 @@ public interface ReviewMapper {
 
 	public List<ReviewDTO> reviewAllList(@Param("s") int start, @Param("e") int end);
 
-	public ReviewDTO reviewContent(int uSeq);
+	public ReviewDTO reviewContent(int writeNo);
 
 	public List<ReviewDTO> reviewBestList();
 
-	public int reviewDelete(int uSeq);
+	public int reviewDelete(int writeNo);
 
 	public int modifyReview(ReviewDTO dto);
 
 	public void addReply(ReviewRepDTO dto);
 
-	public List<ReviewRepDTO> getRepList(int uSeq);
+	public List<ReviewRepDTO> getRepList(int writeNo);
 
 	public int selectReviewCount();
 
-	public void upViews(int uSeq);
+	public void upViews(int writeNo);
 
-	public void reviewLike(int uSeq);
+	public void reviewLike(int writeNo);
 
 }
