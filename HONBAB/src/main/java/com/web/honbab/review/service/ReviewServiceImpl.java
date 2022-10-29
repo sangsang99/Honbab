@@ -26,15 +26,16 @@ public class ReviewServiceImpl implements ReviewService{
 	@Override
 	public String reviewSave(MultipartHttpServletRequest mul, HttpServletRequest request) {
 		ReviewDTO dto = new ReviewDTO();
-		dto.setuNickName(mul.getParameter("nickName"));
-		dto.setuTitle(mul.getParameter("title"));
-		dto.setuContent(mul.getParameter("content"));
+		dto.setNickname(mul.getParameter("nickname"));
+		dto.setId(mul.getParameter("id"));
+		dto.setTitle(mul.getParameter("title"));
+		dto.setContent(mul.getParameter("content"));
 		MultipartFile file = mul.getFile("image_file_name");
 		
 		if (file.getSize() != 0) {
-			dto.setuImageName(rfs.saveFile(file));
+			dto.setImgName(rfs.saveFile(file));
 		} else {
-			dto.setuImageName("None");
+			dto.setImgName("None");
 		}
 		
 		int result = 0;
@@ -47,10 +48,10 @@ public class ReviewServiceImpl implements ReviewService{
 		String msg,url;
 		if(result == 1) {
 			msg ="혼밥후기 작성 완료!";
-			url ="/reviewAllList";
+			url ="/review/reviewAllList";
 		} else {
 			msg ="문제가 있습니다.";
-			url ="/reviewWriteForm";
+			url ="/review/reviewWriteForm";
 		}
 		
 		return rfs.getMessage(request, msg, url);
@@ -60,16 +61,16 @@ public class ReviewServiceImpl implements ReviewService{
 	@Override
 	public String reviewModify(MultipartHttpServletRequest mul, HttpServletRequest request) {
 		ReviewDTO dto = new ReviewDTO();
-		dto.setuSeq(Integer.parseInt(mul.getParameter("uSeq")));
-		dto.setuTitle(mul.getParameter("title"));
-		dto.setuContent(mul.getParameter("content"));
+		dto.setWriteNo(Integer.parseInt(mul.getParameter("writeNo")));
+		dto.setTitle(mul.getParameter("title"));
+		dto.setContent(mul.getParameter("content"));
 		MultipartFile file = mul.getFile("image_file_name");
 		
 		if (file.getSize() != 0) {
-			dto.setuImageName(rfs.saveFile(file));
+			dto.setImgName(rfs.saveFile(file));
 			rfs.deleteImage(mul.getParameter("originFileName"));
 		} else {
-			dto.setuImageName(mul.getParameter("originFileName"));
+			dto.setImgName(mul.getParameter("originFileName"));
 		}
 		
 		int result = 0;
@@ -82,10 +83,10 @@ public class ReviewServiceImpl implements ReviewService{
 		String msg,url;
 		if(result == 1) {
 			msg ="글 수정 완료!";
-			url ="/reviewContent?uSeq="+dto.getuSeq();
+			url ="/review/reviewContent?writeNo="+dto.getWriteNo();
 		} else {
 			msg ="문제가 있습니다.";
-			url ="/reviewModifyForm?uSeq="+dto.getuSeq();
+			url ="/review/reviewModifyForm?writeNo="+dto.getWriteNo();
 		}
 		
 		return rfs.getMessage(request, msg, url);
@@ -135,20 +136,20 @@ public class ReviewServiceImpl implements ReviewService{
 	}
 
 	@Override
-	public void reviewContent(int uSeq, Model model) {
-		model.addAttribute("reviewContent", mapper.reviewContent(uSeq));
+	public void reviewContent(int writeNo, Model model) {
+		model.addAttribute("reviewContent", mapper.reviewContent(writeNo));
 	}
 	
 	
 	@Override
-	public void upViews(int uSeq) {
-		mapper.upViews(uSeq);
+	public void upViews(int writeNo) {
+		mapper.upViews(writeNo);
 	}
 
 
 	@Override
-	public String reviewDelete(int uSeq, String imageFileName, HttpServletRequest request) {
-		int result = mapper.reviewDelete(uSeq);
+	public String reviewDelete(int writeNo, String imageFileName, HttpServletRequest request) {
+		int result = mapper.reviewDelete(writeNo);
 		String msg, url;
 		
 		if(result == 1) {
@@ -156,10 +157,10 @@ public class ReviewServiceImpl implements ReviewService{
 				rfs.deleteImage(imageFileName);
 			}
 			msg = "게시글 삭제 완료";
-			url = "/reviewAllList";
+			url = "/review/reviewAllList";
 		} else {
 			msg = "문제가 생겼습니다";
-			url = "/reviewContent";
+			url = "/review/reviewContent";
 		}
 		return rfs.getMessage(request, msg, url);
 	}
@@ -172,14 +173,14 @@ public class ReviewServiceImpl implements ReviewService{
 
 
 	@Override
-	public List<ReviewRepDTO> getRepList(int uSeq) {
-		return mapper.getRepList(uSeq);
+	public List<ReviewRepDTO> getRepList(int writeNo) {
+		return mapper.getRepList(writeNo);
 	}
 
 
 	@Override
-	public void reviewLike(int uSeq) {
-		mapper.reviewLike(uSeq);
+	public void reviewLike(int writeNo) {
+		mapper.reviewLike(writeNo);
 	}
 	
 	

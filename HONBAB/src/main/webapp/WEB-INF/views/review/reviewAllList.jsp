@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath }"/>
@@ -14,8 +14,8 @@
 		}
 	}
 	
-	function upViews(seq){
-		location.href="upViews?uSeq=" + seq;
+	function upViews(writeNo){
+		location.href="upViews?writeNo=" + writeNo;
 	}
 </script>
 </head>
@@ -40,17 +40,17 @@
 	</c:if>
 	<c:forEach var="review" items="${reviewAllList}">
 		<tr>
-			<td>${review.uSeq }</td>
-			<td>${review.uNickName }</td>
+			<td>${review.writeNo }</td>
+			<td>${review.nickname }</td>
 			<td width="200px">
-				<a href="#" onclick="upViews(${review.uSeq}); return false">${review.uTitle}</a>
-				<c:if test='${review.uImageName != "None"}'>
+				<a href="#" onclick="upViews(${review.writeNo}); return false">${review.title}</a>
+				<c:if test='${review.imgName != "None"}'>
 					★
 				</c:if>
 			</td>
-			<td>${review.uDate }</td>
-			<td>${review.uViews }</td>
-			<td>${review.uLike }</td>
+			<td>${review.writeDate }</td>
+			<td>${review.views }</td>
+			<td>${review.likes }</td>
 		</tr>
 	</c:forEach>
 	</table>

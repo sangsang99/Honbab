@@ -2,46 +2,54 @@ package com.web.honbab.review.dto;
 
 import java.sql.Date;
 
-//CREATE TABLE REPLY_TEST(
-//U_RE_NICK varchar2(50),
-//U_RE_COMENT varchar2(300),
-//U_SEQ_GROUP NUMBER,
-//U_RE_DATE date default sysdate
-//);
+/*
+CREATE TABLE REVIEW_RE(
+RE_ID VARCHAR2(100) NOT NULL,
+RE_COMENT VARCHAR2(300) NOT NULL,
+WRITE_GROUP NUMBER,
+RE_DATE DATE DEFAULT SYSDATE,
+RE_NICK VARCHAR2(100) NOT NULL,
+CONSTRAINT FK_REVIEW_RE_BOARD FOREIGN KEY(WRITE_GROUP) REFERENCES REVIEW_BOARD(WRITE_NO) ON DELETE CASCADE
+);
+*/
 
 public class ReviewRepDTO {
 
-	private String uReNick; 
-	private String uReComent;
-	private int uSeqGroup;
-	private Date uReDate;
+	private String reId; 
+	private String reComent;
+	private int writeGroup;
+	private Date reDate;
+	private String reNick;
 	
-	
-	public String getuReNick() {
-		return uReNick;
+	public String getReId() {
+		return reId;
 	}
-	public void setuReNick(String uReNick) {
-		this.uReNick = uReNick;
+	public void setReId(String reId) {
+		this.reId = reId;
 	}
-	public String getuReComent() {
-		return uReComent;
+	public String getReComent() {
+		return reComent;
 	}
-	public void setuReComent(String uReComent) {
-		this.uReComent = uReComent;
+	public void setReComent(String reComent) {
+		this.reComent = reComent;
 	}
-	public int getuSeqGroup() {
-		return uSeqGroup;
+	public int getWriteGroup() {
+		return writeGroup;
 	}
-	public void setuSeqGroup(int uSeqGroup) {
-		this.uSeqGroup = uSeqGroup;
+	public void setWriteGroup(int writeGroup) {
+		this.writeGroup = writeGroup;
 	}
-	public Date getuReDate() {
-		return uReDate;
+	public Date getReDate() {
+		return reDate;
 	}
-	public void setuReDate(Date uReDate) {
-		this.uReDate = uReDate;
+	public void setReDate(Date reDate) {
+		this.reDate = reDate;
 	}
-	
-	
+	public String getReNick() {
+		return reNick;
+	}
+	public void setReNick(String reNick) {
+		this.reNick = reNick;
+	}
 	
 }

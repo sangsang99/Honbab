@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 import java.util.Map;
 
@@ -48,14 +49,14 @@ public class ReviewController {
 	}
 
 	@RequestMapping(value = "upViews")
-	public String upViews(@RequestParam int uSeq) {
-		rs.upViews(uSeq);
-		return "redirect:reviewContent?uSeq=" + uSeq;
+	public String upViews(@RequestParam int writeNo) {
+		rs.upViews(writeNo);
+		return "redirect:reviewContent?writeNo=" + writeNo;
 	}
 	
 	@RequestMapping(value = "reviewContent")
-	public String reviewContent(@RequestParam int uSeq, Model model) {
-		rs.reviewContent(uSeq, model);
+	public String reviewContent(@RequestParam int writeNo, Model model) {
+		rs.reviewContent(writeNo, model);
 		return "review/reviewContent";
 	}
 
@@ -82,17 +83,17 @@ public class ReviewController {
 	}
 	
 	@GetMapping("review_delete")
-	public void review_delete(@RequestParam int uSeq, @RequestParam String imageFileName,
+	public void review_delete(@RequestParam int writeNo, @RequestParam String imageFileName,
 						HttpServletRequest request, HttpServletResponse response) throws IOException{
-		String message = rs.reviewDelete(uSeq, imageFileName, request);
+		String message = rs.reviewDelete(writeNo, imageFileName, request);
 		response.setContentType("text/html; charset=utf-8");
 		PrintWriter out = response.getWriter()	;
 		out.println(message);
 	}
 	
 	@GetMapping("review_modify_form")
-	public String reviewModifyForm(@RequestParam int uSeq, Model model) {
-		rs.reviewContent(uSeq, model);
+	public String reviewModifyForm(@RequestParam int writeNo, Model model) {
+		rs.reviewContent(writeNo, model);
 		return "review/reviewModifyForm";
 	}
 	
@@ -107,25 +108,26 @@ public class ReviewController {
 	
 	@PostMapping(value="addReply", produces = "applacition/json; charset=utf-8")
 	@ResponseBody //JSON{\"result\":true} 요거쓰려면 상단에 @RestController 작성하거나 아니면 해당메서드에 @ResponeseBody 요거작성해야함
-	public String addReply(@RequestBody Map<String, Object> map, HttpSession session) {
+	public String addReply(@RequestBody Map<String, Object> map, HttpSession session)  {
 		ReviewRepDTO dto = new ReviewRepDTO();
-		//dto.setId((String)session.getAttribute(LOGIN)); //session 諛� 濡쒓렇�씤 濡쒖쭅 �셿�꽦�썑 �닔�젙
-		dto.setuReNick("testID");
-		dto.setuSeqGroup(Integer.parseInt((String)map.get("uSeq")));
-		dto.setuReComent((String)map.get("content"));
+		//dto.setId((String)session.getAttribute(LOGIN)); //session 
+		dto.setReNick("testID");
+		dto.setReId("id");
+		dto.setWriteGroup(Integer.parseInt((String)map.get("writeNo")));
+		dto.setReComent((String)map.get("coment"));
 		rs.addReply(dto);
 		return "{\"result\":true}";
 	}
 	
-	@GetMapping(value = "replyData/{uSeq}", produces = "application/json; charset=utf-8")
+	@GetMapping(value = "replyData/{writeNo}", produces = "application/json; charset=utf-8")
 	@ResponseBody
-	public List<ReviewRepDTO> replyData(@PathVariable int uSeq){
-		return rs.getRepList(uSeq);
+	public List<ReviewRepDTO> replyData(@PathVariable int writeNo){
+		return rs.getRepList(writeNo);
 	}
 	
 	@GetMapping(value ="reviewLike")
-	public String reviewLike(@RequestParam int uSeq) {
-		rs.reviewLike(uSeq);
-		return "redirect:reviewContent?uSeq=" + uSeq;
+	public String reviewLike(@RequestParam int writeNo) {
+		rs.reviewLike(writeNo);
+		return "redirect:reviewContent?writeNo=" + writeNo;
 	}
 }

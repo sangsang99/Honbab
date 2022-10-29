@@ -19,17 +19,17 @@ public interface ReviewService {
 	
 	public void reviewAllList(Model model, int num);
 
-	public void reviewContent(int uSeq, Model model);
+	public void reviewContent(int writeNo, Model model);
 
-	String reviewDelete(int uSeq, String imageFileName, HttpServletRequest request);
+	String reviewDelete(int writeNo, String imageFileName, HttpServletRequest request);
 
 	public void addReply(ReviewRepDTO dto);
 
-	public List<ReviewRepDTO> getRepList(int uSeq);
+	public List<ReviewRepDTO> getRepList(int writeNo);
 
-	public void upViews(int uSeq);
+	public void upViews(int writeNo);
 
-	public void reviewLike(int uSeq);
+	public void reviewLike(int writeNo);
 
 
 
