@@ -28,7 +28,7 @@
 			<textarea rows="10" cols="50" name="content">${findContent.uContent}</textarea><br>
 			
 			<input type="submit" value="수정완료"> &nbsp;
-			<input type="button" value="글목록" onclick="location.href='${contextPath }/findAllList'">
+			<input type="button" value="글목록" onclick="location.href='${contextPath}/find/findAllList'"> 
 		</form>
 	<c:import url="../main/footer.jsp"/>
 </body>

@@ -8,6 +8,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+</style>
 <script type="text/javascript">
 	function upViews(seq){
 		location.href="find/upViews?uSeq=" + seq;
@@ -21,8 +23,8 @@
 		<td>닉네임</td>
 		<td>제목</td>
 		<td>나이</td>
-		<td>성별</td>
 		<td>지역</td>
+		<td>성별</td>
 		<td>작성일</td>
 		<td>조회수</td>
 	</tr>	
