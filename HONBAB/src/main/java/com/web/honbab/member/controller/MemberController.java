@@ -32,6 +32,15 @@ public class MemberController implements MemberSession{
 		}
 		return "redirect:login";
 	}
+	@PostMapping("bizuser_check")
+	public String bizuserCheck(HttpServletRequest request, RedirectAttributes rs) {
+		int result = ms.bizuser_check(request);
+		if(result == 0) {
+			rs.addAttribute("id", request.getParameter("id"));
+			return "redirect:successLogin";
+		}
+		return "redirect:login";
+	}
 	
 	@RequestMapping("successLogin")
 	public String successLogin(@RequestParam("id") String id, HttpSession session) {
