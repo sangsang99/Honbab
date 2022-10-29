@@ -9,6 +9,7 @@ public class PromoDTO {
 	private int hit;
 	private String imageFileName;
 	private String id;
+	private String comName;
 	
 	
 	public int getWriteNo() {
@@ -52,6 +53,13 @@ public class PromoDTO {
 	}
 	public void setId(String id) {
 		this.id = id;
+	}
+	public String getComName() {
+		return comName;
+	}
+	
+	public void setComName(String comName) {
+		this.comName = comName;
 	}
 	
 	

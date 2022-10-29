@@ -11,6 +11,7 @@
 		<result property="hit" column="hit" />
 		<result property="imageFileName" column="image_file_name" />
 		<result property="id" column="id" />		
+		<result property="comName" column="comName" />		
 	</resultMap>
 
 	<resultMap type="com.web.honbab.promo.dto.PromoRepDTO" id="reply">
@@ -19,6 +20,7 @@
 		<result property="content" column="content" />
 		<result property="write_group" column="write_group" />
 		<result property="write_date" column="write_date" />		
+		<result property="re_nick" column="re_nick" />		
 	</resultMap> 
 
 	<select id="promoList" resultMap="promotion">
@@ -29,10 +31,10 @@
 	</select>
 
 	<insert id="writeSave">
-		insert into PROMO_BOARD(write_no, id, title, save_date, hit,
+		insert into PROMO_BOARD(write_no, id, title, content,
 		image_file_name)
 		values(PROMO_BOARD_seq.nextval, #{id}, #{title},
-		#{content}, #{imageFileName})
+		#{content}, #{imageFileName})	
 	</insert>
 
 	<select id="contentView" resultMap="promotion">
