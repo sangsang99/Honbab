@@ -3,34 +3,42 @@ package com.web.honbab.find.dto;
 import java.sql.Date;
 
 public class FindRepDTO {
-	private String uReNick; 
-	private String uReComent;
-	private int uSeqGroup;
-	private Date uReDate;
+	private String reId; 
+	private String reComent;
+	private int writeGroup;
+	private Date reDate;
+	private String reNick;
+	public String getReId() {
+		return reId;
+	}
+	public void setReId(String reId) {
+		this.reId = reId;
+	}
+	public String getReComent() {
+		return reComent;
+	}
+	public void setReComent(String reComent) {
+		this.reComent = reComent;
+	}
+	public int getWriteGroup() {
+		return writeGroup;
+	}
+	public void setWriteGroup(int writeGroup) {
+		this.writeGroup = writeGroup;
+	}
+	public Date getReDate() {
+		return reDate;
+	}
+	public void setReDate(Date reDate) {
+		this.reDate = reDate;
+	}
+	public String getReNick() {
+		return reNick;
+	}
+	public void setReNick(String reNick) {
+		this.reNick = reNick;
+	}
 	
 	
-	public String getuReNick() {
-		return uReNick;
-	}
-	public void setuReNick(String uReNick) {
-		this.uReNick = uReNick;
-	}
-	public String getuReComent() {
-		return uReComent;
-	}
-	public void setuReComent(String uReComent) {
-		this.uReComent = uReComent;
-	}
-	public int getuSeqGroup() {
-		return uSeqGroup;
-	}
-	public void setuSeqGroup(int uSeqGroup) {
-		this.uSeqGroup = uSeqGroup;
-	}
-	public Date getuReDate() {
-		return uReDate;
-	}
-	public void setuReDate(Date uReDate) {
-		this.uReDate = uReDate;
-	}
+	
 }

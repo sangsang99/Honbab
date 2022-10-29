@@ -40,14 +40,16 @@ flex: 1;
 		[사장님홍보글]
 		<img src="https://colorate.azurewebsites.net/SwatchColor/5F5F5F" >
 	</div>
-	
+		
 	<div class="board">
 		<div>
-			[사람찾기]
-			<c:import url="main/Board01.jsp"/>
+			<%-- <c:import url="main/Board01.jsp"/> --%>
+			<b>[사람찾기 = board1]</b>
+			<a id="find" href="${contextPath}/find/findAllList">더 많은 사람 찾기</a>
+			<c:import url="find/bestFind.jsp"/>
 		</div>
 		<div>
-			<c:import url="main/Board02.jsp"/>
+			<%-- <c:import url="main/Board02.jsp"/> --%>
 			<b>[혼밥후기 = board2]</b>
 			<a id="review" href="${contextPath}/review/reviewAllList">더 많은 혼밥 후기</a>
 			<c:import url="review/bestReview.jsp"/>

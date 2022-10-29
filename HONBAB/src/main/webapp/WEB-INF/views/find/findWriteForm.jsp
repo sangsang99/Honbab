@@ -13,6 +13,7 @@
 		<c:import url="../main/header.jsp"/>
 		
 		<form action="${contextPath}/find/findWrite" enctype="multipart/form-data" method="post">
+			<input type="hidden" value="id-session" name="id" >
 			<b>작성자</b><br>
 			<input type="text" name="nickName"><br>
 			<b>나 이</b><br>
@@ -21,7 +22,7 @@
 			<input type="radio" name="gen" value="남성" checked>남성
 			<input type="radio" name="gen" value="여성" >여성<br>
 			<b>지 역</b><br>
-			<input type="text" name="region" maxlength="2"><br>
+			<input type="text" name="region" maxlength="2">ex) 서울, 경기...<br>
 			<b>제 목</b><br>
 			<input type="text" name="title"><br>
 			<b>내 용</b><br>

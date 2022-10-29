@@ -64,12 +64,13 @@ public class FindServiceImpl implements FindService{
 	public String findSave(MultipartHttpServletRequest mul, HttpServletRequest request) {
 		
 		FindDTO dto = new FindDTO();
-		dto.setuNickName(mul.getParameter("nickName"));
-		dto.setuAge(Integer.parseInt(mul.getParameter("age")));
-		dto.setuGen(mul.getParameter("gen"));
-		dto.setuRegion(mul.getParameter("region"));
-		dto.setuTitle(mul.getParameter("title"));
-		dto.setuContent(mul.getParameter("content"));
+		dto.setNickName(mul.getParameter("nickName"));
+		dto.setId(mul.getParameter("id"));
+		dto.setAge(Integer.parseInt(mul.getParameter("age")));
+		dto.setGen(mul.getParameter("gen"));
+		dto.setRegion(mul.getParameter("region"));
+		dto.setTitle(mul.getParameter("title"));
+		dto.setContent(mul.getParameter("content"));
 		
 		int result = 0;
 		try {
@@ -99,12 +100,12 @@ public class FindServiceImpl implements FindService{
 	@Override
 	public String findModify(MultipartHttpServletRequest mul, HttpServletRequest request) {
 		FindDTO dto = new FindDTO();
-		dto.setuSeq(Integer.parseInt(mul.getParameter("uSeq")));
-		dto.setuAge(Integer.parseInt(mul.getParameter("age")));
-		dto.setuGen(mul.getParameter("gen"));
-		dto.setuRegion(mul.getParameter("region"));
-		dto.setuTitle(mul.getParameter("title"));
-		dto.setuContent(mul.getParameter("content"));
+		dto.setWriteNo(Integer.parseInt(mul.getParameter("writeNo")));
+		dto.setAge(Integer.parseInt(mul.getParameter("age")));
+		dto.setGen(mul.getParameter("gen"));
+		dto.setRegion(mul.getParameter("region"));
+		dto.setTitle(mul.getParameter("title"));
+		dto.setContent(mul.getParameter("content"));
 		
 		int result = 0;
 		try {
@@ -116,10 +117,10 @@ public class FindServiceImpl implements FindService{
 		String msg,url;
 		if(result == 1) {
 			msg = "수 정";
-			url = "/find/findContent?uSeq="+dto.getuSeq();
+			url = "/find/findContent?writeNo="+dto.getWriteNo();
 		} else {
 			msg ="문제가 생겼습니다";
-			url = "/find/findModifyForm?uSeq="+dto.getuSeq();
+			url = "/find/findModifyForm?writeNo="+dto.getWriteNo();
 		}
 		return ffs.getMessage(request,msg,url);
 		

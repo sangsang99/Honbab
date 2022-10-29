@@ -1,70 +1,77 @@
 package com.web.honbab.find.dto;
 
 public class FindDTO {
-	private int uSeq;
-	private String uNickName;
-	private String uTitle;
-	private String uContent;
-	private int uViews;
-	private String uDate;
-	private int uAge;
-	private String uRegion;
-	private String uGen;
+	private int writeNo ;
+	private String nickName;
+	private String title;
+	private String content;
+	private int views;
+	private String writeDate;
+	private int age;
+	private String region;
+	private String gen;
+	private String id;
+	public int getWriteNo() {
+		return writeNo;
+	}
+	public void setWriteNo(int writeNo) {
+		this.writeNo = writeNo;
+	}
+	public String getNickName() {
+		return nickName;
+	}
+	public void setNickName(String nickName) {
+		this.nickName = nickName;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
+	}
+	public int getViews() {
+		return views;
+	}
+	public void setViews(int views) {
+		this.views = views;
+	}
+	public String getWriteDate() {
+		return writeDate;
+	}
+	public void setWriteDate(String writeDate) {
+		this.writeDate = writeDate;
+	}
+	public int getAge() {
+		return age;
+	}
+	public void setAge(int age) {
+		this.age = age;
+	}
+	public String getRegion() {
+		return region;
+	}
+	public void setRegion(String region) {
+		this.region = region;
+	}
+	public String getGen() {
+		return gen;
+	}
+	public void setGen(String gen) {
+		this.gen = gen;
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
 	
-	public int getuSeq() {
-		return uSeq;
-	}
-	public void setuSeq(int uSeq) {
-		this.uSeq = uSeq;
-	}
-	public String getuNickName() {
-		return uNickName;
-	}
-	public void setuNickName(String uNickName) {
-		this.uNickName = uNickName;
-	}
-	public String getuTitle() {
-		return uTitle;
-	}
-	public void setuTitle(String uTitle) {
-		this.uTitle = uTitle;
-	}
-	public String getuContent() {
-		return uContent;
-	}
-	public void setuContent(String uContent) {
-		this.uContent = uContent;
-	}
-	public int getuViews() {
-		return uViews;
-	}
-	public void setuViews(int uViews) {
-		this.uViews = uViews;
-	}
-	public String getuDate() {
-		return uDate;
-	}
-	public void setuDate(String uDate) {
-		this.uDate = uDate;
-	}
-	public int getuAge() {
-		return uAge;
-	}
-	public void setuAge(int uAge) {
-		this.uAge = uAge;
-	}
-	public String getuRegion() {
-		return uRegion;
-	}
-	public void setuRegion(String uRegion) {
-		this.uRegion = uRegion;
-	}
-	public String getuGen() {
-		return uGen;
-	}
-	public void setuGen(String uGen) {
-		this.uGen = uGen;
-	}
 	
 	
 }
