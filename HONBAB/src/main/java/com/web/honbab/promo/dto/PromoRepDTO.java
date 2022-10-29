@@ -2,26 +2,13 @@ package com.web.honbab.promo.dto;
 
 import java.sql.Timestamp;
 
-
-/*
-CREATE table mvc_board(
-Write_no number(10) primary key,
-Title varchar2(100),
-Content varchar2(300),
-Savedate date default sysdate,
-Hit number(10) default 0,
-Image_file_name varchar2(100),
-Id VARCHAR2(20) not null,
---constraint fk_test foreign key(id) REFERENCES membership(id) on delete cascade
-);
- 
- */
 public class PromoRepDTO {
 	private String id;
 	private String title;
 	private String content;
 	private int write_group;
 	private Timestamp write_date;
+	
 	
 	public String getId() {
 		return id;
@@ -53,6 +40,9 @@ public class PromoRepDTO {
 	public void setWrite_date(Timestamp write_date) {
 		this.write_date = write_date;
 	}
+	
+	
+	
 	
 	
 }
