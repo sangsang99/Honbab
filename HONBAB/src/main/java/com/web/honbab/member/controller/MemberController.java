@@ -52,16 +52,9 @@ public class MemberController implements MemberSession{
 		return "redirect:/index";
 	}
 	
-	//Q(우상) : 안쓰는 컨트롤러인가요?
-	@GetMapping("memberInfo")
-	public String memberInfo(Model model) {
-		ms.memberInfo(model);
-		return "member/memberInfo";
-	}
-	
 	@RequestMapping("/info")
-	public String info(@RequestParam("id") String userid, Model model) {
-		ms.info(userid, model);
+	public String info(@RequestParam("id") String id, Model model) {
+		ms.info(id, model);
 		return "member/info";
 	}
 	

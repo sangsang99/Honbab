@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import com.web.honbab.member.dto.MemberDTO;
-import com.web.honbab.member.dto.TableDTO;
 import com.web.honbab.member.service.MemberService;
 import com.web.honbab.mybatis.member.MemberMapper;
 
@@ -21,7 +20,6 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public int user_check(HttpServletRequest request) {
 		MemberDTO dto = mapper.user_check(request.getParameter("id"));
-		/* TableDTO tdto = mapper.table_check(request.getParameter("chk_info")); */
 		if(dto != null) {
 			if(request.getParameter("pw").equals(dto.getPw())) {
 				return 0;
@@ -30,16 +28,11 @@ public class MemberServiceImpl implements MemberService {
 		return 1;
 	}
 	
-	
-	
-	@Override
-	public void memberInfo(Model model) {
-		model.addAttribute("memberList", mapper.memberInfo());		
-	} 
+
 	
 	@Override
-	public void info(String userid, Model model) {
-		MemberDTO dto = mapper.getMember(userid);
+	public void info(String id, Model model) {
+		MemberDTO dto = mapper.getMember(id);
 		model.addAttribute("info", dto);
 	}
 	
