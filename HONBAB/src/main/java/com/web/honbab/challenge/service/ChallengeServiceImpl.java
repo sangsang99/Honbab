@@ -25,17 +25,17 @@ public class ChallengeServiceImpl implements ChallengeService {
 	@Override
 	public String challengeSave(MultipartHttpServletRequest mul, HttpServletRequest request) {
 		ChallengeDTO dto = new ChallengeDTO();
-		dto.setuLevel(mul.getParameter("uLevel"));
-		dto.setuTitle(mul.getParameter("uTitle"));
-		dto.setuContent(mul.getParameter("uContent"));
-		dto.setuWriter(mul.getParameter("uWriter"));
-		MultipartFile file = mul.getFile("uImgName");
+		dto.setChLevel(mul.getParameter("chLevel"));
+		dto.setTitle(mul.getParameter("title"));
+		dto.setContent(mul.getParameter("Content"));
+		dto.setNickName(mul.getParameter("nickName"));
+		MultipartFile file = mul.getFile("imgName");
 
 		if(file.getSize() != 0) {
-			dto.setuImgName(cfs.saveFile(file));
+			dto.setImgName(cfs.saveFile(file));
 		} 
 		else {
-			dto.setuImgName("nan");	
+			dto.setImgName("nan");	
 		}
 		
 		int result = 0;
@@ -58,9 +58,9 @@ public class ChallengeServiceImpl implements ChallengeService {
 	}
 	
 	@Override
-	public void challengeView(int uWriteNo, Model model) {
-		model.addAttribute("challengeData", mapper.challengeView(uWriteNo));
-		upView(uWriteNo);
+	public void challengeView(int writeNo, Model model) {
+		model.addAttribute("challengeData", mapper.challengeView(writeNo));
+		upView(writeNo);
 	}
 
 	@Override
@@ -81,16 +81,16 @@ public class ChallengeServiceImpl implements ChallengeService {
 	public String challengeModify(MultipartHttpServletRequest mul, HttpServletRequest request) {
 		
 		ChallengeDTO dto = new ChallengeDTO();
-		dto.setuLevel(mul.getParameter("uLevel"));
-		dto.setuTitle(mul.getParameter("uTitle"));
-		dto.setuContent(mul.getParameter("uContent"));
-		MultipartFile file = mul.getFile("uImgName");
+		dto.setChLevel(mul.getParameter("chLevel"));
+		dto.setTitle(mul.getParameter("title"));
+		dto.setContent(mul.getParameter("content"));
+		MultipartFile file = mul.getFile("imgName");
 
 		if(file.getSize() != 0) {	//이미지 변경
-			dto.setuImgName(cfs.saveFile(file));
+			dto.setImgName(cfs.saveFile(file));
 			cfs.deleteImage(mul.getParameter("originFileName"));
 		}  else { 
-			dto.setuImgName(mul.getParameter("originFileName")); 
+			dto.setImgName(mul.getParameter("originFileName")); 
 		}
 		
 		int result = 0;
@@ -106,15 +106,15 @@ public class ChallengeServiceImpl implements ChallengeService {
 			url = "/challengeAllList";
 		} else {
 			msg = "수정 중 문제 발생";
-			url = "/challengeView?uWriteNo="+dto.getuWriteNo();
+			url = "/challengeView?writeNo="+dto.getWriteNo();
 		}
 		return cfs.getMessage(request, msg, url);
 	}
 
 	@Override
-	public String challengeDelete(int uWriteNo, HttpServletRequest request) {
+	public String challengeDelete(int writeNo, HttpServletRequest request) {
 		ChallengeDTO dto = new ChallengeDTO();
-		int result = mapper.challengeDelete(uWriteNo);
+		int result = mapper.challengeDelete(writeNo);
 		
 		String msg, url;
 		if(result == 1) {
@@ -122,13 +122,13 @@ public class ChallengeServiceImpl implements ChallengeService {
 			url = "/challengeAllList";
 		} else {
 			msg = "글 삭제 중 문제 발생";
-			url = "/challengeView?uWriteNo="+uWriteNo;
+			url = "/challengeView?writeNo="+ writeNo;
 		}
 		return  cfs.getMessage(request, msg, url);
 	}
 	
-	public void upView(int uWriteNo) {
-		mapper.upView(uWriteNo);
+	public void upView(int writeNo) {
+		mapper.upView(writeNo);
 	}
 	
 	

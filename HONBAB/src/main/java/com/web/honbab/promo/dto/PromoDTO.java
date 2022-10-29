@@ -10,6 +10,7 @@ public class PromoDTO {
 	private String imageFileName;
 	private String id;
 	
+	
 	public int getWriteNo() {
 		return writeNo;
 	}
@@ -52,6 +53,7 @@ public class PromoDTO {
 	public void setId(String id) {
 		this.id = id;
 	}
+	
 	
 	
 	

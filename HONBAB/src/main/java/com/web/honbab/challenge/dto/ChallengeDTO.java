@@ -1,86 +1,112 @@
 package com.web.honbab.challenge.dto;
 
+/*
+<id property="writeNo" column="WRITE_NO" />
+<result property="chLevel" column="CH_LEVEL" />
+<result property="title" column="TITLE" />
+<result property="content" column="CONTENT" />
+<result property="nickName" column="NICKNAME" />
+<result property="saveDate" column="SAVE_DATE" />
+<result property="views" column="VIEWS" />
+<result property="imgName" column="IMGNAME" />
+<result property="likes" column="LIKES" />
+<result property="id" column="ID" />
+*/
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 
 public class ChallengeDTO {
-	private int uWriteNo;
-	private String uLevel;
-	private String uTitle;
-	private String uContent;
-	private int uViews;
-	private String uSaveDate;
-	private String uImgName;
-	private String uWriter;
+	private int writeNo;
+	private String chLevel;
+	private String title;
+	private String content;
+	private String nickName;
+	private String saveDate;
+	private int views;
+	private String imgName;
+	private int likes;
+	private String id;
 
-	public int getuWriteNo() {
-		return uWriteNo;
+	public int getWriteNo() {
+		return writeNo;
 	}
 
-	public void setuWriteNo(int uWriteNo) {
-		this.uWriteNo = uWriteNo;
+	public void setWriteNo(int writeNo) {
+		this.writeNo = writeNo;
 	}
 
-	public String getuLevel() {
-		return uLevel;
+	public String getChLevel() {
+		return chLevel;
 	}
 
-	public void setuLevel(String uLevel) {
-		this.uLevel = uLevel;
+	public void setChLevel(String chLevel) {
+		this.chLevel = chLevel;
 	}
 
-	public String getuTitle() {
-		return uTitle;
+	public String getTitle() {
+		return title;
 	}
 
-	public void setuTitle(String uTitle) {
-		this.uTitle = uTitle;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
-	public String getuContent() {
-		return uContent;
+	public String getContent() {
+		return content;
 	}
 
-	public void setuContent(String uContent) {
-		this.uContent = uContent;
+	public void setContent(String content) {
+		this.content = content;
 	}
 
-	public int getuViews() {
-		return uViews;
+	public String getNickName() {
+		return nickName;
 	}
 
-	public void setuViews(int uViews) {
-		this.uViews = uViews;
+	public void setNickName(String nickName) {
+		this.nickName = nickName;
 	}
 
-	public String getuSaveDate() {
-		return uSaveDate;
+	public String getSaveDate() {
+		return saveDate;
 	}
 
-	public void setuSaveDate(Timestamp saveDate) {
+	public void setSaveDate(Timestamp saveDate) {
 		SimpleDateFormat smallFormat = new SimpleDateFormat("YYYY-MM-dd");
-		this.uSaveDate = smallFormat.format(saveDate);
-		// (Timestamp saveDate) �� format ��ü�� format �޼ҵ带 ���� "YYYY-MM-dd HH:mm:ss" ��������
+		this.saveDate = smallFormat.format(saveDate);
 	}
 
-	public String getuImgName() {
-		return uImgName;
+	public int getViews() {
+		return views;
 	}
 
-	public void setuImgName(String uImgName) {
-		this.uImgName = uImgName;
+	public void setViews(int views) {
+		this.views = views;
 	}
 
-	public String getuWriter() {
-		return uWriter;
+	public String getImgName() {
+		return imgName;
 	}
 
-	public void setuWriter(String uWriter) {
-		this.uWriter = uWriter;
+	public void setImgName(String imgName) {
+		this.imgName = imgName;
 	}
 
-	
-	
-	
+	public int getLikes() {
+		return likes;
+	}
+
+	public void setLikes(int likes) {
+		this.likes = likes;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
 }
