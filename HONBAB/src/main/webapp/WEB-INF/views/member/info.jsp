@@ -1,6 +1,3 @@
-
-<!-- member/info.jsp -->
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -30,7 +27,22 @@
 				<th>비밀번호</th><td>${info.pw }</td>
 			</tr>
 			<tr>	
-				<th>주 소</th><td>${info.addr }</td>
+				<th>이름</th><td>${info.name }</td>
+			</tr>
+			<tr>	
+				<th>닉네임</th><td>${info.nickName }</td>
+			</tr>
+			<tr>	
+				<th>전화</th><td>${info.tel }</td>
+			</tr>
+			<tr>	
+				<th>거주지</th><td>${info.region }</td>
+			</tr>
+			<tr>	
+				<th>성별</th><td>${info.gender }</td>
+			</tr>
+			<tr>	
+				<th>이메일</th><td>${info.email }</td>
 			</tr>
 		</table>
 	</div>

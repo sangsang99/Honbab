@@ -53,22 +53,14 @@
 					<li><a id="promotion" href="${contextPath}/promotion/promoList">홍보 게시판</a></li>
 					<li><a href="#">가게 추천</a></li>
 					<li><a href="#">게시판</a></li>
-					<li>
-						<c:if test="${loginUser == null}">
-							<a href="${contextPath }/member/login">로그인</a>
-						</c:if>
-						<c:if test="${loginUser != null}">
-							<a href="${contextPath }/member/logout">로그아웃</a>
-						</c:if>
-					</li>
-					<li>
-						<c:if test="${loginUser == null}">
-							<a href="${contextPath }/member/register_form">회원가입</a>
-						</c:if>
-						<c:if test="${loginUser != null}">
-							<a href="#">마이페이지</a>
-						</c:if>
-						</li>
+					<c:if test="${loginUser == null}">
+						<li><a href="${contextPath }/member/login">로그인</a></li>
+						<li><a href="${contextPath }/member/register_form">회원가입</a></li>
+					</c:if>
+					<c:if test="${loginUser != null}">
+						<li><a href="${contextPath }/member/logout">로그아웃</a></li>
+						<li><a href="${contextPath }/member/info?id=${loginUser}">마이페이지</a></li>
+					</c:if>
 				</ul>
 			</nav>
 		</div>
