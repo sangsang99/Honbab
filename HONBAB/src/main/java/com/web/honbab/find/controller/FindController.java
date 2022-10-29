@@ -30,7 +30,6 @@ import com.web.honbab.review.dto.ReviewRepDTO;
 public class FindController {
 	
 	
-	//아ㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏ
 	@Autowired
 	private FindService fs;
 	
@@ -42,14 +41,14 @@ public class FindController {
 	}
 	
 	@RequestMapping(value = "upViews")
-	public String upViews(@RequestParam int uSeq) {
-		fs.upViews(uSeq);
-		return "redirect:findContent?uSeq=" + uSeq;
+	public String upViews(@RequestParam int writeNo) {
+		fs.upViews(writeNo);
+		return "redirect:findContent?writeNo=" + writeNo;
 	}
 	
 	@RequestMapping("findContent")
-	public String findContent(@RequestParam int uSeq, Model model) {
-		fs.findContent(uSeq, model);
+	public String findContent(@RequestParam int writeNo, Model model) {
+		fs.findContent(writeNo, model);
 		
 		return "find/findContent";
 	}
@@ -70,8 +69,8 @@ public class FindController {
 	
 	
 	@GetMapping("find_modify_form")
-	public String findModifyForm(@RequestParam int uSeq, Model model) {
-		fs.findContent(uSeq, model);
+	public String findModifyForm(@RequestParam int writeNo, Model model) {
+		fs.findContent(writeNo, model);
 		
 		return "find/findModifyForm";
 	}
@@ -85,8 +84,8 @@ public class FindController {
 	}
 	
 	@GetMapping("find_delete")
-	public void find_Delete(@RequestParam int uSeq, HttpServletResponse response, HttpServletRequest request) throws Exception {
-		String message = fs.findDelete(uSeq, request);
+	public void find_Delete(@RequestParam int writeNo, HttpServletResponse response, HttpServletRequest request) throws Exception {
+		String message = fs.findDelete(writeNo, request);
 		response.setContentType("text/html; charset=utf-8");
 		PrintWriter out = response.getWriter();
 		out.println(message);
@@ -98,16 +97,17 @@ public class FindController {
 	public String addReply(@RequestBody Map<String, Object> map, HttpSession session) {
 		FindRepDTO dto = new FindRepDTO();
 		//dto.setId((String)session.getAttribute(LOGIN)); //session 諛� 濡쒓렇�씤 濡쒖쭅 �셿�꽦�썑 �닔�젙
-		dto.setuReNick("testID");
-		dto.setuSeqGroup(Integer.parseInt((String)map.get("uSeq")));
-		dto.setuReComent((String)map.get("content"));
+		dto.setReNick("testID");
+		dto.setReId("id");
+		dto.setWriteGroup(Integer.parseInt((String)map.get("writeNo")));
+		dto.setReComent((String)map.get("coment"));
 		fs.addReply(dto);
 		return "{\"result\":true}";
 	}
 	
-	@GetMapping(value = "replyData/{uSeq}", produces = "application/json; charset=utf-8")
+	@GetMapping(value = "replyData/{writeNo}", produces = "application/json; charset=utf-8")
 	@ResponseBody
-	public List<FindRepDTO> replyData(@PathVariable int uSeq){
-		return fs.getRepList(uSeq);
+	public List<FindRepDTO> replyData(@PathVariable int writeNo){
+		return fs.getRepList(writeNo);
 	}
 }
