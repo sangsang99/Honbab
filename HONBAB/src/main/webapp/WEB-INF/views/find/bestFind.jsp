@@ -36,7 +36,7 @@
 			<td>${find.writeNo }</td>
 			<td>${find.nickName }</td>
 			<td width="200px">
-				<a href="#" onclick="upViews(${find.writeNo}); return false">${find.title}</a>
+				<a href="#" onclick="upViews(${find.writeNo}); return false">${find.title}</a>	
 			</td>
 			<td>${find.age }</td>
 			<td>${find.region }</td>

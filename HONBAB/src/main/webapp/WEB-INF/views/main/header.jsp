@@ -52,7 +52,7 @@
 					<li><a href="${contextPath}/challengeAllList">도전혼밥</a></li>
 					<li><a id="promotion" href="${contextPath}/promotion/promoList">홍보 게시판</a></li>
 					<li><a href="#">가게 추천</a></li>
-					<li><a href="#">게시판</a></li>
+					<li><a id="find" href="${contextPath}/find/findAllList">구인 게시판</a></li>
 					<c:if test="${loginUser == null}">
 						<li><a href="${contextPath }/member/login">로그인</a></li>
 						<li><a href="${contextPath }/member/register_form">회원가입</a></li>

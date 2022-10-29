@@ -20,24 +20,15 @@ public class MainContriller {
 	@RequestMapping(value = "/")
 	public String defalutMain(Model model) {
 		rs.reviewBestList(model);
+		fs.findBestList(model);
 		return "index";
 	}
 	@RequestMapping(value = "index")
 	public String defalutMainIndex(Model model) {
 		rs.reviewBestList(model);
+		fs.findBestList(model);
 		return "index";
 	}
 	
-	@RequestMapping(value="/find")
-	   public String defalutMain1(Model model) {
-	      fs.findBestList(model);
-	      return "index";
-	   
-	   }
-	   
-	   @RequestMapping(value="indexfind")
-	   public String defalutMainIndex1(Model model) {
-	      fs.findBestList(model);
-	      return "index";
-	   }
+	
 }
