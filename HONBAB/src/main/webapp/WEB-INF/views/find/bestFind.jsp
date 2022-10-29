@@ -11,8 +11,8 @@
 <style type="text/css">
 </style>
 <script type="text/javascript">
-	function upViews(seq){
-		location.href="find/upViews?uSeq=" + seq;
+	function upViews(writeNo){
+		location.href="find/upViews?writeNo=" + writeNo;
 	}
 </script>
 </head>
@@ -33,16 +33,16 @@
 	</c:if>
 	<c:forEach var="find" items="${findBestList}">
 	<tr>
-			<td>${find.uSeq }</td>
-			<td>${find.uNickName }</td>
+			<td>${find.writeNo }</td>
+			<td>${find.nickName }</td>
 			<td width="200px">
-				<a href="#" onclick="upViews(${find.uSeq}); return false">${find.uTitle}</a>
+				<a href="#" onclick="upViews(${find.writeNo}); return false">${find.title}</a>
 			</td>
-			<td>${find.uAge }</td>
-			<td>${find.uRegion }</td>
-			<td>${find.uGen }</td>
-			<td>${find.uDate }</td>
-			<td>${find.uViews }</td>
+			<td>${find.age }</td>
+			<td>${find.region }</td>
+			<td>${find.gen }</td>
+			<td>${find.writeDate }</td>
+			<td>${find.views }</td>
 		</tr>
 	</c:forEach>
 	</table>

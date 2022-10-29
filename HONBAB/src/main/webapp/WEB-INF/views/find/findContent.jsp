@@ -33,7 +33,7 @@
  	
  	function reply_data() {
 		$.ajax({
-			url: "replyData/"+${findContent.uSeq},
+			url: "replyData/"+${findContent.writeNo},
 			type: "GET",
 			dataType: "json",
 			success: function(rep) {	
@@ -43,9 +43,9 @@
 					let writeDate = date.getFullYear()+"년" +
 									(date.getMonth()+1)+"월" +
 									date.getDate()+"일"
-					html += "<hr><div align='left'><b>아이디 : </b>" + redata.uReNick + "님/";
+					html += "<hr><div align='left'><b>아이디 : </b>" + redata.reNick + "님/";
 					html += "<b>작성일</b> : " + writeDate + "<br>" 
-					html += "<b>내용</b> : " + redata.uReComent + "</div>" 
+					html += "<b>내용</b> : " + redata.reComent + "</div>" 
 				})
 				$("#reply").html(html)
 			}, error:function(){
@@ -59,39 +59,39 @@
 <c:import url="../main/header.jsp"/>
 	<table border="1">
 		<tr>
-			<th>글번호</th><td>${findContent.uSeq}</td>
+			<th>글번호</th><td>${findContent.writeNo}</td>
 		</tr>
 		<tr>
-			<th>닉네임</th><td>${findContent.uNickName}</td>
+			<th>닉네임</th><td>${findContent.nickName}</td>
 		</tr>
 		<tr>
-			<th>제목</th><td>${findContent.uTitle}</td>
+			<th>제목</th><td>${findContent.title}</td>
 		</tr>
 		<tr>
-			<th>내용</th><td>${findContent.uContent}</td>
+			<th>내용</th><td>${findContent.content}</td>
 		</tr>
 		<tr>
-			<th>나이</th><td>${findContent.uAge}</td>
+			<th>나이</th><td>${findContent.age}</td>
 		</tr>
 		<tr>
-			<th>성별</th><td>${findContent.uGen}</td>
+			<th>성별</th><td>${findContent.gen}</td>
 		</tr>
 		<tr>
-			<th>지역</th><td>${findContent.uRegion}</td>
+			<th>지역</th><td>${findContent.region}</td>
 		</tr>
 		<tr>
-			<th>작성일</th><td>${findContent.uDate}</td>
+			<th>작성일</th><td>${findContent.writeDate}</td>
 		</tr>
 		<tr>
-			<th>조회수</th><td>${findContent.uViews}</td>
+			<th>조회수</th><td>${findContent.views}</td>
 		</tr>
 	</table>
 	
 	
 	<input type="button" value="목록 돌아가기" onclick="location.href='${contextPath}/find/findAllList'"> &nbsp;
 	<c:if test="${true == true}">
-	<input type="button" value="수정하기" onclick="location.href='${contextPath}/find/find_modify_form?uSeq=${findContent.uSeq}'"> &nbsp;
-	<input type="button" value="삭제하기" onclick="location.href='${contextPath}/find/find_delete?uSeq=${findContent.uSeq}'">
+	<input type="button" value="수정하기" onclick="location.href='${contextPath}/find/find_modify_form?writeNo=${findContent.writeNo}'"> &nbsp;
+	<input type="button" value="삭제하기" onclick="location.href='${contextPath}/find/find_delete?writeNo=${findContent.writeNo}'">
 	</c:if>
 	
 	<h2>답글페이지</h2>
@@ -102,10 +102,10 @@
 	<hr>
 	<c:if test="${true}">  <!-- 로그인되어있으면 노출 -->
 	<form id="form">
-		<input type="hidden" name="uSeq" value="${findContent.uSeq}">	
-		<b>작성자 : ${findContent.uNickName}</b><br>
+		<input type="hidden" name="writeNo" value="${findContent.writeNo}">	
+		<b>작성자 : ${findContent.nickName}</b><br>
 		<b>내용</b>
-		<textarea id="content" name="content" rows="5" cols="30"></textarea><br>
+		<textarea id="coment" name="coment" rows="5" cols="30"></textarea><br>
 		<button type="button" onclick="rep()" > 답글 달기 </button>&nbsp;
 	</form>	
 	</c:if>

@@ -13,6 +13,7 @@
 		<c:import url="../main/header.jsp"/>
 		
 		<form action="${contextPath}/find/findWrite" enctype="multipart/form-data" method="post">
+			<input type="hidden" value="id-session" name="id" >
 			<b>작성자</b><br>
 			<input type="text" name="nickName"><br>
 			<b>나 이</b><br>

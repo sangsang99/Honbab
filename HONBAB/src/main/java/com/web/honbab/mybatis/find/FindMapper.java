@@ -12,7 +12,7 @@ import com.web.honbab.review.dto.ReviewDTO;
 public interface FindMapper {
 
 
-	public FindDTO findContent(int uSeq);
+	public FindDTO findContent(int writeNo);
 	
 	public List<FindDTO> findAllList(@Param("s")int start, @Param("e")int end);
 
@@ -20,16 +20,16 @@ public interface FindMapper {
 
 	public List<FindDTO> findBestList();
 
-	public void upViews(int uSeq);
+	public void upViews(int writeNo);
 
 	public int findSave(FindDTO find);
 
 	public int modifyFind(FindDTO dto);
 
-	public int findDelete(int uSeq);
+	public int findDelete(int writeNo);
 
 	public void addReply(FindRepDTO dto);
 
-	public List<FindRepDTO> getRepList(int uSeq);
+	public List<FindRepDTO> getRepList(int writeNo);
 	
 }
