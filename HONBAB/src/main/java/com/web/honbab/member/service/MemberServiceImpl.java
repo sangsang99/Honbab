@@ -11,7 +11,6 @@ import com.web.honbab.member.dto.BizMemberDTO;
 import com.web.honbab.member.dto.MemberDTO;
 import com.web.honbab.member.service.MemberService;
 import com.web.honbab.mybatis.member.MemberMapper;
-import com.web.honbab.promo.service.PromoFileService;
 
 @Service
 public class MemberServiceImpl implements MemberService {
@@ -55,18 +54,29 @@ public class MemberServiceImpl implements MemberService {
 			return 0;
 		}
 	}
-//	@Override
-//	public String memberDelete(String id, HttpServletRequest request) {
-//		int result = mapper.delete(id);
-//		String msg, url;
-//		
-//		if(result == 1) {
-//			msg = "글이 삭제 되었습니다.";
-//			url = "/index";
-//		} else {
-//			msg ="오류 발생, 작업이 완료되지 않았습니다.";
-//			url = "/member/info?id="+id;
-//		}
-//	return ms.getMessage(request, msg, url);
-//	}
+	@Override
+	public String memberDelete(String id, HttpServletRequest request) {
+		int result = mapper.delete(id);
+		String msg, url;
+		
+		if(result == 1) {
+			msg = "글이 삭제 되었습니다.";
+			url = "/index";
+		} else {
+			msg ="오류 발생, 작업이 완료되지 않았습니다.";
+			url = "/member/info?id="+id;
+		}
+	return getMessage(request, msg, url);
+	}
+	
+	@Override
+	public String getMessage(HttpServletRequest request, String msg, String url) {
+
+		String message = null;
+		String path = request.getContextPath();
+		message = "<script>alert('" + msg + "');";
+		message += "location.href='" + path + url + "';</script>";
+		return message;
+		
+	}
 }
