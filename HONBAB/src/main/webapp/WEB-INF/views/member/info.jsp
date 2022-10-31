@@ -47,8 +47,7 @@
 			</tr>
 			<tr>	
 				<td><input type="button" value="수정"></td>
-				<td><input type="button" value="삭제"></td>
-				<!--onclick="location.href='${contextPath}/member/delete?id=${info.id }'" -->
+				<td><input type="button" value="삭제" onclick="location.href='${contextPath}/member/delete?id=${info.id }'"></td>
 			</tr>
 		</table>
 	</div>

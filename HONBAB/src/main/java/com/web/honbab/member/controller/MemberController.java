@@ -85,13 +85,13 @@ public class MemberController implements MemberSession{
 		return "redirect:register_form";
 	}
 	
-//	@GetMapping("delete")
-//	public void delete(@RequestParam("id") String id,HttpServletResponse response, HttpServletRequest request) throws IOException{
-//		String message = ms.memberDelete(id, request);
-//		response.setContentType("text/html; charset=utf-8");
-//		//PrintId out = response.getId();
-//		//out.println(message);
-//	}
+	@GetMapping("delete")
+	public void delete(@RequestParam("id") String id,HttpServletResponse response, HttpServletRequest request) throws IOException{
+		String message = ms.memberDelete(id, request);
+		response.setContentType("text/html; charset=utf-8");
+		PrintWriter out = response.getWriter();
+		out.println(message);
+	}
 	
 	
 

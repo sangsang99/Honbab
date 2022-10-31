@@ -11,6 +11,7 @@ public interface MemberService {
 	public int bizuser_check(HttpServletRequest request);
 	public void info(String id, Model model);
 	public int register(MemberDTO member);
-	//public String memberDelete(String id, HttpServletRequest request);
+	public String memberDelete(String id, HttpServletRequest request);
+	public String getMessage(HttpServletRequest request, String msg, String url);
 
 }
