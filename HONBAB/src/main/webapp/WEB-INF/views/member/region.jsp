@@ -309,9 +309,9 @@ $(document).ready(function(){
 				$('#Sejong').hide(); 
 				$('#Gangwon').hide(); 
 				$('#Gyeongnam').hide(); 
-				$('#Gyeongbuk').show();  
+				$('#Gyeongbuk').hide();  
 				$('#Jeonnam').hide();  
-				$('#Jeonbuk').hide();  
+				$('#Jeonbuk').show();  
 				$('#Chungnam').hide(); 
 				$('#Chungbuk').hide(); 
 				$('#Jeju').hide(); 
