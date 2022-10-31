@@ -11,7 +11,7 @@ public class PromoDTO {
 	private String id;
 	private String comName;
 	private int star; //원래 reply.dto에 작성 해야 하는거 같은데 인식을 못해서 여기에도 추가함. 문제 생기면 삭제 필요
-	
+	//ADMIN TEST
 	public int getWriteNo() {
 		return writeNo;
 	}

@@ -17,14 +17,22 @@
 <script type="text/javascript">
 $(document).ready(function(){
 		$('#business').hide(); 
+		$('#admin').hide();
 		$("input[name='chk_join']").change(function(){
 			if($("input[name='chk_join']:checked").val() == '개인회원'){
 				$('#business').hide();
+				$('#admin').hide();
 				$('#personal').show();
 			}
 			else if($("input[name='chk_join']:checked").val() == '사업자회원'){
 				$('#personal').hide();
+				$('#admin').hide();
 				$('#business').show();
+			}
+			else if($("input[name='chk_join']:checked").val() == '관리자'){
+				$('#personal').hide();
+				$('#admin').show();
+				$('#business').hide();
 			}
 		});
 });
@@ -37,6 +45,7 @@ $(document).ready(function(){
 		<br>
 		<input type="radio" name="chk_join" value="개인회원" checked="checked">개인회원
 		<input type="radio" name="chk_join" value="사업자회원">사업자회원
+		<input type="radio" name="chk_join" value="관리자">관리자
 		<br><br>
 		<div id="personal">
 			<form action="${contextPath }/member/user_check" method="post">
@@ -52,6 +61,13 @@ $(document).ready(function(){
 				<input type="password" name="pw" placeholder="사업자비밀번호"><br><br>
 				<input type="submit" value="login"> &nbsp; 
 				<a href="${contextPath }/member/register_form">회원가입</a>
+			</form>
+		</div>
+		<div id="admin">
+			<form action="${contextPath }/admin" method="post">
+				<input type="text" name="id" placeholder="관리자아이디"><br><br>
+				<input type="password" name="pw" placeholder="관리자비밀번호"><br><br>
+				<input type="submit" value="login"> &nbsp; 
 			</form>
 		</div>
 	</div>

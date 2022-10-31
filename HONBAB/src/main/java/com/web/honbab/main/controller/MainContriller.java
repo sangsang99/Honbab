@@ -30,5 +30,8 @@ public class MainContriller {
 		return "index";
 	}
 	
-	
+	@RequestMapping(value = "admin")
+	public String goAdmin(Model model) {
+		return "admin/ADMIndex";
+	}
 }
