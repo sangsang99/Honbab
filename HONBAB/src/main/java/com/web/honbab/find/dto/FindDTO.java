@@ -12,7 +12,7 @@ public class FindDTO {
 	private String gen;
 	private String id;
 	
-	//admin test 해보즈아ㅏㅏㅏㅏㅏㅏㅏ
+	//admin test 해보즈아ㅏㅏㅏㅏㅏㅏㅏㅏ
 	public int getWriteNo() {
 		return writeNo;
 	}
