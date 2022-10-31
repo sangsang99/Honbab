@@ -29,13 +29,14 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import com.web.honbab.review.dto.ReviewRepDTO;
 import com.web.honbab.review.service.ReviewFileService;
 import com.web.honbab.review.service.ReviewService;
+import com.web.honbab.session.name.MemberSession;
 
 /**
  * Handles requests for the application home page.
  */
 @Controller
 @RequestMapping("review")
-public class ReviewController {
+public class ReviewController implements MemberSession{
 	
 	@Autowired
 	private ReviewService rs;
@@ -110,9 +111,8 @@ public class ReviewController {
 	@ResponseBody //JSON{\"result\":true} 요거쓰려면 상단에 @RestController 작성하거나 아니면 해당메서드에 @ResponeseBody 요거작성해야함
 	public String addReply(@RequestBody Map<String, Object> map, HttpSession session)  {
 		ReviewRepDTO dto = new ReviewRepDTO();
-		//dto.setId((String)session.getAttribute(LOGIN)); //session 
 		dto.setReNick("testID");
-		dto.setReId("id");
+		dto.setReId((String)session.getAttribute(LOGIN));
 		dto.setWriteGroup(Integer.parseInt((String)map.get("writeNo")));
 		dto.setReComent((String)map.get("coment"));
 		rs.addReply(dto);

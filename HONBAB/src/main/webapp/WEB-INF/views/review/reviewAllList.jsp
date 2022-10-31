@@ -9,9 +9,12 @@
 <title>reviewAllList</title>
 <script type="text/javascript">
 	function reviewWirte() {
-		if(true){ //로그인 되어있는지 판단
+		var user = '${loginUser}';
+		if(user != ''){
 			location.href="reviewWriteForm";			
-		}
+		} else{
+			alert("로그인 후 작성 가능합니다.")
+		} 
 	}
 	
 	function upViews(writeNo){
@@ -23,7 +26,9 @@
 
 	<c:import url="../main/header.jsp"/>
 
+
 	<input type="button" value="글쓰기" onclick="reviewWirte()">
+
 	
 	<table border="1">
 		<tr>

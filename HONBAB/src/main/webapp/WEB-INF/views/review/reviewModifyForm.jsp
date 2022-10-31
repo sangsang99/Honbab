@@ -9,6 +9,47 @@
 <title>reviewModify</title>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
+	//유효성 검사
+	function AllChk(){
+		if(!titleChk(ReviewWriteForm.title.value)){
+			return false;
+		}
+		if(!contentChk(ReviewWriteForm.content.value)){
+			return false;
+		}
+		return true;
+	}
+	
+	function titleChk(chkValue) {
+		var isTitleRegExp = /^[\w\Wㄱ-ㅎㅏ-ㅣ가-힣]{2,100}$/;
+		
+		if(chkValue == ""){
+			alert("제목을 작성해주세요");
+			ReviewWriteForm.title.focus();
+			return false;
+		}
+		if(!isTitleRegExp.test(chkValue)){
+			alert("제목을 2글자 이상 작성해주세요");
+			ReviewWriteForm.title.focus();
+			return false;
+		}
+		return true;
+	}
+	
+	function contentChk(chkValue) {
+		var isContentRegExp = /^[\w\Wㄱ-ㅎㅏ-ㅣ가-힣]{2,1000}$/;
+		
+		if(chkValue == ""){
+			alert("내용을 작성해주세요");
+			document.ReviewWriteForm.content.focus();	
+		} 
+		if(!isContentRegExp.test(chkValue)){
+			alert("내용을 2글자 이상 작성해주세요");
+			document.ReviewWriteForm.content.focus();
+		}
+	}// 유효성검사 끝
+
+
 	function readURL(input) {
 		var file = input.files[0]; // 파일 정보
 		if(file != ""){
@@ -24,7 +65,8 @@
 <body>
 
 	<c:import url="../main/header.jsp"/>
-	<form action="${contextPath}/review/review_modify" enctype="multipart/form-data" method="post">
+	<form name="ReviewWriteForm" action="${contextPath}/review/review_modify" 
+		  enctype="multipart/form-data" method="post" onsubmit="AllChk()">
 		<input type="hidden" name="writeNo" value="${reviewContent.writeNo }">
 		<input type="hidden" name="originFileName" value="${reviewContent.imgName }"> <!-- 이미지 변경시 해당 파일 삭제 -->
 		
