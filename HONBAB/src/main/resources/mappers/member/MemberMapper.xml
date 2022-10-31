@@ -25,8 +25,12 @@
 	</select>
 	
 	<insert id="register">
-		insert into USER_JOIN values(#{id}, #{pw}, #{addr})
+		insert into USER_JOIN values(#{id}, #{pw}, #{name}, #{nickName}, #{tel}, #{region}, #{gender}, #{email})
 	</insert>
+	
+	<delete id="delete">
+		delete from USER_JOIN where id=#{id}
+	</delete>
 
 	<resultMap type="com.web.honbab.member.dto.BizMemberDTO" id="bizmember">
 		<id property = "id" column="id"></id>

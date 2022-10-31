@@ -6,9 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>member/register.jsp</title>
-<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script>
+<!--<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 function daumPost(){
     new daum.Postcode({
         oncomplete: function(data) {
@@ -26,13 +24,15 @@ function daumPost(){
         }
     }).open();
 }
-
+</script>-->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script>
 function register(){
-	addr1 = $("#addr1").val()
-	addr2 = $("#addr2").val()
-	addr3 = $("#addr3").val()
-	addr1 = addr1 + "/" + addr2 + "/" + addr3
-	$("#addr1").val(addr1)
+	tel1 = $("#tel1").val()
+	tel2 = $("#tel2").val()
+	tel3 = $("#tel3").val()
+	tel1 = tel1 + "-" + tel2 + "-" + tel3
+	$("#tel1").val(tel1)
 	register_form.submit()
 }
 </script>
@@ -42,7 +42,7 @@ function register(){
 	display: flex;
  	justify-content: center; 
 }
-</style>
+</style> 
 </head>
 <body>
 	<c:import url="../main/header.jsp"/>
@@ -52,21 +52,48 @@ function register(){
 			<table border="1">
 				<tr>
 					<th>아이디</th>
-					<td><input type="text" id="id" name="id" maxlength="20"></td>
+					<td><input type="text" id="id" name="id"></td>
 				</tr>
 				<tr>
 					<th>비밀번호</th>
 					<td><input type="password" id="pw" name="pw"></td>
 				</tr>
 				<tr>
-					<th>주소</th>
+					<th>이름</th>
 					<td>
-						<!-- <input type="text" id="addr" name="addr"> -->
-						<input type="text" id="addr1" name="addr" placeholder="우편번호" readonly>
+						<input type="text" id="name" name="name"> 
+						<!-- <input type="text" id="addr1" name="addr" placeholder="우편번호" readonly>
 						<input type="button" class="btn btn-info" value="우편번호 찾기" onclick="daumPost()"><br>
 						<input type="text" id="addr2" placeholder="주소" readonly><br>
-						<input type="text" id="addr3" placeholder="상세주소">
+						<input type="text" id="addr3" placeholder="상세주소">-->
 					</td>
+				</tr>
+				<tr>
+					<th>닉네임</th>
+					<td><input type="text" id="nickName" name="nickName"></td>
+				</tr>
+				<tr>
+					<th>전화번호</th>
+					<td>
+					<input type="tel" id="tel1" name="tel">-
+					<input type="tel" id="tel2">-
+					<input type="tel" id="tel3">
+					</td>
+				</tr>
+				<tr>
+					<th>거주지</th>
+					<td><c:import url="../member/region.jsp"/></td>
+				</tr>
+				<tr>
+					<th>성별</th>
+					<td>
+					<input type="radio" id="gender" name="gender" value="m">남
+					<input type="radio" id="gender" name="gender" value="f">여
+					</td>
+				</tr>
+				<tr>
+					<th>이메일</th>
+					<td><input type="text" id="email" name="email" ></td>
 				</tr>
 				<tr>
 					<td colspan="2" align="center">
