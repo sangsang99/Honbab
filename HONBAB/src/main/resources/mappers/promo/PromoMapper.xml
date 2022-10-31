@@ -21,6 +21,7 @@
 		<result property="write_group" column="write_group" />
 		<result property="write_date" column="write_date" />		
 		<result property="re_nick" column="re_nick" />		
+		<result property="star" column="star" />		
 	</resultMap> 
 
 	<select id="promoList" resultMap="promotion">
@@ -66,8 +67,9 @@
 	</select>
 
 	<insert id="addReply">
-		insert into PROMO_REPLY(id, title, content, write_group)
-		values(#{id}, #{title}, #{content}, #{write_group})
+		insert into PROMO_REPLY(id, title, content, write_group, star)
+		values(#{id}, #{title}, #{content}, #{write_group}, #{star})
+		<!-- 테이블에는 평점값 추가 되는데 왜 화면에 답글 게시판이 구현이 안되는지... -->
 	</insert>
 
 	<select id="getRepList" resultMap="reply">

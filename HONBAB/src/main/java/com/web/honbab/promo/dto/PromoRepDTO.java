@@ -9,7 +9,7 @@ public class PromoRepDTO {
 	private int write_group;
 	private Timestamp write_date;
 	private String reNick;
-	
+	private int star;	
 	
 	public String getId() {
 		return id;
@@ -44,8 +44,27 @@ public class PromoRepDTO {
 	public String getReNick() {
 		return reNick;
 	}
+	
 	public void setReNick(String reNick) {
 		this.reNick = reNick;
+	}
+	
+	public int getStar() {
+		return star;
+	}	
+	
+	public void setStar(int star) {
+		this.star = star;
+	}	
+	
+	
+	
+	
+	
+		
+	
+		 
+		
 	}
 	
 	
@@ -53,4 +72,4 @@ public class PromoRepDTO {
 	
 	
 	
-}
+

@@ -30,4 +30,5 @@ public interface PromoMapper {
 	public List<PromoRepDTO> getRepList(int write_group);
 	
 	
+	
 }

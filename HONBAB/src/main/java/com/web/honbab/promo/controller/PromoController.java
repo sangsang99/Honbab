@@ -57,6 +57,8 @@ public class PromoController {
 		out.println(message);
 	}
 	
+	
+	
 	@GetMapping("contentView")
 	public String contentView(@RequestParam int writeNo, Model model) {
 		ps.contentView(writeNo, model);
