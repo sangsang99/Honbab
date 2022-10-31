@@ -15,19 +15,19 @@ public interface FindService {
 	
 	public void findBestList(Model model);
 	
-	public void upViews(int uSeq);
+	public void upViews(int writeNo);
 	
 	String findSave(MultipartHttpServletRequest mul, HttpServletRequest request);
 	
-	public void findContent(int uSeq, Model model);
+	public void findContent(int writeNo, Model model);
 	
     String findModify(MultipartHttpServletRequest mul, HttpServletRequest request);
 
-    String findDelete(int uSeq, HttpServletRequest request);
+    String findDelete(int writeNo, HttpServletRequest request);
 
 	public void addReply(FindRepDTO dto);
 
-	public List<FindRepDTO> getRepList(int uSeq);
+	public List<FindRepDTO> getRepList(int writeNo);
 
 	
 }

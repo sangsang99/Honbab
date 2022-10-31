@@ -56,8 +56,8 @@ public class FindServiceImpl implements FindService{
 	}
 	
 	@Override
-	public void upViews(int uSeq) {
-		mapper.upViews(uSeq);
+	public void upViews(int writeNo) {
+		mapper.upViews(writeNo);
 	}
 
 	@Override
@@ -85,14 +85,14 @@ public class FindServiceImpl implements FindService{
 			url = "/find/findAllList";
 		} else {
 			msg ="문제가 생겼습니다";
-			url = "/findWriteForm";
+			url = "/find/findWriteForm";
 		}
 		return ffs.getMessage(request,msg,url);
 	}
 
 	@Override
-	public void findContent(int uSeq, Model model) {
-		model.addAttribute("findContent", mapper.findContent(uSeq));
+	public void findContent(int writeNo, Model model) {
+		model.addAttribute("findContent", mapper.findContent(writeNo));
 	}
 
 
@@ -129,8 +129,8 @@ public class FindServiceImpl implements FindService{
 
 
 	@Override
-	public String findDelete(int uSeq, HttpServletRequest request) {
-		int result = mapper.findDelete(uSeq);
+	public String findDelete(int writeNo, HttpServletRequest request) {
+		int result = mapper.findDelete(writeNo);
 		
 		String msg, url;
 		if(result == 1) {
@@ -149,8 +149,8 @@ public class FindServiceImpl implements FindService{
 	}
 
 	@Override
-	public List<FindRepDTO> getRepList(int uSeq) {
-		return mapper.getRepList(uSeq);
+	public List<FindRepDTO> getRepList(int writeNo) {
+		return mapper.getRepList(writeNo);
 	}
 
 }

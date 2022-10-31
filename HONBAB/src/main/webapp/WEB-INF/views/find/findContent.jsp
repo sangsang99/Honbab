@@ -39,7 +39,7 @@
 			success: function(rep) {	
 				let html = ""
 				rep.forEach(function(redata) {
-					let date = new Date(redata.uReDate)
+					let date = new Date(redata.reDate)
 					let writeDate = date.getFullYear()+"년" +
 									(date.getMonth()+1)+"월" +
 									date.getDate()+"일"
