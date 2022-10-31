@@ -11,6 +11,8 @@ public class FindDTO {
 	private String region;
 	private String gen;
 	private String id;
+	
+	//admin test 해보즈아ㅏㅏㅏㅏㅏㅏㅏ
 	public int getWriteNo() {
 		return writeNo;
 	}
