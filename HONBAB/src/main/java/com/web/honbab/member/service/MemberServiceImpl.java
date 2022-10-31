@@ -7,9 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
+import com.web.honbab.member.dto.BizMemberDTO;
 import com.web.honbab.member.dto.MemberDTO;
 import com.web.honbab.member.service.MemberService;
 import com.web.honbab.mybatis.member.MemberMapper;
+import com.web.honbab.promo.service.PromoFileService;
 
 @Service
 public class MemberServiceImpl implements MemberService {
@@ -27,7 +29,15 @@ public class MemberServiceImpl implements MemberService {
 		}
 		return 1;
 	}
-	
+	public int bizuser_check(HttpServletRequest request) {
+		BizMemberDTO dto = mapper.bizuser_check(request.getParameter("id"));
+		if(dto != null) {
+			if(request.getParameter("pw").equals(dto.getPw())) {
+				return 0;
+			}
+		}
+		return 1;
+	}
 
 	
 	@Override
@@ -45,5 +55,18 @@ public class MemberServiceImpl implements MemberService {
 			return 0;
 		}
 	}
-
+//	@Override
+//	public String memberDelete(String id, HttpServletRequest request) {
+//		int result = mapper.delete(id);
+//		String msg, url;
+//		
+//		if(result == 1) {
+//			msg = "글이 삭제 되었습니다.";
+//			url = "/index";
+//		} else {
+//			msg ="오류 발생, 작업이 완료되지 않았습니다.";
+//			url = "/member/info?id="+id;
+//		}
+//	return ms.getMessage(request, msg, url);
+//	}
 }
