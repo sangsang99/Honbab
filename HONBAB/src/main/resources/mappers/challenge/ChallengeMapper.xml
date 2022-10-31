@@ -34,8 +34,8 @@
 
 	<insert id="challengeSave">
 		INSERT INTO LEVEL_CHALLENGE
-		(WRITE_NO,CH_LEVEL,TITLE,CONTENT,NICKNAME,IMGNAME,LIKES)
-		VALUES(level_challenge_seq.nextval,#{chLevel},#{title},#{content},#{nickName},#{imgName},#{likes})
+		(WRITE_NO,CH_LEVEL,NICKNAME,TITLE,CONTENT,IMGNAME,ID)
+		VALUES(level_challenge_seq.nextval,#{chLevel},#{nickName},#{title},#{content},#{imgName,jdbcType=VARCHAR},#{id})
 	</insert>
 
 	<select id="challengeView" resultMap="challenge">
@@ -55,8 +55,7 @@
 		CH_LEVEL=#{chLevel},
 		TITLE=#{title},
 		CONTENT=#{content},
-		NICKNAME=#{nickName},
-		IMGNAME=#{imgName}
+		IMGNAME=#{imgName,jdbcType=VARCHAR}
 		WHERE WRITE_NO=#{writeNo}
 	</update>
 
@@ -74,6 +73,58 @@
 		UPDATE LEVEL_CHALLENGE SET VIEWS=VIEWS +1 WHERE
 		WRITE_NO=#{writeNo}
 	</update>
-
+	
+	<!-- 
+	CREATE TABLE LEVEL_CHALLENGE_LIKE (
+	LIKE_NO NUMBER DEFAULT 0,
+	LIKE_WRITE_NO NUMBER NOT NULL,
+	LIKE_ID VARCHAR2(100),
+	LIKE_NICKNAME VARCHAR2(100),
+	FOREIGN KEY(LIKE_WRITE_NO) REFERENCES LEVEL_CHALLENGE(WRITE_NO)
+	);
+	-->
+	
+	<resultMap type="com.web.honbab.challenge.dto.ChallengeLikeDTO" id="ChLike">
+		<id property="likeNo" column="LIKE_NO" />
+		<result property="likeWriteNo" column="LIKE_WRITE_NO" />
+		<result property="likeId" column="LIKE_ID" />
+		<result property="likeNickName" column="LIKE_NICKNAME" />
+	</resultMap>
+	
+	<select id="likeCount" resultType="Integer">
+		SELECT COUNT(LIKE_NO) FROM 
+		LEVEL_CHALLENGE_LIKE 
+		WHERE LIKE_WRITE_NO=#{likeWriteNo}
+		<!-- WHERE 
+		LIKE_WRITE_NO=#{likeWriteNo}, LIKE_ID=#{likeId}, LIKE_NICKNAME=#{likeNickName}  -->
+	</select>
+	
+	<insert id="likeIn">
+		INSERT INTO LEVEL_CHALLENGE_LIKE
+		(LIKE_ID, LIKE_NICKNAME)
+		VALUES (#{likeId}, #{likeNickName})
+	</insert>
+	
+	<select id="likeInfo" resultType="Integer">
+		SELECT LIKE_NO FROM LEVEL_CHALLENGE_LIKE
+		WHERE LIKE_WRITE_NO=#{likeWriteNo}
+		<!-- , LIKE_ID=#{likeId}, LIKE_NICKNAME=#{likeNickName} -->
+	</select>
+	
+	<update id="likeUpdate" >
+		UPDATE LEVEL_CHALLENGE_LIKE
+		SET <include refid="cal"></include>
+		WHERE LIKE_WRITE_NO=#{likeWriteNo}
+		<!-- , LIKE_ID=#{likeId}, LIKE_NICKNAME=#{likeNickName} -->
+	</update>
+	
+	<sql id="cal">
+		<if test="count == 1">
+			LIKE_NO = 0
+		</if>
+		<if test="count == 0">
+			LIKE_NO = LIKE_NO + 1
+		</if>
+	</sql>
 
 </mapper>

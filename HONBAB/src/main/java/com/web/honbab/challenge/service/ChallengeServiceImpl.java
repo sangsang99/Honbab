@@ -4,7 +4,6 @@ package com.web.honbab.challenge.service;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartFile;
@@ -21,20 +20,21 @@ public class ChallengeServiceImpl implements ChallengeService {
 	
 	@Autowired
 	ChallengeFileService cfs;
-	
+
 	@Override
 	public String challengeSave(MultipartHttpServletRequest mul, HttpServletRequest request) {
 		ChallengeDTO dto = new ChallengeDTO();
 		dto.setChLevel(mul.getParameter("chLevel"));
-		dto.setTitle(mul.getParameter("title"));
-		dto.setContent(mul.getParameter("Content"));
 		dto.setNickName(mul.getParameter("nickName"));
+		dto.setTitle(mul.getParameter("title"));
+		dto.setContent(mul.getParameter("content"));
+		dto.setId(mul.getParameter("id"));
 		MultipartFile file = mul.getFile("imgName");
 
 		if(file.getSize() != 0) {
 			dto.setImgName(cfs.saveFile(file));
 		} 
-		else {
+		else if(file.isEmpty()) {
 			dto.setImgName("nan");	
 		}
 		
@@ -65,6 +65,7 @@ public class ChallengeServiceImpl implements ChallengeService {
 
 	@Override
 	public void challengeAllList(Model model, int num) {
+		int currentPg = num;
 		int pageLetter = 8;
 		int allCount = mapper.challengePgCount(); // 전체 글수
 		int repeat = allCount/pageLetter; // 마지막 페이지 번호
@@ -73,24 +74,33 @@ public class ChallengeServiceImpl implements ChallengeService {
 		int end = num * pageLetter;
 		int start = end + 1 - pageLetter;
 		
-		model.addAttribute("repeat", repeat);
+		model.addAttribute("pageLetter", pageLetter);	// 한 페이지당 최대 글 갯수
+		model.addAttribute("currentPg", currentPg);		// 현재 페이지
+		model.addAttribute("allCount", allCount);		// 작성된 글의 총 갯수
+		model.addAttribute("repeat", repeat);			// 마지막 페이지 번호
 		model.addAttribute("challengeList", mapper.challengeAllList(start, end));
+		//System.out.println(pageLetter);
+		//System.out.println(currentPg);
+		//System.out.println(allCount);
 	}
 
+	
 	@Override
 	public String challengeModify(MultipartHttpServletRequest mul, HttpServletRequest request) {
 		
 		ChallengeDTO dto = new ChallengeDTO();
+		/* dto.setWriteNo(Integer.parseInt(mul.getParameter("writeNo"))); */
 		dto.setChLevel(mul.getParameter("chLevel"));
 		dto.setTitle(mul.getParameter("title"));
 		dto.setContent(mul.getParameter("content"));
 		MultipartFile file = mul.getFile("imgName");
-
+		
 		if(file.getSize() != 0) {	//이미지 변경
 			dto.setImgName(cfs.saveFile(file));
 			cfs.deleteImage(mul.getParameter("originFileName"));
-		}  else { 
-			dto.setImgName(mul.getParameter("originFileName")); 
+		} else if(file.isEmpty()) { 
+			/* dto.setImgName(mul.getParameter("originFileName")); */
+			dto.setImgName("nan"); 
 		}
 		
 		int result = 0;
