@@ -9,13 +9,13 @@ public interface ChallengeService {
 	
 	public String challengeSave(MultipartHttpServletRequest mul, HttpServletRequest request);
 	
-	public void challengeView(int uWriteNo, Model model);
+	public void challengeView(int writeNo, Model model);
 
 	public void challengeAllList(Model model, int num);
 	
 	public String challengeModify(MultipartHttpServletRequest mul, HttpServletRequest request);
 	
-	public String challengeDelete(int uWriteNo, HttpServletRequest request);
+	public String challengeDelete(int writeNo, HttpServletRequest request);
 	
 	
 

@@ -1,6 +1,10 @@
 package com.web.honbab.member.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -80,6 +84,14 @@ public class MemberController implements MemberSession{
 		}
 		return "redirect:register_form";
 	}
+	
+//	@GetMapping("delete")
+//	public void delete(@RequestParam("id") String id,HttpServletResponse response, HttpServletRequest request) throws IOException{
+//		String message = ms.memberDelete(id, request);
+//		response.setContentType("text/html; charset=utf-8");
+//		//PrintId out = response.getId();
+//		//out.println(message);
+//	}
 	
 	
 
