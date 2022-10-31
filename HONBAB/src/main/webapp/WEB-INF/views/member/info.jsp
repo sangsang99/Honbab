@@ -14,6 +14,16 @@
 	justify-content: center;
 }
 </style>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script>
+function test() {
+    if (!confirm("정말 탈퇴하시겠습니까?")) {
+        alert("취소되었습니다.");
+    } else {
+    	window.location.href ='${contextPath}/member/delete?id=${info.id }';
+    }
+}
+</script>
 </head>
 <body>
 	<c:import url="../main/header.jsp"/>
@@ -47,7 +57,7 @@
 			</tr>
 			<tr>	
 				<td><input type="button" value="수정"></td>
-				<td><input type="button" value="삭제" onclick="location.href='${contextPath}/member/delete?id=${info.id }'"></td>
+				<td><input type="button" value="삭제" onclick="test();"></td>
 			</tr>
 		</table>
 	</div>

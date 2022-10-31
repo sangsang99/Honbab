@@ -52,7 +52,7 @@ function register(){
 			<table border="1">
 				<tr>
 					<th>아이디</th>
-					<td><input type="text" id="id" name="id" pattern="^[A-Za-z]{1}[A-Za-z0-9]{3,19}$"></td>
+					<td><input type="text" id="id" name="id"></td>
 				</tr>
 				<tr>
 					<th>비밀번호</th>
@@ -93,12 +93,12 @@ function register(){
 				</tr>
 				<tr>
 					<th>이메일</th>
-					<td><input type="text" id="email" name="email" pattern="^[a-z0-9\.\-_]+@([a-z0-9\-]+\.)+[a-z]{2,6}$"></td>
+					<td><input type="text" id="email" name="email"></td>
 				</tr>
 				<tr>
 					<td colspan="2" align="center">
 						<!-- <input type="submit" value="회원가입"> -->
-						<input type="button" onclick="register()" value="회원가입">
+						<input type="button" name="join" onclick="register()" value="회원가입">
 					</td>
 				</tr>
 			</table>
