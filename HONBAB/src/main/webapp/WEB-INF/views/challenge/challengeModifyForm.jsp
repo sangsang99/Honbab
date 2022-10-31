@@ -7,23 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>혼밥 레벨 도장깨기 글 수정</title>
-<style>
-* {
-	margin: 0;
-	padding: 0;
-}
 
-header, footer {
-	background-color: beige;
-	width: 100%;
-	height: 100px;
-}
-
-footer {
-	position: absolute;
-	bottom: 0;
-}
-</style>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
 	// 레벨 선택시 선택창 옆 텍스트 출력
