@@ -1,59 +1,90 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>member/login.jsp</title>
-<style type="text/css">
-.login {
-	text-align: center;
-	height: 300px;
+<title>member/register.jsp</title>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script>
+function modify(){
+	tel1 = $("#tel1").val()
+	tel2 = $("#tel2").val()
+	tel3 = $("#tel3").val()
+	tel1 = tel1 + "-" + tel2 + "-" + tel3
+	$("#tel1").val(tel1)
+	modify_form.submit()
 }
-</style>
-<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-<script type="text/javascript">
-$(document).ready(function(){
-		$('#business').hide(); 
-		$("input[name='chk_join']").change(function(){
-			if($("input[name='chk_join']:checked").val() == '개인회원'){
-				$('#business').hide();
-				$('#personal').show();
-			}
-			else if($("input[name='chk_join']:checked").val() == '사업자회원'){
-				$('#personal').hide();
-				$('#business').show();
-			}
-		});
-});
+//	const str = "010-1234-5678";
+//	let words = str.split('-');
+//	words[0];
+//	words[1];
+//	words[2];
+
 </script>
-</head> 
+<style type="text/css">
+.wrap {
+	width: 600px;
+	display: flex;
+ 	justify-content: center; 
+}
+</style> 
+</head>
 <body>
 	<c:import url="../main/header.jsp"/>
-	<div class="wrap login">
-		<h1>로그인</h1>
-		<br>
-		<input type="radio" name="chk_join" value="개인회원" checked="checked">개인회원
-		<input type="radio" name="chk_join" value="사업자회원">사업자회원
-		<br><br>
-		<div id="personal">
-			<form action="${contextPath }/member/user_check" method="post">
-				<input type="text" name="id" placeholder="아이디"><br><br>
-				<input type="password" name="pw" placeholder="비밀번호"><br><br>
-				<input type="submit" value="login"> &nbsp; 
-				<a href="${contextPath }/member/register_form">회원가입</a>
-			</form>
-		</div>
-		<div id="business">
-			<form action="${contextPath }/member/bizuser_check" method="post">
-				<input type="text" name="id" placeholder="사업자아이디"><br><br>
-				<input type="password" name="pw" placeholder="사업자비밀번호"><br><br>
-				<input type="submit" value="login"> &nbsp; 
-				<a href="${contextPath }/member/register_form">회원가입</a>
-			</form>
-		</div>
+	<h1 align="center">회원정보 수정</h1>
+	<div class="wrap">
+		<form id="modify_form" action="register" method="post">
+			<table border="1">
+				<tr>
+					<th>아이디</th>
+					<td><input type="text" id="id" name="id" value="${info.id}" disabled></td>
+				</tr>
+				<tr>
+					<th>비밀번호</th>
+					<td><input type="password" id="pw" name="pw"></td>
+				</tr>
+				<tr>
+					<th>이름</th>
+					<td>
+						<input type="text" id="name" name="name" value="${info.name}"> 
+					</td>
+				</tr>
+				<tr>
+					<th>닉네임</th>
+					<td><input type="text" id="nickName" name="nickName" value="${info.nickName}"></td>
+				</tr>
+				<tr>
+					<th>전화번호</th>
+					<td>
+					<input type="tel" id="tel1" name="tel">-
+					<input type="tel" id="tel2">-
+					<input type="tel" id="tel3">
+					</td>
+				</tr>
+				<tr>
+					<th>거주지</th>
+					<td><c:import url="../member/region.jsp"/></td>
+				</tr>
+				<tr>
+					<th>성별</th>
+					<td>
+					<input type="radio" id="gender" name="gender" value="m">남
+					<input type="radio" id="gender" name="gender" value="f">여
+					</td>
+				</tr>
+				<tr>
+					<th>이메일</th>
+					<td><input type="text" id="email" name="email"></td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center">
+						<input type="button" value="수정"> <!-- onclick="modify()" -->
+					</td>
+				</tr>
+			</table>
+		</form>
 	</div>
 	<c:import url="../main/footer.jsp"/>
 </body>

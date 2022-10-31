@@ -56,7 +56,7 @@ function test() {
 				<th>이메일</th><td>${info.email }</td>
 			</tr>
 			<tr>	
-				<td><input type="button" value="수정"></td>
+				<td><input type="button" value="수정" onclick="location.href='${contextPath}/member/modify?id=${info.id }'"></td>
 				<td><input type="button" value="삭제" onclick="test();"></td>
 			</tr>
 		</table>

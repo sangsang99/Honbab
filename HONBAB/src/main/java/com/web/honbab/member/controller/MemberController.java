@@ -71,6 +71,7 @@ public class MemberController implements MemberSession{
 		return "member/info";
 	}
 	
+	
 	@RequestMapping("/register_form")
 	public String register_form() {
 		return "member/register";
@@ -84,6 +85,20 @@ public class MemberController implements MemberSession{
 		}
 		return "redirect:register_form";
 	}
+	@RequestMapping("/modify")
+	public String modify_form(@RequestParam("id") String id, Model model) {
+		ms.info(id, model);
+		return "member/modify";
+	}
+	
+//	@RequestMapping("/modify")
+//	public String modify(MemberDTO member) {
+//		int result = ms.modify(member);
+//		if(result == 1) {
+//			return "redirect:login";
+//		}
+//		return "redirect:modify_form";
+//	}
 	
 	@GetMapping("delete")
 	public void delete(@RequestParam("id") String id,HttpServletResponse response, HttpServletRequest request) throws IOException{
