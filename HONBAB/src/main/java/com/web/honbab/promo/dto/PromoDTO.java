@@ -10,7 +10,7 @@ public class PromoDTO {
 	private String imageFileName;
 	private String id;
 	private String comName;
-	
+	private int star; //원래 reply.dto에 작성 해야 하는거 같은데 인식을 못해서 여기에도 추가함. 문제 생기면 삭제 필요
 	
 	public int getWriteNo() {
 		return writeNo;
@@ -60,6 +60,13 @@ public class PromoDTO {
 	
 	public void setComName(String comName) {
 		this.comName = comName;
+	}
+	
+	public int getStar() {
+		return star; //문제 발생시 삭제 필요
+	}
+	public void setStar(int star) {
+		this.star = star; //문제 발생시 삭제 필요
 	}
 	
 	

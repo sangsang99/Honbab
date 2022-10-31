@@ -20,7 +20,7 @@
 	
 	<div class="wrap" align="center">
 		<br>
-		<h1 align="center">게시판</h1>
+		<h1 align="center">홍보게시판</h1>
 		<br>
 		<table class="table table_hover" border="1">
 			<tr>
@@ -59,6 +59,12 @@
 					<a href="${contextPath }/promotion/writeForm">글작성</a>
 				</td>
 			</tr>
+			<tr>
+				<td colspan="6">
+					<a href="${contextPath }/index">메인화면</a>
+				</td>
+			</tr>
+			
 		</table>
 	</div>
 	
