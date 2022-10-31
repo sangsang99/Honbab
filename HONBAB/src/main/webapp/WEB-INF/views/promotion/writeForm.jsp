@@ -42,7 +42,13 @@
 			<b>제 목</b><br>
 			<input type="text" name="title" size="50"><br>
 			<b>내 용</b><br>
-			<textarea rows="10" cols="50" name="content"></textarea><br>
+				<textarea rows="10" cols="50" name="content">
+식당유형:
+			
+가게위치:  
+			
+대표메뉴:
+				</textarea><br>
 			<b>파일 첨부</b><br>
 			<input type="file" name="image_file_name" onchange="readURL(this)">
 			<img src="#" id=preview width="100px" height="100px"> <br><br>

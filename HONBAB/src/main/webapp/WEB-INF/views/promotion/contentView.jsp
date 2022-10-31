@@ -43,6 +43,7 @@
 		})		
  	}
  	
+ 	
  	function reply_data() {
 		$.ajax({
 			url: "replyData/"+${data.writeNo},
@@ -55,20 +56,24 @@
 					let writeDate = date.getFullYear()+"년" +
 									(date.getMonth()+1)+"월" +
 									date.getDate()+"일" + 
-									date.getHours()+"시"
-									date.getMinutes()+"분"
-									date.getSeconds()+"초";
+									date.getHours()+"시"	
+					// let star = new Star(redata.star)  
+									/* date.getMinutes()+"분"
+									date.getSeconds()+"초"; */
+							
 					html += "<div align='left'><b>아이디 : </b>" + redata.id + "님/";
 					html += "<b>작성일</b> : " + writeDate + "<br>" 
 					html += "<b>제목</b> : " + redata.title + "<br>" 
-					html += "<b>작성일</b> : " + redata.content + "<hr></div>" 
+					html += "<b>내용</b> : " + redata.content + "<br>"
+					html += "<b>평점</b> : " + redata.star + "<hr>" 				
 				})
 				$("#reply").html(html)
 			}, error:function(){
 				alert("데이터를 가져올 수 없습니다.");
 			}
 		})
-	}
+		
+		}
 </script>
 <style type="text/css">
 .login {
@@ -105,12 +110,69 @@
 .view_title {
 	text_align: center;
 }
+
+#star fieldset{
+    display: inline-block;
+    direction: rtl;
+    border:0;
+}
+#star fieldset legend{
+    text-align: right;
+}
+#star input[type=radio]{
+    display: none;
+}
+#star label{
+    font-size: 3em;
+    color: transparent;
+    text-shadow: 0 0 0 #f0f0f0;
+}
+#star label:hover{
+    text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+}
+#star label:hover ~ label{
+    text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+}
+#star input[type=radio]:checked ~ label{
+    text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+}
+#reviewContents {
+    width: 100%;
+    height: 150px;
+    padding: 10px;
+    box-sizing: border-box;
+    border: solid 1.5px #D3D3D3;
+    border-radius: 5px;
+    font-size: 16px;
+    resize: none;
+}
 </style>
 </head>
 <body onload="reply_data()">
+
+ 	<form class="rating" name="star" id="star" method="post">
+	<fieldset>
+		<span class="text-bold">평균 평점</span>
+		<input type="radio" name="reviewStar" value="5" id="rate1"><label
+			for="rate1">★</label>
+		<input type="radio" name="reviewStar" value="4" id="rate2"><label
+			for="rate2">★</label>
+		<input type="radio" name="reviewStar" value="3" id="rate3"><label
+			for="rate3">★</label>
+		<input type="radio" name="reviewStar" value="2" id="rate4"><label
+			for="rate4">★</label>
+		<input type="radio" name="reviewStar" value="1" id="rate5"><label
+			for="rate5">★</label>
+	</fieldset>
+	<div>
+		<textarea class="col-auto form-control" type="text" id="reviewContents"
+				  placeholder="당사 파트너 업체들에 대한 여러분의 소중한 평가는 저희 서비스 향상에 큰 도움이 됩니다"></textarea>
+	</div>
+</form>	
+
 	<div id="modal_wrap">
 		<div id="first">
-			<div style="width: 250px; margin: 0 auto; padding-top: 20px;">
+			<div style="width: auto; margin: 0 auto; padding-top: 20px;">
 				<form id="frm">
 					<input type="hidden" name="write_no" value="${data.writeNo }">
 
@@ -119,10 +181,12 @@
 					<b>작성자 : ${loginUser }</b>
 					<hr>
 					<b>제목 </b> <input type="text" id="title" name="title" size="30">
-					<hr>
-					<b>내용</b>
+					<hr>															
+					<b>내용</b>					
 					<textarea id="content" name="content" rows="5" cols="30"></textarea>
 					<hr>
+					<b>평점</b> <input type="number" id="star" name="star" value="${data.star }" --%>>
+					<hr>  						
 					<button type="button" onclick="rep()">답글</button>
 					&nbsp;
 					<button type="button" onclick="slide_hide()">취소</button>
@@ -133,7 +197,7 @@
 	</div>
 
 
-	<h1 class="view_title" align="center">글 보기</h1>
+	<h1 class="view_title" align="center">파트너 홍보</h1>
 	<div class="content_view" align="center">
 		<table border="1">
 			<tr>
@@ -149,14 +213,14 @@
 				<td width="200px">${data.saveDate }</td>
 			</tr>
 			<tr>
-				<th>내용</th>
+				<th>내용</th>				
 				<td>${data.content }</td>
 				<td colspan="2"><c:if test="${data.imageFileName == 'nan'}">
 						<b>이미지가 없습니다..</b>
 					</c:if> <c:if test="${data.imageFileName != 'nan'}">
 						<img
 							src="${contextPath }/promotion/download?imageFileName=${data.imageFileName}"
-							width="200px" height="200px">
+							width="90%" height="90%">
 
 					</c:if></td>
 			</tr>
@@ -167,7 +231,7 @@
 							onclick="location.href='${contextPath}/promotion/modify_form?writeNo=${data.writeNo }'"> &nbsp;
 					<input type="button" value="삭제하기"
 							onclick="location.href='${contextPath}/promotion/delete?writeNo=${data.writeNo }&imageFileName=${data.imageFileName }'">
-					</c:if> <input type="button" value="답글달기" onclick="slide_click()">
+					</c:if> <input type="button" value="평점/답글달기" onclick="slide_click()">
 					&nbsp; <input type="button" value="글목록"
 					onclick="location.href='${contextPath}/promotion/promoList'">
 				</td>

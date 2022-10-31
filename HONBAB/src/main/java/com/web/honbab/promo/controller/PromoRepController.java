@@ -29,7 +29,9 @@ public class PromoRepController implements MemberSession {
 		dto.setId((String)session.getAttribute(LOGIN));
 		dto.setWrite_group(Integer.parseInt((String)map.get("write_no")));
 		dto.setTitle((String)map.get("title"));
-		dto.setContent((String)map.get("content"));
+		dto.setContent((String)map.get("content"));		
+		dto.setStar(Integer.parseInt((String)map.get("star")));		
+				
 		
 		ps.addReply(dto);
 		return "{\"result\":true}";
@@ -39,4 +41,11 @@ public class PromoRepController implements MemberSession {
 	public List<PromoRepDTO> replyData(@PathVariable int write_group){
 		return ps.getRepList(write_group);
 	}
+	
+//	@GetMapping(value = "replyData/{star}", produces = "application/json; charset=utf-8")
+//	public List<PromoRepDTO> star(@PathVariable int star){
+//		return ps.getRepList(star);
+//	}
+	
+	
 }
