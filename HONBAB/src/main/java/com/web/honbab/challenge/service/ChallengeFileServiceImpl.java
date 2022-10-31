@@ -28,14 +28,13 @@ public class ChallengeFileServiceImpl implements ChallengeFileService {
 		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd-");
 		Calendar calendar = Calendar.getInstance();
 		String sysFileName = format.format(calendar.getTime());
+		if(!file.isEmpty())
 		sysFileName += file.getOriginalFilename();
-		
 		File saveFile = new File(IMAGE_REPO  + "/" + sysFileName);
 		saveFile.setWritable(true);
 		saveFile.setReadable(true);
-		/* saveFile.mkdir(); */
-		
 		try {
+			
 			file.transferTo(saveFile);
 		} catch (Exception e) {
 			e.printStackTrace();
