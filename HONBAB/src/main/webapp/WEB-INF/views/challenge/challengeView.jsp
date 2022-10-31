@@ -7,17 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>level individual view</title>
-<style type="text/css">
-	* {
-	margin: 0;
-	padding: 0;
-	list-style: none;
-	}
-	
-	ul {
-	display: flex;
-	}
-</style>
+
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
 

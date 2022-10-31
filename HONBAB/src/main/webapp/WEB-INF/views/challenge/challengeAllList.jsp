@@ -33,34 +33,6 @@ function showPopUp() {
 }
 </script>
 <title>혼밥 레벨</title>
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        list-style: none;
-      }
-      
-      ul {
-      	display: flex;
-      }
-      
-      ul li {
-	    margin:  0 50px;
-	    padding: 10px;
-		text-align: center;
-      }
-      .writeNo {
-      	width: 50px;
-      }
-      .ch_title {
-      width: 200px;
-      }
-      
-      .list_t{
-		font-weight: bold;
-	    font-size: 18px;
-      }
-    </style>
 </head>
 <!-- <body onload="user_check()"> -->
 <body>
