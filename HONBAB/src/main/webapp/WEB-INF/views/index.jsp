@@ -3,66 +3,87 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath }"/>
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>index.jsp</title>
-<style>
-main{
-	width:90%;
-	display: block;
-	margin: 0 auto;
-}
-.banner>img{
-	width: 100%; 
-	height: 300px;
-}
-.banner{
-	text-align: center;
-}
-.board{
-display: flex;
-}
-.board>div{
-border: 1px solid gold; 
-flex: 1;
-}
-</style>
-</head>
-<body>
-	<header>
-	<c:import url="main/header.jsp"/>
-	</header>
-	
-	<main>
-	
-	<div class="banner">
-		[사장님홍보글]
-		<img src="https://colorate.azurewebsites.net/SwatchColor/5F5F5F" >
-	</div>
-		
-	<div class="board">
-		<div>
-			<b>[사람찾기 = board1]</b>
-			<a id="find" href="${contextPath}/find/findAllList">더 많은 사람 찾기</a>
-			<c:import url="find/bestFind.jsp"/>
-		</div>
-		<div>
-			<b>[혼밥후기 = board2]</b>
-			<a id="review" href="${contextPath}/review/reviewAllList">더 많은 혼밥 후기</a>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Main</title>
+	<script src="${pageContext.request.contextPath}/resources/js/writeForm.js"></script>
+	<link href="${pageContext.request.contextPath}/resources/css/main.css" rel="stylesheet"/> 
+  </head>
+  <body>
+    <header>
+      <div class="header_wrap"> <!-- a태그 사용해서 색깔이 바뀌는데 이거 css로 없애야 할것 같아요 -->
+        <div class="logo"><span><a href="${contextPath}/index">HONBOB</a></span></div>
+        <ul class="nav">
+          <li><a id="find" href="${contextPath}/find/findAllList">Find</a></li>
+          <li><a href="${contextPath}/challengeAllList">Challenge</a></li>
+          <li><a id="review" href="${contextPath}/review/reviewAllList">Review</a></li>
+          <li><a id="promotion" href="${contextPath}/promotion/promoList">Notice?</a></li>
+          <li id="logout"><a href="${contextPath }/member/logout">logout</a></li>
+          <li id="logout"><a href="${contextPath }/member/info?id=${loginUser}">마이페이지</a></li>
+          <li><a href="${contextPath }/member/login">로그인(임시)</a></li>
+		  <li><a href="${contextPath }/member/register_form">회원가입(임시)</a></li>
+          
+        </ul>
+      </div>
+    </header>
+
+    <main>
+      <div class="main_wrap">
+        <div id="alone"><span>EAT ALONE</span></div>
+        <img src="${pageContext.request.contextPath}/resources/img/1_Yz2wxmK0Cf3MBZR7lgkfg (1).jpeg" />
+      </div>
+    </main>
+    <div class="line"></div>
+
+    <article>
+      <div class="article_wrap">
+        <div class="find_outline">
+          <div class="find_list">
+            <a class="menu" href="#">동행 구하기</a>
+       		<c:import url="find/bestFind.jsp"/>
+          </div>
+
+          <div class="text">
+            <p>2인분 이상 주문 앞에 돌아선적이 있다면...</p>
+            <p>맛집 웨이팅 적적하지 않게 누군가가 함께 기다려줬으면...</p>
+            <button class="morebtn" onclick="location.href='${contextPath}/find/findAllList'">more +</button>
+          </div>
+        </div>
+        <div class="line"></div>
+        
+        <div class="challenge_outline">
+          <a class="menu" href="#">혼밥후기</a>
 			<c:import url="review/bestReview.jsp"/>
-		</div>
-	</div>
-	
-	<div>
-		<c:import url="main/Board03.jsp"/>
-		
-	</div>
-	</main>
-	
-	
-	<footer>
-	<c:import url="main/footer.jsp"/>
-	</footer>
-</body>
+          <div class="text">
+            <p>아무말 아무말..</p>
+            <p>대충 포토후기 많이 써달라는 말...</p>
+            <button class="morebtn" onclick="location.href='${contextPath}/review/reviewAllList'">more +</button>
+          </div>
+        </div>
+        <div class="line"></div>
+        <div class="challenge_outline">
+          <a class="menu" href="#">도전하기</a>
+	          <ul>
+	            <li>title title 1</li>
+	            <li>title title 2</li>
+	            <li>title title 3</li>
+	            <li>title title 4</li>
+	          </ul>
+          <div class="text">
+            <p>도전정신이 강하다?</p>
+            <p>흔히 혼밥 레벨이라 알려진 단계들을 깨보시길..</p>
+            <button class="morebtn">more +</button>
+          </div>
+        </div>
+      </div>
+    </article>
+    <div class="empty"></div>
+    <div class="last_line"></div>
+    <footer>
+      <div class="footer_wrap">
+        <span>copyright &copy; 2022</span>
+      </div>
+    </footer>
+  </body>
 </html>
