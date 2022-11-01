@@ -60,7 +60,7 @@ public class MemberServiceImpl implements MemberService {
 		String msg, url;
 		
 		if(result == 1) {
-			msg = "글이 삭제 되었습니다.";
+			msg = "회원탈퇴가 완료되었습니다.";
 			url = "/index";
 		} else {
 			msg ="오류 발생, 작업이 완료되지 않았습니다.";

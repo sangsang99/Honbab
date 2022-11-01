@@ -60,7 +60,6 @@ $(document).ready(function(){
 				<input type="text" name="id" placeholder="사업자아이디"><br><br>
 				<input type="password" name="pw" placeholder="사업자비밀번호"><br><br>
 				<input type="submit" value="login"> &nbsp; 
-				<a href="${contextPath }/member/register_form">회원가입</a>
 			</form>
 		</div>
 		<div id="admin">
