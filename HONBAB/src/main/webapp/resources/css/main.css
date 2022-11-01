@@ -5,6 +5,9 @@ a {
   list-style: none;
   text-decoration: none;
 }
+a:visited {
+  color: black;
+}
 
 /* header */
 header {

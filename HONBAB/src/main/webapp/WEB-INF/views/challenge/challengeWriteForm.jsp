@@ -7,6 +7,11 @@
 <head>
 <meta charset="UTF-8">
 <title>level write</title>
+<script
+	src="${pageContext.request.contextPath}/resources/js/writeForm.js"></script>
+<link
+	href="${pageContext.request.contextPath}/resources/css/challengeWriteForm.css"
+	rel="stylesheet" />
 <script type="text/javascript">
 	function challengeLv(e) {
 		let level = document.getElementById("challenge");
@@ -59,9 +64,101 @@
 </head>
 <!-- <body onload="login_chk()"> -->
 <body>
-	<c:import url="../main/header.jsp" />
-	
-	<div class="wrap" align="center">
+	<header>
+		<div class="header_wrap">
+			<!-- a태그 사용해서 색깔이 바뀌는데 이거 css로 없애야 할것 같아요 -->
+			<div class="logo">
+				<span><a href="${contextPath}/index">HONBOB</a></span>
+			</div>
+			<ul class="nav">
+				<li><a id="find" href="${contextPath}/find/findAllList">Find</a></li>
+				<li><a href="${contextPath}/challengeAllList">Challenge</a></li>
+				<li><a id="review" href="${contextPath}/review/reviewAllList">Review</a></li>
+				<li><a id="promotion" href="${contextPath}/promotion/promoList">Notice?</a></li>
+				<li id="logout"><a href="${contextPath }/member/logout">logout</a></li>
+				<li id="logout"><a
+					href="${contextPath }/member/info?id=${loginUser}">마이페이지</a></li>
+				<li><a href="${contextPath }/member/login">로그인(임시)</a></li>
+				<li><a href="${contextPath }/member/register_form">회원가입(임시)</a></li>
+			</ul>
+		</div>
+	</header>
+
+	<aside>
+		<div class="aside_wrap">
+			<div class="text">
+				<span>혼자 밥먹기 레벨</span>
+				<div>어디까지 혼자 먹어봤을까...</div>
+				<div>
+					도전할게 없다면 혼자 밥먹기 레벨에 도전해보시길 <br /> Voluptatum, maiores deleniti
+					reiciendis, <br /> at suscipit dolorum, adipisci nam mollitia
+					totam impedit maxime. <br /> Dolorum quaerat nobis doloribus
+					perferendis nisi, ipsum aut ducimus?
+				</div>
+			</div>
+		</div>
+		<div class="honbab">
+			<span>HONBAB</span>
+		</div>
+		<footer>copyright &copy;</footer>
+	</aside>
+
+	<main>
+		<div class="main_wrap">
+			<form class="write_form" action="${contextPath }/challengeSave"
+				enctype="multipart/form-data" method="post">
+				<!-- 셀렉트 css 수정 필수!!!!!!!!!!!!!!!!!!! -->
+				<select id="challenge" onchange="challengeLv(this)" name="chLevel">
+					<option selected disabled hidden>레벨 선택</option>
+					<option value="1">레벨 1</option>
+					<option value="2">레벨 2</option>
+					<option value="3">레벨 3</option>
+					<option value="4">레벨 4</option>
+					<option value="5">레벨 5</option>
+					<option value="6">레벨 6</option>
+					<option value="7">레벨 7</option>
+					<option value="8">레벨 8</option>
+					<option value="9">레벨 9</option>
+				</select> 
+				<span id="text"></span>
+				<ul>
+					<li>
+						<span>Title</span> 
+						<input type="text" placeholder="제목 작성" name="title"  />
+					</li>
+					<hr />
+					<div class="line"></div>
+					<li>
+						<input type="hidden" value="${loginUser}" name="id" >
+						<span>Writer</span> 
+						<input type="text" name="nickName" readonly="readonly" value="nickName" />
+						<!-- 임시로 value 닉네임 넣어논 것이니 나중에 로그인 유저 닉네임 받아서 넣을 수 있도록 -->
+					</li>
+					<hr />
+					<div class="line"></div>
+					<li class="content">
+						<span>내용</span> 
+						<textarea maxlength="999" name="content"></textarea>
+					</li>
+					<hr />
+					<div class="line"></div>
+
+					<li class="upload_file">
+						<span>사진 첨부</span> 
+						<input type="file" name="imgName" onchange="readURL(this)">
+						<img src="#" id="preview" width="100px">
+					</li>
+					<hr />
+					<div class="line"></div>
+				</ul>
+				<input type="submit" value="Save" />
+				<input type="button" value="글목록" onclick="location.href='${contextPath}/challengeAllList'">
+			</form>
+		</div>
+	</main>
+
+
+	<%-- <div class="wrap" align="center">
 		<div class="challenge_save write">
 			<form action="${contextPath }/challengeSave"
 				enctype="multipart/form-data" method="post">
@@ -76,30 +173,26 @@
 					<option value="7">레벨 7</option>
 					<option value="8">레벨 8</option>
 					<option value="9">레벨 9</option>
-				</select> 
-				<span id="text"></span>
-				
-				<input type="hidden" value="${loginUser}" name="id" >
+				</select> <span id="text"></span> <input type="hidden" value="${loginUser}"
+					name="id">
 				<p>작성자</p>
-				<input type="text" name="nickName" value="nickName" readonly="readonly">
-				
+				<input type="text" name="nickName" value="nickName"
+					readonly="readonly">
+
 				<p>제목</p>
 				<input type="text" name="title" size="50"><br>
 
 				<p>내용</p>
 				<textarea rows="10" cols="50" name="content"></textarea>
-				<br> 
-				
-				<b>첨부한 파일</b> 
-				<input type="file" name="imgName" onchange="readURL(this)"><br>
-				<img src="#" id="preview" width="100px"><br> <br> 
-				
-				<input type="submit" value="저장"> &nbsp; 
-				<input type="button" value="글목록" onclick="location.href='${contextPath}/challengeAllList'">
+				<br> <b>첨부한 파일</b> <input type="file" name="imgName"
+					onchange="readURL(this)"><br> <img src="#"
+					id="preview" width="100px"><br> <br> <input
+					type="submit" value="저장"> &nbsp; <input type="button"
+					value="글목록"
+					onclick="location.href='${contextPath}/challengeAllList'">
 			</form>
 		</div>
 	</div>
-
-	<c:import url="../main/footer.jsp" />
+ --%>
 </body>
 </html>
