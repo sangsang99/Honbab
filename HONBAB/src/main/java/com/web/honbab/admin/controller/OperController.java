@@ -2,17 +2,28 @@ package com.web.honbab.admin.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.web.honbab.admin.dto.NoticeRepDTO;
 import com.web.honbab.admin.service.OperService;
+import com.web.honbab.promo.service.PromoService;
+import com.web.honbab.review.dto.ReviewRepDTO;
 
 @Controller
 @RequestMapping("oper")
@@ -21,10 +32,14 @@ public class OperController{
 	@Autowired
 	private OperService os;
 	
+	@Autowired
+	private PromoService ps;
+	
 	//영업관리 메인페이지
 	@RequestMapping("operation")
-	public String goNoticeWriteFrom(Model model) {
+	public String goNoticeWriteFrom(Model model, @RequestParam(value="num", required = false, defaultValue ="1") int num) {
 		os.viewNoticeList(model);
+		ps.promoList(model, num);
 		return "admin/operation";
 	}
 	
@@ -75,5 +90,24 @@ public class OperController{
 		response.setContentType("text/html; charset=utf-8");
 		PrintWriter out = response.getWriter();
 		out.println(message);
+	}
+	
+	@PostMapping(value="addReply", produces = "applacition/json; charset=utf-8")
+	@ResponseBody //JSON{\"result\":true} 요거쓰려면 상단에 @RestController 작성하거나 아니면 해당메서드에 @ResponeseBody 요거작성해야함
+	public String addReply(@RequestBody Map<String, Object> map)  {
+		System.out.println("진입테스트");
+		NoticeRepDTO dto = new NoticeRepDTO();
+		dto.setReNick((String)map.get("id"));
+		dto.setReId((String)map.get("id"));
+		dto.setWriteGroup(Integer.parseInt((String)map.get("writeNo")));
+		dto.setReComent((String)map.get("coment"));
+		os.addReply(dto);
+		return "{\"result\":true}";
+	}
+	
+	@GetMapping(value = "replyData/{writeNo}", produces = "application/json; charset=utf-8")
+	@ResponseBody
+	public List<ReviewRepDTO> replyData(@PathVariable int writeNo){
+		return os.getRepList(writeNo);
 	}
 }

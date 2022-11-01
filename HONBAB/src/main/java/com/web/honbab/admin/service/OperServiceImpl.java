@@ -1,5 +1,7 @@
 package com.web.honbab.admin.service;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,7 +9,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import com.web.honbab.admin.dto.NoticeBoardDTO;
+import com.web.honbab.admin.dto.NoticeRepDTO;
 import com.web.honbab.mybatis.admin.OperMapper;
+import com.web.honbab.review.dto.ReviewRepDTO;
 
 @Service
 public class OperServiceImpl implements OperService {
@@ -106,6 +110,15 @@ public class OperServiceImpl implements OperService {
 		return getMessage(request, msg, url);
 	}
 	
-	
+	@Override
+	public void addReply(NoticeRepDTO dto) {
+		mapper.addReply(dto);
+	}
+
+
+	@Override
+	public List<ReviewRepDTO> getRepList(int writeNo) {
+		return mapper.getRepList(writeNo);
+	}
 	
 }
