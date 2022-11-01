@@ -3,10 +3,34 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.web.honbab.mybatis.admin.OperMapper">
-<!-- 	<resultMap type="com.web.honbab.admin.dto.AdminDTO" id="admin">
-		<id property="writeNo" column="write_no" />
-		<result property="title" column="title" />
-	</resultMap> -->
+	<resultMap type="com.web.honbab.admin.dto.NoticeBoardDTO" id="admin">
+		<id property="writeNo" column="WRITE_NO" />
+		<result property="title" column="TITLE" />
+		<result property="content" column="CONTENT" />
+		<result property="views" column="VIEWS" />
+		<result property="writeDate" column="WRITE_DATE" />
+	</resultMap>
 	
-
+	<insert id="noticeWrite">
+		INSERT INTO ADMIN_NOTICE_BOARD(WRITE_NO, TITLE, CONTENT)
+		VALUES(ADMIN_NOTICE_BOARD_SEQ.NEXTVAL, #{title}, #{content})
+	</insert>
+	
+	<select id="viewNoticeList" resultMap="admin">
+	SELECT ROWNUM RN, A.* FROM
+	(SELECT * FROM ADMIN_NOTICE_BOARD ORDER BY WRITE_DATE DESC) A
+	</select>
+	
+	<select id="viewNoticeContent" resultMap="admin">
+	SELECT * FROM ADMIN_NOTICE_BOARD
+	WHERE WRITE_NO = #{writeNo}
+	</select>
+	
+	<update id="updateNoticeContent">
+	UPDATE ADMIN_NOTICE_BOARD SET TITLE=#{title}, CONTENT=#{content} WHERE WRITE_NO=#{writeNo}
+	</update>
+	
+	<delete id="deleteNoticeContent">
+	DELETE FROM ADMIN_NOTICE_BOARD WHERE WRITE_NO=#{writeNo}
+	</delete>
 </mapper>

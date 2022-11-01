@@ -9,10 +9,13 @@
 <title>noticeContent(우상)</title>
 </head>
 <body>
-	
-	<a href="${contextPath }/oper/deleteNoticeContent">글삭제 버튼</a>
-	<a href="${contextPath }/oper/updateNoticeContent">글수정 버튼</a>
+	<b>제  목</b>${noticeContent.title } <br>
+	<b>내  용</b>${noticeContent.content } <br>
+	<b>글번호</b>${noticeContent.writeNo } <br>
+	<b>작성일</b>${noticeContent.writeDate } <br>
+	<b>조회수</b>${noticeContent.views } <br>
 
-	
+	<a href="${contextPath }/oper/deleteNoticeContent?writeNo=${noticeContent.writeNo }">글삭제 버튼</a>
+	<a href="${contextPath }/oper/modifyNoticeContent?writeNo=${noticeContent.writeNo }">글수정 버튼</a>
 </body>
 </html>
