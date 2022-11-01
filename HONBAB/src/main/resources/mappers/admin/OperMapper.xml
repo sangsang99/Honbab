@@ -11,6 +11,14 @@
 		<result property="writeDate" column="WRITE_DATE" />
 	</resultMap>
 	
+	<resultMap type="com.web.honbab.admin.dto.NoticeRepDTO" id="reply">
+		<id property="reId" column="RE_ID" />
+		<result property="reComent" column="RE_COMENT" />
+		<result property="writeGroup" column="WRITE_GROUP" />
+		<result property="reDate" column="RE_DATE" />
+		<result property="reNick" column="RE_NICK" />
+	</resultMap>
+	
 	<insert id="noticeWrite">
 		INSERT INTO ADMIN_NOTICE_BOARD(WRITE_NO, TITLE, CONTENT)
 		VALUES(ADMIN_NOTICE_BOARD_SEQ.NEXTVAL, #{title}, #{content})
@@ -33,4 +41,15 @@
 	<delete id="deleteNoticeContent">
 	DELETE FROM ADMIN_NOTICE_BOARD WHERE WRITE_NO=#{writeNo}
 	</delete>
+	
+	<insert id="addReply">
+		INSERT INTO ADMIN_NOTICE_RE(RE_NICK, RE_COMENT, WRITE_GROUP, RE_ID)
+		VALUES(#{reNick}, #{reComent}, #{writeGroup}, #{reId})
+	</insert>
+	
+	<select id="getRepList" resultMap="reply">
+		SELECT * FROM ADMIN_NOTICE_RE
+		WHERE WRITE_GROUP = #{writeNo}
+		ORDER BY RE_DATE DESC
+	</select>
 </mapper>
