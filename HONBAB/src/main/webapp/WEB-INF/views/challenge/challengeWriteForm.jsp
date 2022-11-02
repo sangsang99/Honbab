@@ -7,16 +7,23 @@
 <head>
 <meta charset="UTF-8">
 <title>level write</title>
-<script
-	src="${pageContext.request.contextPath}/resources/js/writeForm.js"></script>
-<link
+<link 
 	href="${pageContext.request.contextPath}/resources/css/challengeWriteForm.css"
 	rel="stylesheet" />
+<!-- 수정함 -->
+<!-- font -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Nunito+Sans:wght@400;600;700&display=swap"
+	rel="stylesheet"
+/>
+<script src="${pageContext.request.contextPath}/resources/js/writeForm.js"></script>
 <script type="text/javascript">
 	function challengeLv(e) {
 		let level = document.getElementById("challenge");
 		let value = level.options[level.selectedIndex].value;
-
+		<%-- 수정했다 --%>
 		let text;
 		if (value == 1) {
 			text = "편의점에서 먹기 🥡";
@@ -123,28 +130,28 @@
 				<span id="text"></span>
 				<ul>
 					<li>
-						<span>Title</span> 
+              			<span class="index_en">Title</span>
 						<input type="text" placeholder="제목 작성" name="title"  />
 					</li>
 					<hr />
 					<div class="line"></div>
 					<li>
+           				<span class="index_en">Writer</span>
 						<input type="hidden" value="${loginUser}" name="id" >
-						<span>Writer</span> 
 						<input type="text" name="nickName" readonly="readonly" value="nickName" />
 						<!-- 임시로 value 닉네임 넣어논 것이니 나중에 로그인 유저 닉네임 받아서 넣을 수 있도록 -->
 					</li>
 					<hr />
 					<div class="line"></div>
 					<li class="content">
-						<span>내용</span> 
+	        			<span class="index_kr">내용</span>
 						<textarea maxlength="999" name="content"></textarea>
 					</li>
 					<hr />
 					<div class="line"></div>
 
 					<li class="upload_file">
-						<span>사진 첨부</span> 
+						<span class="index_kr">사진 첨부</span>
 						<input type="file" name="imgName" onchange="readURL(this)">
 						<img src="#" id="preview" width="100px">
 					</li>
