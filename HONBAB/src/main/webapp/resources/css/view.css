@@ -1,0 +1,294 @@
+/*
+----------------------------------
+    수정했다
+----------------------------------
+*/
+
+@charset "UTF-8";
+
+*,
+a {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+a:visited {
+  color: black;
+}
+
+/* body {
+  background-color: rgba(239, 239, 240, 0.596);
+} */
+
+.line {
+  width: 900px;
+  height: 1px;
+  color: rgb(163, 163, 163);
+}
+
+/*
+----------------------------------
+    header
+----------------------------------
+*/
+header {
+  width: 100%;
+  height: 8vh;
+  background-color: rgb(255, 255, 255);
+  /* border-bottom: 1px solid rgb(163, 163, 163); */
+}
+
+.header_wrap {
+  width: 1200px;
+  margin: auto auto;
+  /* position: fixed; */
+  background-color: rgb(255, 255, 255);
+}
+
+.logo,
+.header_wrap > ul,
+header li {
+  display: inline-block;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 800;
+  width: 100px;
+}
+.logo > span {
+  padding: 10px 0;
+  margin: 5px 0;
+}
+
+.nav {
+  padding: 10px 0;
+  margin: 0 auto;
+}
+
+.nav > li {
+  width: 100px;
+  text-align: center;
+  font-family: "Kumbh Sans", sans-serif;
+  font-weight: 500;
+}
+
+#logout {
+  position: relative;
+  padding: 10px 0;
+  margin: 5px 0;
+  right: 0;
+  font-family: "Kumbh Sans", sans-serif;
+  font-weight: 500;
+}
+
+/*
+----------------------------------
+    main
+----------------------------------
+*/
+
+main {
+  width: 1200px;
+  height: 92vh;
+  margin: 0 auto;
+}
+
+.title_wrap {
+  width: 800px;
+  height: 80px;
+  padding: 30px 0 0 0;
+  border-bottom: 1px solid rgb(163, 163, 163);
+}
+
+.level,
+.title,
+.writeno {
+  width: fit-content;
+  font-size: 28px;
+  font-weight: 800;
+  display: inline-block;
+  color: rgba(17, 21, 226, 0.918);
+  vertical-align: middle;
+  font-family: "Nunito Sans", sans-serif;
+}
+
+/* .writeno {
+  float: right;
+} */
+.title {
+  font-size: 29px;
+  font-weight: 500;
+  font-family: "Noto Sans KR", sans-serif;
+  margin-bottom: 5px;
+}
+
+#slash {
+  margin: 0 10px;
+  font-weight: 800;
+  font-family: "Nunito Sans", sans-serif;
+}
+
+.title {
+  /* margin: 0 20px; */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#t {
+  width: 650px;
+  /* background-color: aliceblue; */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.writer_wrap {
+  width: 1200px;
+  height: 250px;
+}
+
+.writer,
+.date {
+  display: inline-block;
+  padding: 10px 0;
+  color: rgb(40, 40, 40);
+  font-family: "Nunito Sans", sans-serif;
+}
+.writer {
+  font-size: 19px;
+  font-weight: 600;
+}
+
+.date {
+  font-size: 16px;
+  font-weight: 600;
+  position: absolute;
+  text-align: right;
+  right: 750px;
+}
+
+.like {
+  font-size: 14px;
+  font-weight: 500;
+  font-family: "Nunito Sans", sans-serif;
+  width: 200px;
+  position: absolute;
+  top: 380px;
+}
+
+button {
+  visibility: hidden;
+}
+
+button > span {
+  visibility: visible;
+  font-size: 18px;
+}
+
+.like button {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
+
+#imgx > span {
+	width: 100px;
+	height: 250px;
+	font-weight: 500px;
+	font-size: 50px;
+	text-align: center;
+	margin: 0 auto;
+	color: rgb(40, 40, 40);
+}
+
+#imgx {
+  width: 350px;
+  height: 250px;
+  float: right;
+  display: block;
+	background-color: rgb(240, 240, 240);
+	
+}
+
+#img {
+  width: 350px;
+  height: 250px;
+  height: auto;
+  float: right;
+  display: block;
+  background-color: rgb(163, 163, 163);
+  border-radius: 5px;
+}
+
+
+.empty {
+  width: 1200px;
+  height: 20px;
+}
+
+.content_wrap {
+  width: 1200px;
+  height: 400px;
+  border-top: 1px solid rgb(163, 163, 163);
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+.text {
+  /* border: 1px solid rgb(221, 221, 221);
+  border-radius: 5px; */
+  width: 1200px;
+  height: 400px;
+  float: left;
+  font-size: 16px;
+  font-weight: 400;
+  font-family: "Noto Sans KR", sans-serif;
+  line-height: 160%;
+  color: rgb(34, 34, 34);
+  overflow: auto;
+  padding: 5px;
+  /* white-space: inherit; */
+  border-bottom: 1px solid rgb(163, 163, 163);
+}
+
+/*
+----------------------------------
+    input button
+----------------------------------
+*/
+input {
+  width: 100px;
+  height: 30px;
+  margin: 15px 0;
+  float: right;
+  background-color: rgba(245, 222, 179, 0);
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+input:hover {
+  border: 1px solid rgb(163, 163, 163);
+}
+
+#modify_btn {
+  margin-right: 20px;
+}
+
+/*
+----------------------------------
+    footer
+----------------------------------
+*/
+footer {
+  width: 100%;
+  height: 10vh;
+  background-color: aliceblue;
+}
