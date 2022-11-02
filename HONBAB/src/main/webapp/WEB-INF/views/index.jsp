@@ -9,10 +9,18 @@
     <title>Main</title>
 	<script src="${pageContext.request.contextPath}/resources/js/writeForm.js"></script>
 	<link href="${pageContext.request.contextPath}/resources/css/main.css" rel="stylesheet"/> 
+	<!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;700&family=Nunito+Sans:wght@400;600;700&family=Ramabhadra&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
+	<!-- 수정함 -->
     <header>
-      <div class="header_wrap"> <!-- a태그 사용해서 색깔이 바뀌는데 이거 css로 없애야 할것 같아요 -->
+      <div class="header_wrap">
         <div class="logo"><span><a href="${contextPath}/index">HONBOB</a></span></div>
         <ul class="nav">
           <li><a id="find" href="${contextPath}/find/findAllList">Find</a></li>
@@ -30,8 +38,10 @@
 
     <main>
       <div class="main_wrap">
-        <div id="alone"><span>EAT ALONE</span></div>
-        <img src="${pageContext.request.contextPath}/resources/img/1_Yz2wxmK0Cf3MBZR7lgkfg (1).jpeg" />
+        <div id="alone">
+          <span><b>*EAT ALONE</b></span>
+        </div>
+        <img src="${pageContext.request.contextPath}/resources/img/2수정1_Yz2wxmK0Cf3MBZR7lgkfg.jpg" width="1200px" />
       </div>
     </main>
     <div class="line"></div>

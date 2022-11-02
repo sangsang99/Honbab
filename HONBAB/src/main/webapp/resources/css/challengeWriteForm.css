@@ -1,3 +1,9 @@
+/*
+----------------------------------
+    수정함
+----------------------------------
+*/
+
 @charset "UTF-8";
 
 *,
@@ -7,6 +13,14 @@ a {
   list-style: none;
   text-decoration: none;
   box-sizing: border-box;
+}
+
+
+.line {
+  margin-bottom: 20px;
+  width: 100px;
+  height: 1px;
+  color: rgb(163, 163, 163);
 }
 
 /*
@@ -61,14 +75,19 @@ header li {
   background-color: antiquewhite;
 }
 
-/* aside */
+/*
+----------------------------------
+    aside
+----------------------------------
+*/
 aside {
   position: relative;
-  width: 30%;
+  width: 25%;
   height: 92vh;
   /* background-color: aliceblue; */
   float: left;
 }
+
 .text {
   width: 350px;
   padding-left: 100px;
@@ -82,16 +101,25 @@ aside {
   font-weight: 800;
 }
 
+/*
+----------------------------------
+    aside footer
+----------------------------------
+*/
 footer {
   width: 350px;
   padding-left: 100px;
   position: absolute;
-  bottom: 100px;
+  bottom: 60px;
 }
 
-/* main */
+/*
+----------------------------------
+    main
+----------------------------------
+*/
 main {
-  width: 70%;
+  width: 75%;
   height: 92vh;
   float: right;
   /* background-color: aquamarine; */
@@ -103,12 +131,20 @@ main {
   margin-top: 70px;
 }
 
-.line {
-  margin-bottom: 20px;
-  width: 100px;
-  height: 1px;
-  color: rgb(163, 163, 163);
+.index_en {
+  font-size: 17px;
+  font-weight: 600;
+  color: rgb(115, 115, 115);
+  font-family: "Nunito Sans", sans-serif;
 }
+
+.index_kr {
+  font-size: 17px;
+  font-weight: 500;
+  color: rgb(115, 115, 115);
+  font-family: "Noto Sans KR", sans-serif;
+}
+
 
 li {
   height: 30px;
@@ -118,18 +154,6 @@ li > span {
   width: 200px;
 }
 
-input {
-  width: 700px;
-  height: 30px;
-  float: right;
-  border: none;
-  background-color: rgba(240, 248, 255, 0);
-  padding: 5px;
-}
-
-input:focus {
-  outline: none;
-}
 .content {
   height: 350px;
 }
@@ -137,16 +161,22 @@ input:focus {
 #content {
   height: 300px;
 }
+
 textarea {
   width: 700px;
   height: 330px;
-  border: none;
+  padding: 5px;
   resize: none;
   float: right;
-  border: 1px solid rgba(202, 202, 202, 0.527);
   border-radius: 5px;
+  border: 1px solid rgba(202, 202, 202, 0.527);
   background-color: rgba(240, 248, 255, 0);
+  font-size: 16px;
+  font-weight: 400;
+  color: rgb(40, 40, 40);
+  font-family: "Noto Sans KR", sans-serif;
 }
+
 textarea:focus {
   outline: none;
 }
@@ -159,9 +189,37 @@ span,
 input {
   vertical-align: middle;
 }
+
+/*
+----------------------------------
+    input
+----------------------------------
+*/
+input {
+  width: 700px;
+  height: 30px;
+  float: right;
+  border: none;
+  background-color: rgba(240, 248, 255, 0);
+  padding: 5px;
+  font-size: 16px;
+  font-weight: 400;
+  color: rgb(40, 40, 40);
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+input:focus {
+  outline: none;
+}
+
+/*
+----------------------------------
+    input SUBMIT
+----------------------------------
+*/
+
 input[type="submit" i] {
-  font-size: 20px;
-  font-weight: 500;
+  width: 100px;
   appearance: auto;
   user-select: none;
   white-space: pre;
@@ -169,11 +227,48 @@ input[type="submit" i] {
   text-align: right;
   cursor: default;
   box-sizing: border-box;
-  background-color: rgba(255, 255, 255, 0);
   color: buttontext;
   padding: 1px 6px;
   border-width: 0;
   border-style: none;
   border-color: buttonborder;
-  border-image: initial;
+  background-color: rgba(255, 255, 255, 0);
+  text-align: center;
+  font-size: 20px;
+  font-weight: 700;
+  font-family: "Nunito Sans", sans-serif;
+  cursor: pointer;
 }
+
+input[type="submit" i]:hover {
+  border: 1px solid rgb(163, 163, 163);
+  border-radius: 5px;
+}
+
+input[type="button" i] {
+  width: 100px;
+  appearance: auto;
+  user-select: none;
+  white-space: pre;
+  align-items: flex-start;
+  text-align: right;
+  cursor: default;
+  box-sizing: border-box;
+  color: buttontext;
+  padding: 1px 6px;
+  border-width: 0;
+  border-style: none;
+  border-color: buttonborder;
+  background-color: rgba(255, 255, 255, 0);
+  text-align: center;
+  font-size: 18px;
+  font-weight: 700;
+  font-family: "Nunito Sans", sans-serif;
+  cursor: pointer;
+}
+
+input[type="button" i]:hover {
+  border: 1px solid rgb(163, 163, 163);
+  border-radius: 5px;
+}
+
