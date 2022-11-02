@@ -1,0 +1,27 @@
+var imgNum = 1;
+var img = new Image();
+var canvas = document.getElementById('screen');
+var ctx = canvas.getContext('2d');
+var scrollYPos = 0;
+
+img.src = "./resources/img/dish3/00.png";
+
+window.addEventListener('scroll', function(e) {
+    scrollYPos = Math.round(window.scrollY / 20);
+    
+    console.log("scroll y: " + window.scrollY + ", " + scrollYPos);
+    
+    if (scrollYPos == 0) scrollYPos = 0;
+    if (scrollYPos > 59) scrollYPos = 59;
+    // scrollYPos = scrollYPos % 59;
+    player(scrollYPos);
+});
+
+function player(num) {
+    img.src = "./resources/img/dish3/" + num + ".png";
+}
+
+img.addEventListener('load', function(e) {
+    ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+    ctx.drawImage(img, 0, 0);
+});
