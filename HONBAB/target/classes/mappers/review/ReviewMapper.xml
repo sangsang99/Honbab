@@ -88,5 +88,12 @@
 		WHERE WRITE_NO=#{writeNo}
 	</update>
 
-
+	<select id="searchForTitle" resultMap="review">
+		SELECT * FROM REVIEW_BOARD WHERE TITLE like '%'||#{keyword}||'%' ORDER BY WRITE_DATE DESC
+	</select>
+	
+	<select id="searchForNick" resultMap="review">
+		SELECT * FROM REVIEW_BOARD WHERE NICKNAME like '%'||#{keyword}||'%' ORDER BY WRITE_DATE DESC
+	</select>
+	
 </mapper>
