@@ -11,6 +11,7 @@
 <body>
 	버튼눌러서 이후 액션을 알아서 하시면됩니당당당 <br>
 정욱<input type="button" value="사용자관리"> <br>
+<a id="admin" href="${contextPath}/admin/boardManagement">게시글관리</a>
 동형 <input type="button" value="게시글관리"> <br>
 <a href="${contextPath}/oper/operation">영업관리</a> <!-- 우상  -->
 우상 <input type="button" value="영업관리"><br>
