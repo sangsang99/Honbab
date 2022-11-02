@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.web.honbab.review.dto.ReviewDTO;
 import com.web.honbab.review.dto.ReviewRepDTO;
 import com.web.honbab.review.service.ReviewFileService;
 import com.web.honbab.review.service.ReviewService;
@@ -128,5 +129,14 @@ public class ReviewController implements MemberSession{
 	public String reviewLike(@RequestParam int writeNo) {
 		rs.reviewLike(writeNo);
 		return "redirect:reviewContent?writeNo=" + writeNo;
+	}
+	
+	@PostMapping(value = "search") // 
+	public String searchList(MultipartHttpServletRequest mul, Model model) throws IOException{
+		System.out.println("text : " + mul.getParameter("text"));
+		System.out.println("option : " + mul.getParameter("option"));
+		rs.searchReview(mul, model);
+		
+		return "review/reviewAllList";
 	}
 }

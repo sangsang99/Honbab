@@ -31,4 +31,8 @@ public interface ReviewMapper {
 
 	public void reviewLike(int writeNo);
 
+	public List<ReviewDTO> searchForTitle(@Param("keyword") String keyword);
+
+	public List<ReviewDTO> searchForNick(@Param("keyword") String keyword);
+
 }

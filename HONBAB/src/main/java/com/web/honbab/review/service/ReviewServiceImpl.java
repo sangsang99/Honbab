@@ -182,6 +182,27 @@ public class ReviewServiceImpl implements ReviewService{
 	public void reviewLike(int writeNo) {
 		mapper.reviewLike(writeNo);
 	}
+
+
+	@Override
+	public void searchReview(MultipartHttpServletRequest mul, Model model) {
+		
+		String keyword = mul.getParameter("text");
+		String select = mul.getParameter("option");
+		
+		switch (select) {
+		case "title":
+			model.addAttribute("reviewAllList", mapper.searchForTitle(keyword)) ;			
+			break;
+		case "nickname":
+			model.addAttribute("reviewAllList", mapper.searchForNick(keyword)) ;		
+			break;
+		default:
+			System.out.println("에러발생");
+			break;
+		}
+
+	}
 	
 	
 	
