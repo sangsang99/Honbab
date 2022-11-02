@@ -31,7 +31,6 @@
           <li id="logout"><a href="${contextPath }/member/info?id=${loginUser}">마이페이지</a></li>
           <li><a href="${contextPath }/member/login">로그인(임시)</a></li>
 		  <li><a href="${contextPath }/member/register_form">회원가입(임시)</a></li>
-          
         </ul>
       </div>
     </header>

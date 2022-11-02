@@ -29,6 +29,12 @@ public class MainContriller {
 		fs.findBestList(model);
 		return "index";
 	}
+	@RequestMapping(value = "home")
+	public String Mainhome(Model model) {
+		rs.reviewBestList(model);
+		fs.findBestList(model);
+		return "/home";
+	}
 	
 	@RequestMapping(value = "admin")
 	public String goAdmin(Model model) {
