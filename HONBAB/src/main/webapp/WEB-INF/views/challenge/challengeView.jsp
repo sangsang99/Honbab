@@ -7,14 +7,14 @@
 <head>
 <meta charset="UTF-8">
 <title>level individual view</title>
-<link href="${pageContext.request.contextPath}/resources/css/view.css" rel="stylesheet" />
+<link href="${pageContext.request.contextPath}/resources/css/view.css?ver=4" rel="stylesheet" />
 <!-- font -->
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link
-	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Nunito+Sans:wght@400;600;700&display=swap"
-	rel="stylesheet" />
-	<!-- 수정함 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;700&family=Nunito+Sans:wght@400;600;700&family=Ramabhadra&display=swap"
+      rel="stylesheet"
+    />
 <!-- script -->
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
@@ -67,22 +67,7 @@
 </script>
 </head>
 <body>
-    <header>
-      <div class="header_wrap">
-        <div class="logo"><span><a href="${contextPath}/index">HONBOB</a></span></div>
-        <ul class="nav">
-          <li><a id="find" href="${contextPath}/find/findAllList">Find</a></li>
-          <li><a href="${contextPath}/challengeAllList">Challenge</a></li>
-          <li><a id="review" href="${contextPath}/review/reviewAllList">Review</a></li>
-          <li><a id="promotion" href="${contextPath}/promotion/promoList">Notice?</a></li>
-          <li id="logout"><a href="${contextPath }/member/logout">logout</a></li>
-          <li id="logout"><a href="${contextPath }/member/info?id=${loginUser}">마이페이지</a></li>
-          <li><a href="${contextPath }/member/login">로그인(임시)</a></li>
-		  <li><a href="${contextPath }/member/register_form">회원가입(임시)</a></li>
-          
-        </ul>
-      </div>
-    </header>
+	<c:import url="../main/header.jsp"/>
 
 	<main>
 		<div class="title_wrap">
