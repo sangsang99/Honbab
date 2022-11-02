@@ -6,39 +6,38 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Test Page</title>
-<style>
-	* {
-	padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-	}
-	header {
-    	width: 100%;
-	}
-	nav{
-		background-color: #f5f5f5;
-	}
-	nav > ul {
-		height: 3rem;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		list-style: none;
-	}
-
-	nav > ul > li {
-		margin: 0 0.5rem;
-		font-size: 1.3rem;
-	}
-	.title{
-		color: black;
-    	background-color: #f5f5f5;
-	}
-</style>
+<title>header</title>
+	<link href="${pageContext.request.contextPath}/resources/css/header.css?ver=4" rel="stylesheet"/> 
+	<!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;700&family=Nunito+Sans:wght@400;600;700&family=Ramabhadra&display=swap"
+      rel="stylesheet"
+    />
 </head>
 <body>
-	<div class="title">
+    <header>
+      <div class="header_wrap">
+        <div class="logo"><span><a href="${contextPath}/index">HONBOB</a></span></div>
+        <ul class="nav">
+          <li><a id="find" href="${contextPath}/find/findAllList">Find</a></li>
+          <li><a href="${contextPath}/challengeAllList">Challenge</a></li>
+          <li><a id="review" href="${contextPath}/review/reviewAllList">Review</a></li>
+          <li><a id="promotion" href="${contextPath}/promotion/promoList">Notice?</a></li>
+          <c:if test="${loginUser == null}">
+          	<li class="kr_menu"><a href="${contextPath }/member/login">로그인</a></li>
+		  	<li class="kr_menu"><a href="${contextPath }/member/register_form">회원가입</a></li>
+		  </c:if>
+		  <c:if test="${loginUser != null}">
+	        <li><a id="logout" href="${contextPath }/member/logout">logout</a></li>
+          	<li class="kr_menu"><a id="mypage" href="${contextPath }/member/info?id=${loginUser}">마이페이지</a></li>
+		  </c:if>
+        </ul>
+      </div>
+    </header>
+
+<%-- 	<div class="title">
 		<div>
 			<h1>HonBab</h1>
 		</div>
@@ -64,7 +63,7 @@
 				</ul>
 			</nav>
 		</div>
-	</header>
+	</header> --%>
 </body>
 </html>
 
