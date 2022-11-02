@@ -18,7 +18,7 @@
     />
   </head>
   <body>
-<!--   수정함 -->
+	<!-- 수정함 -->
     <header>
       <div class="header_wrap">
         <div class="logo"><span><a href="${contextPath}/index">HONBOB</a></span></div>

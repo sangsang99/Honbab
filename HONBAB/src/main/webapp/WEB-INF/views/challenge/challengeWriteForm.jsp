@@ -10,6 +10,7 @@
 <link 
 	href="${pageContext.request.contextPath}/resources/css/challengeWriteForm.css"
 	rel="stylesheet" />
+<!-- 수정함 -->
 <!-- font -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

@@ -14,7 +14,7 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Nunito+Sans:wght@400;600;700&display=swap"
 	rel="stylesheet" />
-	<!--   수정함 -->
+	<!-- 수정함 -->
 <!-- script -->
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
