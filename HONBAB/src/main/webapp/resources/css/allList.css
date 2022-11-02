@@ -1,0 +1,163 @@
+@charset "UTF-8";
+
+*,
+a {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+a:visited {
+  color: black;
+}
+
+/*
+----------------------------------
+    section
+----------------------------------
+*/
+section {
+  width: 1200px;
+  height: 17vh;
+  margin: 0 auto;
+
+  /* background-color: aliceblue; */
+}
+
+.search {
+  text-align: center;
+}
+
+datalist {
+  width: 30px;
+}
+
+#challengeSelect {
+  width: 30px;
+  height: 30px;
+}
+.searchKey {
+  width: 300px;
+  height: 30px;
+}
+
+input {
+  padding: 5px;
+}
+
+input:focus {
+  outline: none;
+}
+
+input[type="submit" i] {
+  width: 100px;
+  appearance: auto;
+  user-select: none;
+  white-space: pre;
+  align-items: flex-start;
+  text-align: right;
+  cursor: default;
+  box-sizing: border-box;
+  color: buttontext;
+  padding: 1px 6px;
+  border-width: 0;
+  border-style: none;
+  border-color: buttonborder;
+  background-color: rgba(255, 255, 255, 0);
+  text-align: center;
+  font-size: 16px;
+  font-weight: 700;
+  font-family: "Nunito Sans", sans-serif;
+  cursor: pointer;
+}
+
+input[type="submit" i]:hover {
+  border: 1px solid rgb(163, 163, 163);
+  border-radius: 5px;
+}
+
+/*
+----------------------------------
+    main
+----------------------------------
+*/
+main {
+  width: 1200px;
+  height: 75vh;
+  margin: 0 auto;
+  /* background-color: rgb(245, 244, 243); */
+}
+
+.index_wrap {
+  width: 100%;
+  padding: 40px 0 10px 0;
+  border-bottom: 2px solid rgb(25, 11, 223);
+  color: rgb(25, 11, 223);
+  font-size: 15px;
+  font-weight: 500;
+  font-family: "Ramabhadra", sans-serif;
+}
+
+.index {
+  width: 1200px;
+  display: inline-block;
+}
+
+li {
+  display: inline-block;
+  text-align: center;
+}
+
+li > span {
+	vertical-align: middle;
+}
+
+.writeNo {
+  width: 60px;
+}
+
+.lv {
+  width: 80px;
+  margin: 0 20px;
+}
+.ch_title {
+  width: 430px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.writer {
+  width: 200px;
+  margin: 0 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.view {
+  width: 80px;
+  float: right;
+}
+.date {
+  width: 150px;
+  margin-left: 20px;
+  float: right;
+}
+
+/*
+----------------------------------
+    content
+----------------------------------
+*/
+
+.content_wrap {
+  width: 100%;
+  height: 6vh;
+  /* background-color: antiquewhite; */
+  padding: 20px 0 15px 0;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: "Noto Sans KR", sans-serif;
+  border-bottom: 1px solid rgb(163, 163, 163);
+}
