@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <title>level write</title>
 <link 
-	href="${pageContext.request.contextPath}/resources/css/challengeWriteForm.css"
+	href="${pageContext.request.contextPath}/resources/css/challengeWriteForm.css?ver=4"
 	rel="stylesheet" />
 <!-- 수정함 -->
 <!-- font -->
@@ -202,4 +202,5 @@
 	</div>
  --%>
 </body>
+
 </html>
