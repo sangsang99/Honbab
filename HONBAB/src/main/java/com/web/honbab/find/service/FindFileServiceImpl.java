@@ -1,5 +1,7 @@
 package com.web.honbab.find.service;
 
+import java.io.File;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Service;
@@ -18,4 +20,11 @@ public class FindFileServiceImpl implements FindFileService{
 		
 		return message;
 	}
+	
+	@Override
+	public void deleteImage(String imageFileName) {
+		File file = new File(IMAGE_REVIEW + "\\" + imageFileName);
+		file.delete();
+	}
+	
 }
