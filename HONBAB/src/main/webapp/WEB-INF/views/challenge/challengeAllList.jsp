@@ -33,16 +33,18 @@ function showPopUp() {
 }
 </script>
 <title>혼밥 레벨</title>
-<link href="${pageContext.request.contextPath}/resources/css/allList.css?ver=4" rel="stylesheet" />
+<link href="${pageContext.request.contextPath}/resources/css/challenge/allList.css?ver=4" rel="stylesheet" />
 </head>
 <!-- <body onload="user_check()"> -->
 <body>
+	<!-- header -->
 	<c:import url="../main/header.jsp"/>
-    <h2>도전 혼밥</h2>
-    <a href="javascript:showPopUp()">혼밥 레벨?</a>
+	
+	<section>
      <form>
         <div class="search">
-          <span>검색어로 검색</span>
+<!--           <span id="keySearch">검색어로 검색</span> -->
+          <div id="searchForm">
           <input list="challengeSelect" name="levelS" id="levelS" />
           <datalist id="challengeSelect" style="width: 50px">
             <option value="레벨 1" label="편의점"></option>
@@ -55,18 +57,20 @@ function showPopUp() {
             <option value="레벨 8" label="고기집, 횟집"></option>
             <option value="레벨 9" label="술집"></option>
           </datalist>
-          <input type="text" class="searchKey" placeholder="검색어를 입력하세요." />
-          <input type="submit" value="검색" name="search" />
+	          <input type="text" class="searchKey" placeholder="검색어를 입력하세요." />
+    	      <input type="submit" value="검색" name="search" />
+          </div>
+    	      <br>
+	    	<a href="javascript:showPopUp()" id="levelGuide">혼밥 레벨?</a>
         </div>
       </form>
+	</section>
     
-    <br />
     <main>
 <!--       <span>검색 결과</span> -->
-
-      <c:if test="${challengeList.size() == 0 }">
-			<h1>등록된 글이 없습니다.</h1>
-		</c:if>
+    <c:if test="${challengeList.size() == 0 }">
+		<h1>등록된 글이 없습니다.</h1>
+	</c:if>
 	<div class="index_wrap">
         <ul class="index">
           <li class="writeNo">
@@ -114,14 +118,18 @@ function showPopUp() {
 	        </ul>
 	      </div>
 		</c:forEach>
-		<a href="${contextPath }/challengeWriteForm">글 쓰기</a>
-		<div>
+	
+		<div id="writebtn">
+			<a href="${contextPath }/challengeWriteForm">글 쓰기</a>
+		</div>
+		<div class="paging">
 			<c:forEach var="num" begin="1" end="${repeat }">
 				<a href="challengeAllList?num=${num}">${num}</a>
 			</c:forEach>
 		</div>
     </main>
 
+	<!-- footer -->
 	<c:import url="../main/footer.jsp"/>
 
 </body>

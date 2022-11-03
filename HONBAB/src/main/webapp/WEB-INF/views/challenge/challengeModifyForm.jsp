@@ -7,6 +7,15 @@
 <head>
 <meta charset="UTF-8">
 <title>혼밥 레벨 도장깨기 글 수정</title>
+<link
+	href="${pageContext.request.contextPath}/resources/css/challenge/writeForm.css?ver=4"
+	rel="stylesheet" />
+<!-- font -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Nunito+Sans:wght@400;600;700&display=swap"
+	rel="stylesheet" />
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
@@ -53,47 +62,114 @@
 </script>
 </head>
 <body>
-	<c:import url="../main/header.jsp"/>
-	
-	<div class="wrap" align="center">
-	<input type="hidden" name="writeNo" value="${challengeData.writeNo }">
-	<input type="hidden" name="originFileName" value="${challengeData.imgName }">
-		<div class="challenge_save modify">
-			<form action="${contextPath }/challengeModify" enctype="multipart/form-data" method="post">
-				<select id="challenge" onchange="challengeLv(this)" name="chLevel">
-					<option selected disabled hidden>레벨 선택</option>
-					<!-- 작성 시 선택했던 레벨 출력 -->
-					<option
-						<c:if test="${challengeData.chLevel == '1' }">selected="selected"</c:if>
-						value="1">레벨 1</option>
-					<option
-						<c:if test="${challengeData.chLevel == '2' }">selected="selected"</c:if>
-						value="2">레벨 2</option>
-					<option
-						<c:if test="${challengeData.chLevel == '3' }">selected="selected"</c:if>
-						value="3">레벨 3</option>
-					<option
-						<c:if test="${challengeData.chLevel == '4' }">selected="selected"</c:if>
-						value="4">레벨 4</option>
-					<option
-						<c:if test="${challengeData.chLevel == '5' }">selected="selected"</c:if>
-						value="5">레벨 5</option>
-					<option
-						<c:if test="${challengeData.chLevel == '6' }">selected="selected"</c:if>
-						value="6">레벨 6</option>
-					<option
-						<c:if test="${challengeData.chLevel == '7' }">selected="selected"</c:if>
-						value="7">레벨 7</option>
-					<option
-						<c:if test="${challengeData.chLevel == '8' }">selected="selected"</c:if>
-						value="8">레벨 8</option>
-					<option
-						<c:if test="${challengeData.chLevel == '9' }">selected="selected"</c:if>
-						value="9">레벨 9</option>
-				</select> 
-				<span id="text"></span>
+	<!-- header -->
+	<c:import url="../main/header.jsp" />
 
-				<p>제목</p>
+	<aside>
+		<div class="aside_wrap">
+			<div class="text">
+				<span>혼자 밥먹기 레벨</span>
+				<div>어디까지 혼자 먹어봤을까...</div>
+				<div>
+					도전할게 없다면 혼자 밥먹기 레벨에 도전해보시길 <br /> Voluptatum, maiores deleniti
+					reiciendis, <br /> at suscipit dolorum, adipisci nam mollitia
+					totam impedit maxime. <br /> Dolorum quaerat nobis doloribus
+					perferendis nisi, ipsum aut ducimus?
+				</div>
+			</div>
+		</div>
+		<div class="honbab">
+			<span>HONBAB</span>
+		</div>
+		<div class="innerfooter"><c:import url="../main/footer.jsp" /></div>
+	</aside>
+
+	<main>
+		<div class="main_wrap">
+			<div class="wrap" align="center">
+				<input type="hidden" name="writeNo"
+					value="${challengeData.writeNo }"> <input type="hidden"
+					name="originFileName" value="${challengeData.imgName }">
+				<div class="challenge_save modify">
+					<form action="${contextPath }/challengeModify"
+						enctype="multipart/form-data" method="post">
+						<select id="challenge" onchange="challengeLv(this)" name="chLevel">
+							<option selected disabled hidden>레벨 선택</option>
+							<!-- 작성 시 선택했던 레벨 출력 -->
+							<option
+								<c:if test="${challengeData.chLevel == '1' }">selected="selected"</c:if>
+								value="1">레벨 1</option>
+							<option
+								<c:if test="${challengeData.chLevel == '2' }">selected="selected"</c:if>
+								value="2">레벨 2</option>
+							<option
+								<c:if test="${challengeData.chLevel == '3' }">selected="selected"</c:if>
+								value="3">레벨 3</option>
+							<option
+								<c:if test="${challengeData.chLevel == '4' }">selected="selected"</c:if>
+								value="4">레벨 4</option>
+							<option
+								<c:if test="${challengeData.chLevel == '5' }">selected="selected"</c:if>
+								value="5">레벨 5</option>
+							<option
+								<c:if test="${challengeData.chLevel == '6' }">selected="selected"</c:if>
+								value="6">레벨 6</option>
+							<option
+								<c:if test="${challengeData.chLevel == '7' }">selected="selected"</c:if>
+								value="7">레벨 7</option>
+							<option
+								<c:if test="${challengeData.chLevel == '8' }">selected="selected"</c:if>
+								value="8">레벨 8</option>
+							<option
+								<c:if test="${challengeData.chLevel == '9' }">selected="selected"</c:if>
+								value="9">레벨 9</option>
+						</select> <span id="text"></span>
+						
+						<ul>
+							<li><span class="index_en">Title</span> <input type="text"
+								name="title" size="50" value="${challengeData.title }"><br>
+							</li>
+							<hr />
+							<div class="line"></div>
+							<li><span class="index_en">Writer</span> <input
+								type="hidden" value="${loginUser}" name="id"> <input
+								type="text" name="nickName" readonly="readonly"
+								value="${challengeData.nickName }" /></li>
+							<hr />
+							<div class="line"></div>
+							<li class="content"><span class="index_kr">내용</span> <textarea
+									maxlength="999" name="content">${challengeData.content }</textarea>
+							</li>
+							<hr />
+							<div class="line"></div>
+
+							<li class="upload_file"><span class="index_kr">사진 첨부</span>
+								<input type="file" name="imgName" onchange="readURL(this)"><br>
+
+								<c:if test="${challengeData.imgName != 'nan'}">
+									<img
+										src="${contextPath }/download?imgName=${challengeData.imgName}"
+										id="preview" width="100px">
+									<br>
+									<br>
+								</c:if> <c:if test="${challengeData.imgName == 'nan'}">
+									<img src="#" id="preview" width="100px">
+									<br>
+									<br>
+								</c:if></li>
+							<hr />
+							<div class="line"></div>
+						</ul>
+						<input type="submit" value="수정"> &nbsp; <input
+							type="button" value="글목록"
+							onclick="location.href='${contextPath}/challengeAllList'">
+					</form>
+				</div>
+			</div>
+		</div>
+	</main>
+
+	<%-- 				<p>제목</p>
 				<input type="text" name="title" size="50" value="${challengeData.title }"><br>
 				<p>내용</p>
 				<textarea rows="10" cols="50" name="content">${challengeData.content }</textarea>
@@ -107,14 +183,11 @@
 					<img src="#" id="preview" width="100px"><br> <br> 
 				</c:if>
 		
-				
-				
 				<input type="submit" value="수정"> &nbsp; 
 				<input type="button" value="글목록" onclick="location.href='${contextPath}/challengeAllList'">
 			</form>
 		</div>
-	</div>
+	</div> --%>
 
-	<c:import url="../main/footer.jsp"/>
 </body>
 </html>
