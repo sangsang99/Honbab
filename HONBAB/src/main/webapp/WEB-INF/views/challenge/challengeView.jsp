@@ -7,8 +7,8 @@
 <head>
 <meta charset="UTF-8">
 <title>level individual view</title>
-<link href="${pageContext.request.contextPath}/resources/css/view.css?ver=4" rel="stylesheet" />
-<!-- font -->
+<link href="${pageContext.request.contextPath}/resources/css/challenge/view.css?ver=4" rel="stylesheet" />
+	<!-- font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -67,8 +67,10 @@
 </script>
 </head>
 <body>
+	<!-- header -->
 	<c:import url="../main/header.jsp"/>
 
+	<!-- body -->
 	<main>
 		<div class="title_wrap">
 			<div class="level">
@@ -77,9 +79,6 @@
 			<div class="title">
 				<div id="t">${challengeData.title }</div>
 			</div>
-			<!-- <div class="writeno">
-          <span>NΘ 12</span>
-        </div> -->
 		</div>
 
 		<div class="line"></div>
@@ -91,14 +90,14 @@
 
 			<div class="like">
 				<c:choose>
-					<c:when test="${like == 0 || like == null}">
-						<button type="button" class="btn like-btn" id="likeBtn">🧡 </button>
+					<c:when test="${defaultLike == 0 || defaultLike == null}">
 						<input type="hidden" id="likeChk" value="${like }">
+						<button type="button" class="btn like-btn" id="likeBtn">🧡 </button>
 					</c:when>
 					
 					<c:when test="${like == 1}">
-						<button type="button" class="btn notLike-btn" id="notLikeBtn">💢</button>
 						<input type="hidden" id="likeChk" value="${like }">
+						<button type="button" class="btn notLike-btn" id="notLikeBtn">💢</button>
 					</c:when>
 				</c:choose>
 				<span>${like}</span>
@@ -135,7 +134,9 @@
 		</c:if>
 	</main>
 
-
+	<!-- footer -->
+	<c:import url="../main/footer.jsp"/>
+	
 <%-- 	<form id="frm">
 		<ul class="ch_title">
 			<li>Title :</li>

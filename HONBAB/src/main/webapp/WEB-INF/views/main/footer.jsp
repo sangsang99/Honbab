@@ -5,24 +5,21 @@
 <head>
 <meta charset="UTF-8">
 <title>default/footer.jsp</title>
-<style type="text/css">
-.footer {
-	background-color: brown;
-	color: white;
-	text-align: center;
-	line-height: 4rem;
-	height: 4rem;
-	width: 100%;
-	position: relative;
-	bottom: 0;
-	clear:both;
-}
-</style>
+	<link href="${pageContext.request.contextPath}/resources/css/footer.css?ver=4" rel="stylesheet"/> 
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;700&family=Nunito+Sans:wght@400;600;700&family=Ramabhadra&display=swap"
+      rel="stylesheet"
+    />
 </head>
 <body>
-	<div class="footer">
-		<hr>
-		<span> Copyright &copy; MyWeb.</span>
-	</div>
+	<footer>
+		<div class="footer_wrap">
+			<span>HONBAB</span><br>
+			<span> Copyright &copy;2022. HONBAB. All Rights Reserved.</span>
+		</div>
+	</footer>
 </body>
 </html>
