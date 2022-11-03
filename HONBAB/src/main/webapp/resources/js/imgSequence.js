@@ -1,8 +1,8 @@
-var imgNum = 1;
-var img = new Image();
-var canvas = document.getElementById('screen');
-var ctx = canvas.getContext('2d');
-var scrollYPos = 0;
+let imgNum = 1;
+let img = new Image();
+let canvas = document.getElementById('screen');
+let ctx = canvas.getContext('2d');
+let scrollYPos = 0;
 
 img.src = "./resources/img/dish3/00.png";
 
