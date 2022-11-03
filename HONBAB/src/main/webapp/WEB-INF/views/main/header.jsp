@@ -31,7 +31,7 @@
 		  </c:if>
 		  <c:if test="${loginUser != null}">
 	        <li><a id="logout" href="${contextPath }/member/logout">logout</a></li>
-          	<li class="kr_menu"><a id="mypage" href="${contextPath }/member/info?id=${loginUser}">마이페이지</a></li>
+          	<li class="kr_menu"><a id="mypage" href="${contextPath }/member/info?id=${loginUser}">mypage</a></li>
 		  </c:if>
         </ul>
       </div>

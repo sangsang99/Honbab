@@ -7,24 +7,23 @@
 <head>
 <meta charset="UTF-8">
 <title>level write</title>
-<link 
-	href="${pageContext.request.contextPath}/resources/css/challengeWriteForm.css?ver=4"
+<link
+	href="${pageContext.request.contextPath}/resources/css/challenge/writeForm.css?ver=4"
 	rel="stylesheet" />
-<!-- 수정함 -->
 <!-- font -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Nunito+Sans:wght@400;600;700&display=swap"
-	rel="stylesheet"
-/>
-<script src="${pageContext.request.contextPath}/resources/js/writeForm.js"></script>
+	rel="stylesheet" />
+<script
+	src="${pageContext.request.contextPath}/resources/js/writeForm.js"></script>
 <script type="text/javascript">
 	function challengeLv(e) {
 		let level = document.getElementById("challenge");
 		let value = level.options[level.selectedIndex].value;
-		<%-- 수정했다 --%>
-		let text;
+<%-- 수정했다 --%>
+	let text;
 		if (value == 1) {
 			text = "편의점에서 먹기 🥡";
 		} else if (value == 2) {
@@ -71,25 +70,9 @@
 </head>
 <!-- <body onload="login_chk()"> -->
 <body>
-	<header>
-		<div class="header_wrap">
-			<!-- a태그 사용해서 색깔이 바뀌는데 이거 css로 없애야 할것 같아요 -->
-			<div class="logo">
-				<span><a href="${contextPath}/index">HONBOB</a></span>
-			</div>
-			<ul class="nav">
-				<li><a id="find" href="${contextPath}/find/findAllList">Find</a></li>
-				<li><a href="${contextPath}/challengeAllList">Challenge</a></li>
-				<li><a id="review" href="${contextPath}/review/reviewAllList">Review</a></li>
-				<li><a id="promotion" href="${contextPath}/promotion/promoList">Notice?</a></li>
-				<li id="logout"><a href="${contextPath }/member/logout">logout</a></li>
-				<li id="logout"><a
-					href="${contextPath }/member/info?id=${loginUser}">마이페이지</a></li>
-				<li><a href="${contextPath }/member/login">로그인(임시)</a></li>
-				<li><a href="${contextPath }/member/register_form">회원가입(임시)</a></li>
-			</ul>
-		</div>
-	</header>
+
+	<!-- footer -->
+	<c:import url="../main/header.jsp" />
 
 	<aside>
 		<div class="aside_wrap">
@@ -107,14 +90,16 @@
 		<div class="honbab">
 			<span>HONBAB</span>
 		</div>
-		<footer>copyright &copy;</footer>
+		<div class="innerfooter">
+			<c:import url="../main/footer.jsp" />
+		</div>
 	</aside>
 
 	<main>
 		<div class="main_wrap">
 			<form class="write_form" action="${contextPath }/challengeSave"
 				enctype="multipart/form-data" method="post">
-				<!-- 셀렉트 css 수정 필수!!!!!!!!!!!!!!!!!!! -->
+				<!-- 셀렉트 태그 css 먹여라 진짜 좋게말할때 해라 -->
 				<select id="challenge" onchange="challengeLv(this)" name="chLevel">
 					<option selected disabled hidden>레벨 선택</option>
 					<option value="1">레벨 1</option>
@@ -126,43 +111,36 @@
 					<option value="7">레벨 7</option>
 					<option value="8">레벨 8</option>
 					<option value="9">레벨 9</option>
-				</select> 
-				<span id="text"></span>
+				</select> <span id="text"></span>
 				<ul>
-					<li>
-              			<span class="index_en">Title</span>
-						<input type="text" placeholder="제목 작성" name="title"  />
+					<li><span class="index_en">Title</span> <input type="text"
+						placeholder="제목 작성" name="title" /></li>
+					<hr />
+					<div class="line"></div>
+					<li><span class="index_en">Writer</span> <input type="hidden"
+						value="${loginUser}" name="id"> <input type="text"
+						name="nickName" readonly="readonly" value="nickName" /> <!-- 임시로 value 닉네임 넣어논 것이니 나중에 로그인 유저 닉네임 받아서 넣을 수 있도록 -->
 					</li>
 					<hr />
 					<div class="line"></div>
-					<li>
-           				<span class="index_en">Writer</span>
-						<input type="hidden" value="${loginUser}" name="id" >
-						<input type="text" name="nickName" readonly="readonly" value="nickName" />
-						<!-- 임시로 value 닉네임 넣어논 것이니 나중에 로그인 유저 닉네임 받아서 넣을 수 있도록 -->
-					</li>
-					<hr />
-					<div class="line"></div>
-					<li class="content">
-	        			<span class="index_kr">내용</span>
-						<textarea maxlength="999" name="content"></textarea>
-					</li>
+					<li class="content"><span class="index_kr">내용</span> <textarea
+							maxlength="999" name="content"></textarea></li>
 					<hr />
 					<div class="line"></div>
 
-					<li class="upload_file">
-						<span class="index_kr">사진 첨부</span>
-						<input type="file" name="imgName" onchange="readURL(this)">
-						<img src="#" id="preview" width="100px">
-					</li>
+					<li class="upload_file"><span class="index_kr">사진 첨부</span> <input
+						type="file" name="imgName" onchange="readURL(this)"> <img
+						src="#" id="preview" width="100px"></li>
 					<hr />
 					<div class="line"></div>
 				</ul>
-				<input type="submit" value="Save" />
-				<input type="button" value="글목록" onclick="location.href='${contextPath}/challengeAllList'">
+				<input type="submit" value="Save" /> <input type="button"
+					value="글목록"
+					onclick="location.href='${contextPath}/challengeAllList'">
 			</form>
 		</div>
 	</main>
+
 
 
 	<%-- <div class="wrap" align="center">
