@@ -8,8 +8,11 @@
 <meta charset="UTF-8">
 <title>관리자 메인페이지</title>
 </head>
+
 <body>
-	버튼눌러서 이후 액션을 알아서 하시면됩니당당당 <br>
+버튼눌러서 이후 액션을 알아서 하시면됩니당당당 <br>
+<a id="admin" href="${contextPath}/admin/adminLogin">관리자로그인</a>	
+<a id="admin" href="${contextPath}/admin/adminBan">관리자삭제</a>	
 정욱<input type="button" value="사용자관리"> <br>
 <a id="admin" href="${contextPath}/admin/boardManagement">게시글관리</a>
 동형 <input type="button" value="게시글관리"> <br>
