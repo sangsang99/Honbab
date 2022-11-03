@@ -19,29 +19,7 @@
   
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script type="text/javascript">
-var imgNum = 1;
-var img = new Image();
-var canvas = document.getElementById('screen');
-var ctx = canvas.getContext('2d');
-var scrollYPos = 0;
-
-img.src = "./resources/img/dish3/00.png";
-
-window.addEventListener('scroll', function(e) {
-    scrollYPos = Math.round(window.scrollY / 20);
-    
-    console.log("scroll y: " + window.scrollY + ", " + scrollYPos);
-    
-    if (scrollYPos == 0) scrollYPos = 0;
-    if (scrollYPos > 59) scrollYPos = 59;
-    // scrollYPos = scrollYPos % 59;
-    player(scrollYPos);
-});
-
-function player(num) {
-    img.src = "./resources/img/dish3/" + num + ".png";
-}
-
+$.getScript( './resources/js/imgSequence.js');
 </script>
   </head>
   
@@ -49,7 +27,7 @@ function player(num) {
         <!--    출처:https://www.youtube.com/watch?v=b9EEKpj7U6k    -->
         <div class="container" >
             <section class="sequence" >
-                <div class="img-sequence" data-parallax='{"y":1700,  "from-scroll":0, "distance":1700, "smoothness":0}'>
+                <div class="img-sequence" data-parallax='{"y":1250,  "from-scroll":0, "distance":1250, "smoothness":0}'>
                     <canvas width="1024" height="768" class="screen" id="screen"></canvas>
                 </div>
             </section>
