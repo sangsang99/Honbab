@@ -94,11 +94,12 @@ function showPopUp() {
         </ul>
       </div>
 		
+		<%-- <c:set var="no" value="${allCount - ((currentPage - 1) * 8)}" /> --%>
 		<c:forEach var="dto" items="${challengeList }" varStatus="status">
 			<div class="content_wrap">
 	        <ul class="index">
 	          <li class="writeNo">
-	            <span>${allCount - ((currentPage-1)*pageLetter + status.index)}</span>
+	            <span>${allCount - ((currentPage-1) * pageLetter + status.index)}</span>
 	          </li>
 	          <li class="lv">
 	            <span>레벨 ${dto.chLevel }</span>
@@ -118,6 +119,7 @@ function showPopUp() {
 	        </ul>
 	      </div>
 		</c:forEach>
+		<%-- <c:set var="no" value="${no -1 }"></c:set> --%>
 	
 		<div id="writebtn">
 			<a href="${contextPath }/challengeWriteForm">글 쓰기</a>
