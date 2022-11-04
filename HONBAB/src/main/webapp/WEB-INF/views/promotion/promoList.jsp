@@ -45,10 +45,39 @@
 			<li class="view"><span>VIEWS</span></li>
 		</ul>
 	</div>
-	<c:if test="${promoList.size() == 0}">
+	
+	<!-- ad설정한것 먼저 -->
+	<c:if test="${promoListAD.size() == 0}">
 			<h1>내용이 없습니다.</h1>
 	</c:if>
 	
+	<c:forEach var="dto" items="${promoListAD }">
+			<div class="content_wrap">
+				<ul class="index">
+					<li class="writeNo"><span>${dto.writeNo }</span></li>
+					<li class="writer"><span>${dto.id }</span></li>
+					<li class="title">
+						<a href="${contextPath }/promotion/contentView?writeNo=${dto.writeNo}">${dto.title}</a>
+					</li>
+					<li class="date"><span>${dto.saveDate}</span></li>
+					<li class="view"><span>${dto.hit }</span></li>
+				</ul>
+			</div>
+	</c:forEach>
+		<div class="index_wrap">
+		<ul class="index">
+			<li class="writeNo"><span>NO</span></li>
+			<li class="writer"><span>WRITER</span></li>
+			<li class="title"><span>TITLE</span></li>
+			<li class="date"><span>DATE</span></li>
+			<li class="view"><span>VIEWS</span></li>
+		</ul>
+	</div>
+	
+	<!-- 작성글 전부-->
+	<c:if test="${promoList.size() == 0}">
+			<h1>내용이 없습니다.</h1>
+	</c:if>
 	<c:forEach var="dto" items="${promoList }">
 			<div class="content_wrap">
 				<ul class="index">
@@ -61,14 +90,14 @@
 					<li class="view"><span>${dto.hit }</span></li>
 				</ul>
 			</div>
-		</c:forEach>
+	</c:forEach>
 		
 		<div id="writebtn">
 			<input type="button" value="글쓰기" onclick="promoWrite()">
 		</div>
 
 
-		<div class="paging">
+		<%-- <div class="paging">
 			<c:if test="${startPage > block }">
 				<a href="promoList?num=${startPage-1}" id="paging">◀</a>
 			</c:if>
@@ -78,7 +107,7 @@
 			<c:if test="${endPage < repeat}">
 				<a href="promoList?num=${endPage + 1}" id="paging">▶</a>
 			</c:if>
-		</div>
+		</div> --%> <!-- 이거 정리안하면 엉뚱한데서 0으로 나옴 -->
 	</main>
 </body>
 </html>

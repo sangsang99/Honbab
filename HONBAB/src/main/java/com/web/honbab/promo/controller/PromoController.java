@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.web.honbab.admin.service.OperService;
 import com.web.honbab.promo.dto.PromoDTO;
 import com.web.honbab.promo.service.PromoFileService;
 import com.web.honbab.promo.service.PromoService;
@@ -35,8 +36,12 @@ public class PromoController {
 	@Autowired
 	private PromoService ps;
 	
+	@Autowired
+	private OperService os;
+	
 	@GetMapping("promoList")
 	public String promoList(Model model, @RequestParam(value="num", required = false, defaultValue ="1") int num) {
+		os.promoList(model, num);
 		ps.promoList(model, num);
 		return "promotion/promoList";
 	}
