@@ -138,10 +138,7 @@ public class OperServiceImpl implements OperService {
 			list.add(dto);
 		}
 
-		for (ADDTO addto : list) {
-			System.out.println(addto.getAdNo());
-			System.out.println(addto.getAdWriteNo());
-		}
+		mapper.beforeDeleteAD();
 		return mapper.setAD(list);
 	}
 

@@ -34,5 +34,7 @@ public interface OperMapper {
 
 	public List<PromoDTO> promoList();
 
+	public int beforeDeleteAD();
+
 
 }
