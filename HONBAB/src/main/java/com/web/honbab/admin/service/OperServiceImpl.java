@@ -144,6 +144,12 @@ public class OperServiceImpl implements OperService {
 		}
 		return mapper.setAD(list);
 	}
+
+	@Override
+	public void promoList(Model model, int num) {
+		model.addAttribute("promoListAD", mapper.promoList()); 
+	}
+	
 	
 	
 }

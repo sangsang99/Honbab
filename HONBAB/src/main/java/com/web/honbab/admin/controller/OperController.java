@@ -40,6 +40,7 @@ public class OperController{
 	public String goNoticeWriteFrom(Model model, @RequestParam(value="num", required = false, defaultValue ="1") int num) {
 		os.viewNoticeList(model);
 		ps.promoList(model, num);
+		os.promoList(model, num);
 		return "admin/operation";
 	}
 	
@@ -114,17 +115,10 @@ public class OperController{
 	@PostMapping(value = "setAD")
 	public String setAD(HttpServletRequest request, Model model, 
 						@RequestParam(value="num", required = false, defaultValue ="1") int num) {
-		
-		
-		String[] adNo = request.getParameterValues("adNo");
-		String[] chk = request.getParameterValues("chk");
-		for (int i = 0; i < adNo.length; i++) {
-			System.out.println(adNo[i]);
-			System.out.println(chk[i]);
-		}
 
 		os.setAD(request);
 		os.viewNoticeList(model);
+		os.promoList(model, num);
 		ps.promoList(model, num);
 		return "admin/operation";
 	}

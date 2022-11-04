@@ -1,5 +1,7 @@
 package com.web.honbab.promo.dto;
 
+import com.web.honbab.admin.dto.ADDTO;
+
 public class PromoDTO {
 	
 	private int writeNo;
@@ -11,6 +13,8 @@ public class PromoDTO {
 	private String id;
 	private String comName;
 	private int star; //원래 reply.dto에 작성 해야 하는거 같은데 인식을 못해서 여기에도 추가함. 문제 생기면 삭제 필요
+	
+	private ADDTO addto;
 	//ADMIN TEST
 	public int getWriteNo() {
 		return writeNo;
@@ -68,7 +72,14 @@ public class PromoDTO {
 	public void setStar(int star) {
 		this.star = star; //문제 발생시 삭제 필요
 	}
+	public ADDTO getAddto() {
+		return addto;
+	}
+	public void setAddto(ADDTO addto) {
+		this.addto = addto;
+	}
 	
+
 	
 	
 	
