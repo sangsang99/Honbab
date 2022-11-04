@@ -7,7 +7,7 @@ import org.springframework.ui.Model;
 
 
 public interface BoardService {
-	
+	//
 	public void findBoard(Model model, int num);
 
 	public String findDelete(int writeNo, HttpServletRequest request);
