@@ -126,7 +126,7 @@ $.getScript( './resources/js/imgSequence.js');
                     </main>
                 </div>
             </section>
-            
+            <!-- 수정ㅋㅋㅋ -->
             <section class="sequence">
 
             </section>

@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath }"/>
 <!DOCTYPE html>
+<!-- 수정ㅋㅋㅋ -->
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
