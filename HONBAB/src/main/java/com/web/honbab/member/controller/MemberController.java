@@ -108,6 +108,9 @@ public class MemberController implements MemberSession{
 		out.println(message);
 	}
 	
-	
+	@RequestMapping("/callback")
+	public String callback() {
+		return "redirect:register_form";
+	}
 
 }
