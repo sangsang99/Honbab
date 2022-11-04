@@ -13,20 +13,20 @@ public class AdminServiceImpl implements AdminService{
 	@Autowired
 	private AdminMapper mapper;
 	
-	@Override
-	public int admin_check(HttpServletRequest request) {
-		AdminDTO dto = mapper.admin_check(request.getParameter("adminId"));
-		if(dto != null) {
-			if(request.getParameter("adminPw").equals(dto.getAdminPw())) {
-				return 0;
-			}
-		}
-		return 1;
-	}
+//	@Override
+//	public int admin_check(HttpServletRequest request) {
+//		AdminDTO dto = mapper.admin_check(request.getParameter("adminId"));
+//		if(dto != null) {
+//			if(request.getParameter("adminPw").equals(dto.getAdminPw())) {
+//				return 0;
+//			}
+//		}
+//		return 1;
+//	}
 	
 	@Override
 	public String generalDelete(String id, HttpServletRequest request) {
-		int result = mapper.delete(id);
+		int result = mapper.generalDelete(id);
 		String msg, url;
 		
 		if(result == 1) {
@@ -41,7 +41,7 @@ public class AdminServiceImpl implements AdminService{
 	
 	@Override
 	public String partnerDelete(String id, HttpServletRequest request) {
-		int result = mapper.delete(id);
+		int result = mapper.partnerDelete(id);
 		String msg, url;
 		
 		if(result == 1) {
@@ -63,6 +63,11 @@ public class AdminServiceImpl implements AdminService{
 		message += "location.href='" + path + url + "';</script>";
 		return message;
 		
+	}
+
+	@Override
+	public void ban(String id) {
+		mapper.ban(id);
 	}
 	
 	

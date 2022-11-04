@@ -8,16 +8,17 @@
 		<result property = "adminPw" column="ADMIN_PW"></result>		
 	</resultMap>	
 	
-	<select id="admin_check" resultMap="admin">
+	<!-- <select id="admin_check" resultMap="admin">
 		select * from ADMIN_LOGIN where id=#{adminId}
-	</select>
+	</select> -->
 	
-	<delete id="general_delete">
-		delete from USER_JOIN where id=#{id}
+	<delete id="ban">
+		delete from USER_JOIN where id = #{id}
 	</delete>
 	
 	<delete id="partner_delete">
-		delete from BUSINESS_JOIN where id=#{id}
+		delete from BUSINESS_JOIN where id = #{id}
 	</delete>	
+	
 	
 </mapper>
