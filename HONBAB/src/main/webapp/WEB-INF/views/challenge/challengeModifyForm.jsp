@@ -74,8 +74,6 @@
 					쉬운 순서대로 편의점에서 밥 먹기, 학생식당에서 밥 먹기, 패스트푸드점에서 밥 먹기, 분식집에서 밥 먹기 등이다. <br>
 					식사 메뉴에 따른 차이라기보다는 혼자 온 손님이 자리를 차지하고 밥을 먹어도 덜 눈치가 보이는 식당 순서라고 보는 게 맞겠다. <br>
 					혼밥 테스트의 난이도는 패밀리 레스토랑과 고깃집에서 절정을 찍는다. <br>
-					고깃집의 경우 2인분 이상 주문해야 식사 가능한 경우가 많고, 왁자지껄하게 여러 사람이 모여 친목을 다지는 장소라는 인식이 강하기 때문이다. <br>
-					하지만 대부분의 식당은 혼자 찾아 식사하기에 큰 무리가 없다.
 					<span>출처: [매일경제] 혼자의 시대, 나는 무엇으로 사는가…혼밥! 혼술! 혼영!</span>
 				</div>
 			</div>
@@ -128,43 +126,44 @@
 						</select> <span id="text"></span>
 						
 						<ul>
-							<li><span class="index_en">Title</span> <input type="text"
-								name="title" size="50" value="${challengeData.title }"><br>
+							<li>
+								<span class="index_en">Title</span> 
+								<input type="text" name="title" size="50" value="${challengeData.title }"><br>
 							</li>
 							<hr />
 							<div class="line"></div>
-							<li><span class="index_en">Writer</span> <input
-								type="hidden" value="${loginUser}" name="id"> <input
-								type="text" name="nickName" readonly="readonly"
-								value="${challengeData.nickName }" /></li>
+							
+							<li>
+								<span class="index_en">Writer</span>
+								<input type="hidden" value="${loginUser}" name="id">
+								<input type="text" name="nickName" readonly="readonly" value="${challengeData.nickName }" />
+							</li>
 							<hr />
 							<div class="line"></div>
-							<li class="content"><span class="index_kr">내용</span> <textarea
-									maxlength="999" name="content">${challengeData.content }</textarea>
+							
+							<li class="content">
+								<span class="index_kr">내용</span>
+								<textarea maxlength="999" name="content">${challengeData.content }</textarea>
 							</li>
 							<hr />
 							<div class="line"></div>
 
-							<li class="upload_file"><span class="index_kr">사진 첨부</span>
+							<li class="upload_file">
+								<span class="index_kr">사진 첨부</span>
 								<input type="file" name="imgName" onchange="readURL(this)"><br>
-
 								<c:if test="${challengeData.imgName != 'nan'}">
-									<img
-										src="${contextPath }/download?imgName=${challengeData.imgName}"
-										id="preview" width="100px">
-									<br>
-									<br>
-								</c:if> <c:if test="${challengeData.imgName == 'nan'}">
+									<img src="${contextPath }/download?imgName=${challengeData.imgName}" id="preview" width="100px">
+								</c:if>
+								 
+								<c:if test="${challengeData.imgName == 'nan'}">
 									<img src="#" id="preview" width="100px">
-									<br>
-									<br>
-								</c:if></li>
+								</c:if>
+							</li>
 							<hr />
 							<div class="line"></div>
 						</ul>
-						<input type="submit" value="수정"> &nbsp; <input
-							type="button" value="글목록"
-							onclick="location.href='${contextPath}/challengeAllList'">
+						<input type="submit" value="수정">
+						<input type="button" value="글목록" onclick="location.href='${contextPath}/challengeAllList'">
 					</form>
 				</div>
 			</div>

@@ -72,7 +72,7 @@
 	<main>
 		<div class="title_wrap">
 			<div class="level">
-				<span>${findContent.writeNo}.</span> <span id="slash"></span>
+				<span>${findContent.writeNo}.</span>
 			</div>
 			<div class="title">
 				<div id="t">${findContent.title }</div>
