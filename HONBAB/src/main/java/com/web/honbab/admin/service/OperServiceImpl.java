@@ -1,5 +1,7 @@
 package com.web.honbab.admin.service;
 
+
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -8,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
+import com.web.honbab.admin.dto.ADDTO;
 import com.web.honbab.admin.dto.NoticeBoardDTO;
 import com.web.honbab.admin.dto.NoticeRepDTO;
 import com.web.honbab.mybatis.admin.OperMapper;
@@ -120,5 +123,27 @@ public class OperServiceImpl implements OperService {
 	public List<ReviewRepDTO> getRepList(int writeNo) {
 		return mapper.getRepList(writeNo);
 	}
+
+
+	@Override
+	public int setAD(HttpServletRequest request) {
+		
+		String[] adNo = request.getParameterValues("adNo");
+		String[] adWriteNo = request.getParameterValues("chk");	
+		List<ADDTO> list = new ArrayList<ADDTO>();
+		for (int i = 0; i < adNo.length; i++) {
+			ADDTO dto = new ADDTO();
+			dto.setAdNo(Integer.parseInt(adNo[i]));
+			dto.setAdWriteNo(Integer.parseInt(adWriteNo[i]));
+			list.add(dto);
+		}
+
+		for (ADDTO addto : list) {
+			System.out.println(addto.getAdNo());
+			System.out.println(addto.getAdWriteNo());
+		}
+		return mapper.setAD(list);
+	}
+	
 	
 }

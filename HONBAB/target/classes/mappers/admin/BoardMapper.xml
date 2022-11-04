@@ -4,9 +4,64 @@
   
   <mapper namespace="com.web.honbab.mybatis.board.BoardMapper">
   
-	 <!-- <resultMap type="com.web.honbab.find.dto.FindDTO" id="find">
-	 <id property="writeNo" column="WRITE_NO" />
-	 <result property="content" column="CONTENT" />
-	 </resultMap> -->
+	 <resultMap type="com.web.honbab.find.dto.FindDTO" id="find">
+		<id property="writeNo" column="WRITE_NO" />
+		<result property="nickName" column="NICKNAME" />
+		<result property="title" column="TITLE" />
+		<result property="content" column="CONTENT" />
+		<result property="writeDate" column="WRITE_DATE" />
+		<result property="age" column="AGE" />
+		<result property="region" column="REGION" />
+		<result property="gen" column="GENDER" />
+		<result property="views" column="VIEWS" />
+		<result property="id" column="ID" />
+	</resultMap>
+	
+	<select id="findAllList" resultMap="find">
+		SELECT B.* FROM
+		(SELECT ROWNUM RN, A.* FROM
+		(SELECT * FROM FIND_BOARD ORDER BY WRITE_NO DESC) A) B 
+		WHERE RN BETWEEN #{s} and #{e}
+	</select>
 	 
+	   <select id="selectFindCount" resultType="Integer">
+		SELECT COUNT(*) FROM FIND_BOARD
+		</select>
+		
+		<select id="findContent" resultMap="find">
+		SELECT * FROM FIND_BOARD
+		WHERE WRITE_NO=#{writeNo}
+	</select>
+	
+	<update id="upViews">
+		UPDATE FIND_BOARD SET VIEWS=VIEWS+1 WHERE WRITE_NO=#{writeNo}
+	</update>
+	
+	<delete id="findDelete">
+		DELETE FROM FIND_BOARD WHERE
+		WRITE_NO=#{writeNo}	
+	</delete>
+	
+	<update id="upViews1">
+		UPDATE REVIEW_BOARD SET VIEWS=VIEWS+1 WHERE WRITE_NO=#{writeNo}
+	</update>
+	
+	<delete id="reviewDelete">
+		DELETE FROM REVIEW_BOARD WHERE WRITE_NO=#{writeNo}
+	</delete>
+	
+	<delete id="delete">
+		delete from PROMO_BOARD
+		where write_no=#{writeNo}
+	</delete>
+	
+	<update id="upView2">
+		UPDATE LEVEL_CHALLENGE SET VIEWS=VIEWS +1 WHERE
+		WRITE_NO=#{writeNo}
+	</update>
+	
+	<delete id="challengeDelete">
+		DELETE FROM LEVEL_CHALLENGE WHERE
+		WRITE_NO=#{writeNo}
+	</delete>
 </mapper>

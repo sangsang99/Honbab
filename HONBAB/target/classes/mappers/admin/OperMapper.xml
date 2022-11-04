@@ -18,7 +18,7 @@
 		<result property="reDate" column="RE_DATE" />
 		<result property="reNick" column="RE_NICK" />
 	</resultMap>
-	
+
 	<insert id="noticeWrite">
 		INSERT INTO ADMIN_NOTICE_BOARD(WRITE_NO, TITLE, CONTENT)
 		VALUES(ADMIN_NOTICE_BOARD_SEQ.NEXTVAL, #{title}, #{content})
@@ -52,4 +52,37 @@
 		WHERE WRITE_GROUP = #{writeNo}
 		ORDER BY RE_DATE DESC
 	</select>
+	
+	<resultMap type="com.web.honbab.admin.dto.ADDTO" id="AD">
+		<id property="adNo" column="AD_NO" />
+		<result property="adWriteNo" column="AD_WRITE_NO" />
+	</resultMap>
+		
+	<insert id="setAD" parameterType="java.util.List">
+		INSERT ALL 
+    <foreach collection="list" item="adList" index="index" separator=" " close="SELECT * FROM DUAL">
+  		INTO AD_MANAGE VALUES (#{adList.adNo}, #{adList.adWriteNo})
+    </foreach>
+	</insert>
+	
+	<!-- 
+	<resultMap type="com.web.honbab.promo.dto.PromoDTO" id="promotion">
+		<id property="writeNo" column="write_no" />
+		<result property="title" column="title" />
+		<result property="content" column="content" />
+		<result property="saveDate" column="save_date" />
+		<result property="hit" column="hit" />
+		<result property="imageFileName" column="image_file_name" />
+		<result property="id" column="id" />		
+		<result property="comName" column="comName" />	
+		<collection property="ADDTO" resultMap="AD"></collection>	
+	</resultMap>
+	
+	<select id="">
+		SELECT * FROM PROMO_BOARD PB, AD_MANAGE AD
+		WHERE PB.WRITE_NO = AD.AD_WRITE_NO
+		ORDER BY AD_NO; 
+	</select>
+	 -->
+	
 </mapper>

@@ -5,6 +5,9 @@ package com.web.honbab.mybatis.admin;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
+import com.web.honbab.admin.dto.ADDTO;
 import com.web.honbab.admin.dto.NoticeBoardDTO;
 import com.web.honbab.admin.dto.NoticeRepDTO;
 import com.web.honbab.review.dto.ReviewRepDTO;
@@ -25,6 +28,8 @@ public interface OperMapper {
 	public void addReply(NoticeRepDTO dto);
 
 	public List<ReviewRepDTO> getRepList(int writeNo);
+
+	public int setAD(List<ADDTO> list);
 
 
 }

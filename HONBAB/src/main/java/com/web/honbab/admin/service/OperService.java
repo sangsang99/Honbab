@@ -20,4 +20,6 @@ public interface OperService {
 	
 	public void addReply(NoticeRepDTO dto);
 	public List<ReviewRepDTO> getRepList(int writeNo);
+	
+	public int setAD(HttpServletRequest request);
 }

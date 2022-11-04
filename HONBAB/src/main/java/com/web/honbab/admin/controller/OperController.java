@@ -110,4 +110,22 @@ public class OperController{
 	public List<ReviewRepDTO> replyData(@PathVariable int writeNo){
 		return os.getRepList(writeNo);
 	}
+	
+	@PostMapping(value = "setAD")
+	public String setAD(HttpServletRequest request, Model model, 
+						@RequestParam(value="num", required = false, defaultValue ="1") int num) {
+		
+		
+		String[] adNo = request.getParameterValues("adNo");
+		String[] chk = request.getParameterValues("chk");
+		for (int i = 0; i < adNo.length; i++) {
+			System.out.println(adNo[i]);
+			System.out.println(chk[i]);
+		}
+
+		os.setAD(request);
+		os.viewNoticeList(model);
+		ps.promoList(model, num);
+		return "admin/operation";
+	}
 }
