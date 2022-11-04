@@ -29,9 +29,19 @@
 </script>
 </head>
 <body>
-	
-
-	<h3>홍보 순서관리</h3>
+	<h3>현재 설정된 홍보 리스트</h3>
+	<table border="1">
+		<c:forEach var="promoAD" items="${promoListAD}">
+		<tr>
+			<td>글번호 </td><td>${promoAD.writeNo }</td>
+			<td>제목</td><td><a href="${contextPath}/promotion/contentView?writeNo=${promoAD.writeNo } ">${promoAD.title}</a></td>
+			<td>작성일 </td><td>${promoAD.saveDate }</td>
+			<td>홍보번호</td><td>${promoAD.addto.adNo}</td>
+		</tr> 
+		</c:forEach>
+		
+	</table>
+	<h3>홍보 순서관리 : insert문으로 구현한건데, update문으로 update해야함</h3>
 	<form name="setAD" id="setAD" action="${contextPath}/oper/setAD" method="post">	
 		<table border="1">
 			<c:forEach var="promo" items="${promoList}">

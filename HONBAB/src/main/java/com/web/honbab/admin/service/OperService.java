@@ -22,4 +22,5 @@ public interface OperService {
 	public List<ReviewRepDTO> getRepList(int writeNo);
 	
 	public int setAD(HttpServletRequest request);
+	public void promoList(Model model, int num);
 }

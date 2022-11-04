@@ -10,6 +10,7 @@ import org.apache.ibatis.annotations.Param;
 import com.web.honbab.admin.dto.ADDTO;
 import com.web.honbab.admin.dto.NoticeBoardDTO;
 import com.web.honbab.admin.dto.NoticeRepDTO;
+import com.web.honbab.promo.dto.PromoDTO;
 import com.web.honbab.review.dto.ReviewRepDTO;
 
 
@@ -30,6 +31,8 @@ public interface OperMapper {
 	public List<ReviewRepDTO> getRepList(int writeNo);
 
 	public int setAD(List<ADDTO> list);
+
+	public List<PromoDTO> promoList();
 
 
 }

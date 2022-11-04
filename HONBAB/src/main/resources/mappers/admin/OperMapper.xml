@@ -65,8 +65,8 @@
     </foreach>
 	</insert>
 	
-	<!-- 
-	<resultMap type="com.web.honbab.promo.dto.PromoDTO" id="promotion">
+	
+	<resultMap type="com.web.honbab.promo.dto.PromoDTO" id="promotionAD">
 		<id property="writeNo" column="write_no" />
 		<result property="title" column="title" />
 		<result property="content" column="content" />
@@ -75,14 +75,14 @@
 		<result property="imageFileName" column="image_file_name" />
 		<result property="id" column="id" />		
 		<result property="comName" column="comName" />	
-		<collection property="ADDTO" resultMap="AD"></collection>	
+		<collection property="addto" resultMap="AD"/>
 	</resultMap>
 	
-	<select id="">
+	<select id="promoList" resultMap="promotionAD">
 		SELECT * FROM PROMO_BOARD PB, AD_MANAGE AD
 		WHERE PB.WRITE_NO = AD.AD_WRITE_NO
-		ORDER BY AD_NO; 
+		ORDER BY AD.AD_NO
 	</select>
-	 -->
+	 
 	
 </mapper>
