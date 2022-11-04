@@ -14,6 +14,7 @@
 		<property name="jdbcUrl" value="jdbc:oracle:thin:@DBHONBAB_high?TNS_ADMIN=D:/HONBAB/CLOUDWALLET/Wallet_DBHONBAB"/>
 		<property name="username" value="ADMIN"/>
 		<property name="password" value="Honbabhasijo1"/>
+		<property name="maximumPoolSize" value="30"></property>
 	</bean>	
 	
 	<!-- 히카리 데이터소스 빈 등록 -->
