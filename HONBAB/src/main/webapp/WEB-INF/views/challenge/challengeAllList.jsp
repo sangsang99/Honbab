@@ -6,6 +6,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<title>혼밥 레벨</title>
+<link href="${pageContext.request.contextPath}/resources/css/challenge/allList.css?ver=4" rel="stylesheet" />
+<!-- font -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Nunito+Sans:wght@400;600;700&display=swap"
+	rel="stylesheet" />
 <script type="text/javascript">
 function user_check() {
 	if(true){ //로그인 되어있는지 확인
@@ -32,8 +40,6 @@ function showPopUp() {
 	window.open(url, "hello popup", windowStatus);
 }
 </script>
-<title>혼밥 레벨</title>
-<link href="${pageContext.request.contextPath}/resources/css/challenge/allList.css?ver=4" rel="stylesheet" />
 </head>
 <!-- <body onload="user_check()"> -->
 <body>
