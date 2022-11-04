@@ -7,6 +7,12 @@
 <head>
 <meta charset="UTF-8">
 <title>영업 관리(우상)</title>
+
+<style type="text/css">
+div {width: 700px; height: 200px; overflow: auto; }
+div table { white-space: nowrap; border-collapse: collapse; }
+</style>
+
 <script type="text/javascript">
 	function count_chk(obj) {
 		var adNo = document.getElementsByName("adNo");
@@ -29,7 +35,7 @@
 </script>
 </head>
 <body>
-	<h3>현재 설정된 홍보 리스트</h3>
+	<h3>현재 설정된 홍보 리스트 : 이거는 검증 후 고객용 게시판에 적용</h3>
 	<table border="1">
 		<c:forEach var="promoAD" items="${promoListAD}">
 		<tr>
@@ -38,11 +44,17 @@
 			<td>작성일 </td><td>${promoAD.saveDate }</td>
 			<td>홍보번호</td><td>${promoAD.addto.adNo}</td>
 		</tr> 
-		</c:forEach>
-		
+		</c:forEach>	
 	</table>
-	<h3>홍보 순서관리 : insert문으로 구현한건데, update문으로 update해야함</h3>
+	
+	<h3>홍보 순서관리</h3>
+	<p>광고글은 5개, 체크박스도 5개까지만 가능하도록 했으며</p>
+	<p>체크박스를 눌러야  number(1~5) 설정 가능, 1번이 1순위</p>
+	<p>체크된 wrtieno와 홍보순서로 설정한 number값 post로 전송후 INSERT 쿼리문 반복실행 하는 원리</p>
+	<p>제약조건 만족하기 위해서 체크박스 1개라도 다시 설정하면 기존 순위는 삭제됨</p>
+		
 	<form name="setAD" id="setAD" action="${contextPath}/oper/setAD" method="post">	
+		<div>
 		<table border="1">
 			<c:forEach var="promo" items="${promoList}">
 			<tr>
@@ -55,17 +67,11 @@
 			</tr> 
 			</c:forEach>
 		</table>
+		</div>
 		<input type="submit" value="설정완료">
 	</form>
 	<br>
-	
-	<p>광고글은 5개</p>
-	<p>체크박스는 5개까지 가능하도록 했으며</p>
-	<p>체크박스를 눌러야  number 설정 가능</p>
-	<p>체크된 wrtieno와 홍보순서로 설정한 number값 post로 전송</p>
-
 		
-
 	<h3>2. 게시글 리스트 최신순 정렬(제목누르면 들어가짐)</h3>
 	<table border="1">
 	<c:forEach var="notice" items="${noticeList}">

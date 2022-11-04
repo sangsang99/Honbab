@@ -115,7 +115,6 @@ public class OperController{
 	@PostMapping(value = "setAD")
 	public String setAD(HttpServletRequest request, Model model, 
 						@RequestParam(value="num", required = false, defaultValue ="1") int num) {
-
 		os.setAD(request);
 		os.viewNoticeList(model);
 		os.promoList(model, num);
