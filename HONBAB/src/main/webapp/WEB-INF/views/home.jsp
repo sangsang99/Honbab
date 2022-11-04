@@ -7,6 +7,12 @@
   <head>
     <meta charset="UTF-8" />
     <title>write form</title>
+    <!-- font -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Nunito+Sans:wght@400;600;700&display=swap"
+	rel="stylesheet" />
 
 <script src="${pageContext.request.contextPath}/resources/js/jquery-2.1.3.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/jquery.easing.1.3.js"></script>
@@ -16,7 +22,6 @@
 <script src="${pageContext.request.contextPath}/resources/js/imgSequence?ver=1.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/writeForm.js"></script>
 <link href="${pageContext.request.contextPath}/resources/css/writeForm.css?ver=1" rel="stylesheet"/> 
-  
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script type="text/javascript">
 $.getScript( './resources/js/imgSequence.js');
@@ -28,7 +33,7 @@ $.getScript( './resources/js/imgSequence.js');
         <div class="container" >
             <section class="sequence" >
                 <div class="img-sequence" data-parallax='{"y":1250,  "from-scroll":0, "distance":1250, "smoothness":0}'>
-                    <canvas width="1024" height="768" class="screen" id="screen"></canvas>
+                    <a href="${contextPath}/index"><canvas width="1024" height="768" class="screen" id="screen"></canvas></a>
                 </div>
             </section>
 
@@ -79,59 +84,41 @@ $.getScript( './resources/js/imgSequence.js');
                         <form class="join_form">
                         <ul>
                             <li>
-                            <span>Id*</span>
+                            <span class="index">Id*</span>
                             <input type="text" placeholder="아이디를 입력하세요." />
                             </li>
-                            <hr />
-                            <div class="line"></div>
                             <li>
-                            <span>Password*</span>
+                            <span class="index">Password*</span>
                             <input type="password" placeholder="비밀번호를 입력하세요." />
                             </li>
-                            <hr />
-                            <div class="line"></div>
                             <li>
-                            <span>Password*</span>
+                            <span class="index">Password*</span>
                             <input type="password" placeholder="비밀번호를 재입력하세요." />
                             </li>
-                            <hr />
-                            <div class="line"></div>
                             <li>
-                            <span>Name*</span>
+                            <span class="index">Name*</span>
                             <input type="text" placeholder="이름을 입력하세요." />
                             </li>
-                            <hr />
-                            <div class="line"></div>
                             <li>
-                            <span>NickName*</span>
+                            <span class="index">NickName*</span>
                             <input type="text" placeholder="별칭? 별명? 뭐든 입력하세요." />
                             </li>
-                            <hr />
-                            <div class="line"></div>
                             <li>
-                            <span>Tel*</span>
+                            <span class="index">Tel*</span>
                             <input type="tel" placeholder="전화번호를 입력하세요." />
                             </li>
-                            <hr />
-                            <div class="line"></div>
                             <li>
-                            <span>Region*</span>
+                            <span class="index">Region*</span>
                             <input type="text" placeholder="거주 지역을 선택해주세요." />
                             </li>
-                            <hr />
-                            <div class="line"></div>
                             <li>
-                            <span>Gender*</span>
+                            <span class="index">Gender*</span>
                             <input type="text" placeholder="성별을 선택해주세요." />
                             </li>
-                            <hr />
-                            <div class="line"></div>
                             <li>
-                            <span>Email*</span>
+                            <span class="index">Email*</span>
                             <input type="email" placeholder="이메일 주소를 입력해주세요." />
                             </li>
-                            <hr />
-                            <div class="line"></div>
                         </ul>
                         <input type="submit" value="Join" />
                         </form>
@@ -139,27 +126,27 @@ $.getScript( './resources/js/imgSequence.js');
                     </main>
                 </div>
             </section>
+            
             <section class="sequence">
-                <!-- 사장님 회원가입 이메일 제출 -->
+
+            </section>
+
+								 <!-- 사장님 회원가입 이메일 제출 -->
                 <div class="biz_join_view">
                     <div class="biz_join_form">
                     <ul>
                         <li>
-                        <span>사장님이신가요?</span>
+                        	<span>사장님이신가요?</span>
                         </li>
                         <li>
-                        <input type="text" placeholder="회원가입문의 이메일 제출" />
+                        	<input type="text" placeholder="회원가입문의 이메일 제출" />
                         </li>
                         <li>
-                        <input type="text" value="제출" />
+                       		<input id="biz_submit" type="submit" value="제출" />
                         </li>
                     </ul>
                     </div>
                 </div>
-                <footer>footer 임</footer>
-            </section>
-
-            
             
         </div>
 
@@ -172,5 +159,7 @@ $.getScript( './resources/js/imgSequence.js');
         <script src="script/p5.min.js"></script>
         <script src="script/sketch.js"></script>
         <script src="script/imgSequence.js"></script>
+        <script src="script/writeForm.js"></script>
     </body>
+
 </html>

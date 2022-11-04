@@ -21,7 +21,7 @@ public class MainContriller {
 	public String defalutMain(Model model) {
 		rs.reviewBestList(model);
 		fs.findBestList(model);
-		return "index";
+		return "home";
 	}
 	@RequestMapping(value = "index")
 	public String defalutMainIndex(Model model) {
