@@ -30,7 +30,7 @@
 			}
 		})		
  	}
- 	
+ 	////
  	function reply_data() {
 		$.ajax({
 			url: "replyData/"+${findContent.writeNo},

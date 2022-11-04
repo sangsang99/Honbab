@@ -15,7 +15,7 @@
 		<result property="gen" column="GENDER" />
 		<result property="views" column="VIEWS" />
 		<result property="id" column="ID" />
-	</resultMap>
+	</resultMap> 
 	
 	<select id="findAllList" resultMap="find">
 		SELECT B.* FROM
