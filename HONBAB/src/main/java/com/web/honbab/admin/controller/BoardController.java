@@ -18,7 +18,7 @@ import com.web.honbab.challenge.service.ChallengeService;
 import com.web.honbab.find.service.FindService;
 import com.web.honbab.promo.service.PromoService;
 import com.web.honbab.review.service.ReviewService;
-//
+////
 @Controller
 @RequestMapping("admin")
 public class BoardController {

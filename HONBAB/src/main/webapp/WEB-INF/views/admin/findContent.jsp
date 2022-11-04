@@ -30,7 +30,7 @@
 			}
 		})		
  	}
- 	////
+ 	
  	function reply_data() {
 		$.ajax({
 			url: "replyData/"+${findContent.writeNo},
@@ -45,17 +45,30 @@
 									date.getDate()+"일"
 					html += "<hr><div align='left'><b>아이디 : </b>" + redata.reNick + "님/";
 					html += "<b>작성일</b> : " + writeDate + "<br>" 
-					html += "<b>내용</b> : " + redata.reComent + "</div>" 
+					html += "<b>내용</b> : " + redata.reComent + "</div>"
+					html += "<input type= button value=삭제 onclick=del('${findContent.writeNo}')>"
+					
 				})
 				$("#reply").html(html)
+				reply_data1();
 			}, error:function(){
 				alert("데이터를 가져올 수 없습니다.");
 			}
 		})
 	} 
+ 	
+ 	function del(writeGroup){
+ 		var chk = confirm("정말 삭제하실껀가요?");
+ 		if(chk){
+ 			location.href='delete1?writeGroup='+writeGroup;
+ 		}
+ 	}
+
+ 	
+ 	
 </script>
 </head>
-<body>
+<body onload="reply_data()">
 	<table border="1">
 		<tr>
 			<th>글번호</th><td>${findContent.writeNo}</td>
@@ -98,15 +111,12 @@
 	<!-- 해당글에 답변이 있으면 노출 -->
 	</div>
 	<hr>
-	<c:if test="${true}">  <!-- 로그인되어있으면 노출 -->
-	<form id="form">
-		<input type="hidden" name="writeNo" value="${findContent.writeNo}">	
-		<b>작성자 : ${findContent.nickName}</b><br>
-		<b>내용</b>
-		<textarea id="coment" name="coment" rows="5" cols="30"></textarea><br>
-		<button type="button" onclick="rep()" > 답글 달기 </button>&nbsp;
+	  <!-- 로그인되어있으면 노출 -->
+	<form id="form" name="form">
+		<input type="hidden" name="writeNo" value="${findContent.writeNo}">
+		<input type="hidden" name="id" value="${findContent.id}">	
 	</form>	
-	</c:if>
+
 	<c:import url="../main/footer.jsp"/>
 </body>
 </html>
