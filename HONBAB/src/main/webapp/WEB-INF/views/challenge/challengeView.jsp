@@ -114,7 +114,6 @@
 					<img src="${contextPath}/download?imgName=${challengeData.imgName }" width="400px" style="float: right" />
 				</div>
 			</c:if>
-
 		</div>
 		<div class="empty"></div>
 

@@ -1,12 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<c:set var="contextPath" value="${pageContext.request.contextPath }"/>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="contextPath" value="${pageContext.request.contextPath }" />
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>reviewContent</title>
+<link
+	href="${pageContext.request.contextPath}/resources/css/challenge/view.css?ver=4"
+	rel="stylesheet" />
+<!-- font -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+	href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;700&family=Nunito+Sans:wght@400;600;700&family=Ramabhadra&display=swap"
+	rel="stylesheet" />
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
  	//Ajax??
@@ -78,69 +87,122 @@
 </head>
 <body onload="reply_data()">
 
-	<c:import url="../main/header.jsp"/>
+	<c:import url="../main/header.jsp" />
 	<!-- write -->
-	<table border="1">
+
+	<main>
+		<div class="title_wrap">
+			<div class="level">
+				<span>${reviewContent.writeNo}.</span>
+			</div>
+			<div class="title">
+				<div id="t">${reviewContent.title}</div>
+			</div>
+		</div>
+
+		<div class="line"></div>
+
+		<div class="writer_wrap">
+			<span class="writer">by. ${reviewContent.nickname}</span> 
+			<span class="date">${reviewContent.writeDate}</span> 
+			<span class="view">${reviewContent.views}</span>
+
+			<div class="like">
+				<a
+					href="${contextPath}/review/reviewLike?writeNo=${reviewContent.writeNo}"
+					onclick="isLogin()">좋아요♥</a> <span class="age">${reviewContent.likes}</span>
+			</div>
+	
+			<c:if test="${reviewContent.imgName == 'None'}">
+				<div id="imgx">
+					<span>Θ</span>
+				</div>
+			</c:if>
+	
+			<c:if test="${reviewContent.imgName != 'None'}">
+				<img src="${contextPath }/review/download?imageFileName=${reviewContent.imgName}" width="400px" style="float: right" />
+			</c:if>
+		</div>
+
+		<div class="empty"></div>
+
+		<div class="content_wrap">
+			<div class="text">${reviewContent.content}</div>
+		</div>
+
+		<!-- buttons -->
+		<input type="button" value="목록 돌아가기" onclick="location.href='${contextPath}/review/reviewAllList'">
+		<c:if test="${loginUser == reviewContent.id}">
+			<!-- 로그인되어있고 , reviewContent.uNickname 과 일치하면 노출-->
+			<input type="button" value="수정하기" id="modify_btn" onclick="location.href='${contextPath}/review/review_modify_form?writeNo=${reviewContent.writeNo}'"> 
+			<input type="button" value="삭제하기" id="delete_btn" onclick="location.href='${contextPath}/review/review_delete?writeNo=${reviewContent.writeNo}&imageFileName=${reviewContent.imgName}'">
+		</c:if>
+	</main>
+
+	<%-- <table border="1">
 		<tr>
-			<th>글번호</th><td>${reviewContent.writeNo}</td>
+			<th>글번호</th>
+			<td>${reviewContent.writeNo}</td>
 		</tr>
 		<tr>
-			<th>글쓴이</th><td>${reviewContent.nickname}</td>
+			<th>글쓴이</th>
+			<td>${reviewContent.nickname}</td>
 		</tr>
 		<tr>
-			<th>제목</th><td>${reviewContent.title}</td>
+			<th>제목</th>
+			<td>${reviewContent.title}</td>
 		</tr>
 		<tr>
-			<th>내용</th><td>${reviewContent.content}</td>
+			<th>내용</th>
+			<td>${reviewContent.content}</td>
 		</tr>
 		<tr>
 			<th>이미지</th>
-			<td>
-			<c:if test="${reviewContent.imgName == 'None'}">
-				<b>이미지가 없습니다..</b>
-			</c:if>
-			<c:if test="${reviewContent.imgName != 'None'}">
-				<img src="${contextPath }/review/download?imageFileName=${reviewContent.imgName}" width="200px" height="200px">		
-			</c:if>
-			</td>
+			<td><c:if test="${reviewContent.imgName == 'None'}">
+					<b>이미지가 없습니다..</b>
+				</c:if> <c:if test="${reviewContent.imgName != 'None'}">
+					<img
+						src="${contextPath }/review/download?imageFileName=${reviewContent.imgName}"
+						width="200px" height="200px">
+				</c:if></td>
 		</tr>
 		<tr>
-			<th>작성일</th><td>${reviewContent.writeDate}</td>
+			<th>작성일</th>
+			<td>${reviewContent.writeDate}</td>
 		</tr>
 		<tr>
-			<th>조회수</th><td>${reviewContent.views}</td>
+			<th>조회수</th>
+			<td>${reviewContent.views}</td>
 		</tr>
 		<tr>
-			<th>추천수</th><td>${reviewContent.likes}</td>
+			<th>추천수</th>
+			<td>${reviewContent.likes}</td>
 		</tr>
-	</table>
-	
-	<!-- buttons -->
-	<input type="button" value="목록 돌아가기" onclick="location.href='${contextPath}/review/reviewAllList'"> &nbsp;
-	<c:if test="${loginUser == reviewContent.id}"> <!-- 로그인되어있고 , reviewContent.uNickname 과 일치하면 노출-->
-		<input type="button" value="수정하기" onclick="location.href='${contextPath}/review/review_modify_form?writeNo=${reviewContent.writeNo}'"> &nbsp;
-		<input type="button" value="삭제하기" onclick="location.href='${contextPath}/review/review_delete?writeNo=${reviewContent.writeNo}&imageFileName=${reviewContent.imgName}'">
-	</c:if>
-	<a href="${contextPath}/review/reviewLike?writeNo=${reviewContent.writeNo}" onclick="isLogin()">좋아요♥</a>
-	
+	</table> --%>
+
+
 	<!-- reply -->
 	<h2>답글페이지</h2>
-	
+
 	<div id="reply">
-	<!-- 해당글에 답변이 있으면 노출 -->
+		<!-- 해당글에 답변이 있으면 노출 -->
 	</div>
 	<hr>
-	<c:if test="${loginUser != null}">  <!-- 로그인되어있으면 노출 -->
-	<form id="form" name="form">
-		<input type="hidden" name="writeNo" value="${reviewContent.writeNo}">	
-		<input type="hidden" name="id" value="${reviewContent.id}">	
-		<b>작성자 : ${reviewContent.nickname}</b><br>
-		<b>내용</b> <b id="notice">10글자 이상 작성해야합니다.</b>
-		<textarea id="coment" name="coment" rows="5" cols="30"></textarea><br>
-		<button type="button" onclick="rep()" > 답글 달기 </button>&nbsp;
-	</form>	
+	<c:if test="${loginUser != null}">
+		<!-- 로그인되어있으면 노출 -->
+		<form id="form" name="form">
+			<input type="hidden" name="writeNo" value="${reviewContent.writeNo}">
+			<input type="hidden" name="id" value="${reviewContent.id}"> <b>작성자
+				: ${reviewContent.nickname}</b><br> <b>내용</b> <b id="notice">10글자
+				이상 작성해야합니다.</b>
+			<textarea id="coment" name="coment" rows="5" cols="30"></textarea>
+			<br>
+			<button type="button" onclick="rep()">답글 달기</button>
+			&nbsp;
+		</form>
 	</c:if>
-	<c:import url="../main/footer.jsp"/>
+
+	<c:import url="../main/footer.jsp" />
 
 </body>
 </html>

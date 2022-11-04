@@ -54,6 +54,7 @@ aside {
   width: 350px;
   padding-left: 100px;
   margin-top: 70px;
+ 	font-size: 10px;
 }
 
 .honbab {
@@ -230,6 +231,11 @@ input[type="button" i]:hover {
 
 .innerfooter {
 	float: left;
+}
+
+input[type="file" i] {
+	font-size: 14px;
+  border-radius: 5px;
 
 }
 
