@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath }"/>
 <!DOCTYPE html>
+<!-- 수정ㅋㅋㅋ -->
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -18,8 +19,9 @@
     />
   </head>
   <body>
-	<!-- 수정함 -->
-    <header>
+  <!-- header -->
+	<c:import url="main/header.jsp"/>
+<%--     <header>
       <div class="header_wrap">
         <div class="logo"><span><a href="${contextPath}/index">HONBOB</a></span></div>
         <ul class="nav">
@@ -33,7 +35,7 @@
 		  <li><a href="${contextPath }/member/register_form">회원가입(임시)</a></li>
         </ul>
       </div>
-    </header>
+    </header> --%>
 
     <main>
       <div class="main_wrap">
@@ -89,10 +91,8 @@
     </article>
     <div class="empty"></div>
     <div class="last_line"></div>
-    <footer>
-      <div class="footer_wrap">
-        <span>copyright &copy; 2022</span>
-      </div>
-    </footer>
+
+		<!-- footer -->
+		<c:import url="main/footer.jsp"/>
   </body>
 </html>

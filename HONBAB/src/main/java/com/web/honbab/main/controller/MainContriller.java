@@ -17,11 +17,12 @@ public class MainContriller {
 	private FindService fs;
 	
 	//"http://localhost:8080/honbab/" 으로 (firstView) 들어가면 나오는 것 
+	// 접시페이지
 	@RequestMapping(value = "/")
 	public String defalutMain(Model model) {
 		rs.reviewBestList(model);
 		fs.findBestList(model);
-		return "index";
+		return "home";
 	}
 	@RequestMapping(value = "index")
 	public String defalutMainIndex(Model model) {

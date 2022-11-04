@@ -4,117 +4,119 @@
 	border: 0;
 	font-size: 100%;
 	vertical-align: baseline;
+	list-style: none;
 }
 
 html, body {
-    height: 100%;
-    scroll-snap-type: y mandatory;
-    -ms-overflow-style: none;
+	height: 100%;
+	scroll-snap-type: y mandatory;
+	-ms-overflow-style: none;
 }
 
 ::-webkit-scrollbar {
-    display: none;
+	display: none;
 }
 
 .container {
-    height: 33rem;
+	height: 33rem;
 }
 
 .sequence {
-    margin-top: 8rem;
-    height: 33rem;
-
+	margin-top: 8rem;
+	height: 33rem;
 }
-.img-sequence{
-    width: 100%;
-    text-align:center;
- }
- 
+
+.img-sequence {
+	width: 100%;
+	text-align: center;
+}
+
 canvas {
-    display: inline;
- }
+	display: inline;
+}
 
- .titlehonbab {
+.titlehonbab {
 	font-size: 15em;
-    width: 100%;
-    height: 7em;
-    line-height: 7em;
-    display: block;
-    text-align: center;
- }
+	width: 100%;
+	height: 7em;
+	line-height: 7em;
+	display: block;
+	text-align: center;
+}
 
- 
 /* ----- 로그인 회원가입 선택 ----- */
 .login_join_view {
-    width: 100%;
-    height: 100vh;
-    /* background-color: aliceblue; */
-  }
-  
-  /* ------- login_join_view ------- */
-  .login_join_view {
-    width: 100%;
-    height: 100vh;
-  }
-  .login_join {
-    width: 700px;
-    margin: 400px auto 0 auto;
-    text-align: center;
-  }
-  .login_join a {
-    font-size: 30px;
-    font-weight: 700;
-    margin: 0 100px;
-    vertical-align: middle;
-  }
-  /* ------- 회원가입 보이는 ------- */
-  .join_view {
-    width: 100%;
-    height: 100vh;
-  }
-  
-  /* aside */
-  aside {
-    position: relative;
-    width: 35%;
-    height: 100vh;
-    /* background-color: aliceblue; */
-    float: left;
-  }
-  
-  .text {
-    width: 350px;
-    padding-left: 100px;
-    margin-top: 100px;
-  }
-  
-  .honbab {
-    width: 350px;
-    padding-left: 100px;
-    font-size: 45px;
-    font-weight: 800;
-  }
-  
-  input[type="submit" i] {
-    font-size: 20px;
-    font-weight: 500;
-    appearance: auto;
-    user-select: none;
-    white-space: pre;
-    align-items: flex-start;
-    text-align: right;
-    cursor: default;
-    box-sizing: border-box;
-    background-color: white;
-    color: buttontext;
-    padding: 1px 6px;
-    border-width: 0;
-    border-style: none;
-    border-color: buttonborder;
-    border-image: initial;
-  }
-  
-  /* .down_img {
+	width: 100%;
+	height: 100vh;
+/* 	background-color: aliceblue */
+}
+
+.login_join {
+	width: 700px;
+	margin: 400px auto 0 auto;
+	text-align: center;
+	font-weight: 600;
+	font-family: "Ramabhadra", sans-serif;
+}
+
+.login_join a {
+	font-size: 30px;
+	font-weight: 700;
+	margin: 0 100px;
+	vertical-align: middle;
+}
+/* ------- 회원가입 보이는 ------- */
+.join_view {
+	width: 100%;
+	height: 100vh;
+}
+
+/*
+----------------------------------
+    aside
+----------------------------------
+*/
+aside {
+	position: relative;
+	width: 35%;
+	height: 100vh;
+	/* background-color: aliceblue; */
+	float: left;
+}
+
+.text {
+	width: 350px;
+	padding-left: 100px;
+	margin-top: 500px;
+}
+
+.honbab {
+	width: 350px;
+	padding-left: 100px;
+	font-size: 45px;
+	font-weight: 800;
+}
+
+input[type="submit" i] {
+	font-size: 20px;
+	font-weight: 500;
+	appearance: auto;
+	user-select: none;
+	white-space: pre;
+	align-items: flex-start;
+	text-align: right;
+	cursor: default;
+	box-sizing: border-box;
+	background-color: white;
+	color: buttontext;
+	padding: 1px 6px;
+	border-width: 0;
+	border-style: none;
+	border-color: buttonborder;
+	border-image: initial;
+}
+
+/* .down_img {
     width: 40px;
     height: auto;
     margin: 0 auto;
@@ -125,72 +127,75 @@ canvas {
     width: 40px;
     height: auto;
   } */
-  
-  /* main */
-  main {
-    width: 65%;
-    height: 100vh;
-    float: right;
-    /* background-color: aquamarine; */
-  }
-  
-  .join_form_wrap {
-    width: 650px;
-    margin: 0 auto;
-    margin-top: 100px;
-  }
-  
-  .line {
-    margin-bottom: 20px;
-    width: 100px;
-    height: 1px;
-    color: rgb(163, 163, 163);
-  }
-  
-  li {
-    height: 30px;
-  }
-  
-  li > span {
-    width: 200px;
-  }
-  
-  input {
-    width: 500px;
-    height: 30px;
-    float: right;
-    border: none;
-  }
-  
-  input:focus {
-    outline: none;
-  }
-  
-  span,
-  input {
-    vertical-align: middle;
-  }
-  
-  /* ----- 사장님 회원가입 ----- */
-  .biz_join_view {
-    width: 100%;
-    height: 30vh;
-    /* background-color: antiquewhite; */
-  }
-  
-  .biz_join_form {
-    width: 1000px;
-    padding-top: 80px;
-  }
-  .biz_join_form > li {
-    width: 300px;
-  }
-  .biz_join_form > li {
-    display: inline-block;
-  }
-  
-  /* ----- footer ----- */
-  footer {
-    width: 100%;
-    height: 8vh;
-  }
+
+/*
+----------------------------------
+    main 0
+----------------------------------
+*/
+main {
+	width: 65%;
+	height: 100vh;
+	float: right;
+/* 	background-color: aquamarine; */
+}
+
+.join_form_wrap {
+	width: 650px;
+	margin: 0 auto;
+	margin-top: 500px;
+}
+
+.line {
+	margin-bottom: 20px;
+	width: 100px;
+	height: 1px;
+	color: rgb(163, 163, 163);
+}
+
+.join_form > ul  li {
+	height: 50px;
+	border-bottom: 1px solid rgb(200, 200, 200);
+
+}
+
+.index {
+	width: 200px;
+	font-weight: 400;
+	font-family: "Ramabhadra", sans-serif;
+}
+
+input {
+	width: 500px;
+	height: 30px;
+	float: right;
+	border: none;
+	background-color: rgba(200, 200, 200, 0);
+		font-family: "Noto Sans KR", sans-serif;
+}
+
+input:focus {
+	outline: none;
+}
+
+span, input {
+	vertical-align: middle;
+}
+
+/* ----- 사장님 회원가입 ----- */
+.biz_join_view {
+	width: 100%;
+	height: 30vh;
+/*  background-color: antiquewhite; */
+}
+
+.biz_join_form {
+	width: 1000px;
+	padding-top: 80px;
+	margin: 0 auto;
+}
+
+.biz_join_form>li {
+	display: inline-block;
+	width: 300px;
+}
