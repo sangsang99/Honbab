@@ -31,8 +31,12 @@ public interface ReviewMapper {
 
 	public void reviewLike(int writeNo);
 
-	public List<ReviewDTO> searchForTitle(@Param("keyword") String keyword);
+	public List<ReviewDTO> searchForTitle(@Param("keyword") String keyword, @Param("s") int startEnd, @Param("e") int startEnd2);
 
-	public List<ReviewDTO> searchForNick(@Param("keyword") String keyword);
+	public List<ReviewDTO> searchForNick(@Param("keyword") String keyword, @Param("s") int startEnd, @Param("e") int startEnd2);
+
+	public int selectReviewCountForTitle(@Param("keyword") String keyword);
+
+	public int selectReviewCountForNick(@Param("keyword") String keyword);
 
 }

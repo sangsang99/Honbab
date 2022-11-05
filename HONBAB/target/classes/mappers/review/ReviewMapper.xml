@@ -88,12 +88,29 @@
 		WHERE WRITE_NO=#{writeNo}
 	</update>
 
+	<select id="selectReviewCountForTitle" resultType="Integer">
+		SELECT COUNT(*) FROM REVIEW_BOARD WHERE TITLE like '%'||#{keyword}||'%' 
+	</select>
+
+	<select id="selectReviewCountForNick" resultType="Integer">
+		SELECT COUNT(*) FROM REVIEW_BOARD WHERE NICKNAME like '%'||#{keyword}||'%' 
+	</select>
+
 	<select id="searchForTitle" resultMap="review">
-		SELECT * FROM REVIEW_BOARD WHERE TITLE like '%'||#{keyword}||'%' ORDER BY WRITE_DATE DESC
+		SELECT B.* FROM
+		(SELECT ROWNUM RN, A.* FROM
+		(SELECT * FROM REVIEW_BOARD WHERE TITLE like '%'||#{keyword}||'%' ORDER BY WRITE_DATE DESC) A) B 
+		WHERE RN BETWEEN #{s} AND #{e}
 	</select>
 	
 	<select id="searchForNick" resultMap="review">
-		SELECT * FROM REVIEW_BOARD WHERE NICKNAME like '%'||#{keyword}||'%' ORDER BY WRITE_DATE DESC
+		SELECT B.* FROM
+		(SELECT ROWNUM RN, A.* FROM
+		(SELECT * FROM REVIEW_BOARD WHERE NICKNAME like '%'||#{keyword}||'%' ORDER BY WRITE_DATE DESC) A) B 
+		WHERE RN BETWEEN #{s} AND #{e}
 	</select>
+	
+	
+	
 	
 </mapper>

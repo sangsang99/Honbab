@@ -30,13 +30,14 @@ import com.web.honbab.review.dto.ReviewRepDTO;
 import com.web.honbab.review.service.ReviewFileService;
 import com.web.honbab.review.service.ReviewService;
 import com.web.honbab.session.name.MemberSession;
+import com.web.honbab.session.search.SearchSession;
 
 /**
  * Handles requests for the application home page.
  */
 @Controller
 @RequestMapping("review")
-public class ReviewController implements MemberSession{
+public class ReviewController implements MemberSession, SearchSession{
 	
 	@Autowired
 	private ReviewService rs;
@@ -44,7 +45,10 @@ public class ReviewController implements MemberSession{
 
 	@RequestMapping(value = "reviewAllList")
 	public String reviewAllList(Model model, 
-								@RequestParam(value = "num", required = false, defaultValue = "1") int num) {
+								@RequestParam(value = "num", required = false, defaultValue = "1") int num,
+								HttpSession session) {
+		session.removeAttribute(SEARCHOPTION);
+		session.removeAttribute(SEARCHVALUE);
 		rs.reviewAllList(model, num);
 		return "review/reviewAllList";
 	}
@@ -131,12 +135,23 @@ public class ReviewController implements MemberSession{
 		return "redirect:reviewContent?writeNo=" + writeNo;
 	}
 	
+	@GetMapping(value= "search")
+	public String searchList(Model model,
+			@RequestParam(value = "num", required = false, defaultValue = "1") int num,
+			HttpSession session) throws IOException{
+		rs.searchReview(model, num);
+		return "review/reviewAllList";
+	}
+	
 	@PostMapping(value = "search") // 
-	public String searchList(MultipartHttpServletRequest mul, Model model) throws IOException{
-		System.out.println("text : " + mul.getParameter("text"));
-		System.out.println("option : " + mul.getParameter("option"));
-		rs.searchReview(mul, model);
-		
+	public String searchList(MultipartHttpServletRequest mul, Model model,
+			@RequestParam(value = "num", required = false, defaultValue = "1") int num,
+			HttpSession session) throws IOException{
+		session.removeAttribute(SEARCHOPTION);
+		session.removeAttribute(SEARCHVALUE);
+		session.setAttribute(SEARCHOPTION, mul.getParameter("option"));
+		session.setAttribute(SEARCHVALUE, mul.getParameter("text"));
+		rs.searchReview(model, num);
 		return "review/reviewAllList";
 	}
 }

@@ -107,19 +107,36 @@
 		<div id="writebtn">
 			<input type="button" value="글쓰기" onclick="reviewWirte()">
 		</div>
-
 		<!--  페이징  -->
-		<div class="paging">
-			<c:if test="${startPage > block }">
-				<a href="reviewAllList?num=${startPage-1}" id="paging">◀</a>
-			</c:if>
-			<c:forEach var="num" begin="${startPage}" end="${endPage }">
-				<a href="reviewAllList?num=${num }">${num }</a>
-			</c:forEach>
-			<c:if test="${endPage < repeat}">
-				<a href="reviewAllList?num=${endPage + 1}" id="paging">▶</a>
-			</c:if>
-		</div>
+		<c:if test="${!isSearchPage}">
+			<div class="paging">
+				<c:if test="${startPage > block }">
+					<a href="reviewAllList?num=${startPage-1}" id="paging">◀</a>
+				</c:if>
+				<c:forEach var="num" begin="${startPage}" end="${endPage }">
+					<a href="reviewAllList?num=${num }">${num }</a>
+				</c:forEach>
+				<c:if test="${endPage < repeat}">
+					<a href="reviewAllList?num=${endPage + 1}" id="paging">▶</a>
+				</c:if>
+			</div>
+		</c:if>
+		<c:if test="${isSearchPage}">
+			<div class="paging">
+				<c:if test="${startPage > block }">
+					<a href="search?num=${startPage-1}" id="paging">◀</a>
+				</c:if>
+				<c:forEach var="num" begin="${startPage}" end="${endPage }">
+					<a href="search?num=${num }">${num }</a>
+				</c:forEach>
+				<c:if test="${endPage < repeat}">
+					<a href="search?num=${endPage + 1}" id="paging">▶</a>
+				</c:if>
+			</div>
+		</c:if>
+		
+	
+		
 	</main>
 
 	<!-- footer -->

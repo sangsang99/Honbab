@@ -32,7 +32,7 @@ public interface ReviewService {
 
 	public void reviewLike(int writeNo);
 
-	public void searchReview(MultipartHttpServletRequest mul, Model model);
+	public void searchReview(Model model, int num);
 
 
 
