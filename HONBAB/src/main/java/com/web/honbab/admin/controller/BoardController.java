@@ -2,6 +2,7 @@ package com.web.honbab.admin.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -10,11 +11,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.web.honbab.admin.service.BoardService;
 import com.web.honbab.challenge.service.ChallengeService;
+import com.web.honbab.find.dto.FindRepDTO;
 import com.web.honbab.find.service.FindService;
 import com.web.honbab.promo.service.PromoService;
 import com.web.honbab.review.service.ReviewService;
@@ -149,4 +153,9 @@ public class BoardController {
 		out.println(message);
 	}
 	
+	@GetMapping(value = "replyData/{writeNo}", produces = "application/json; charset=utf-8")
+	@ResponseBody
+	public List<FindRepDTO> replyData(@PathVariable int writeNo){
+		return fs.getRepList(writeNo);
+	}
 }

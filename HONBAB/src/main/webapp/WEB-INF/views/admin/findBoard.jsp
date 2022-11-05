@@ -20,7 +20,7 @@
 		location.href="upViews?writeNo=" + writeNo;
 	}
 	
-	 /* $(function(){
+	 $(function(){
 		var chkObj = document.getElementsByName("RowCheck");
 		var rowCnt = chkObj.length;
 		
@@ -39,7 +39,7 @@
 			}
 		});
 	});
-	function deleteValue(){
+	/*function deleteValue(){
 		var url = "delete"; 	// Controller로 보내는 URL
 		var valueArr = new Array();
 		var list = $("input[name='RowCheck']");
@@ -72,7 +72,7 @@
 					}
 			});
 		}
-	}  */
+	} */
 	
 </script>
 </head>
