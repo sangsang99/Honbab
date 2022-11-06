@@ -18,45 +18,25 @@
 <!-- script -->
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
-	$('#likeBtn').click(function() {
-		likeUpdate();
-	});
-
-	function likeUpdate() {
-		let root = getContextPath();
-		likeurl = "/likeUpdate", likeWriteNo = $('#likeWriteNo').val(),
-		/* likeId = $('#likeId').val(),
-		likeNickName = $('#likeNickName').val(), */
-		count = $('#like').val(), data = {
-			"likeWriteNo" : likeWriteNo,
-			/* "likeId" : likeId,
-			"likeNickName" : likeNickName */
-			"count" : count
-		};
-
-		$.ajax({
-			url : root + likeurl,
-			type : 'POST',
-			contentType : 'application/json',
-			data : JSON.stringify(data),
-			success : function(result) {
-				console.log("수정" + result.result);
-				if (count == 1) {
-					console.log("좋아요 취소");
-					$('#notLikeBtn').attr('class', 'btn like-btn');
-					$('#likeBtn').attr('class', 'btn notLike-btn');
-				} else if (count == 0 || count == null) {
-					console.log("좋아요!");
-					$('#like').val(1);
-					$('#like').val(0);
-				}
-			},
-			error : function(result) {
-				console.log("에러" + result.result)
+function like() {
+	var user = '${loginUser}';	
+	var heart = '${challengeData.likes }';
+	
+	if(user != '') { //로그인 되어있는지 확인
+		if(heart != 0){ 
+			alert("다시 안좋아짐")
+			heart = heart - 1;
+		} else {
+			alert("좋음")
+			heart = heart + 1;
 			}
+	} else {
+		alert("로그인 후  가능합니다.")
+		
+	}
+	console.log(heart);
+}
 
-		});
-	};
 
 	function getContextPath() {
 		var hostIndex = location.href.indexOf(location.host)
@@ -70,7 +50,6 @@
 	<!-- header -->
 	<c:import url="../main/header.jsp"/>
 
-	<!-- body -->
 	<main>
 		<div class="title_wrap">
 			<div class="level">
@@ -85,27 +64,36 @@
 
 		<div class="writer_wrap">
 			<!-- <div class="wri_date"> -->
-			<span class="writer">by. ${challengeData.nickName }</span> <span class="date">${challengeData.saveDate }</span>
+			<span class="writer">by. ${challengeData.nickName }</span>
+			<span class="date">${challengeData.saveDate }</span>
 			<!-- </div> -->
 
 			<div class="like">
-				<c:choose>
-					<c:when test="${defaultLike == 0 || defaultLike == null}">
-						<input type="hidden" id="likeChk" value="${like }">
-						<button type="button" class="btn like-btn" id="likeBtn">🧡 </button>
-					</c:when>
-					
-					<c:when test="${like == 1}">
-						<input type="hidden" id="likeChk" value="${like }">
-						<button type="button" class="btn notLike-btn" id="notLikeBtn">💢</button>
-					</c:when>
-				</c:choose>
-				<span>${like}</span>
+				<input type="hidden" id="likeChk" value="${challengeData.likes }">
+<!-- 				<button type="button" class="btn like-btn" id="likeBtn"> -->
+				<a class="text-dark heart" style="text-decoration-line: none;" onclick="like();">
+					<img id="heart" src="${contextPath}/resources/img/heart.svg">
+					<c:out value="${challengeData.likes}"/> 
+				</a>
+<!-- 				</button> -->
+<%-- 				<span>${challengeData.likes}</span> --%>
 			</div>
+		<%-- 				
+			<c:choose>
+				<c:when test="${defaultLike == 0 || defaultLike == null}">
+			</c:when>
+					
+				<c:when test="${like == 1}">
+					<input type="hidden" id="likeChk" value=w"${like }">
+					<button type="button" class="btn notLike-btn" id="notLikeBtn">💢</button>
+				</c:when>
+			</c:choose> 
+		--%>
 
 			<c:if test="${challengeData.imgName == 'nan'}">
 				<div id="imgx">
-					<span>Θ</span>
+					Θ
+<!-- 					<span>Θ</span> -->
 				</div>
 			</c:if>
 			
@@ -127,7 +115,7 @@
 		<input type="button" value="글목록" onclick="location.href='${contextPath}/challengeAllList'">
 		<c:if test="${challengeData.id == loginUser }">
 			<input type="button" value="글수정" id="modify_btn" 
-				onclick="location.href='${contextPath}/challengeModifyForm?writeNo=${challengeData.writeNo }'">
+				onclick="location.href='${contextPath}/challengeModifyForm?writeNo=${challengeData.writeNo }'" style="margin-left: 10px;">
 			<input type="button" value="글삭제" id="delete_btn" 
 				onclick="location.href='${contextPath}/challengeDelete?writeNo=${challengeData.writeNo }&imgName${challengeData.imgName }'">
 		</c:if>

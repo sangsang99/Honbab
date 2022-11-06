@@ -70,9 +70,66 @@
 	</select>
 	
 	<update id="upView">
-		UPDATE LEVEL_CHALLENGE SET VIEWS=VIEWS +1 WHERE
-		WRITE_NO=#{writeNo}
+		UPDATE LEVEL_CHALLENGE SET 
+		VIEWS=VIEWS +1 
+		WHERE WRITE_NO=#{writeNo}
 	</update>
+	
+	
+	<!-- 검색 -->
+	<select id="searchLevelOne" resultMap="challenge">
+		SELECT * FROM LEVEL_CHALLENGE 
+		WHERE CH_LEVEL=1 like '%'||#{keyword}||'%' 
+		ORDER BY WRITE_NO DESC
+	</select>
+
+	<select id="searchLevelTwo" resultMap="challenge">
+		SELECT * FROM LEVEL_CHALLENGE 
+		WHERE CH_LEVEL=2 like '%'||#{keyword}||'%' 
+		ORDER BY WRITE_NO DESC
+	</select>
+
+	<select id="searchLevelThree" resultMap="challenge">
+		SELECT * FROM LEVEL_CHALLENGE 
+		WHERE CH_LEVEL=3 like '%'||#{keyword}||'%' 
+		ORDER BY WRITE_NO DESC
+	</select>
+
+	<select id="searchLevelFour" resultMap="challenge">
+		SELECT * FROM LEVEL_CHALLENGE 
+		WHERE CH_LEVEL=4 like '%'||#{keyword}||'%' 
+		ORDER BY WRITE_NO DESC
+	</select>
+
+	<select id="searchLevelFive" resultMap="challenge">
+		SELECT * FROM LEVEL_CHALLENGE 
+		WHERE CH_LEVEL=5 like '%'||#{keyword}||'%' 
+		ORDER BY WRITE_NO DESC
+	</select>
+
+	<select id="searchLevelSix" resultMap="challenge">
+		SELECT * FROM LEVEL_CHALLENGE 
+		WHERE CH_LEVEL=6 like '%'||#{keyword}||'%' 
+		ORDER BY WRITE_NO DESC
+	</select>
+
+	<select id="searchLevelSeven" resultMap="challenge">
+		SELECT * FROM LEVEL_CHALLENGE 
+		WHERE CH_LEVEL=7 like '%'||#{keyword}||'%' 
+		ORDER BY WRITE_NO DESC
+	</select>
+
+	<select id="searchLevelEight" resultMap="challenge">
+		SELECT * FROM LEVEL_CHALLENGE 
+		WHERE CH_LEVEL=8 like '%'||#{keyword}||'%' 
+		ORDER BY WRITE_NO DESC
+	</select>
+
+	<select id="searchLevelNine" resultMap="challenge">
+		SELECT * FROM LEVEL_CHALLENGE 
+		WHERE CH_LEVEL=9 like '%'||#{keyword}||'%' 
+		ORDER BY WRITE_NO DESC
+	</select>
 	
 	<!-- 
 	CREATE TABLE LEVEL_CHALLENGE_LIKE (
@@ -84,19 +141,19 @@
 	);
 	-->
 	
-	<resultMap type="com.web.honbab.challenge.dto.ChallengeLikeDTO" id="ChLike">
+<!-- 	<resultMap type="com.web.honbab.challenge.dto.ChallengeLikeDTO" id="ChLike">
 		<id property="likeNo" column="LIKE_NO" />
 		<result property="likeWriteNo" column="LIKE_WRITE_NO" />
 		<result property="likeId" column="LIKE_ID" />
 		<result property="likeNickName" column="LIKE_NICKNAME" />
-	</resultMap>
+	</resultMap> 
 	
 	<select id="likeCount" resultType="Integer">
 		SELECT COUNT(LIKE_NO) FROM 
 		LEVEL_CHALLENGE_LIKE 
 		WHERE LIKE_WRITE_NO=#{likeWriteNo}
-		<!-- WHERE 
-		LIKE_WRITE_NO=#{likeWriteNo}, LIKE_ID=#{likeId}, LIKE_NICKNAME=#{likeNickName}  -->
+		WHERE 
+		LIKE_WRITE_NO=#{likeWriteNo}, LIKE_ID=#{likeId}, LIKE_NICKNAME=#{likeNickName} 
 	</select>
 	
 	<insert id="likeIn">
@@ -108,14 +165,14 @@
 	<select id="likeInfo" resultType="Integer">
 		SELECT LIKE_NO FROM LEVEL_CHALLENGE_LIKE
 		WHERE LIKE_WRITE_NO=#{likeWriteNo}
-		<!-- , LIKE_ID=#{likeId}, LIKE_NICKNAME=#{likeNickName} -->
+		, LIKE_ID=#{likeId}, LIKE_NICKNAME=#{likeNickName}
 	</select>
 	
 	<update id="likeUpdate" >
 		UPDATE LEVEL_CHALLENGE_LIKE
 		SET <include refid="cal"></include>
 		WHERE LIKE_WRITE_NO=#{likeWriteNo}
-		<!-- , LIKE_ID=#{likeId}, LIKE_NICKNAME=#{likeNickName} -->
+		, LIKE_ID=#{likeId}, LIKE_NICKNAME=#{likeNickName}
 	</update>
 	
 	<sql id="cal">
@@ -125,6 +182,8 @@
 		<if test="count == 0">
 			LIKE_NO = LIKE_NO + 1
 		</if>
-	</sql>
+	</sql> -->
+	
+	
 
 </mapper>

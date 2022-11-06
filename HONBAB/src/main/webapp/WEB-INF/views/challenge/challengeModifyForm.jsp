@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <title>혼밥 레벨 도장깨기 글 수정</title>
 <link
-	href="${pageContext.request.contextPath}/resources/css/challenge/writeForm.css?ver=4"
+	href="${pageContext.request.contextPath}/resources/css/challenge/modify.css?ver=4"
 	rel="stylesheet" />
 <!-- font -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -16,7 +16,6 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Nunito+Sans:wght@400;600;700&display=swap"
 	rel="stylesheet" />
-
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
 	// 레벨 선택시 선택창 옆 텍스트 출력
@@ -93,7 +92,7 @@
 				<div class="challenge_save modify">
 					<form action="${contextPath }/challengeModify"
 						enctype="multipart/form-data" method="post">
-						<select id="challenge" onchange="challengeLv(this)" name="chLevel">
+						<%-- <select id="challenge" onchange="challengeLv(this)" name="chLevel">
 							<option selected disabled hidden>레벨 선택</option>
 							<!-- 작성 시 선택했던 레벨 출력 -->
 							<option
@@ -123,9 +122,16 @@
 							<option
 								<c:if test="${challengeData.chLevel == '9' }">selected="selected"</c:if>
 								value="9">레벨 9</option>
-						</select> <span id="text"></span>
+						</select> <span id="text"></span> --%>
 						
 						<ul>
+							<li>
+								<span class="index_en">Level</span> 
+								<input type="text" name="level" size="50" value="${challengeData.chLevel }"><span id="text"></span><br>
+								
+							</li>
+							<hr />
+							<div class="line"></div>
 							<li>
 								<span class="index_en">Title</span> 
 								<input type="text" name="title" size="50" value="${challengeData.title }"><br>

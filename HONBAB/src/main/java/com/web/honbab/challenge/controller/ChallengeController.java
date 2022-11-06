@@ -5,8 +5,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.HashMap;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,18 +15,17 @@ import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import com.web.honbab.challenge.dto.ChallengeLikeDTO;
 import com.web.honbab.challenge.service.ChallengeFileService;
-import com.web.honbab.challenge.service.ChallengeLikeService;
 import com.web.honbab.challenge.service.ChallengeService;
+import com.web.honbab.session.name.MemberSession;
+
 
 @Controller
-public class ChallengeController {
+public class ChallengeController implements MemberSession {
 	
 	@Autowired
 	ChallengeService cs;
@@ -54,7 +51,7 @@ public class ChallengeController {
 		return "challenge/challengeView";
 	}
 	
-	@GetMapping("challengeAllList")
+	@RequestMapping(value= "challengeAllList")
 	public String challengeAllList(Model model, @RequestParam(value="num", required=false, defaultValue="1")int num) {
 		cs.challengeAllList(model, num);
 		
@@ -102,42 +99,19 @@ public class ChallengeController {
 		return "challenge/challengePop";
 	}
 	
-	@Autowired
-	ChallengeLikeService cls;
 	
-	@PostMapping("/likeUpdate")
-	public Map<String, String> likeUpdate(@RequestBody ChallengeLikeDTO dto) {
-		Map<String, String> like = new HashMap<String, String>();
+	// 검색
+	@PostMapping(value = "challengeSearch")
+	public String challengeSearch(MultipartHttpServletRequest mul, Model model) throws IOException {
+		cs.challengeSearch(mul, model);
+		System.out.println("level : " + mul.getParameter("level"));
+		System.out.println("keyword : " + mul.getParameter("keyword"));
 		
-		try {
-			cls.likeUpdate(dto);
-			like.put("result", "success");
-		} catch (Exception e) {
-			e.printStackTrace();
-			like.put("result", "fail");
-		}
-		return like;
+		return "challenge/challengeAllList";
 	}
 	
-	/*
-	public void likeCount(int likeWriteNo, String likeId, String likeNickName, Model model) {
-		ChallengeLikeDTO dto = new ChallengeLikeDTO();
-		dto.setLikeWriteNo(likeWriteNo);
-		dto.setLikeId(likeId);
-		dto.setLikeNickName(likeNickName);
-		
-		int defaultLike = 0;
-		int likeChk = cls.likeCount(dto);
-		
-		if(likeChk == 0) {
-			cls.likeIn(dto);
-		} else if(likeChk == 1) {
-			defaultLike = cls.likeInfo(dto);
-		}
-		model.addAttribute("like", defaultLike);
-		
-	}
-	*/
+	
+	
 	
 
 }
