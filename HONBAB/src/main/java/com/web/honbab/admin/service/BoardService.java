@@ -5,9 +5,11 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.ui.Model;
 
+import com.web.honbab.find.dto.FindRepDTO;
+
 
 public interface BoardService {
-	//////
+	
 	public void findBoard(Model model, int num);
 
 	public String findDelete(int writeNo, HttpServletRequest request);
@@ -26,5 +28,9 @@ public interface BoardService {
 
 	public String challengeDelete(int writeNo, HttpServletRequest request);
 
+	public boolean deleteBoard(int writeNo);
 	
+	public boolean deleteBoard1(int writeGroup);
+	
+	public boolean deleteBoard2(int write_group);
 }

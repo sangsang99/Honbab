@@ -46,7 +46,7 @@
 					html += "<hr><div align='left'><b>아이디 : </b>" + redata.reNick + "님/";
 					html += "<b>작성일</b> : " + writeDate + "<br>" 
 					html += "<b>내용</b> : " + redata.reComent + "</div>"
-					html += "<input type= button value=삭제 onclick=del('${findContent.writeNo}')>"
+					html += "<input type= button value=삭제 onclick=del(${findContent.writeNo})>";
 					
 				})
 				$("#reply").html(html)
@@ -60,7 +60,7 @@
  	function del(writeGroup){
  		var chk = confirm("정말 삭제하실껀가요?");
  		if(chk){
- 			location.href='delete1?writeGroup='+writeGroup;
+ 			location.href="delete1?writeGroup="+writeGroup;
  		}
  	}
 

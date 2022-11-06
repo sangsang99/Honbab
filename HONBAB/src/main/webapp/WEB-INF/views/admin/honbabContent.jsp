@@ -17,35 +17,36 @@
 			form[arr[i].name] = arr[i].value;
 		}
 		$.ajax({
-			url: "addReply",
+			url: "addReply1",
 			type: "POST",
 			data: JSON.stringify(form), 	//Ajax 사용하려면 의존성 추가
 											<!-- JSON.stringify(문자열 json타입 변경)  -->
 			contentType: "application/json; charset=utf-8",
 			success: function(){
 				alert("답글이 추가되었습니다..");
-				reply_data();
+				reply_data1();
 			}, error:function(){
 				alert("문제 발생");
 			}
 		})		
  	}
  	
- 	function reply_data() {
+ 	function reply_data1() {
 		$.ajax({
-			url: "replyData/"+${findContent.writeNo},
+			url: "replyData1/"+${reviewContent.writeNo},
 			type: "GET",
 			dataType: "json",
 			success: function(rep) {	
 				let html = ""
-				rep.forEach(function(redata) {
-					let date = new Date(redata.reDate)
+				rep.forEach(function(redata, item, index) {
+					let date = new Date(redata.reDate)	
 					let writeDate = date.getFullYear()+"년" +
 									(date.getMonth()+1)+"월" +
 									date.getDate()+"일"
 					html += "<hr><div align='left'><b>아이디 : </b>" + redata.reNick + "님/";
 					html += "<b>작성일</b> : " + writeDate + "<br>" 
-					html += "<b>내용</b> : " + redata.reComent + "</div>" 
+					html += "<b>내용</b> : " + redata.reComent + "</div>"
+					html += "<input type= button value=삭제 onclick=del(${reviewContent.writeNo})>";
 				})
 				$("#reply").html(html)
 			}, error:function(){
@@ -53,9 +54,16 @@
 			}
 		})
 	} 
+ 	
+ 	function del(writeGroup){
+ 		var chk = confirm("정말 삭제하실껀가요?");
+ 		if(chk){
+ 			location.href='	delete2?writeGroup='+writeGroup;
+ 		}
+ 	}
 </script>
 </head>
-<body onload="reply_data()">
+<body onload="reply_data1()">
 	<table border="1">
 		<tr>
 			<th>글번호</th><td>${reviewContent.writeNo}</td>
@@ -94,17 +102,18 @@
 	<input type="button" value="목록 돌아가기" onclick="location.href='${contextPath}/admin/honbabBoard'"> &nbsp;
 	<input type="button" value="삭제하기" onclick="location.href='${contextPath}/admin/review_delete?writeNo=${reviewContent.writeNo}&imageFileName=${reviewContent.imgName}'">
 	
+	<h2>답글페이지</h2>
+	
+	<div id="reply">
+	<!-- 해당글에 답변이 있으면 노출 -->
+	</div>
 	<hr>
-	<c:if test="${true}">  <!-- 로그인되어있으면 노출 -->
-	<form id="form">
+  	<!-- 로그인되어있으면 노출 -->
+	<form id="form" name="form">
 		<input type="hidden" name="writeNo" value="${reviewContent.writeNo}">	
-		<input type="hidden" name="id" value="${reviewContent.id}">	
-		<b>작성자 : ${reviewContent.nickname}</b><br>
-		<b>내용</b>
-		<textarea id="coment" name="coment" rows="5" cols="30"></textarea><br>
-		<button type="button" onclick="rep()" > 답글 달기 </button>&nbsp;
+		<input type="hidden" name="id" value="${reviewContent.id}">
+		
 	</form>	
-	</c:if>
 	<c:import url="../main/footer.jsp"/>
 </body>
 </html>

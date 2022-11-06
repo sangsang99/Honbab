@@ -5,16 +5,19 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.web.honbab.challenge.dto.ChallengeDTO;
 import com.web.honbab.challenge.service.ChallengeService;
+import com.web.honbab.find.dto.FindRepDTO;
 import com.web.honbab.find.service.FindFileService;
 import com.web.honbab.mybatis.board.BoardMapper;
 import com.web.honbab.mybatis.challenge.ChallengeMapper;
 import com.web.honbab.mybatis.promo.PromoMapper;
 import com.web.honbab.mybatis.review.ReviewMapper;
 import com.web.honbab.promo.service.PromoFileService;
-////
+
 @Service
 public class BoardServiceImpl implements BoardService{
 	
@@ -193,5 +196,24 @@ public class BoardServiceImpl implements BoardService{
 		}
 		return  ffs.getMessage(request, msg, url);
 	}
+	
+	
+	  @Override 
+	  public boolean deleteBoard(int writeNo) { 
+		  
+		  return mapper.deleteBoard(writeNo); 
+		  }
+	 
+	  @Override 
+	  public boolean deleteBoard1(int writeGroup) { 
+		  
+		  return mapper.deleteBoard1(writeGroup); 
+		  }
+	  
+	  @Override 
+	  public boolean deleteBoard2(int write_group) { 
+		  
+		  return mapper.deleteBoard2(write_group); 
+		  }
 	
 }

@@ -17,6 +17,14 @@
 		<result property="id" column="ID" />
 	</resultMap>
 	
+	<resultMap type="com.web.honbab.find.dto.FindRepDTO" id="findRep">
+		<id property="writeGroup" column="WRITE_GROUP" />
+		<result property="reNick" column="RE_NICK" />
+		<result property="reDate" column="RE_DATE" />
+		<result property="reComent" column="RE_COMENT" />
+		<result property="reId" column="RE_ID" />
+	</resultMap>
+	
 	<select id="findAllList" resultMap="find">
 		SELECT B.* FROM
 		(SELECT ROWNUM RN, A.* FROM
@@ -63,5 +71,20 @@
 	<delete id="challengeDelete">
 		DELETE FROM LEVEL_CHALLENGE WHERE
 		WRITE_NO=#{writeNo}
+	</delete>
+	
+	 <delete id="deleteBoard" parameterType="Integer">
+		DELETE FROM FIND_RE
+		WHERE WRITE_GROUP = #{writeNo}
+	</delete>
+	
+	<delete id="deleteBoard1" parameterType="Integer">
+		DELETE FROM REVIEW_RE
+		WHERE WRITE_GROUP = #{writeNo}
+	</delete>
+	
+	<delete id="deleteBoard2" parameterType="Integer">
+		DELETE FROM PROMO_REPLY
+		WHERE  WRITE_GROUP = #{writeNo}
 	</delete>
 </mapper>

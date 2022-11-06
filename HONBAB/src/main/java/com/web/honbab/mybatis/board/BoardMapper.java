@@ -5,7 +5,8 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 import com.web.honbab.find.dto.FindDTO;
-////
+import com.web.honbab.find.dto.FindRepDTO;
+
 public interface BoardMapper {
 	
 	public int selectFindCount();
@@ -27,4 +28,10 @@ public interface BoardMapper {
 	public int upView2(int writeNo);
 
 	public int challengeDelete(int writeNo);
+	
+	public boolean deleteBoard(int writeNo);
+	
+	public boolean deleteBoard1(int writeGroup);
+	
+	public boolean deleteBoard2(int write_group);
 }
