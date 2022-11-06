@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Param;
 
 import com.web.honbab.find.dto.FindDTO;
 import com.web.honbab.find.dto.FindRepDTO;
-
+//
 public interface BoardMapper {
 	
 	public int selectFindCount();

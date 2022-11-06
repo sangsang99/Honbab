@@ -7,7 +7,7 @@ import org.springframework.ui.Model;
 
 import com.web.honbab.find.dto.FindRepDTO;
 
-
+//
 public interface BoardService {
 	
 	public void findBoard(Model model, int num);

@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
- 	//Ajax??
+ 	//Ajax??//
  	function rep() {
 		let form = {};
 		let arr = $("#form").serializeArray(); //해당데이터 직렬화 처리 //[{name: "", value:""}, {name: "", value:""}]

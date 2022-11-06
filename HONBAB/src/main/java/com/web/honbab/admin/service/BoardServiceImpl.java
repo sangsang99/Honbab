@@ -17,7 +17,7 @@ import com.web.honbab.mybatis.challenge.ChallengeMapper;
 import com.web.honbab.mybatis.promo.PromoMapper;
 import com.web.honbab.mybatis.review.ReviewMapper;
 import com.web.honbab.promo.service.PromoFileService;
-
+//
 @Service
 public class BoardServiceImpl implements BoardService{
 	

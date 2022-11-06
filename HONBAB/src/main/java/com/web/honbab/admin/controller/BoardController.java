@@ -30,7 +30,7 @@ import com.web.honbab.promo.service.PromoService;
 import com.web.honbab.review.dto.ReviewRepDTO;
 import com.web.honbab.review.service.ReviewService;
 import com.web.honbab.session.name.MemberSession;
-//
+////
 @Controller
 @RequestMapping("admin")
 public class BoardController implements MemberSession{
