@@ -7,21 +7,29 @@
 <head>
 <meta charset="UTF-8">
 <title>혼밥 레벨</title>
-<link href="${pageContext.request.contextPath}/resources/css/challenge/allList.css?ver=4" rel="stylesheet" />
+<link href="${contextPath}/resources/css/challenge/allList.css?ver=4" rel="stylesheet" />
 <!-- font -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;700&family=Nunito+Sans:wght@400;600;700&family=Ramabhadra&display=swap" rel="stylesheet">
 <script type="text/javascript">
 function user_check() {
-	if(true){ //로그인 되어있는지 확인
-		alert("로그인 필수")
-		location.href="${contextPath }/member/login";			
-	} 
+	var user = '${loginUser}';	
+	if(user != ''){ //로그인 되어있는지 확인
+		location.href="challengeWriteForm";			
+	} else {
+		alert("로그인 후 작성 가능합니다.")
+/* 		location.href="member/login";		 */	
+/* 		location.href="${contextPath }/member/login";			 */
+	}
 }
 
-function upViews(writeNo){
-	location.href="upView?writeNo=" + writeNo;
+function updateLike(writeNo){
+	location.href="updateLike?writeNo=" + writeNo;
+}
+
+function unLike(writeNo) {
+	location.href="unLike?writeNo=" + writeNo;
 }
 
 function showPopUp() {
@@ -39,101 +47,100 @@ function showPopUp() {
 }
 </script>
 </head>
-<!-- <body onload="user_check()"> -->
 <body>
 	<!-- header -->
 	<c:import url="../main/header.jsp"/>
 	
 	<section>
-     <form>
+     <form id="challengeSearch" name="challengeSearch" action="${contextPath }/challenge/challengeSearch"	enctype="multipart/form-data" method="post">
         <div class="search">
-<!--           <span id="keySearch">검색어로 검색</span> -->
           <div id="searchForm">
-          <input list="challengeSelect" name="levelS" id="levelS" />
-          <datalist id="challengeSelect" style="width: 50px">
-            <option value="레벨 1" label="편의점"></option>
-            <option value="레벨 2" label="학생 식당, 구내 식당"></option>
-            <option value="레벨 3" label="패스트푸드점"></option>
-            <option value="레벨 4" label="분식집"></option>
-            <option value="레벨 5" label="일반 음식점"></option>
-            <option value="레벨 6" label="맛집"></option>
-            <option value="레벨 7" label="패밀리레스토랑"></option>
-            <option value="레벨 8" label="고기집, 횟집"></option>
-            <option value="레벨 9" label="술집"></option>
-          </datalist>
-	          <input type="text" class="searchKey" placeholder="검색어를 입력하세요." />
-    	      <input type="submit" value="검색" name="search" />
+          <select id="level" name="level">
+            <option value="1">레벨 1</option>
+            <option value="2">레벨 2</option>
+            <option value="3">레벨 3</option>
+            <option value="4">레벨 4</option>
+            <option value="5">레벨 5</option>
+            <option value="6">레벨 6</option>
+            <option value="7">레벨 7</option>
+            <option value="8">레벨 8</option>
+            <option value="9">레벨 9</option>
+          </select>
+	          <input type="text" id="keyword" name="keyword" class="searchKey" placeholder="검색어를 입력하세요." />
+    	      <input type="submit" value="검색" />
           </div>
-    	      <br>
-	    	<a href="javascript:showPopUp()" id="levelGuide">혼밥 레벨?</a>
-        </div>
-      </form>
+    	    <br>
+	    		<a href="javascript:showPopUp()" id="levelGuide">혼밥 레벨?</a>
+			</div>
+		</form>
 	</section>
-    
-    <main>
+
+	<main>
 <!--       <span>검색 결과</span> -->
     <c:if test="${challengeList.size() == 0 }">
 		<h1>등록된 글이 없습니다.</h1>
-	</c:if>
-	<div class="index_wrap">
-        <ul class="index">
-          <li class="writeNo">
-            <span>NO</span>
-          </li>
-          <li class="lv">
-            <span>LV</span>
-          </li>
-          <li class="ch_title">
-            <span>TITLE</span>
-          </li>
-          <li class="writer">
-            <span>WRITER</span>
-          </li>
-          <li class="date">
-            <span>DATE</span>
-          </li>
-          <li class="view">
-            <span>VIEWS</span>
-          </li>
-        </ul>
-      </div>
+		</c:if>
+		<div class="index_wrap">
+      <ul class="index">
+        <li class="writeNo">
+          <span>NO</span>
+        </li>
+        <li class="lv">
+        	<span>LV</span>
+        </li>
+        <li class="ch_title">
+          <span>TITLE</span>
+        </li>
+        <li class="writer">
+          <span>WRITER</span>
+        </li>
+        <li class="date">
+          <span>DATE</span>
+        </li>
+        <li class="view">
+          <span>VIEWS</span>
+        </li>
+      </ul>
+    </div>
 		
-		<%-- <c:set var="no" value="${allCount - ((currentPage - 1) * 8)}" /> --%>
-		<c:forEach var="dto" items="${challengeList }" varStatus="status">
+		<c:set var="no" value="${allCount - ((currentPage - 1) * 8)}" />
+		<c:forEach var="dto" items="${challengeList }" >
+<%-- 		<c:forEach var="dto" items="${challengeList }" varStatus="status"> --%>
 			<div class="content_wrap">
-	        <ul class="index">
-	          <li class="writeNo">
-	            <span>${allCount - ((currentPage-1) * pageLetter + status.index)}</span>
-	          </li>
-	          <li class="lv">
-	            <span>레벨 ${dto.chLevel }</span>
-	          </li>
-	          <li class="ch_title">
-	            <a onclick="upView(${dto.writeNo}); return false" href="${contextPath }/challengeView?writeNo=${dto.writeNo }">${dto.title }</a>
-	          </li>
-	          <li class="writer">
-	            <span>${dto.nickName }</span>
-	          </li>
-	          <li class="date">
-	            <span>${dto.saveDate }</span>
-	          </li>
-	          <li class="view">
-	            <span>${dto.views }</span>
-	          </li>
-	        </ul>
-	      </div>
+	      <ul class="index">
+	        <li class="writeNo">
+	         <%--  <span>${allCount - ((currentPage-1) * pageLetter + status.index)}</span> --%>
+	          <span>${no}</span>
+	        </li>
+	        <li class="lv">
+	          <span>레벨 ${dto.chLevel }</span>
+	        </li>
+	        <li class="ch_title">
+	          <a onclick="upView(${dto.writeNo}); return false" href="${contextPath }/challengeView?writeNo=${dto.writeNo }">${dto.title }</a>
+	        </li>
+	        <li class="writer">
+	          <span>${dto.nickName }</span>
+	        </li>
+	        <li class="date">
+	          <span>${dto.saveDate }</span>
+	        </li>
+	        <li class="view">
+	          <span>${dto.views }</span>
+	        </li>
+	      </ul>
+	    </div>
 		</c:forEach>
-		<%-- <c:set var="no" value="${no -1 }"></c:set> --%>
+		<c:set var="no" value="${no -1 }"></c:set>
 	
 		<div id="writebtn">
-			<a href="${contextPath }/challengeWriteForm">글 쓰기</a>
+			<input type="button" onclick="user_check()" value="글 쓰기">
 		</div>
 		<div class="paging">
 			<c:forEach var="num" begin="1" end="${repeat }">
 				<a href="challengeAllList?num=${num}">${num}</a>
 			</c:forEach>
 		</div>
-    </main>
+   </main>
 
 	<!-- footer -->
 	<c:import url="../main/footer.jsp"/>

@@ -122,14 +122,18 @@ main {
 	top: 380px;
 }
 
-button {
-	visibility: hidden;
+.text-dark > img {
+	cursor: pointer;
 }
 
-button>span {
+/* button {
+	visibility: hidden;
+} */
+
+/* button>img {
 	visibility: visible;
 	font-size: 18px;
-}
+} */
 
 .like button {
 	width: 30px;
@@ -152,8 +156,15 @@ button>span {
 	height: 250px;
 	float: right;
 	display: block;
-	background-color: rgb(240, 240, 240);
+	background-color: rgba(220, 220, 220, 0.5);
+	padding: 10px 10px;
+	font-weight: 500px;
+	font-size: 50px;
+	text-align: center;
+	margin: auto auto;
+	color: rgba(17, 21, 226, 0.918);
 }
+
 
 #img {
 	width: 350px;
@@ -173,7 +184,7 @@ button>span {
 .content_wrap {
 	width: 1200px;
 	height: 400px;
-	border-top: 1px solid rgb(163, 163, 163);
+	border-top: 1px solid rgb(220, 220, 220);
 	margin: 0 auto;
 	padding: 20px 0;
 }
@@ -192,7 +203,8 @@ button>span {
 	overflow: auto;
 	padding: 5px;
 	/* white-space: inherit; */
-	border-bottom: 1px solid rgb(200, 200, 200);
+	border-bottom: 1px solid rgb(220, 220, 220);
+/* 	border-bottom: 1px solid rgb(200, 200, 200); */
 	white-space: normal;
 	word-break: break-all;
 }
@@ -210,14 +222,17 @@ input {
 	background-color: rgba(245, 222, 179, 0);
 	outline: none;
 	border: none;
-	border-radius: 5px;
+	border-radius: 3px;
 	font-size: 15px;
 	font-weight: 500;
+	font-family: 'Noto Sans KR', sans-serif;
+	color: rgba(17, 21, 226, 0.918);
+  border: 1px solid rgba(17, 21, 226, 0.918);
 }
 
-input:hover {
+/* input:hover {
 	border: 1px solid rgb(163, 163, 163);
-}
+} */
 
 #modify_btn {
 	margin-right: 20px;

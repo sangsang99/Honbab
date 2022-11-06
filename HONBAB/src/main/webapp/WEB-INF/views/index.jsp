@@ -45,54 +45,27 @@
         <img src="${pageContext.request.contextPath}/resources/img/2수정1_Yz2wxmK0Cf3MBZR7lgkfg.jpg" width="1200px" />
       </div>
     </main>
-    <div class="line"></div>
 
     <article>
-      <div class="article_wrap">
-        <div class="find_outline">
-          <div class="find_list">
-            <a class="menu" href="#">동행 구하기</a>
-       		<c:import url="find/bestFind.jsp"/>
-          </div>
+    	<!-- find best -->
+        <div class="article_wrap">
+        	<c:import url="challenge/challengeBest.jsp"/>
+        </div>  
 
-          <div class="text">
-            <p>2인분 이상 주문 앞에 돌아선적이 있다면...</p>
-            <p>맛집 웨이팅 적적하지 않게 누군가가 함께 기다려줬으면...</p>
-            <button class="morebtn" onclick="location.href='${contextPath}/find/findAllList'">more +</button>
-          </div>
-        </div>
-        <div class="line"></div>
         
-        <div class="challenge_outline">
-          <a class="menu" href="#">혼밥후기</a>
-			<c:import url="review/bestReview.jsp"/>
-          <div class="text">
-            <p>아무말 아무말..</p>
-            <p>대충 포토후기 많이 써달라는 말...</p>
-            <button class="morebtn" onclick="location.href='${contextPath}/review/reviewAllList'">more +</button>
-          </div>
+    	<!-- challenge best -->
+        <div class="article_wrap">
+					<c:import url="challenge/challengeBest.jsp"/>
         </div>
-        <div class="line"></div>
-        <div class="challenge_outline">
-          <a class="menu" href="#">도전하기</a>
-	          <ul>
-	            <li>title title 1</li>
-	            <li>title title 2</li>
-	            <li>title title 3</li>
-	            <li>title title 4</li>
-	          </ul>
-          <div class="text">
-            <p>도전정신이 강하다?</p>
-            <p>흔히 혼밥 레벨이라 알려진 단계들을 깨보시길..</p>
-            <button class="morebtn">more +</button>
-          </div>
-        </div>
-      </div>
+        
+        
+    	<!-- review best -->
+				<div class="article_wrap">
+					<c:import url="challenge/challengeBest.jsp"/>
+				</div>
     </article>
-    <div class="empty"></div>
-    <div class="last_line"></div>
 
 		<!-- footer -->
-		<c:import url="main/footer.jsp"/>
+		<%-- <c:import url="main/footer.jsp"/> --%>
   </body>
 </html>

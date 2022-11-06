@@ -45,11 +45,46 @@ section {
 	width: 600px;
 	height: 35px;
 	vertical-align: middle;
-/* 	border: 1px solid rgb(25, 11, 223); */
 	border: 1px solid rgb(200, 200, 200);
 	border-radius: 5px;
 	margin: 0 auto;
 	font-family: 'Noto Sans KR', sans-serif;
+}
+
+select {
+width: 150px;
+height: 34px;
+padding-left: 20px;
+float: left;
+border: none;
+font-size: 15px;
+font-weight: 400;
+font-family: 'Noto Sans KR', sans-serif;
+border-radius: 5px 0 0 5px;
+background-color: rgba(40, 40, 40, 0);
+
+/* -webkit-appearance: none; 화살표 없애기 for chrome*/
+/* -moz-appearance: none; 화살표 없애기 for firefox*/
+/* appearance: none;  화살표 없애기 공통*/
+}
+
+select:focus {
+	outline: none;
+	border: none;
+	background-color: rgba(40,40,40,0);
+}
+
+select::-ms-expand {
+display: none; /* 화살표 없애기 for IE10, 11*/
+}
+
+option {
+	padding: 5px 0;
+	border: none;
+}
+
+option:checked {
+	color: rgb(25, 11, 223);
 }
 
 #levelGuide {
@@ -81,6 +116,9 @@ datalist {
 ----------------------------------
 */
 input {
+	height: 34px;
+	font-size: 14px;
+	font-family: 'Noto Sans KR', sans-serif;
 	padding: 5px;
 	outline: none;
 	border: none;
@@ -92,7 +130,7 @@ input:focus {
 }
 
 input[type="submit" i] {
-	width: 60px;
+	width: 80px;
 	appearance: auto;
 	user-select: none;
 	white-space: pre;
@@ -101,10 +139,10 @@ input[type="submit" i] {
 	cursor: default;
 	box-sizing: border-box;
 	color: buttontext;
-	padding: 4px 5px;
-	border-width: 0;
-	border-style: none;
-	border-color: buttonborder;
+	padding: 4px 20px;
+/* 	border-width: 0; */
+/* 	border-style: none; */
+	border-color: 1px solid rgba(17, 21, 226, 0.918);
 	background-color: rgba(255, 255, 255, 0);
 	text-align: center;
 	font-size: 15px;
@@ -112,15 +150,41 @@ input[type="submit" i] {
 /* 	font-family: "Nunito Sans", sans-serif; */
 	font-family: "Noto Sans KR", sans-serif;
 	cursor: pointer;
+	float: right;
 }
 
-input[type="submit" i]:hover {
+/* input[type="submit" i]:hover {
 	border-radius: 5px;
+}
+ */
+input[type="radio" i], label {
+	display: inline-block;
+	vertical-align: middle;
+	font-size: 13px;	
+	color: rgb(60, 60, 60);
+	font-family: "Noto Sans KR", sans-serif;
+}
+
+input[type="button" i] {
+	width: 100px;
+	height: 30px;
+	margin: 10px 0;
+	float: right;
+	text-align: center;
+	font-size: 16px;
+	font-weight: 500;
+	font-family: 'Noto Sans KR', sans-serif;
+	color: rgba(17, 21, 226, 0.918);
+	outline: none;
+	border: none;
+	border-radius: 3px;
+	border-color: 1px solid rgba(17, 21, 226, 0.918);
+	cursor: pointer;
 }
 
 /*
 ----------------------------------
-    main 0
+    main
 ----------------------------------
 */
 main {
@@ -146,7 +210,7 @@ main {
 	/* background-color: antiquewhite; */
 	padding: 20px 0 20px 0;
 	color: rgb(60, 60, 60);
-	font-size: 16px;
+	font-size: 15px;
 	font-weight: 400;
 	font-family: "Noto Sans KR", sans-serif;
 	border-bottom: 1px solid rgb(200, 200, 200);
@@ -169,7 +233,7 @@ li>span {
 
 .writeNo {
 	width: 60px;
-	font-weight: 500;
+	font-weight: 600;
 }
 
 .lv {
@@ -210,11 +274,16 @@ li>span {
 	font-size: 16px;
 	font-weight: 500;
 	font-family: 'Noto Sans KR', sans-serif;
+	border-radius: 3px;
+	border-color: 1px solid rgba(17, 21, 226, 0.918);
 }
 
-#writebtn:hover {
-	border: 1px solid rgb(163, 163, 163);
-	border-radius: 5px;
+#writebtn > a {
+	width: 100px;
+	height: 30px;
+	color: rgba(17, 21, 226, 0.918);
+	border-radius: 3px;
+	border-color: 1px solid rgba(17, 21, 226, 0.918);
 }
 
 .paging {

@@ -21,7 +21,7 @@
 <script src="${pageContext.request.contextPath}/resources/js/sketch.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/imgSequence?ver=1.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/writeForm.js"></script>
-<link href="${pageContext.request.contextPath}/resources/css/writeForm.css?ver=1" rel="stylesheet"/> 
+<link href="${pageContext.request.contextPath}/resources/css/writeForm.css?ver=4" rel="stylesheet"/> 
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script type="text/javascript">
 $.getScript( './resources/js/imgSequence.js');
@@ -46,12 +46,12 @@ $.getScript( './resources/js/imgSequence.js');
             <!-- 여기까지 -->
             <section class="sequence">
                  <!-- 로그인 / 회원가입 묻는 창 -->
-                <div class="login_join_view">
-                    <header>&nbsp;</header>
-                    <div class="login_join">
-                    <a id="login">LOGIN</a>
-                    <a id="join" style="cursor: pointer" class="scoll-down2">JOIN</a>
-                    </div>
+              <div class="login_join_view">
+                <header>&nbsp;</header>
+                <div class="login_join">
+                <a id="login">LOGIN</a>
+                <a id="join" style="cursor: pointer" class="scoll-down2">JOIN</a>
+							</div>
                     <!-- <div class="down_img">
                     <a style="cursor: pointer" class="btn scoll-down">JOIN</a>
                     <img src="./img/자산 2xxxhdpi.svg" />
@@ -84,43 +84,43 @@ $.getScript( './resources/js/imgSequence.js');
                         <form class="join_form">
                         <ul>
                             <li>
-                            <span class="index">Id*</span>
-                            <input type="text" placeholder="아이디를 입력하세요." />
+                            	<span class="index">Id*</span>
+                            	<input type="text" placeholder="아이디를 입력하세요." />
                             </li>
                             <li>
-                            <span class="index">Password*</span>
-                            <input type="password" placeholder="비밀번호를 입력하세요." />
+                            	<span class="index">Password*</span>
+                            	<input type="password" placeholder="비밀번호를 입력하세요." />
                             </li>
                             <li>
-                            <span class="index">Password*</span>
-                            <input type="password" placeholder="비밀번호를 재입력하세요." />
+                            	<span class="index">Password*</span>
+                            	<input type="password" placeholder="비밀번호를 재입력하세요." />
                             </li>
                             <li>
-                            <span class="index">Name*</span>
-                            <input type="text" placeholder="이름을 입력하세요." />
+                            	<span class="index">Name*</span>
+                            	<input type="text" placeholder="이름을 입력하세요." />
                             </li>
                             <li>
-                            <span class="index">NickName*</span>
-                            <input type="text" placeholder="별칭? 별명? 뭐든 입력하세요." />
+                            	<span class="index">NickName*</span>
+                            	<input type="text" placeholder="별칭? 별명? 뭐든 입력하세요." />
                             </li>
                             <li>
-                            <span class="index">Tel*</span>
-                            <input type="tel" placeholder="전화번호를 입력하세요." />
+                            	<span class="index">Tel*</span>
+                           		<input type="tel" placeholder="전화번호를 입력하세요." />
                             </li>
                             <li>
-                            <span class="index">Region*</span>
-                            <input type="text" placeholder="거주 지역을 선택해주세요." />
+                            	<span class="index">Region*</span>
+                            	<input type="text" placeholder="거주 지역을 선택해주세요." />
                             </li>
                             <li>
-                            <span class="index">Gender*</span>
-                            <input type="text" placeholder="성별을 선택해주세요." />
+                           		<span class="index">Gender*</span>
+                            	<input type="text" placeholder="성별을 선택해주세요." />
                             </li>
                             <li>
-                            <span class="index">Email*</span>
-                            <input type="email" placeholder="이메일 주소를 입력해주세요." />
+                            	<span class="index">Email*</span>
+                            	<input type="email" placeholder="이메일 주소를 입력해주세요." />
                             </li>
                         </ul>
-                        <input type="submit" value="Join" />
+                        <input type="submit" value="Join" onclick="location.href='${contextPath}/login'" />
                         </form>
                     </div>
                     </main>
@@ -131,26 +131,23 @@ $.getScript( './resources/js/imgSequence.js');
 
             </section>
 
-								 <!-- 사장님 회원가입 이메일 제출 -->
-                <div class="biz_join_view">
-                    <div class="biz_join_form">
-                    <ul>
-                        <li>
-                        	<span>사장님이신가요?</span>
-                        </li>
-                        <li>
-                        	<input type="text" placeholder="회원가입문의 이메일 제출" />
-                        </li>
-                        <li>
-                       		<input id="biz_submit" type="submit" value="제출" />
-                        </li>
-                    </ul>
-                    </div>
-                </div>
-            
+						<!-- 사장님 회원가입 이메일 제출 -->
+						<div class="biz_join_view">
+              <div class="biz_join_form">
+                <ul>
+                  <li>
+                    	<span>사장님이신가요?</span>
+                  </li>
+                  <li>
+                    <input type="text" placeholder="회원가입문의 이메일 제출" />
+                  </li>
+                  <li>
+                    <input id="biz_submit" type="submit" value="제출" />
+                  </li>
+                </ul>
+              </div>
+            </div>
         </div>
-
-        
         
         <!--    javascript    -->
         <script src="script/jquery-2.1.3.min.js"></script>

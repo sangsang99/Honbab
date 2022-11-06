@@ -1,5 +1,7 @@
 package com.web.honbab.challenge.service;
 
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -80,8 +82,9 @@ public class ChallengeServiceImpl implements ChallengeService {
 		model.addAttribute("repeat", repeat);			// 마지막 페이지 번호
 		model.addAttribute("challengeList", mapper.challengeAllList(start, end));
 		//System.out.println(pageLetter);
-		//System.out.println(currentPg);
-		//System.out.println(allCount);
+		System.out.println("현재 페이지 " + currentPg);
+		System.out.println("총 글 수 " + allCount);
+		System.out.println("한 페이지 글 수 " + (allCount - ((currentPg - 1) * 8)));
 	}
 
 	
@@ -99,8 +102,8 @@ public class ChallengeServiceImpl implements ChallengeService {
 			dto.setImgName(cfs.saveFile(file));
 			cfs.deleteImage(mul.getParameter("originFileName"));
 		} else if(file.isEmpty()) { 
-			/* dto.setImgName(mul.getParameter("originFileName")); */
-			dto.setImgName("nan"); 
+			dto.setImgName(mul.getParameter("originFileName"));
+			/* dto.setImgName("nan"); */
 		}
 		
 		int result = 0;
@@ -140,6 +143,61 @@ public class ChallengeServiceImpl implements ChallengeService {
 	public void upView(int writeNo) {
 		mapper.upView(writeNo);
 	}
+	
+	
+	/*
+	 * @Override public int likesCount(int writeNo) { return
+	 * mapper.likesCount(writeNo); }
+	 * 
+	 * @Override public int updateLike(int writeNo) throws Exception { return
+	 * mapper.updateLike(writeNo); }
+	 * 
+	 * @Override public int unLike(int writeNo) throws Exception { return
+	 * mapper.unLike(writeNo); }
+	 */
+
+	@Override
+	public void challengeSearch(MultipartHttpServletRequest mul, Model model) {
+		int level = Integer.parseInt(mul.getParameter("level"));
+		String keyword = mul.getParameter("keyword");
+		
+		switch(level) {
+		case 1:
+			model.addAttribute("challengeList", mapper.searchLevelOne(keyword));
+			break;
+		case 2:
+			model.addAttribute("challengeList", mapper.searchLevelTwo(keyword));
+			break;
+		case 3:
+			model.addAttribute("challengeList", mapper.searchLevelThree(keyword));
+			break;
+		case 4:
+			model.addAttribute("challengeList", mapper.searchLevelFour(keyword));
+			break;
+		case 5:
+			model.addAttribute("challengeList", mapper.searchLevelFive(keyword));
+			break;
+		case 6:
+			model.addAttribute("challengeList", mapper.searchLevelSix(keyword));
+			break;
+		case 7:
+			model.addAttribute("challengeList", mapper.searchLevelSeven(keyword));
+			break;
+		case 8:
+			model.addAttribute("challengeList", mapper.searchLevelEight(keyword));
+			break;
+		case 9:
+			model.addAttribute("challengeList", mapper.searchLevelNine(keyword));
+			break;
+		default:
+			System.out.println("검색 중 오류");
+			break;
+		}
+	}
+	
+	
+	
+	
 	
 	
 	
