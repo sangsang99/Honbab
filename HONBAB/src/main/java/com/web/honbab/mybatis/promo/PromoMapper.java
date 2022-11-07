@@ -23,7 +23,7 @@ public interface PromoMapper {
 	
 	public int delete(int writeNo);
 	
-	public int selectBoardCount();
+	public int selectPromoAllCount();
 	
 	public void addReply(PromoRepDTO dto);
 

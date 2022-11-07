@@ -61,7 +61,7 @@
 		where write_no=#{writeNo}
 	</delete>
 
-	<select id="selectBoardCount" resultType="Integer">
+	<select id="selectPromoAllCount" resultType="Integer">
 		select count(*) from
 		PROMO_BOARD
 	</select>

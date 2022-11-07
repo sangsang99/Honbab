@@ -42,16 +42,14 @@ public class PromoController {
 	@GetMapping("promoADList")
 	public String promoADList(Model model, @RequestParam(value="num", required = false, defaultValue ="1") int num) {
 		os.promoList(model, num);
-		ps.promoList(model, num);
 		return "promotion/promoADList";
 	}
 	@GetMapping("promoAllList")
 	public String promoAllList(Model model, @RequestParam(value="num", required = false, defaultValue ="1") int num) {
-		os.promoList(model, num);
 		ps.promoList(model, num);
 		return "promotion/promoAllList";
 	}
-
+	
 	@RequestMapping("writeForm")
 	public String writeForm() {
 		return "promotion/promoWriteForm";

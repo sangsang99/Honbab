@@ -128,7 +128,7 @@ public class BoardServiceImpl implements BoardService{
 	@Override
 	public void promoBoard(Model model, int num) {
 		int pageLetter = 10; // 한 페이지당 글 목록수 
-		int allCount = mapper2.selectBoardCount(); // 전체 글수
+		int allCount = mapper2.selectPromoAllCount(); // 전체 글수
 		int repeat = allCount/pageLetter; // 마지막 페이지 번호 jsp에서 foreach에 사용할 값, 2/3=0
 		if(allCount % pageLetter != 0) // 2/3일 때 마지막 페이지는 1, 5/3일때 마지막페이지는 2
  			repeat += 1; 
