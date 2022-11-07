@@ -24,17 +24,19 @@ public interface ChallengeMapper {
 	
 	public int upView(int writeNo);
 	
-	
+	public List<ChallengeDTO> challengeBestList(int views);
 	
 	// 검색
-	public List<ChallengeDTO> searchLevelOne(@Param("keyword") String keyword); 
-	public List<ChallengeDTO> searchLevelTwo(@Param("keyword") String keyword); 
-	public List<ChallengeDTO> searchLevelThree(@Param("keyword") String keyword); 
-	public List<ChallengeDTO> searchLevelFour(@Param("keyword") String keyword); 
-	public List<ChallengeDTO> searchLevelFive(@Param("keyword") String keyword); 
-	public List<ChallengeDTO> searchLevelSix(@Param("keyword") String keyword); 
-	public List<ChallengeDTO> searchLevelSeven(@Param("keyword") String keyword); 
-	public List<ChallengeDTO> searchLevelEight(@Param("keyword") String keyword); 
-	public List<ChallengeDTO> searchLevelNine(@Param("keyword") String keyword); 
+	public int challengeSearchCount();
+	
+	public List<ChallengeDTO> searchLevelOne(@Param("keyword") String keyword, @Param("level") int level); 
+	public List<ChallengeDTO> searchLevelTwo(@Param("keyword") String keyword, @Param("level") int level); 
+	public List<ChallengeDTO> searchLevelThree(@Param("keyword") String keyword, @Param("level") int level); 
+	public List<ChallengeDTO> searchLevelFour(@Param("keyword") String keyword, @Param("level") int level); 
+	public List<ChallengeDTO> searchLevelFive(@Param("keyword") String keyword, @Param("level") int level); 
+	public List<ChallengeDTO> searchLevelSix(@Param("keyword") String keyword, @Param("level") int level); 
+	public List<ChallengeDTO> searchLevelSeven(@Param("keyword") String keyword, @Param("level") int level); 
+	public List<ChallengeDTO> searchLevelEight(@Param("keyword") String keyword, @Param("level") int level); 
+	public List<ChallengeDTO> searchLevelNine(@Param("keyword") String keyword, @Param("level") int level); 
 	
 }

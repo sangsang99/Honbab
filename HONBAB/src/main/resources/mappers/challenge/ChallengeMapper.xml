@@ -75,61 +75,93 @@
 		WHERE WRITE_NO=#{writeNo}
 	</update>
 	
+	<select id="challengeBestList" resultMap="challenge">
+		SELECT * FROM 
+			(SELECT * FROM 
+			LEVEL_CHALLENGE 
+			ORDER BY VIEWS DESC)
+		WHERE ROWNUM BETWEEN 1 AND 5
+	</select>
 	
 	<!-- 검색 -->
+	<select id="challengeSearchCount" resultMap="challenge">
+		SELECT count(*) FROM LEVEL_CHALLENGE 
+		WHERE CH_LEVEL=#{level} AND TITLE like '%'||#{keyword}||'%' 
+	</select>
+	
 	<select id="searchLevelOne" resultMap="challenge">
 		SELECT * FROM LEVEL_CHALLENGE 
-		WHERE CH_LEVEL=1 like '%'||#{keyword}||'%' 
+		WHERE CH_LEVEL=#{level} AND TITLE like '%'||#{keyword}||'%' 
 		ORDER BY WRITE_NO DESC
 	</select>
 
 	<select id="searchLevelTwo" resultMap="challenge">
 		SELECT * FROM LEVEL_CHALLENGE 
-		WHERE CH_LEVEL=2 like '%'||#{keyword}||'%' 
+		WHERE CH_LEVEL=#{level} AND TITLE like '%'||#{keyword}||'%' 
 		ORDER BY WRITE_NO DESC
 	</select>
 
 	<select id="searchLevelThree" resultMap="challenge">
 		SELECT * FROM LEVEL_CHALLENGE 
-		WHERE CH_LEVEL=3 like '%'||#{keyword}||'%' 
+		WHERE CH_LEVEL=#{level} AND TITLE like '%'||#{keyword}||'%' 
 		ORDER BY WRITE_NO DESC
 	</select>
 
 	<select id="searchLevelFour" resultMap="challenge">
 		SELECT * FROM LEVEL_CHALLENGE 
-		WHERE CH_LEVEL=4 like '%'||#{keyword}||'%' 
+		WHERE CH_LEVEL=#{level} AND TITLE like '%'||#{keyword}||'%' 
 		ORDER BY WRITE_NO DESC
 	</select>
 
 	<select id="searchLevelFive" resultMap="challenge">
 		SELECT * FROM LEVEL_CHALLENGE 
-		WHERE CH_LEVEL=5 like '%'||#{keyword}||'%' 
+		WHERE CH_LEVEL=#{level} AND TITLE like '%'||#{keyword}||'%' 
 		ORDER BY WRITE_NO DESC
 	</select>
 
 	<select id="searchLevelSix" resultMap="challenge">
 		SELECT * FROM LEVEL_CHALLENGE 
-		WHERE CH_LEVEL=6 like '%'||#{keyword}||'%' 
+		WHERE CH_LEVEL=#{level} AND TITLE like '%'||#{keyword}||'%' 
 		ORDER BY WRITE_NO DESC
 	</select>
 
 	<select id="searchLevelSeven" resultMap="challenge">
 		SELECT * FROM LEVEL_CHALLENGE 
-		WHERE CH_LEVEL=7 like '%'||#{keyword}||'%' 
+		WHERE CH_LEVEL=#{level} AND TITLE like '%'||#{keyword}||'%' 
 		ORDER BY WRITE_NO DESC
 	</select>
 
 	<select id="searchLevelEight" resultMap="challenge">
 		SELECT * FROM LEVEL_CHALLENGE 
-		WHERE CH_LEVEL=8 like '%'||#{keyword}||'%' 
+		WHERE CH_LEVEL=#{level} AND TITLE like '%'||#{keyword}||'%' 
 		ORDER BY WRITE_NO DESC
 	</select>
 
 	<select id="searchLevelNine" resultMap="challenge">
 		SELECT * FROM LEVEL_CHALLENGE 
-		WHERE CH_LEVEL=9 like '%'||#{keyword}||'%' 
+		WHERE CH_LEVEL=#{level} AND TITLE like '%'||#{keyword}||'%' 
 		ORDER BY WRITE_NO DESC
 	</select>
+	
+	<!-- 
+		SELECT * FROM LEVEL_CHALLENGE 
+		WHERE CH_LEVEL=#{level} AND TITLE like '%'||#{keyword}||'%' 
+		ORDER BY WRITE_NO DESC
+	
+	
+			SELECT * FROM 
+			(SELECT ROWNUM RN, * FROM 
+			LEVEL_CHALLENGE 
+			ORDER BY VIEWS DESC)
+		WHERE RN BETWEEN 1 AND 5
+	
+			SELECT B.* FROM 
+			(SELECT ROWNUM RN, A.* FROM
+				(SELECT * FROM LEVEL_CHALLENGE 
+				WHERE CH_LEVEL=#{level} AND TITLE like '%'||#{keyword}||'%'  
+				ORDER BY WRITE_NO DESC) A) B 
+		WHERE RN between #{s} and #{e}
+	 -->
 	
 	<!-- 
 	CREATE TABLE LEVEL_CHALLENGE_LIKE (

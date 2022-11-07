@@ -1,7 +1,6 @@
 package com.web.honbab.challenge.service;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -84,7 +83,7 @@ public class ChallengeServiceImpl implements ChallengeService {
 		//System.out.println(pageLetter);
 		System.out.println("현재 페이지 " + currentPg);
 		System.out.println("총 글 수 " + allCount);
-		System.out.println("한 페이지 글 수 " + (allCount - ((currentPg - 1) * 8)));
+		System.out.println("한 페이지 글 수 " + (allCount - ((currentPg - 1) * pageLetter)));
 	}
 
 	
@@ -144,6 +143,13 @@ public class ChallengeServiceImpl implements ChallengeService {
 		mapper.upView(writeNo);
 	}
 	
+	@Override
+	public void challengeBestList(int views, Model model) {
+		
+		model.addAttribute("challengeBestList", mapper.challengeBestList(views));
+		System.out.println(mapper.challengeBestList(views));
+	}
+
 	
 	/*
 	 * @Override public int likesCount(int writeNo) { return
@@ -155,7 +161,7 @@ public class ChallengeServiceImpl implements ChallengeService {
 	 * @Override public int unLike(int writeNo) throws Exception { return
 	 * mapper.unLike(writeNo); }
 	 */
-
+	
 	@Override
 	public void challengeSearch(MultipartHttpServletRequest mul, Model model) {
 		int level = Integer.parseInt(mul.getParameter("level"));
@@ -163,37 +169,79 @@ public class ChallengeServiceImpl implements ChallengeService {
 		
 		switch(level) {
 		case 1:
-			model.addAttribute("challengeList", mapper.searchLevelOne(keyword));
+			model.addAttribute("challengeList", mapper.searchLevelOne(keyword, level));
 			break;
 		case 2:
-			model.addAttribute("challengeList", mapper.searchLevelTwo(keyword));
+			model.addAttribute("challengeList", mapper.searchLevelTwo(keyword, level));
 			break;
 		case 3:
-			model.addAttribute("challengeList", mapper.searchLevelThree(keyword));
+			model.addAttribute("challengeList", mapper.searchLevelThree(keyword, level));
 			break;
 		case 4:
-			model.addAttribute("challengeList", mapper.searchLevelFour(keyword));
+			model.addAttribute("challengeList", mapper.searchLevelFour(keyword, level));
 			break;
 		case 5:
-			model.addAttribute("challengeList", mapper.searchLevelFive(keyword));
+			model.addAttribute("challengeList", mapper.searchLevelFive(keyword, level));
 			break;
 		case 6:
-			model.addAttribute("challengeList", mapper.searchLevelSix(keyword));
+			model.addAttribute("challengeList", mapper.searchLevelSix(keyword, level));
 			break;
 		case 7:
-			model.addAttribute("challengeList", mapper.searchLevelSeven(keyword));
+			model.addAttribute("challengeList", mapper.searchLevelSeven(keyword, level));
 			break;
 		case 8:
-			model.addAttribute("challengeList", mapper.searchLevelEight(keyword));
+			model.addAttribute("challengeList", mapper.searchLevelEight(keyword, level));
 			break;
 		case 9:
-			model.addAttribute("challengeList", mapper.searchLevelNine(keyword));
+			model.addAttribute("challengeList", mapper.searchLevelNine(keyword, level));
 			break;
 		default:
 			System.out.println("검색 중 오류");
 			break;
 		}
 	}
+
+	
+	/*
+	@Override
+	public void challengeSearch(MultipartHttpServletRequest mul, Model model) {
+		int level = Integer.parseInt(mul.getParameter("level"));
+		String keyword = mul.getParameter("keyword");
+		
+		switch(level) {
+		case 1:
+			model.addAttribute("challengeList", mapper.searchLevelOne(keyword, level));
+			break;
+		case 2:
+			model.addAttribute("challengeList", mapper.searchLevelTwo(keyword, level));
+			break;
+		case 3:
+			model.addAttribute("challengeList", mapper.searchLevelThree(keyword, level));
+			break;
+		case 4:
+			model.addAttribute("challengeList", mapper.searchLevelFour(keyword, level));
+			break;
+		case 5:
+			model.addAttribute("challengeList", mapper.searchLevelFive(keyword, level));
+			break;
+		case 6:
+			model.addAttribute("challengeList", mapper.searchLevelSix(keyword, level));
+			break;
+		case 7:
+			model.addAttribute("challengeList", mapper.searchLevelSeven(keyword, level));
+			break;
+		case 8:
+			model.addAttribute("challengeList", mapper.searchLevelEight(keyword, level));
+			break;
+		case 9:
+			model.addAttribute("challengeList", mapper.searchLevelNine(keyword, level));
+			break;
+		default:
+			System.out.println("검색 중 오류");
+			break;
+		}
+	}
+	*/	
 	
 	
 	

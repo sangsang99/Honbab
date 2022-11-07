@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,8 +18,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.web.honbab.challenge.dto.ChallengeDTO;
 import com.web.honbab.challenge.service.ChallengeFileService;
 import com.web.honbab.challenge.service.ChallengeService;
 import com.web.honbab.session.name.MemberSession;
@@ -99,17 +102,31 @@ public class ChallengeController implements MemberSession {
 		return "challenge/challengePop";
 	}
 	
-	
-	// 검색
-	@PostMapping(value = "challengeSearch")
-	public String challengeSearch(MultipartHttpServletRequest mul, Model model) throws IOException {
-		cs.challengeSearch(mul, model);
-		System.out.println("level : " + mul.getParameter("level"));
+	@RequestMapping(value= "challengeBestList")
+	public String challengeBestList(@RequestParam int views, Model model) {
+		cs.challengeBestList(views, model);
+		
+		return "challenge/challengeBestList";
+	}
+
+	/*
+	@PostMapping(value = "challengeSearch") 
+	public String challengeSearch(MultipartHttpServletRequest mul, Model model) throws IOException { 
+		cs.challengeSearch(mul, model); 
+		System.out.println("level : " + mul.getParameter("level")); 
 		System.out.println("keyword : " + mul.getParameter("keyword"));
+		
+		return "challenge/challengeAllList"; 
+	}
+	*/
+	
+	@RequestMapping(value= "challengeSearch")
+	public String challengeSearch(MultipartHttpServletRequest mul, Model model) {
+		cs.challengeSearch(mul, model);
 		
 		return "challenge/challengeAllList";
 	}
-	
+	 	
 	
 	
 	
