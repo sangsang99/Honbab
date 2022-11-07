@@ -28,6 +28,8 @@ public interface FindService {
 	public void addReply(FindRepDTO dto);
 
 	public List<FindRepDTO> getRepList(int writeNo);
+	
+	public boolean deleteBoard(int writeGroup);
 
 	
 }

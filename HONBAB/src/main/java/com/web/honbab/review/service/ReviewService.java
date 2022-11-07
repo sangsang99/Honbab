@@ -32,6 +32,8 @@ public interface ReviewService {
 	public int reviewLike(int writeNo);
 
 	public void searchReview(Model model, int num);
+	
+	public boolean deleteBoard1(int writeGroup);
 
 
 

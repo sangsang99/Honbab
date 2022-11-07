@@ -89,5 +89,10 @@
 		WHERE WRITE_GROUP = #{writeNo}
 		ORDER BY RE_DATE DESC
 	</select>
+	
+	<delete id="deleteBoard" parameterType="Integer">
+		DELETE FROM FIND_RE
+		WHERE WRITE_GROUP = #{writeNo}
+	</delete>
 	 
 </mapper>

@@ -143,5 +143,12 @@ public class FindServiceImpl implements FindService{
 	public List<FindRepDTO> getRepList(int writeNo) {
 		return mapper.getRepList(writeNo);
 	}
+	
+	@Override 
+	  public boolean deleteBoard(int writeGroup) { 
+		  
+		  return mapper.deleteBoard(writeGroup); 
+		  }
+
 
 }

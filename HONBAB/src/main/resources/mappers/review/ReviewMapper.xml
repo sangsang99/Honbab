@@ -140,5 +140,10 @@
 		(SELECT * FROM REVIEW_BOARD WHERE NICKNAME like '%'||#{keyword}||'%' ORDER BY WRITE_DATE DESC) A) B 
 		WHERE RN BETWEEN #{s} AND #{e}
 	</select>
+	
+	<delete id="deleteBoard1" parameterType="Integer">
+		DELETE FROM REVIEW_RE
+		WHERE WRITE_GROUP = #{writeNo}
+	</delete>
 
 </mapper>

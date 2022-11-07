@@ -207,5 +207,11 @@ public class ReviewServiceImpl implements ReviewService, SearchSession {
 			break;
 		}
 	}
+	
+	@Override 
+	  public boolean deleteBoard1(int writeGroup) { 
+		  
+		  return mapper.deleteBoard1(writeGroup); 
+		  }
 
 }

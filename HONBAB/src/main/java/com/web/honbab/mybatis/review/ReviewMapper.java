@@ -45,7 +45,7 @@ public interface ReviewMapper {
 
 	public int selectReviewCountForNick(@Param("keyword") String keyword);
 
-
+	public boolean deleteBoard1(int writeGroup);
 
 
 

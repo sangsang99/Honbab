@@ -54,7 +54,8 @@
 									date.getDate()+"일"
 					html += "<hr><div align='left'><b>아이디 : </b>" + redata.reNick + "님/";
 					html += "<b>작성일</b> : " + writeDate + "<br>" 
-					html += "<b>내용</b> : " + redata.reComent + "</div>" 
+					html += "<b>내용</b> : " + redata.reComent + "</div>"
+					html += "<input type= button value=댓글삭제  onclick=del(${findContent.writeNo})>";
 				})
 				$("#reply").html(html)
 			}, error:function(){
@@ -62,6 +63,13 @@
 			}
 		})
 	} 
+ 	
+ 	function del(writeGroup){
+ 		var chk = confirm("정말 삭제하실껀가요?");
+ 		if(chk){
+ 			location.href='delete1?writeGroup='+writeGroup;
+ 		}
+ 	}
 </script>
 </head>
 <body>
@@ -98,7 +106,7 @@
 
 		<input type="button" value="글목록"
 			onclick="location.href='${contextPath}/find/findAllList'">
-			<c:if test="${true == true}">
+			<c:if test="${loginUser == findContent.id}">
 			<input type="button" value="글수정" id="modify_btn"
 				onclick="location.href='${contextPath}/find/find_modify_form?writeNo=${findContent.writeNo}'">
 			<input type="button" value="글삭제" id="delete_btn"
@@ -111,10 +119,11 @@
 		<!-- 해당글에 답변이 있으면 노출 -->
 	</div>
 	<hr>
-	<c:if test="${true}">
+	<c:if test="${loginUser != null}">
 		<!-- 로그인되어있으면 노출 -->
 		<form id="form">
 			<input type="hidden" name="writeNo" value="${findContent.writeNo}">
+			<input type="hidden" name="id" value="${reviewContent.id}">
 			<b>작성자 : ${findContent.nickName}</b><br> <b>내용</b>
 			<textarea id="coment" name="coment" rows="5" cols="30"></textarea>
 			<br>

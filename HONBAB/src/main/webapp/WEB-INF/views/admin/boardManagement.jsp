@@ -9,10 +9,9 @@
 <title>동형</title>
 </head>
 <body>
-	<a id="admin" href="${contextPath}/admin/findBoard">구인 게시판</a><br>
+	<a id="admin" href="${contextPath}/find/findAllList">구인 게시판</a><br>
 	<a id="admin" href="${contextPath}/admin/challBoard">도전 혼밥 게시판</a><br>
-	<a id="admin" href="${contextPath}/admin/honbabBoard">혼밥 후기 게시판</a><br>
+	<a id="admin" href="${contextPath}/review/reviewAllList">혼밥 후기 게시판</a><br>
 	<a id="admin" href="${contextPath}/admin/promoBoard">홍보 게시판</a>
-
 </body>
 </html>

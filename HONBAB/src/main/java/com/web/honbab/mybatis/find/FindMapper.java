@@ -32,4 +32,6 @@ public interface FindMapper {
 
 	public List<FindRepDTO> getRepList(int writeNo);
 	
+	public boolean deleteBoard(int writeGroup);
+	
 }

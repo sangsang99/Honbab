@@ -158,4 +158,12 @@ public class ReviewController implements MemberSession, SearchSession{
 		rs.searchReview(model, num);
 		return "review/reviewAllList";
 	}
+	
+	@GetMapping(value="delete2")
+	  //@ResponseBody
+	  public String delete1(@RequestParam(value="writeGroup")Integer writeNo, Model model ) { 
+		  model.addAttribute("writeNo",writeNo);
+		  rs.deleteBoard1(writeNo); 
+	  return "redirect:/review/reviewContent?writeGroup=" + writeNo; 
+	  }
 }

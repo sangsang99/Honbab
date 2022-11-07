@@ -110,4 +110,12 @@ public class FindController {
 	public List<FindRepDTO> replyData(@PathVariable int writeNo){
 		return fs.getRepList(writeNo);
 	}
+	
+	@GetMapping(value="delete1")
+	  //@ResponseBody
+	  public String delete(@RequestParam(value="writeGroup")Integer writeNo, Model model ) { 
+		  model.addAttribute("writeNo",writeNo);
+		  fs.deleteBoard(writeNo); 
+	  return "redirect:/find/findContent?writeGroup=" + writeNo; 
+	  }
 }

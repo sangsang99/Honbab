@@ -64,7 +64,8 @@
 									date.getDate()+"일"
 					html += "<hr><div align='left'><b>아이디 : </b>" + redata.reNick + "님/";
 					html += "<b>작성일</b> : " + writeDate + "<br>" 
-					html += "<b>내용</b> : " + redata.reComent + "</div>" 
+					html += "<b>내용</b> : " + redata.reComent + "</div>"
+					html += "<input type= button value=댓글삭제  onclick=del(${reviewContent.writeNo})>";
 				})
 				$("#reply").html(html)
 			}, error:function(){
@@ -94,6 +95,13 @@
 			
 		} 
 	}
+	
+	function del(writeGroup){
+ 		var chk = confirm("정말 삭제하실껀가요?");
+ 		if(chk){
+ 			location.href='delete2?writeGroup='+writeGroup;
+ 		}
+ 	}
  	
 </script>
 </head>
