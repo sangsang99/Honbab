@@ -81,10 +81,19 @@ public class MemberServiceImpl implements MemberService {
 		
 	}
 	
+
+
 	@Override
-	public String modify(String id, HttpServletRequest request) {
-		
+	public String modify(MultipartHttpServletRequest mul, HttpServletRequest request) {
 		MemberDTO dto = new MemberDTO();
+		dto.setEmail(mul.getParameter("email"));
+		dto.setGender(mul.getParameter("gender"));
+		dto.setId(mul.getParameter("id"));
+		dto.setName(mul.getParameter("name"));
+		dto.setNickName(mul.getParameter("nickName"));
+		dto.setPw(mul.getParameter("pw"));
+		dto.setRegion(mul.getParameter("region"));
+		dto.setTel(mul.getParameter("tel"));
 		
 		int result = 0;
 		try {
@@ -93,17 +102,18 @@ public class MemberServiceImpl implements MemberService {
 			e.printStackTrace();
 		}
 		
-		String msg, url;
+		String msg,url;
 		if(result == 1) {
-			msg = "수정 되었습니다...";
-			url = "/index";
+			msg = "수 정";
+			url = "/member/info?id="+dto.getId();
 		} else {
-			msg = "오류입니다~";
-			url = "/member/modify?id="+dto.getId();
+			msg ="문제가 생겼습니다";
+			url = "/member/modifyForm?id="+dto.getId();
 		}
-		
-		return getMessage(request, msg, url);
+		return getMessage(request,msg,url);
 		
 	}
+
+
 
 }

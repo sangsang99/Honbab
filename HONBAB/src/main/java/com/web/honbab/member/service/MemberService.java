@@ -15,5 +15,5 @@ public interface MemberService {
 	public String memberDelete(String id, HttpServletRequest request);
 	public String getMessage(HttpServletRequest request, String msg, String url);
 
-	public String modify(String id, HttpServletRequest request);
+    String modify(MultipartHttpServletRequest mul, HttpServletRequest request);
 }

@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -86,23 +87,6 @@ public class MemberController implements MemberSession{
 		}
 		return "redirect:register_form";
 	}
-	@RequestMapping("modify")
-	public String modify_form(@RequestParam("id") String id, Model model) {
-		ms.info(id, model);
-		return "member/modify";
-	}
-	
-	@PostMapping("modify")
-	public void modify(@RequestParam("id") String id, 
-							HttpServletResponse response,
-							HttpServletRequest request) throws IOException {
-		
-		String message = ms.modify(id, request);
-		response.setContentType("text/html; charset=utf-8");
-		PrintWriter out = response.getWriter();
-		out.println(message);
-		
-	}
 	
 	@GetMapping("delete")
 	public void delete(@RequestParam("id") String id,HttpServletResponse response, HttpServletRequest request) throws IOException{
@@ -117,4 +101,18 @@ public class MemberController implements MemberSession{
 		return "redirect:register_form";
 	}
 
+
+	@RequestMapping("modifyForm")
+	public String modifyForm(@RequestParam("id") String id, Model model) {
+		ms.info(id, model);
+		return "member/modifyForm";
+	}
+	
+	@PostMapping("Modify")
+	public void modify(MultipartHttpServletRequest mul, HttpServletResponse response, HttpServletRequest request) throws IOException {
+		String message = ms.modify(mul, request);
+		response.setContentType("text/html; charset=utf-8");
+		PrintWriter out = response.getWriter();
+		out.println(message);
+	}
 }

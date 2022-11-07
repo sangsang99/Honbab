@@ -35,6 +35,12 @@
 </script>
 </head>
 <body>
+
+<div>
+	<c:import url="../admin/boardManagement.jsp"></c:import>
+</div>
+
+<div class="cd1">
 	<table border="1" width="500px">
 		<tr>
 			<td><br><span style="color: green; font-weight: bold;">
@@ -82,6 +88,9 @@
 				</form></td>
 		</tr>
 	</table>
+	
+
+</div>
 </body>
 
 </body>
