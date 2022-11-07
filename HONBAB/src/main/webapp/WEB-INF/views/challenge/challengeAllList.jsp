@@ -28,10 +28,6 @@ function updateLike(writeNo){
 	location.href="updateLike?writeNo=" + writeNo;
 }
 
-function unLike(writeNo) {
-	location.href="unLike?writeNo=" + writeNo;
-}
-
 function showPopUp() {
 	let width = 500;
 	let height = 500;
@@ -45,14 +41,19 @@ function showPopUp() {
 	
 	window.open(url, "hello popup", windowStatus);
 }
+
+function getLevelValue() {
+frm.level.value = "<%=request.getParameter("level")%>";
+frm.keyword.value = "<%=request.getParameter("keyword")%>";	
+}
 </script>
 </head>
-<body>
+<body onload="getLevelValue()">
 	<!-- header -->
 	<c:import url="../main/header.jsp"/>
 	
 	<section>
-     <form id="challengeSearch" name="challengeSearch" action="${contextPath }/challenge/challengeSearch"	enctype="multipart/form-data" method="post">
+     <form id="challengeSearch" name="challengeSearch" action="${contextPath }/challengeSearch"	enctype="multipart/form-data" method="post">
         <div class="search">
           <div id="searchForm">
           <select id="level" name="level">
@@ -77,9 +78,6 @@ function showPopUp() {
 
 	<main>
 <!--       <span>검색 결과</span> -->
-    <c:if test="${challengeList.size() == 0 }">
-		<h1>등록된 글이 없습니다.</h1>
-		</c:if>
 		<div class="index_wrap">
       <ul class="index">
         <li class="writeNo">
@@ -102,15 +100,17 @@ function showPopUp() {
         </li>
       </ul>
     </div>
-		
+		<c:if test="${challengeList.size() == 0 }">
+			<h1>LV. <%=request.getParameter("level")%> 에 등록된 글이 없습니다.</h1>
+		</c:if>
 		<c:set var="no" value="${allCount - ((currentPage - 1) * 8)}" />
-		<c:forEach var="dto" items="${challengeList }" >
-<%-- 		<c:forEach var="dto" items="${challengeList }" varStatus="status"> --%>
+		<%-- <c:forEach var="dto" items="${challengeList }" > --%>
+		<c:forEach var="dto" items="${challengeList }" varStatus="status">
+
 			<div class="content_wrap">
 	      <ul class="index">
 	        <li class="writeNo">
-	         <%--  <span>${allCount - ((currentPage-1) * pageLetter + status.index)}</span> --%>
-	          <span>${no}</span>
+	          <span>${allCount - ((currentPage-1) * pageLetter + status.index)}</span>
 	        </li>
 	        <li class="lv">
 	          <span>레벨 ${dto.chLevel }</span>
@@ -130,7 +130,7 @@ function showPopUp() {
 	      </ul>
 	    </div>
 		</c:forEach>
-		<c:set var="no" value="${no -1 }"></c:set>
+		<c:set var="no" value="${no-1}"></c:set>
 	
 		<div id="writebtn">
 			<input type="button" onclick="user_check()" value="글 쓰기">

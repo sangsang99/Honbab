@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<c:set var="contextPath" value="${pageContext.request.contextPath }" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,15 +32,19 @@
             <li class="date">DATE</li>
             <li class="view">VIEWS</li>
           </ul>
-          <form>
-            <ul class="index">
-              <li class="no">no</li>
-              <li class="title">제목</li>
-              <li class="writer">작성자</li>
-              <li class="date">날짜</li>
-              <li class="view">조회수</li>
-            </ul>
-          </form>
+ 
+					<c:forEach var="best" items="${challengeBestList }" >        
+	          <form>
+	            <ul class="index">
+	              <li class="no">{best.writeNo}</li>
+	              <li class="title">{best.title}</li>
+	              <li class="writer">{best.nickName}</li>
+	              <li class="date">{best.saveDate}</li>
+	              <li class="view">{best.views}</li>
+	            </ul>
+	          </form>
+					</c:forEach>
+				
           <div class="more"><a href="challengeAllList">+ MORE</a></div>
         </section>
       </div>

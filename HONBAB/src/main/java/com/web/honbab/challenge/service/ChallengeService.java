@@ -1,13 +1,9 @@
 package com.web.honbab.challenge.service;
 
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
-
-import com.web.honbab.challenge.dto.ChallengeDTO;
-
 
 public interface ChallengeService {
 	
@@ -21,6 +17,8 @@ public interface ChallengeService {
 	
 	public String challengeDelete(int writeNo, HttpServletRequest request);
 	
+	public void challengeBestList(int views, Model model);
+	
 	/*
 	 * public int likesCount(int writeNo);
 	 * 
@@ -29,10 +27,9 @@ public interface ChallengeService {
 	 * public int unLike(int writeNo) throws Exception;
 	 */
 	
-	
-	
-	
 	// 검색
-	public void challengeSearch(MultipartHttpServletRequest mul, Model model);
+	//public void challengeSearch(MultipartHttpServletRequest mul, Model model); 
+	public void challengeSearch(MultipartHttpServletRequest mul, Model model); 
+	
 	
 }
