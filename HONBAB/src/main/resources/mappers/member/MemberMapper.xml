@@ -47,5 +47,15 @@
 		select * from BUSINES_JOIN where id=#{id}
 	</select>
 	
-
+	<update id="modify">
+		update USER_JOIN set 
+		pw=#{pw}, 
+		name=#{name}, 
+		nickname=#{nickName}, 
+		tel=#{tel}, 
+		region=#{region}, 
+		gender=#{gender}, 
+		email=#{email}
+		where id=#{id}
+	</update>
 </mapper>

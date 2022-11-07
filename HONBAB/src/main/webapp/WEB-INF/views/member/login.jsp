@@ -12,6 +12,10 @@
 	text-align: center;
 	height: 300px;
 }
+footer{
+position : absolute;
+bottom : 0;
+}
 </style>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
@@ -72,6 +76,8 @@ $(document).ready(function(){
 			</form>
 		</div>
 	</div>
-	<c:import url="../main/footer.jsp"/>
+	<footer>
+		<c:import url="../main/footer.jsp"/>
+	</footer>
 </body>
 </html>

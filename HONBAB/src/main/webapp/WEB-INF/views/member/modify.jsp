@@ -35,7 +35,7 @@ function modify(){
 	<c:import url="../main/header.jsp"/>
 	<h1 align="center">회원정보 수정</h1>
 	<div class="wrap">
-		<form id="modify_form" action="register" method="post">
+		<form id="modify" action="${contextPath }/member/modify" method="post">
 			<table border="1">
 				<tr>
 					<th>아이디</th>
@@ -80,7 +80,7 @@ function modify(){
 				</tr>
 				<tr>
 					<td colspan="2" align="center">
-						<input type="button" value="수정"> <!-- onclick="modify()" -->
+						<input type="submit" value="수정" > <!-- onclick="modify()" -->
 					</td>
 				</tr>
 			</table>

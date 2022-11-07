@@ -3,6 +3,7 @@ package com.web.honbab.member.service;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.ui.Model;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.web.honbab.member.dto.MemberDTO;
 
@@ -14,4 +15,5 @@ public interface MemberService {
 	public String memberDelete(String id, HttpServletRequest request);
 	public String getMessage(HttpServletRequest request, String msg, String url);
 
+	public String modify(String id, HttpServletRequest request);
 }
