@@ -5,6 +5,10 @@
 	text-decoration: none;
 }
 
+a {
+	color: black;
+}
+
 a:visited {
 	color: black;
 }
@@ -27,16 +31,20 @@ header {
 	padding: 15px 5px;
 	vertical-align: middle;
 	background-color: rgb(255, 255, 255);
+	border-bottom: 1px solid rgba(80, 80, 80, 0.918);
+/* 	border-bottom: 1px solid rgba(17, 21, 226, 0.918); */
 }
 
 .logo, .header_wrap>ul, header li {
 	display: inline-block;
+	vertical-align: middle;
 }
 
 .logo {
 	font-size: 24px;
 	font-weight: 800;
 	width: 100px;
+	margin-right: 40px;
 }
 
 .logo>span {
@@ -44,36 +52,71 @@ header {
 	margin: 5px 0;
 }
 
-.nav>li {
-	width: 100px;
-	text-align: center;
+/* .nav > li {
+	width: auto;
+	text-align: left;
 	font-weight: 500;
 	font-family: "Kumbh Sans", sans-serif;
+	margin: 0 20px;
+} */
+
+.nav {
+	width: 1040px;
+  vertical-align: middle;
 }
 
-.kr_menu {
-/* 	color: rgb(25, 11, 223); */
-	font-size: 16px;
-	font-weight: 500;
-	font-family: 'Noto Sans KR', sans-serif;
+#find {
+	margin-left: 40px;
 }
 
-#logout {
-	position: relative;
-	padding: 10px 0;
-	margin: 5px 0;
-	right: 0;
-/* 	color: rgb(25, 11, 223); */
-	font-weight: 500;
-	font-family: "Kumbh Sans", sans-serif;
+.board {
+  float: left;
+  width: fit-content;
+  height: 26px;
+  text-align: left;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: "Kumbh Sans", sans-serif;
+  margin: 0 40px;
+  vertical-align: middle;
+  padding-top: 5px;
 }
 
+.user {
+  width: fit-content;
+  height: 26px;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: "Kumbh Sans", sans-serif;
+  float: right;
+  padding-top: 5px;
+}
+
+#dash {
+  -ms-transform: rotate(90deg); /* IE 9 */
+  -webkit-transform: rotate(90deg); /* Chrome, Safari, Opera */
+  transform: rotate(90deg);
+  width: 24px;
+  height: 24px;
+  float: right;
+  /* filter: invert(15%) sepia(98%) saturate(3987%) hue-rotate(233deg) brightness(88%) contrast(104%); */
+	filter: invert(28%) sepia(1%) saturate(288%) hue-rotate(43deg) brightness(101%) contrast(87%);
+}
+.empty {
+  width: 40px;
+}
+
+#join,
 #mypage {
-	position: relative;
-	padding: 10px 0;
-	margin: 5px 0;
-	right: 0;
-/* 	color: rgb(25, 11, 223); */
-	font-weight: 500;
-	font-family: "Kumbh Sans", sans-serif;
+  margin-left: 60px;
 }
+
+#login,
+#join,
+#logout,
+#mypage {
+  float: right;
+  /* color: rgba(17, 21, 226, 0.918); */
+}
+
+
