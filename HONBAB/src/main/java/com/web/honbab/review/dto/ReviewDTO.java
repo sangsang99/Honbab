@@ -30,6 +30,15 @@ public class ReviewDTO {
 	private int likes;
 	private String id;
 	
+	private ReviewLikeDTO reviewLikeDTO;
+	
+	public ReviewLikeDTO getReviewLikeDTO() {
+		return reviewLikeDTO;
+	}
+	public void setReviewLikeDTO(ReviewLikeDTO reviewLikeDTO) {
+		this.reviewLikeDTO = reviewLikeDTO;
+	}
+	
 	
 	public int getWriteNo() {
 		return writeNo;

@@ -74,12 +74,24 @@
 	} 
 
 		
-	function isLogin() {
+	function isLogin(writeNo) {
 		var user = '${loginUser}';
 		if(user != ''){
-			return true;			
+			location.href="${contextPath}/review/reviewLike?writeNo="+writeNo;
+			return true;	
 		} else{
-			confirm("로그인 후 작성 가능합니다. 로그인하러 가실래요?");
+			var goLogin = confirm("로그인 하신 유저만 좋아요를 누를 수 있어요. 로그인하러 가실래요?");
+			if(goLogin){
+				alert("goLogin true");
+				location.href="${contextPath}/member/login";
+				return false;
+				
+			}else{
+				alert("goLogin false");
+				location.href="${contextPath}/review/reviewContent?writeNo="+writeNo;
+				return false;
+			}
+			
 		} 
 	}
  	
@@ -108,9 +120,8 @@
 			<span class="view">${reviewContent.views}</span>
 
 			<div class="like">
-				<a
-					href="${contextPath}/review/reviewLike?writeNo=${reviewContent.writeNo}"
-					onclick="isLogin()">좋아요♥</a> <span class="age">${reviewContent.likes}</span>
+				<a href="#"
+					onclick="isLogin(${reviewContent.writeNo})">좋아요♥</a> <span class="age">${reviewContent.likes}</span>
 			</div>
 	
 			<c:if test="${reviewContent.imgName == 'None'}">
