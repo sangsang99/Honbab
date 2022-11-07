@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.web.honbab.common.service.CommonService;
 import com.web.honbab.mybatis.promo.PromoMapper;
 import com.web.honbab.promo.dto.PromoDTO;
 import com.web.honbab.promo.dto.PromoRepDTO;
@@ -25,19 +26,21 @@ public class PromoServiceImpl implements PromoService {
 	@Autowired
 	PromoFileService pfs;
 	
+	@Autowired
+	CommonService cms;
 	
 	@Override
 	public void promoList(Model model, int num) {
-		int pageLetter = 10; // 한 페이지당 글 목록수 
-		int allCount = mapper.selectBoardCount(); // 전체 글수
-		int repeat = allCount/pageLetter; // 마지막 페이지 번호 jsp에서 foreach에 사용할 값, 2/3=0
-		if(allCount % pageLetter != 0) // 2/3일 때 마지막 페이지는 1, 5/3일때 마지막페이지는 2
- 			repeat += 1; 
-		int end = num * pageLetter; //numDefault는 1, pageLetter는 3 이면 end는 3 // 3의 배수만 나옴
-		int start = end + 1 - pageLetter; // 끝번호가 15면 첫번호는 13 이런식
-		model.addAttribute("repeat", repeat); //jsp파일에 보낼값
-		model.addAttribute("promoList", mapper.promoList(start, end)); 
+		
+		int allCount = mapper.selectPromoAllCount(); // 전체 글수
+		int[] startEnd = new int[1];
+		
+		startEnd = cms.paging(model, num, allCount); 
+		model.addAttribute("isSearchPage", false);
+		model.addAttribute("promoList", mapper.promoList(startEnd[0], startEnd[1])); 
 	}
+	
+	
 	
 	@Override
 	public String writeSave(MultipartHttpServletRequest mul, HttpServletRequest request) {
@@ -64,7 +67,7 @@ public class PromoServiceImpl implements PromoService {
 		String msg,url;
 		if(result == 1) {
 			msg = "새 글이 등록 되었습니다.";
-			url = "/promotion/promoList";
+			url = "/promotion/promoAllList";
 		} else {
 			msg ="문제가 생겼습니다";
 			url = "/promotion/writeForm";

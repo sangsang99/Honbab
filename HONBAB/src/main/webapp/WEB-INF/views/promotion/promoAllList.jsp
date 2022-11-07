@@ -85,18 +85,33 @@
 		</div>
 
 
-		<%-- <div class="paging">
-			<c:if test="${startPage > block }">
-				<a href="promoList?num=${startPage-1}" id="paging">◀</a>
-			</c:if>
-			<c:forEach var="num" begin="${startPage}" end="${endPage }">
-				<a href="promoList?num=${num }">${num }</a>
-			</c:forEach>
-			<c:if test="${endPage < repeat}">
-				<a href="promoList?num=${endPage + 1}" id="paging">▶</a>
-			</c:if>
-		</div> --%>
-		<!-- 이거 정리안하면 엉뚱한데서 0으로 나옴 -->
+		<!--  페이징  -->
+		<c:if test="${!isSearchPage}">
+			<div class="paging">
+				<c:if test="${startPage > block }">
+					<a href="promoAllList?num=${startPage-1}" id="paging">◀</a>
+				</c:if>
+				<c:forEach var="num" begin="${startPage}" end="${endPage }">
+					<a href="promoAllList?num=${num }">${num }</a>
+				</c:forEach>
+				<c:if test="${endPage < repeat}">
+					<a href="promoAllList?num=${endPage + 1}" id="paging">▶</a>
+				</c:if>
+			</div>
+		</c:if>
+		<c:if test="${isSearchPage}">
+			<div class="paging">
+				<c:if test="${startPage > block }">
+					<a href="search?num=${startPage-1}" id="paging">◀</a>
+				</c:if>
+				<c:forEach var="num" begin="${startPage}" end="${endPage }">
+					<a href="search?num=${num }">${num }</a>
+				</c:forEach>
+				<c:if test="${endPage < repeat}">
+					<a href="search?num=${endPage + 1}" id="paging">▶</a>
+				</c:if>
+			</div>
+		</c:if>
 	</main>
 </body>
 </html>

@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.web.honbab.common.service.CommonService;
 import com.web.honbab.mybatis.review.ReviewMapper;
 import com.web.honbab.review.dto.ReviewDTO;
 import com.web.honbab.review.dto.ReviewRepDTO;
@@ -28,6 +29,9 @@ public class ReviewServiceImpl implements ReviewService, SearchSession {
 	@Autowired
 	private HttpSession session;
 
+	@Autowired
+	private CommonService cms;
+	
 	@Override
 	public String reviewSave(MultipartHttpServletRequest mul, HttpServletRequest request) {
 		ReviewDTO dto = new ReviewDTO();
@@ -102,7 +106,7 @@ public class ReviewServiceImpl implements ReviewService, SearchSession {
 		int allCount = mapper.selectReviewCount(); // 전체 글수
 		int[] startEnd = new int[1];
 
-		startEnd = paging(model, num, allCount);
+		startEnd = cms.paging(model, num, allCount);
 		model.addAttribute("reviewAllList", mapper.reviewAllList(startEnd[0], startEnd[1]));
 		model.addAttribute("isSearchPage", false);
 	}
@@ -188,13 +192,13 @@ public class ReviewServiceImpl implements ReviewService, SearchSession {
 		switch (select) {
 		case "title":
 			allCount = mapper.selectReviewCountForTitle(keyword); // Title로 설정해서 검색한 전체 글수
-			startEnd = paging(model, num, allCount);
+			startEnd = cms.paging(model, num, allCount);
 			model.addAttribute("reviewAllList", mapper.searchForTitle(keyword, startEnd[0], startEnd[1]));
 			model.addAttribute("isSearchPage", true);
 			break;
 		case "nickname":
 			allCount = mapper.selectReviewCountForNick(keyword); // Nick으로 설정해서 검색한 전체 글수
-			startEnd = paging(model, num, allCount);
+			startEnd = cms.paging(model, num, allCount);
 			model.addAttribute("reviewAllList", mapper.searchForNick(keyword, startEnd[0], startEnd[1]));
 			model.addAttribute("isSearchPage", true);
 			break;
@@ -204,28 +208,4 @@ public class ReviewServiceImpl implements ReviewService, SearchSession {
 		}
 	}
 
-	// 페이징 함수 쿼리에 쓰일 START값, END값 int[1] 배열로 반환, num은 페이지 넘버
-	public int[] paging(Model model, int num, int allCount) {
-		// page부여
-		int pageLetter = 3; // 한 페이지당 글 목록수
-		int repeat = allCount / pageLetter; // 마지막 페이지 번호 jsp에서 foreach에 사용할 값, 2/3=0
-		if (allCount % pageLetter != 0) // 2/3일 때 마지막 페이지는 1, 5/3일때 마지막페이지는 2
-			repeat += 1;
-		int end = num * pageLetter; // numDefault는 1, pageLetter는 3 이면 end는 3 // 3의 배수만 나옴
-		int start = end + 1 - pageLetter; // 끝번호가 15면 첫번호는 13 이런식
-
-		// block처리
-		int block = 3;
-		int startPage = (num - 1) / block * block + 1;
-		int endPage = startPage + block - 1;
-		if (endPage > repeat)
-			endPage = repeat;
-
-		model.addAttribute("block", block); // jsp파일에 보낼값
-		model.addAttribute("startPage", startPage); // jsp파일에 보낼값
-		model.addAttribute("endPage", endPage); // jsp파일에 보낼값
-		model.addAttribute("repeat", repeat); // jsp파일에 보낼값
-
-		return new int[] { start, end };
-	}
 }
