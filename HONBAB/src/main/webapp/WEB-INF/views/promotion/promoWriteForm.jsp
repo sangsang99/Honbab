@@ -53,7 +53,7 @@
 			<input type="file" name="image_file_name" onchange="readURL(this)">
 			<img src="#" id=preview width="100px" height="100px"> <br><br>
 			<input type="submit" value="작성완료"> &nbsp;
-			<input type="button" value="글목록" onclick="location.href='${contextPath }/promotion/promoList'">
+			<input type="button" value="글목록" onclick="location.href='${contextPath }/promotion/promoAllList'">
 		</form>
 	</div>
 	

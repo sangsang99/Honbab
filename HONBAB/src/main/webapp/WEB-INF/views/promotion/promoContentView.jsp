@@ -228,12 +228,12 @@
 				<td colspan="4" align="center">
 					<div id="reply"></div> <c:if test="${data.id == loginUser}">
 						<input type="button" value="수정하기"
-							onclick="location.href='${contextPath}/promotion/modify_form?writeNo=${data.writeNo }'"> &nbsp;
+							onclick="location.href='${contextPath}/promotion/promoModifyForm?writeNo=${data.writeNo }'"> &nbsp;
 					<input type="button" value="삭제하기"
 							onclick="location.href='${contextPath}/promotion/delete?writeNo=${data.writeNo }&imageFileName=${data.imageFileName }'">
 					</c:if> <input type="button" value="평점/답글달기" onclick="slide_click()">
 					&nbsp; <input type="button" value="글목록"
-					onclick="location.href='${contextPath}/promotion/promoList'">
+					onclick="location.href='${contextPath}/promotion/promoAllList'">
 				</td>
 			</tr>
 		</table>

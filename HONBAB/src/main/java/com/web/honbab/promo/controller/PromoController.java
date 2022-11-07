@@ -39,16 +39,22 @@ public class PromoController {
 	@Autowired
 	private OperService os;
 	
-	@GetMapping("promoList")
-	public String promoList(Model model, @RequestParam(value="num", required = false, defaultValue ="1") int num) {
+	@GetMapping("promoADList")
+	public String promoADList(Model model, @RequestParam(value="num", required = false, defaultValue ="1") int num) {
 		os.promoList(model, num);
 		ps.promoList(model, num);
-		return "promotion/promoList";
+		return "promotion/promoADList";
+	}
+	@GetMapping("promoAllList")
+	public String promoAllList(Model model, @RequestParam(value="num", required = false, defaultValue ="1") int num) {
+		os.promoList(model, num);
+		ps.promoList(model, num);
+		return "promotion/promoAllList";
 	}
 
 	@RequestMapping("writeForm")
 	public String writeForm() {
-		return "promotion/writeForm";
+		return "promotion/promoWriteForm";
 		
 	}
 	
@@ -67,7 +73,7 @@ public class PromoController {
 	@GetMapping("contentView")
 	public String contentView(@RequestParam int writeNo, Model model) {
 		ps.contentView(writeNo, model);
-		return "promotion/contentView";
+		return "promotion/promoContentView";
 	}
 	
 	@GetMapping("download")
@@ -82,7 +88,7 @@ public class PromoController {
 	@GetMapping("modify_form")
 	public String modify_form(@RequestParam int writeNo, Model model) {
 		ps.contentView(writeNo, model);
-		return "promotion/modify_form";
+		return "promotion/promoModifyForm";
 	}
 	
 	@PostMapping("modify")

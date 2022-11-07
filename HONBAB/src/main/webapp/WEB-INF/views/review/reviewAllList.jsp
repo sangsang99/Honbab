@@ -35,14 +35,6 @@
 	<!-- header -->
 	<c:import url="../main/header.jsp" />
 
-
-	<input type="radio" name="sort" id="date" value="date" checked>
-	<label for="sort"> 작성일 </label>
-	<input type="radio" name="sort" id="views" value="views">
-	<label for="sort"> 조회수 </label>
-	<input type="radio" name="sort" id="likes" value="likes">
-	<label for="sort"> 추천수 </label>
-
 	<section>
 		<form id="search" name="saerch" action="${contextPath }/review/search"	enctype="multipart/form-data" method="post">
 			<div class="search">

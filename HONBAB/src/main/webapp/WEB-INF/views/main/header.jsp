@@ -24,7 +24,7 @@
           <li><a id="find" href="${contextPath}/find/findAllList">Find</a></li>
           <li><a href="${contextPath}/challengeAllList">Challenge</a></li>
           <li><a id="review" href="${contextPath}/review/reviewAllList">Review</a></li>
-          <li><a id="promotion" href="${contextPath}/promotion/promoList">Notice?</a></li>
+          <li><a id="promotion" href="${contextPath}/promotion/promoADList">[AD]Honbab</a></li>
           <c:if test="${loginUser == null}">
           	<li class="kr_menu"><a href="${contextPath }/member/login">로그인</a></li>
 		  	<li class="kr_menu"><a href="${contextPath }/member/register_form">회원가입</a></li>
