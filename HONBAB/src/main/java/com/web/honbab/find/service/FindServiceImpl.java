@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.web.honbab.common.service.CommonService;
 import com.web.honbab.find.dto.FindDTO;
 import com.web.honbab.find.dto.FindRepDTO;
 import com.web.honbab.mybatis.find.FindMapper;
@@ -25,28 +26,18 @@ public class FindServiceImpl implements FindService{
 	@Autowired
 	FindFileService ffs;
 	
-	
+	@Autowired
+	CommonService cms;
 	
 	@Override
 	public void findAllList(Model model, int num) {
-		int pageLetter = 3;  
-		int allCount = mapper.selectFindCount(); 
-		int repeat = allCount/pageLetter; 
-		if(allCount % pageLetter != 0) 
- 			repeat += 1; 
-		int end = num * pageLetter; 
-		int start = end + 1 - pageLetter; 
-		
-		int block = 3;
-		int startPage = (num - 1) / block * block + 1;
-		int endPage = startPage + block - 1 ;
-		if(endPage > repeat) endPage = repeat;
-		
-		model.addAttribute("block", block); 
-		model.addAttribute("startPage", startPage); 
-		model.addAttribute("endPage", endPage); 
-		model.addAttribute("repeat", repeat); 
-		model.addAttribute("findAllList", mapper.findAllList(start, end));
+
+		int allCount = mapper.selectFindCount(); // 전체 글수
+		int[] startEnd = new int[1];
+
+		startEnd = cms.paging(model, num, allCount);
+		model.addAttribute("findAllList", mapper.findAllList(startEnd[0], startEnd[1]));
+		model.addAttribute("isSearchPage", false);
 		
 	}
 	
