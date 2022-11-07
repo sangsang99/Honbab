@@ -16,9 +16,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;700&family=Nunito+Sans:wght@400;600;700&family=Ramabhadra&display=swap" rel="stylesheet">
 </head>
 <body>
-    <main>
+    <div class="main">
       <div class="best_wrap">
-        <header>LEVEL CHALLENGE</header>
+        <div class="head">LEVEL CHALLENGE</div>
         <aside>
           <div class="line"></div>
           <div class="text">Best Challenge</div>
@@ -48,6 +48,6 @@
           <div class="more"><a href="challengeAllList">+ MORE</a></div>
         </section>
       </div>
-    </main>
+    </div>
 </body>
 </html>

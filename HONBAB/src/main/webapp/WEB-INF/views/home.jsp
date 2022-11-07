@@ -20,7 +20,6 @@
 <script src="${pageContext.request.contextPath}/resources/js/p5.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/sketch.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/imgSequence?ver=1.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/writeForm.js"></script>
 <link href="${pageContext.request.contextPath}/resources/css/writeForm.css?ver=4" rel="stylesheet"/> 
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script type="text/javascript">
@@ -49,7 +48,7 @@ $.getScript( './resources/js/imgSequence.js');
               <div class="login_join_view">
                 <header>&nbsp;</header>
                 <div class="login_join">
-                <a id="login">LOGIN</a>
+                <a id="login" href="${contextPath}/member/login">LOGIN</a>
                 <a id="join" style="cursor: pointer" class="scoll-down2">JOIN</a>
 							</div>
                     <!-- <div class="down_img">
@@ -79,7 +78,7 @@ $.getScript( './resources/js/imgSequence.js');
                     </div>
                     </aside>
             
-                    <main>
+                    <main class="join">
                     <div class="join_form_wrap">
                         <form class="join_form">
                         <ul>
@@ -123,32 +122,37 @@ $.getScript( './resources/js/imgSequence.js');
                         <input type="submit" value="Join" onclick="location.href='${contextPath}/login'" />
                         </form>
                     </div>
+<!-- 									<div class="down"><a style="cursor: pointer" class="scoll-down3" >↓</a></div> -->
                     </main>
                 </div>
             </section>
             <!-- 수정ㅋㅋㅋ -->
-            <section class="sequence">
-
-            </section>
-
-						<!-- 사장님 회원가입 이메일 제출 -->
-						<div class="biz_join_view">
-              <div class="biz_join_form">
-                <ul>
-                  <li>
-                    	<span>사장님이신가요?</span>
-                  </li>
-                  <li>
-                    <input type="text" placeholder="회원가입문의 이메일 제출" />
-                  </li>
-                  <li>
-                    <input id="biz_submit" type="submit" value="제출" />
-                  </li>
-                </ul>
-              </div>
-            </div>
+				
+		<!-- 		<section class="sequence">
+			</section> -->
+			   <!-- 사장님 회원가입 이메일 제출 -->
+		    <div class="biz_join_view">
+		      <div class="biz_join_form">
+		        <ul>
+		          <li>
+		            <span id="biz">사장님이신가요?</span>
+		          </li>
+		          <li>
+		            <input type="text" id="biz_email" placeholder="회원가입문의 이메일 제출" />
+		          </li>
+		          <li class="btn">
+		            <input type="submit" id="biz_submit" value="제출" />
+		          </li>
+		        </ul>
+		      </div>
+		    </div>
+        <!-- footer -->
+        <div class="footer">
+					<c:import url="main/footer.jsp"></c:import>
         </div>
         
+				
+				
         <!--    javascript    -->
         <script src="script/jquery-2.1.3.min.js"></script>
         <script src="script/jquery.easing.1.3.js"></script>
@@ -156,7 +160,6 @@ $.getScript( './resources/js/imgSequence.js');
         <script src="script/p5.min.js"></script>
         <script src="script/sketch.js"></script>
         <script src="script/imgSequence.js"></script>
-        <script src="script/writeForm.js"></script>
     </body>
-
+<script src="${pageContext.request.contextPath}/resources/js/writeForm.js"></script>
 </html>
