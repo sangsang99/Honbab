@@ -90,11 +90,11 @@
 
 	<div class="writer_wrap">
 		<span class="writer">by. ${findContent.nickName}</span> 
-		<span class="date">${findContent.writeDate}</span>
-		<span class="age">${findContent.age}</span>
-		<span class="gen">${findContent.gen}</span>
-		<span class="reg">${findContent.region}</span>
-		<span class="view">${findContent.views}</span>
+		<span class="date">${findContent.writeDate}</span><br>
+		<span class="age">나이 ${findContent.age}</span><br>
+		<span class="gen">성별 ${findContent.gen}</span><br>
+		<span class="reg">지역 ${findContent.region}</span><br>
+		<span class="view">조회수 ${findContent.views}</span>
 	</div>
 		<div class="empty"></div>
 
@@ -112,10 +112,55 @@
 			<input type="button" value="글삭제" id="delete_btn"
 				onclick="location.href='${contextPath}/find/find_delete?writeNo=${findContent.writeNo}'">
 		</c:if>
-
 	</main>
 
-	<div id="reply">
+    <section>
+    <div class="plus"><a>+ 댓글</a></div>
+		<c:if test="${loginUser != null}">
+      <div class="panel">
+				<form id="form" name="form">        
+					<input type="hidden" name="writeNo" value="${findContent.writeNo}">
+					<input type="hidden" name="id" value="${reviewContent.id}">
+	        <div class="rep">
+	          <span>by. ${findContent.nickName}</span>
+	          <span>savedate</span><br>
+		     		<input type="text" id="coment" name="coment" placeholder="10글자 이상 작성" />
+   					<button type="button" onclick="rep()">
+		     			<img id="enter" src="${contextPath}/resources/img/arrow-return-left.svg">
+		     		</button>
+	        </div>
+	        <div class="rep">
+     				<span>by. ${reviewContent.nickname}</span>
+	          <span>savedate</span><br>
+		     		<input type="text" id="coment" name="coment" placeholder="10글자 이상 작성" />
+   					<button type="button" onclick="rep()">
+		     			<img id="enter" src="${contextPath}/resources/img/arrow-return-left.svg">
+		     		</button>
+	        </div>
+	        <div class="rep">
+    				<span>by. ${reviewContent.nickname}</span>
+	          <span>savedate</span><br>
+		     		<input type="text" id="coment" name="coment" placeholder="10글자 이상 작성" />
+   					<button type="button" onclick="rep()">
+		     			<img id="enter" src="${contextPath}/resources/img/arrow-return-left.svg">
+		     		</button>
+	        </div>
+	        <div class="rep">
+     				<span>by. ${reviewContent.nickname}</span>
+	          <span>savedate</span><br>
+		     		<input type="text" id="coment" name="coment" placeholder="10글자 이상 작성" />
+   					<button type="button" onclick="rep()">
+		     			<img id="enter" src="${contextPath}/resources/img/arrow-return-left.svg">
+		     		</button>
+	        </div>
+				</form>
+			</div>
+		</c:if> 
+    </section>
+
+
+
+	<%-- <div id="reply">
 		<!-- 해당글에 답변이 있으면 노출 -->
 	</div>
 	<hr>
@@ -130,7 +175,7 @@
 			<button type="button" onclick="rep()">답글 달기</button>
 			&nbsp;
 		</form>
-	</c:if>
+	</c:if> --%>
 
 	<!-- footer -->
 	<c:import url="../main/footer.jsp" />

@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <title>reviewContent</title>
 <link
-	href="${pageContext.request.contextPath}/resources/css/challenge/view.css?ver=4"
+	href="${pageContext.request.contextPath}/resources/css/review/view.css?ver=4"
 	rel="stylesheet" />
 <!-- font -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -150,57 +150,60 @@
 		</div>
 
 		<!-- buttons -->
-		<input type="button" value="목록 돌아가기" onclick="location.href='${contextPath}/review/reviewAllList'">
+		<input type="button" value="글목록" onclick="location.href='${contextPath}/review/reviewAllList'">
 		<c:if test="${loginUser == reviewContent.id}">
 			<!-- 로그인되어있고 , reviewContent.uNickname 과 일치하면 노출-->
-			<input type="button" value="수정하기" id="modify_btn" onclick="location.href='${contextPath}/review/review_modify_form?writeNo=${reviewContent.writeNo}'"> 
-			<input type="button" value="삭제하기" id="delete_btn" onclick="location.href='${contextPath}/review/review_delete?writeNo=${reviewContent.writeNo}&imageFileName=${reviewContent.imgName}'">
+			<input type="button" value="글수정" id="modify_btn" onclick="location.href='${contextPath}/review/review_modify_form?writeNo=${reviewContent.writeNo}'"> 
+			<input type="button" value="글삭제" id="delete_btn" onclick="location.href='${contextPath}/review/review_delete?writeNo=${reviewContent.writeNo}&imageFileName=${reviewContent.imgName}'">
 		</c:if>
 	</main>
-
-	<%-- <table border="1">
-		<tr>
-			<th>글번호</th>
-			<td>${reviewContent.writeNo}</td>
-		</tr>
-		<tr>
-			<th>글쓴이</th>
-			<td>${reviewContent.nickname}</td>
-		</tr>
-		<tr>
-			<th>제목</th>
-			<td>${reviewContent.title}</td>
-		</tr>
-		<tr>
-			<th>내용</th>
-			<td>${reviewContent.content}</td>
-		</tr>
-		<tr>
-			<th>이미지</th>
-			<td><c:if test="${reviewContent.imgName == 'None'}">
-					<b>이미지가 없습니다..</b>
-				</c:if> <c:if test="${reviewContent.imgName != 'None'}">
-					<img
-						src="${contextPath }/review/download?imageFileName=${reviewContent.imgName}"
-						width="200px" height="200px">
-				</c:if></td>
-		</tr>
-		<tr>
-			<th>작성일</th>
-			<td>${reviewContent.writeDate}</td>
-		</tr>
-		<tr>
-			<th>조회수</th>
-			<td>${reviewContent.views}</td>
-		</tr>
-		<tr>
-			<th>추천수</th>
-			<td>${reviewContent.likes}</td>
-		</tr>
-	</table> --%>
-
-
-	<!-- reply -->
+	
+    <section>
+    <div class="plus"><a>+ 댓글</a></div>
+		<c:if test="${loginUser != null}">
+      <div class="panel">
+				<form id="form" name="form">        
+	       	<input type="hidden" name="writeNo" value="${reviewContent.writeNo}">
+	       	<input type="hidden" name="id" value="${reviewContent.id}">
+	        <div class="rep">
+	          <span>by. ${reviewContent.nickname}</span>
+	          <span>savedate</span><br>
+		     		<input type="text" id="coment" name="coment" placeholder="10글자 이상 작성" />
+   					<button type="button" onclick="rep()">
+		     			<img id="enter" src="${contextPath}/resources/img/arrow-return-left.svg">
+		     		</button>
+	        </div>
+	        <div class="rep">
+     				<span>by. ${reviewContent.nickname}</span>
+	          <span>savedate</span><br>
+		     		<input type="text" id="coment" name="coment" placeholder="10글자 이상 작성" />
+   					<button type="button" onclick="rep()">
+		     			<img id="enter" src="${contextPath}/resources/img/arrow-return-left.svg">
+		     		</button>
+	        </div>
+	        <div class="rep">
+    				<span>by. ${reviewContent.nickname}</span>
+	          <span>savedate</span><br>
+		     		<input type="text" id="coment" name="coment" placeholder="10글자 이상 작성" />
+   					<button type="button" onclick="rep()">
+		     			<img id="enter" src="${contextPath}/resources/img/arrow-return-left.svg">
+		     		</button>
+	        </div>
+	        <div class="rep">
+     				<span>by. ${reviewContent.nickname}</span>
+	          <span>savedate</span><br>
+		     		<input type="text" id="coment" name="coment" placeholder="10글자 이상 작성" />
+   					<button type="button" onclick="rep()">
+		     			<img id="enter" src="${contextPath}/resources/img/arrow-return-left.svg">
+		     		</button>
+	        </div>
+				</form>
+			</div>
+		</c:if> 
+    </section>
+    
+    
+	<%-- <!-- reply -->
 	<h2>답글페이지</h2>
 
 	<div id="reply">
@@ -220,8 +223,25 @@
 			&nbsp;
 		</form>
 	</c:if>
-
+ --%>
 	<c:import url="../main/footer.jsp" />
+	
+	    <script>
+      var plus = document.getElementsByClassName("plus");
+      var i;
+
+      for (i = 0; i < plus.length; i++) {
+        plus[i].addEventListener("click", function () {
+          this.classList.toggle("active");
+          var panel = this.nextElementSibling;
+          if (panel.style.maxHeight) {
+            panel.style.maxHeight = null;
+          } else {
+            panel.style.maxHeight = panel.scrollHeight + "px";
+          }
+        });
+      }
+    </script>
 
 </body>
 </html>

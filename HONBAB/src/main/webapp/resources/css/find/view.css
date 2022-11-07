@@ -44,7 +44,7 @@ main {
 }
 
 .title_wrap {
-	width: 800px;
+	width: 1200px;
 	height: 80px;
 	padding: 30px 0 0 0;
 	border-bottom: 2px solid rgb(25, 11, 223);
@@ -90,10 +90,40 @@ main {
 
 .writer_wrap {
 	width: 1200px;
-	height: 250px;
+	height: 150px;
 }
 
-.writer, .date, {
+
+.writer, .date {
+	display: inline-block;
+	padding: 10px 0;
+	color: rgb(40, 40, 40);
+	font-family: "Nunito Sans", sans-serif;
+}
+
+.writer {
+	font-size: 19px;
+	font-weight: 600;
+}
+
+.date {
+	font-size: 16px;
+	font-weight: 600;
+	position: absolute;
+	text-align: right;
+	right: 360px;
+}
+
+ .age, .gen, .reg, .view {
+ 	font-size: 15px;
+	font-weight: 500;
+	font-family: "Noto Sans KR", sans-serif;
+	width: 200px;
+	color: rgb(120, 120, 120);
+	line-height: 160%
+ }
+
+/* .writer, .date, {
 	display: inline-block;
 	padding: 10px 0;
 	color: rgb(40, 40, 40);
@@ -121,59 +151,17 @@ main {
 	text-align: right;
 	right: 780px;
 }
+ */
 
 
-.like {
-	font-size: 14px;
-	font-weight: 500;
-	font-family: "Nunito Sans", sans-serif;
-	width: 200px;
-	position: absolute;
-	top: 380px;
-}
-
-button {
+/* button {
 	visibility: hidden;
 }
 
 button>span {
 	visibility: visible;
 	font-size: 18px;
-}
-
-.like button {
-	width: 30px;
-	height: 30px;
-	margin-right: 10px;
-}
-
-#imgx>span {
-	width: 100px;
-	height: 250px;
-	font-weight: 500px;
-	font-size: 50px;
-	text-align: center;
-	margin: 0 auto;
-	color: rgb(40, 40, 40);
-}
-
-#imgx {
-	width: 350px;
-	height: 250px;
-	float: right;
-	display: block;
-	background-color: rgb(240, 240, 240);
-}
-
-#img {
-	width: 350px;
-	height: 250px;
-	height: auto;
-	float: right;
-	display: block;
-	background-color: rgb(163, 163, 163);
-	border-radius: 5px;
-}
+} */
 
 .empty {
 	width: 1200px;
@@ -182,7 +170,7 @@ button>span {
 
 .content_wrap {
 	width: 1200px;
-	height: 400px;
+	height: 520px;
 	border-top: 1px solid rgb(163, 163, 163);
 	margin: 0 auto;
 	padding: 20px 0;
@@ -192,7 +180,7 @@ button>span {
 	/* border: 1px solid rgb(221, 221, 221);
   border-radius: 5px; */
 	width: 1200px;
-	height: 400px;
+	height: 520px;
 	float: left;
 	font-size: 16px;
 	font-weight: 400;
@@ -202,7 +190,8 @@ button>span {
 	overflow: auto;
 	padding: 5px;
 	/* white-space: inherit; */
-	border-bottom: 1px solid rgb(200, 200, 200);
+	border-bottom: 1px solid rgb(220, 220, 220);
+/* 	border-bottom: 1px solid rgb(200, 200, 200); */
 	white-space: normal;
 	word-break: break-all;
 }
@@ -212,7 +201,7 @@ button>span {
     input button
 ----------------------------------
 */
-input {
+input[type="button" i] {
 	width: 100px;
 	height: 30px;
 	margin: 15px 0;
@@ -220,15 +209,113 @@ input {
 	background-color: rgba(245, 222, 179, 0);
 	outline: none;
 	border: none;
-	border-radius: 5px;
 	font-size: 15px;
 	font-weight: 500;
+	font-family: 'Noto Sans KR', sans-serif;
+	color: rgba(17, 21, 226, 0.918);
+/* 	border-radius: 3px; */
+/*   border: 1px solid rgba(17, 21, 226, 0.918); */
 }
 
-input:hover {
-	border: 1px solid rgb(163, 163, 163);
-}
+input[type="button" i]:hover {
+	border-top: 1px solid rgba(17, 21, 226, 0.918);
+	border-bottom: 1px solid rgba(17, 21, 226, 0.918);
+} 
 
 #modify_btn {
 	margin-right: 20px;
 }
+
+
+/*
+----------------------------------
+    댓글
+----------------------------------
+*/
+section {
+  width: 1200px;
+  height: 500px;
+  margin: 0 auto;
+}
+
+.plus {
+  width: 100%;
+  height: 30px;
+  cursor: pointer;
+  padding: 0 10px;
+  margin-bottom: 20px;
+  border-radius: 2px;
+  /* border: 1px solid rgba(17, 21, 226, 0.918); */
+}
+
+.plus:hover {
+  border-bottom: 2px solid rgba(17, 21, 226, 0.918);
+}
+
+.plus > a {
+  height: 40px;
+  color: rgba(17, 21, 226, 0.918);
+  font-size: 20px;
+  font-weight: 800;
+  font-family: "Nunito Sans", sans-serif;
+}
+
+.panel {
+  height: 450px;
+  max-height: 0;
+  transition: max-height 0.2s ease-out;
+  overflow: hidden;
+}
+
+.rep {
+  height: 100px;
+  padding: 10px 0;
+  border-bottom: 1px solid rgb(163, 163, 163);
+}
+
+.rep > span {
+  color: rgb(163, 163, 163);
+  line-height: 160%;
+  font-family: "Nunito Sans", sans-serif;
+  margin-right: 10px;
+}
+
+input[type="text" i] {
+	width: 1040px;
+	height: 45px;
+	outline: none;
+	border: 1px solid rgba(200, 200, 200, 0.3);
+}
+
+input[type="text" i], button {
+	vertical-align: middle;
+}
+
+button {
+	visibility: hidden; 
+	width: 150px;
+	height: 45px;
+	float: right;
+}
+
+button > span {
+	width: 150px;
+	height: 45px;
+	visibility: visible;
+	font-size: 15px;
+	font-weight: 500;
+	font-family: 'Noto Sans KR', sans-serif;
+}
+button > img {
+		padding-top: 10px;
+		visibility: visible;
+		width: 20px;
+		height: 20px;
+}
+
+
+
+
+
+
+
