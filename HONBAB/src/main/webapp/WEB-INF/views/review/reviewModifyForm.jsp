@@ -122,7 +122,7 @@
 				</ul>
 				<input type="submit" value="수정완료"> 
 				<input type="button"
-					value="글목록" onclick="location.href='${contextPath }/boardAllList'">
+					value="글목록" onclick="location.href='${contextPath }/review/reviewAllList'">
 			</form>
 		</div>
 	</main>

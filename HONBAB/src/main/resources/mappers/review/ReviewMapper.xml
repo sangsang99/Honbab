@@ -23,17 +23,20 @@
 		<result property="reComent" column="RE_COMENT" />
 		<result property="reId" column="RE_ID" />
 	</resultMap>
+	
+	<resultMap type="com.web.honbab.review.dto.ReviewLikeDTO" id="reviewLike">
+		<id property="likeId" column="LIKE_ID" />
+		<result property="likeWriteNo" column="LIKE_WRITE_NO" />
+	</resultMap>
 
+
+	<!--ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡCRUDㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ-->
 	<insert id="reviewSave">
 		INSERT INTO
 		REVIEW_BOARD(WRITE_NO, NICKNAME, TITLE, CONTENT, IMGNAME, ID)
 		VALUES(REVIEW_BOARD_SEQ.NEXTVAL, #{nickname}, #{title}, #{content}, #{imgName}, #{id})
 	</insert>
 	
-	
-<!--<select id="reviewAllList" resultMap="review">
-		SELECT * FROM REVIEW_TEST
-	</select> -->
 	<select id="reviewAllList" resultMap="review">
 		SELECT B.* FROM
 		(SELECT ROWNUM RN, A.* FROM
@@ -50,10 +53,6 @@
 	<select id="reviewContent" resultMap="review">
 		SELECT * FROM REVIEW_BOARD WHERE WRITE_NO=#{writeNo}
 	</select>
-
-	<update id="upViews">
-		UPDATE REVIEW_BOARD SET VIEWS=VIEWS+1 WHERE WRITE_NO=#{writeNo}
-	</update>
 	
 	<delete id="reviewDelete">
 		DELETE FROM REVIEW_BOARD WHERE WRITE_NO=#{writeNo}
@@ -67,6 +66,12 @@
 		WHERE WRITE_NO=#{writeNo}
 	</update>
 	
+	<!--ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡVIEWS ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ-->
+	<update id="upViews">
+		UPDATE REVIEW_BOARD SET VIEWS=VIEWS+1 WHERE WRITE_NO=#{writeNo}
+	</update>
+	
+	<!--ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡREPLY ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ-->
 	<insert id="addReply">
 		INSERT INTO REVIEW_RE(RE_NICK, RE_COMENT, WRITE_GROUP, RE_ID)
 		VALUES(#{reNick}, #{reComent}, #{writeGroup}, #{reId})
@@ -77,17 +82,43 @@
 		WHERE WRITE_GROUP = #{writeNo}
 		ORDER BY RE_DATE DESC
 	</select>
-	
-	<select id="selectReviewCount" resultType="Integer">
-		SELECT COUNT(*) FROM REVIEW_BOARD
-	</select>
 
-	<update id="reviewLike">
+	<!--ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡLIKE ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ-->
+	<select id="reviewLikeChk" resultType="Integer">
+		SELECT COUNT(*)
+		FROM REVIEW_LIKE
+		WHERE LIKE_ID = #{likeId}
+		AND LIKE_WRITE_NO = #{writeNo}
+	</select>
+	
+	<update id="reviewLikeUp">
 		UPDATE REVIEW_BOARD SET 
 		LIKES = LIKES + 1
 		WHERE WRITE_NO=#{writeNo}
 	</update>
+	
+	<update id="reviewLikeDown">
+		UPDATE REVIEW_BOARD SET 
+		LIKES = LIKES - 1
+		WHERE WRITE_NO=#{writeNo}
+	</update>
+	
+	<insert id="reviewLikeEnrl">
+		INSERT INTO REVIEW_LIKE 
+		VALUES(#{likeId}, #{writeNo})
+	</insert>
+	
+	<delete id="reviewLikeWtdr">
+		DELETE FROM REVIEW_LIKE
+		WHERE LIKE_ID = #{likeId}
+		AND LIKE_WRITE_NO = #{writeNo}
+	</delete>
 
+	<!--ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡPAGING ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ-->
+	<select id="selectReviewCount" resultType="Integer">
+		SELECT COUNT(*) FROM REVIEW_BOARD
+	</select>
+	
 	<select id="selectReviewCountForTitle" resultType="Integer">
 		SELECT COUNT(*) FROM REVIEW_BOARD WHERE TITLE like '%'||#{keyword}||'%' 
 	</select>
@@ -109,8 +140,5 @@
 		(SELECT * FROM REVIEW_BOARD WHERE NICKNAME like '%'||#{keyword}||'%' ORDER BY WRITE_DATE DESC) A) B 
 		WHERE RN BETWEEN #{s} AND #{e}
 	</select>
-	
-	
-	
-	
+
 </mapper>
