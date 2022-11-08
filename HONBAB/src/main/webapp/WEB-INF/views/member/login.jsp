@@ -41,25 +41,25 @@ $(document).ready(function(){
 <body>
 	<c:import url="../main/header.jsp"/>
 	
-	<aside>
-    <div class="aside_wrap">
-      <div class="honbab">
-        <span>HONBAB</span>
-      </div>
-      <div class="text">
-        <span>안녕하시렵니까</span>
-       	<div>혼자 밥 먹기</div>
-        <div>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta, est! <br />
-          Quos voluptatum sunt dolorem unde! Voluptatem pariatur cupiditate minima quidem voluptatum facilis aliquid,
-          dignissimos, ab in illo nemo, molestiae tempore.
+    <aside>
+      <div class="aside_wrap">
+        <div class="text">
+          <span>안녕하시렵니까</span>
+          <div>혼자 밥 먹기</div>
+          <div>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta, est! <br />
+            Quos voluptatum sunt dolorem unde! Voluptatem pariatur cupiditate minima quidem voluptatum facilis aliquid,
+            dignissimos, ab in illo nemo, molestiae tempore.
+          </div>
+        </div>
+        <div class="honbab">
+          <span>HONBAB</span>	
         </div>
       </div>
-    </div>
-		<footer>
-			<c:import url="../main/footer.jsp"/>
-		</footer>
-  </aside>
+      <div class="innerfooter">
+				<c:import url="../main/footer.jsp" />
+			</div>
+    </aside>
 	
     <main>
       <div class="btn">
@@ -78,7 +78,7 @@ $(document).ready(function(){
       </div>
 
       <div id="personal">
-        <form class="login_form" action="${contextPath }/member/user_check" method="post">
+        <form class="login_form" action="${contextPath }/member/user_check" method="post" autocomplete="off">
           <ul>
             <li>
               <span class="index_en">Id</span>
@@ -114,12 +114,12 @@ $(document).ready(function(){
             <hr />
             <div class="line"></div>
           </ul>
-          <input type="submit" value="Login" />
+          <input type="submit" value="login" />
         </form>
       </div>
 
       <div id="admin">
-        <form class="login_form" action="${contextPath }/admin" method="post">
+        <form class="login_form" action="${contextPath }/member/adminUserCheck" method="post">
           <ul>
             <li>
               <span class="index_en">Id</span>
@@ -134,13 +134,11 @@ $(document).ready(function(){
             <hr />
             <div class="line"></div>
           </ul>
-          <input type="submit" value="Login" />
+          <input type="submit" value="login" />
         </form>
       </div>
     </main>
     
-		<!-- footer -->
-	<c:import url="../main/footer.jsp"/>
 	
 <%-- 	
 	<div class="wrap login">

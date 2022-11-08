@@ -21,15 +21,27 @@
       <div class="header_wrap">
         <div class="logo"><span><a href="${contextPath}/index">HONBOB</a></span></div>
         <ul class="nav">
-          <li class="board"><a id="find" href="${contextPath}/find/findAllList">Find</a></li>
-          <li class="board"><a id="challenge" href="${contextPath}/challengeAllList">Challenge</a></li>
-          <li class="board"><a id="review" href="${contextPath}/review/reviewAllList">Review</a></li>
-          <li class="board"><a id="promotion" href="${contextPath}/promotion/promoADList">Advertisement</a></li>
-          <li class="board"><a id="notice" href="${contextPath}/admin/operNoticeContent">Notice</a></li>
-
-          <li class="board"><img id="dash" src="${contextPath}/resources/img/dash-lg.svg"></li>
-          <li class="empty">&nbsp;</li>         
-
+          <li class="board">
+            <a class="eng" id="find" href="${contextPath}/find/findAllList" onmouseover="this.innerHTML='찾기'" onmouseout="this.innerHTML='Find'">
+            	Find
+            </a>
+          </li>
+          <li class="board">
+            <a class="eng" id="challenge" href="${contextPath}/challengeAllList" onmouseover="this.innerHTML='도전 혼밥'" onmouseout="this.innerHTML='Challenge'">
+            	Challenge
+            </a>
+          </li>
+          <li class="board">
+            <a class="eng" id="review" href="${contextPath}/review/reviewAllList" onmouseover="this.innerHTML='혼밥 식당 후기'" onmouseout="this.innerHTML='Review'">
+            Review
+            </a>
+          </li>
+          <li class="board">
+            <a class="eng" id="promotion" href="${contextPath}/promotion/promoADList" onmouseover="this.innerHTML='혼밥 식당 광고'" onmouseout="this.innerHTML='Advertisement'">
+            Advertisement
+            </a>
+          </li>
+          <li class="empty">&nbsp;</li>
           <c:if test="${loginUser == null}">
 		  			<li class="user"><a id="join" href="${contextPath }/member/register_form">Join</a></li>
           	<li class="user"><a id="login" href="${contextPath }/member/login">Login</a></li>
@@ -41,7 +53,23 @@
         </ul>
       </div>
     </header>
+    
+<%--     
+          <li class="board"><a id="find" href="${contextPath}/find/findAllList">Find</a></li>
+          <li class="board"><a id="challenge" href="${contextPath}/challengeAllList">Challenge</a></li>
+          <li class="board"><a id="review" href="${contextPath}/review/reviewAllList">Review</a></li>
+          <li class="board"><a id="promotion" href="${contextPath}/promotion/promoADList">Advertisement</a></li>
+          <li class="empty">&nbsp;</li>         
 
-</body>
+          <c:if test="${loginUser == null}">
+		  			<li class="user"><a id="join" href="${contextPath }/member/register_form">Join</a></li>
+          	<li class="user"><a id="login" href="${contextPath }/member/login">Login</a></li>
+		  		</c:if>
+		  		<c:if test="${loginUser != null}">
+          	<li class="user"><a id="mypage" href="${contextPath }/member/info?id=${loginUser}">Mypage</a></li>
+	        	<li class="user"><a id="logout" href="${contextPath }/member/logout">Logout</a></li>
+		 			</c:if>
+ --%>
+ </body>
 </html>
 
