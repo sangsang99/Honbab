@@ -160,24 +160,25 @@ public class FindServiceImpl implements FindService, SearchSession{
 
 		String optRegion = (String) session.getAttribute(SEARCHOPTION);
 		String optGender = (String) session.getAttribute(SEARCHOPTION2);
-		int optAge = (int) session.getAttribute(SEARCHOPTION3);
+		String optAge = (String) session.getAttribute(SEARCHOPTION3);
 		int btwA = 0;
 		int btwB = 0;
 
+		
 		switch (optAge) {
-		case 0:
+		case "10":
 			btwA = 1;
 			btwB = 99;
 			break;
-		case 20:
+		case "20":
 			btwA = 1;
 			btwB = 29;
 			break;
-		case 30:
+		case "30":
 			btwA = 30;
 			btwB = 39;
 			break;
-		case 40:
+		case "40":
 			btwA = 40;
 			btwB = 99;
 			break;
@@ -188,7 +189,7 @@ public class FindServiceImpl implements FindService, SearchSession{
 
 		int allCount;
 		int[] startEnd = new int[1];
-
+	
 		allCount = mapper.selectFindCountForOptions(optRegion, optGender, btwA, btwB); // Title로 설정해서 검색한 전체 글수
 		startEnd = cms.paging(model, num, allCount);
 		model.addAttribute("findAllList", mapper.searchForOptions(optRegion, optGender, btwA, btwB, startEnd[0], startEnd[1]));

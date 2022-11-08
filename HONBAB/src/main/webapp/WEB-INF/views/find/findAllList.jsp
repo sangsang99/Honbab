@@ -33,7 +33,7 @@
 	<c:import url="../main/header.jsp" />
 
 	<section>
-		<form>
+		<form action="${contextPath}/find/search" enctype="multipart/form-data" method="post">
 			<div class="search">
 				<select id="region" name="region">
 					<option value="">거주지역</option>
@@ -59,8 +59,8 @@
 					<option value="">성별</option>
 					<option value="남성">남성</option>
 					<option value="여성">여성</option>
-				</select> <select id="Age" name="Age">
-					<option value="0">나이대</option>
+				</select> <select id="age" name="age">
+					<option value="10">나이대</option>
 					<option value="20">20대 이하</option>
 					<option value="30">30대</option>
 					<option value="40">40대 이상</option>
@@ -135,7 +135,7 @@
 		<div id="writebtn">
 			<input type="button" value="글쓰기" onclick="findWrite()">
 		</div>
-
+		<c:if test="${!isSearchPage}">
 		<div class="paging">
 			<c:if test="${startPage > block }">
 				<a href="findAllList?num=${startPage-1}" id="paging">◀</a>
@@ -147,6 +147,20 @@
 				<a href="findAllList?num=${endPage + 1}" id="paging">▶</a>
 			</c:if>
 		</div>
+		</c:if>
+		<c:if test="${isSearchPage}">
+			<div class="paging">
+				<c:if test="${startPage > block }">
+					<a href="search?num=${startPage-1}" id="paging">◀</a>
+				</c:if>
+				<c:forEach var="num" begin="${startPage}" end="${endPage }">
+					<a href="search?num=${num }">${num }</a>
+				</c:forEach>
+				<c:if test="${endPage < repeat}">
+					<a href="search?num=${endPage + 1}" id="paging">▶</a>
+				</c:if>
+			</div>
+		</c:if>
 	</main>
 
 	<!-- footer -->
