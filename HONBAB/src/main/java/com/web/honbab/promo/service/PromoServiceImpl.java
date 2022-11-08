@@ -121,10 +121,10 @@ public class PromoServiceImpl implements PromoService, SearchSession{
 			String msg,url;
 			if(result == 1) {
 				msg = "글 수정 완료!.";
-				url = "/promotion/promoList";
+				url = "/promotion/promoAllList";
 			} else {
 				msg ="문제가 생겼습니다";
-				url = "/promotion/modify_form?writeNo="+dto.getWriteNo();
+				url = "/promotion/promoModifyForm?writeNo="+dto.getWriteNo();
 			}
 			return pfs.getMessage(request, msg, url);
 		}
@@ -139,10 +139,10 @@ public class PromoServiceImpl implements PromoService, SearchSession{
 					pfs.deleteImage(imageFileName);
 				}
 				msg = "글이 삭제 되었습니다.";
-				url = "/promotion/promoList";
+				url = "/promotion/promoAllList";
 			} else {
 				msg ="오류 발생, 작업이 완료되지 않았습니다.";
-				url = "/promotion/contentView?writeNo="+writeNo;
+				url = "/promotion/promoContentView?writeNo="+writeNo;
 			}
 			return pfs.getMessage(request, msg, url);
 		}
