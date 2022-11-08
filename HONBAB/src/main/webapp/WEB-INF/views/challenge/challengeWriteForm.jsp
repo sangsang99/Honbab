@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>level write</title>
+<!-- 수정 11.09 -->
 <link
 	href="${pageContext.request.contextPath}/resources/css/challenge/writeForm.css?ver=4"
 	rel="stylesheet" />

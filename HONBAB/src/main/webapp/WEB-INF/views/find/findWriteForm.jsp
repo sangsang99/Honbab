@@ -6,7 +6,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>findWriteForm</title>
+<!-- 수정 11.09 -->
 <link
 	href="${pageContext.request.contextPath}/resources/css/find/writeForm.css?ver=4"
 	rel="stylesheet" />
