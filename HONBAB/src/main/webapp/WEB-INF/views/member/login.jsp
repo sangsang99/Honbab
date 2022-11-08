@@ -56,9 +56,6 @@ $(document).ready(function(){
           <span>HONBAB</span>	
         </div>
       </div>
-      <div class="innerfooter">
-				<c:import url="../main/footer.jsp" />
-			</div>
     </aside>
 	
     <main>
@@ -95,7 +92,7 @@ $(document).ready(function(){
           </ul>
           <input type="submit" value="Login" />
         </form>
-        <c:import url="../member/naver.jsp" />
+        <!-- <c:import url="../member/naver.jsp" /> -->
       </div>
 
       <div id="business">
@@ -139,42 +136,10 @@ $(document).ready(function(){
       </div>
     </main>
     
-	
-<%-- 	
-	<div class="wrap login">
-		<h1>로그인</h1>
-		<br>
-		<input type="radio" name="chk_join" value="개인회원" checked="checked">개인회원
-		<input type="radio" name="chk_join" value="사업자회원">사업자회원
-		<input type="radio" name="chk_join" value="관리자">관리자
-		<br><br>
-		<div id="personal">     
-			<form action="${contextPath }/member/user_check" method="post">
-				<input type="text" name="id" placeholder="아이디"><br><br>
-				<input type="password" name="pw" placeholder="비밀번호"><br><br>
-				<input type="submit" value="login"> &nbsp; 
-				<a href="${contextPath }/member/register_form">회원가입</a>
-			</form>
-			<c:import url="../member/naver.jsp"/>
-		</div>
-		<div id="business">
-			<form action="${contextPath }/member/bizuser_check" method="post">
-				<input type="text" name="id" placeholder="사업자아이디"><br><br>
-				<input type="password" name="pw" placeholder="사업자비밀번호"><br><br>
-				<input type="submit" value="login"> &nbsp; 
-			</form>
-		</div>
-		<div id="admin">
-			<form action="${contextPath }/admin" method="post">
-				<input type="text" name="id" placeholder="관리자아이디"><br><br>
-				<input type="password" name="pw" placeholder="관리자비밀번호"><br><br>
-				<input type="submit" value="login"> &nbsp; 
-			</form>
-		</div>
+    
+     <div class="innerfooter">
+		<c:import url="../main/footer.jsp" />
 	</div>
-	 --%>
-	
-	
 	
 
 </body>
