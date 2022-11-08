@@ -1,3 +1,10 @@
+/*
+----------------------------------
+	challenge writeForm
+----------------------------------
+*/
+
+
 @charset "UTF-8";
 
 *,
@@ -92,20 +99,43 @@ main {
 .main_wrap {
   width: 850px;
   margin: 0 auto;
-  margin-top: 70px;
+  margin-top: 80px;
+}
+
+select, .text {
+	display: inline-block;
+	float: left;
+	position: absolute;
+	top: 100px;
+}
+
+
+select {
+width: 100px;
+height: 25px;
+border: none;
+font-size: 14px;
+font-weight: 400;
+font-family: 'Noto Sans KR', sans-serif;
+background-color: rgba(40, 40, 40, 0);
+margin-left: 100px;
+}
+
+select:checked {
+	outline: none;
 }
 
 .index_en {
-  font-size: 14px;
-  font-weight: 700;
-  color: rgb(115, 115, 115);
-  font-family: "Nunito Sans", sans-serif;
+  font-size: 15px;
+  color: rgba(17, 21, 226, 0.918);
+	font-weight: 600;
+	font-family: "Ramabhadra", sans-serif;
 }
 
 .index_kr {
   font-size: 14px;
-  font-weight: 500;
-  color: rgb(115, 115, 115);
+  font-weight: 600;
+  color: rgba(17, 21, 226, 0.918);
   font-family: "Noto Sans KR", sans-serif;
 }
 
@@ -120,10 +150,6 @@ li > span {
 
 .content {
   height: 350px;
-}
-
-#content {
-  height: 300px;
 }
 
 textarea {
@@ -146,12 +172,58 @@ textarea:focus {
 }
 
 .upload_file {
-  height: 200px;
+  height: 150px;
 }
 
 span,
 input {
   vertical-align: middle;
+}
+
+.g,
+.btn {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.btn {
+  width: 400px;
+  display: flex;
+  justify-content: center;
+  border: none;
+  background-color: none;
+  text-align: center;
+  vertical-align: middle;
+  padding: 5px 0;
+  font-weight: 400;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+
+label {
+  width: 60px;
+  vertical-align: middle;
+  margin-right: 15px;
+}
+
+input[type="radio" i] {
+  vertical-align: middle;
+  appearance: none;
+  border: max(1px, 0.1em) solid gray;
+  border-radius: 50%;
+  width: 1.1em;
+  height: 1.1em;
+  transition: border 0.3s ease-in-out;
+  float: right;
+}
+
+[type="radio"]:checked {
+  border: 2px solid rgba(17, 21, 226, 0.918);
+}
+
+[type="radio"]:hover {
+  box-shadow: 0 0 0 max(4px, 0.2em) lightgray;
+  cursor: pointer;
 }
 
 /*
@@ -192,15 +264,15 @@ input[type="submit" i] {
   border-color: buttonborder;
   background-color: rgba(255, 255, 255, 0);
   text-align: center;
-  font-size: 20px;
-  font-weight: 700;
-  font-family: "Nunito Sans", sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  font-family: "Noto Sans KR", sans-serif;
   cursor: pointer;
 }
 
 input[type="submit" i]:hover {
-  border: 1px solid rgb(163, 163, 163);
-  border-radius: 5px;
+  border-top: 1px solid rgba(17, 21, 226, 0.918);
+  border-bottom: 1px solid rgba(17, 21, 226, 0.918);
 }
 
 input[type="button" i] {
@@ -219,15 +291,15 @@ input[type="button" i] {
   border-color: buttonborder;
   background-color: rgba(255, 255, 255, 0);
   text-align: center;
-  font-size: 18px;
-  font-weight: 700;
-  font-family: "Nunito Sans", sans-serif;
+  font-size: 15x;
+  font-weight: 500;
+  font-family: "Noto Sans KR", sans-serif;
   cursor: pointer;
 }
 
 input[type="button" i]:hover {
-  border: 1px solid rgb(163, 163, 163);
-  border-radius: 5px;
+  border-top: 1px solid rgba(17, 21, 226, 0.918);
+  border-bottom: 1px solid rgba(17, 21, 226, 0.918);
 }
 
 .innerfooter {
@@ -237,13 +309,5 @@ input[type="button" i]:hover {
 input[type="file" i] {
 	font-size: 14px;
   border-radius: 5px;
-}
-
-input[type="radio" i] {
-	display: inline-block;
-	vertical-align: middle;
-	font-size: 13px;	
-	color: rgb(60, 60, 60);
-	font-family: "Noto Sans KR", sans-serif;
 }
 

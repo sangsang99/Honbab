@@ -9,11 +9,20 @@ a {
   box-sizing: border-box;
 }
 
-*,
+a:link,
+a:visited {
+  color: rgb(34, 34, 34);
+}
+
+hr {
+	background-color: rgb(240, 240, 240);
+}
+
+/* *,
 *::before,
 *::after {
   box-sizing: border-box;
-}
+} */
 
 .line {
   margin-bottom: 20px;
@@ -29,28 +38,25 @@ a {
 */
 aside {
   position: relative;
-  width: 40%;
-  height: 85vh;
+  width: 25%;
+  height: 92vh;
   /* background-color: aliceblue; */
   float: left;
-  padding: 50px 0;
+}
+
+.text {
+  width: 350px;
+  padding-left: 100px;
+  margin-top: 70px;
+ 	font-size: 12px;
+	font-family: "Noto Sans KR", sans-serif;
 }
 
 .honbab {
   width: 350px;
-  margin-left: 100px;
-  margin-top: 80px;
-  /* padding-left: 100px; */
+  padding-left: 100px;
   font-size: 45px;
   font-weight: 800;
-}
-.text {
-  width: 400px;
-  /* padding-left: 100px; */
-  margin-left: 100px;
-  margin-top: 90px;
-  /* background-color: aquamarine; */
-  text-align: left;
 }
 
 /*
@@ -58,9 +64,13 @@ aside {
     aside footer
 ----------------------------------
 */
-.innerfooter {
-	float: left;
+footer {
+  width: 350px;
+  padding-left: 100px;
+  position: absolute;
+  bottom: 60px;
 }
+
 
 /*
 ----------------------------------
@@ -68,16 +78,17 @@ aside {
 ----------------------------------
 */
 main {
-  width: 60%;
-  height: 85vh;
+  width: 75%;
+  height: 92vh;
   float: right;
   /* background-color: aquamarine; */
 }
+
 /*
 회원 선택
 */
 .btn {
-  width: 800px;
+  width: 900px;
   display: flex;
   justify-content: center;
   border: none;
@@ -184,7 +195,7 @@ input:focus {
   outline: none;
 }
 
-span,
+.mem,
 input {
   vertical-align: middle;
 }
@@ -208,6 +219,7 @@ input[type="submit" i] {
   font-weight: 700;
   font-family: "Nunito Sans", sans-serif;
   cursor: pointer;
+  width: 200px;
 }
 
 /* input[type="submit" i]:hover {

@@ -5,6 +5,12 @@
 <html>
   <head>
     <title>네이버로그인</title>
+    <style type="text/css">
+    	img {
+    		 height : 30px;
+    		 width : auto; 
+    	}
+    </style>
   </head>
   <body>
   <%
@@ -18,6 +24,6 @@
          + "&state=" + state;
     session.setAttribute("state", state);
  %>
-  <a href="<%=apiURL%>"><img height="50" src="http://static.nid.naver.com/oauth/small_g_in.PNG"/></a>
+  <a href="<%=apiURL%>"><img src="http://static.nid.naver.com/oauth/small_g_in.PNG"/></a>
   </body>
 </html>

@@ -62,10 +62,11 @@
 					let writeDate = date.getFullYear()+"년" +
 									(date.getMonth()+1)+"월" +
 									date.getDate()+"일"
-					html += "<hr><div align='left'><b>아이디 : </b>" + redata.reNick + "님/";
-					html += "<b>작성일</b> : " + writeDate + "<br>" 
-					html += "<b>내용</b> : " + redata.reComent + "</div>"
-					html += "<input type= button value=댓글삭제  onclick=del(${reviewContent.writeNo})>";
+					html += "<div class='re_wrap'><div id='re' align='left'><b>by. </b>" + redata.reNick + "님 / ";
+					html += writeDate + "<br>" 
+					html += redata.reComent + "</div>"
+					html += "<a id='re_del' onclick=del(${reviewContent.writeNo})>댓글 삭제</a></div>";
+				/* 	html += "<input type= button value='댓글삭제' id='re_del' onclick=del(${reviewContent.writeNo})></div>"; */
 				})
 				$("#reply").html(html)
 			}, error:function(){
@@ -176,28 +177,9 @@
 		     		</button>
 	        </div>
 	        <div class="rep">
-     				<span>by. ${reviewContent.nickname}</span>
-	          <span>savedate</span><br>
-		     		<input type="text" id="coment" name="coment" placeholder="10글자 이상 작성" />
-   					<button type="button" onclick="rep()">
-		     			<img id="enter" src="${contextPath}/resources/img/arrow-return-left.svg">
-		     		</button>
-	        </div>
-	        <div class="rep">
-    				<span>by. ${reviewContent.nickname}</span>
-	          <span>savedate</span><br>
-		     		<input type="text" id="coment" name="coment" placeholder="10글자 이상 작성" />
-   					<button type="button" onclick="rep()">
-		     			<img id="enter" src="${contextPath}/resources/img/arrow-return-left.svg">
-		     		</button>
-	        </div>
-	        <div class="rep">
-     				<span>by. ${reviewContent.nickname}</span>
-	          <span>savedate</span><br>
-		     		<input type="text" id="coment" name="coment" placeholder="10글자 이상 작성" />
-   					<button type="button" onclick="rep()">
-		     			<img id="enter" src="${contextPath}/resources/img/arrow-return-left.svg">
-		     		</button>
+						<div id="reply">
+							<!-- 해당글에 답변이 있으면 노출 -->
+						</div>
 	        </div>
 				</form>
 			</div>

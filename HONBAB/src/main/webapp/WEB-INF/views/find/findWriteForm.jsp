@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link
-	href="${pageContext.request.contextPath}/resources/css/challenge/writeForm.css?ver=4"
+	href="${pageContext.request.contextPath}/resources/css/find/writeForm.css?ver=4"
 	rel="stylesheet" />
 <!-- font -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -42,8 +42,7 @@
 
 	<main>
 		<div class="main_wrap">
-			<form action="${contextPath}/find/findWrite"
-				enctype="multipart/form-data" method="post">
+			<form action="${contextPath}/find/findWrite" enctype="multipart/form-data" method="post">
 				<ul>
 					<li>
 						<span class="index_en">Title</span> 
@@ -64,10 +63,20 @@
 					</li>
 					<hr />
 					<div class="line"></div>						
-					<li>
+					<li class="gender">
 						<span class="index_en">Gender</span> 
-						<input type="radio" name="gen" value="남성" checked>남성
-						<input type="radio" name="gen" value="여성">여성
+						<div class="btn">
+							<label>
+	            	<span class="g">남성</span>
+	              <input type="radio" name="gen" value="남성" checked />
+	            </label>
+	            <label>
+	              <span class="g">여성</span>
+	              <input type="radio" name="gen" value="여성" />
+	            </label>
+          	</div>  
+<!-- 						<input type="radio" name="gen" value="남성" checked>남성
+						<input type="radio" name="gen" value="여성">여성 -->
 					</li>	
 					<hr />
 					<div class="line"></div>					
@@ -84,7 +93,7 @@
 					</li>						
 				</ul>
 				<input type="submit" value="Save" />
-				<input type="button" value="글목록" onclick="location.href='${contextPath}/findAllList'">
+				<input type="button" value="글목록" onclick="location.href='${contextPath}/find/findAllList'">
 			</form>
 		</div>
 	</main>

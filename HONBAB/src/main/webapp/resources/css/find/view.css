@@ -1,3 +1,9 @@
+/*
+----------------------------------
+	findContent
+----------------------------------
+*/
+
 @charset "UTF-8";
 
 *, a {
@@ -268,9 +274,9 @@ section {
 }
 
 .rep {
-  height: 100px;
+  height: 80px;
   padding: 10px 0;
-  border-bottom: 1px solid rgb(163, 163, 163);
+
 }
 
 .rep > span {
@@ -278,6 +284,41 @@ section {
   line-height: 160%;
   font-family: "Nunito Sans", sans-serif;
   margin-right: 10px;
+}
+
+.re_wrap {
+	width: 1200px;
+	height: 70px;
+	line-height: 160%;
+	display: inline-block;
+	border-bottom: 1px solid rgba(230, 230, 230, 0.918);
+	vertical-align: middle;
+}
+
+#re {
+	width: 900px;
+	height: 70px;
+	padding: 10px 0;	
+	font-size: 14px;
+	font-family: 'Noto Sans KR', sans-serif;
+	color: rgb(80, 80, 80);
+}
+
+#re, #re_del {
+	display: inline-block;
+}
+
+#re_del {
+	width: 100px;
+	height: 20px;
+	cursor: pointer;
+	font-size: 14px;
+	font-weight: 500;
+	font-family: 'Noto Sans KR', sans-serif;
+	text-align: right;
+	float: right;
+	margin-top: 25px; 
+	color: rgba(80, 80, 80, 0.9);
 }
 
 input[type="text" i] {
@@ -292,10 +333,11 @@ input[type="text" i], button {
 }
 
 button {
-	visibility: hidden; 
+	background-color: rgba(10, 10, 10, 0);
 	width: 150px;
 	height: 45px;
 	float: right;
+	border: 1px solid rgba(200, 200, 200, 0.3);
 }
 
 button > span {

@@ -1,3 +1,10 @@
+/*
+----------------------------------
+	challenge writeForm
+----------------------------------
+*/
+
+
 @charset "UTF-8";
 
 *,
@@ -196,6 +203,7 @@ input:focus {
   outline: none;
 }
 
+
 input[type="submit" i] {
   width: 100px;
   appearance: auto;
@@ -205,6 +213,7 @@ input[type="submit" i] {
   text-align: right;
   cursor: default;
   box-sizing: border-box;
+  color: buttontext;
   padding: 1px 6px;
   border-width: 0;
   border-style: none;
@@ -212,16 +221,15 @@ input[type="submit" i] {
   background-color: rgba(255, 255, 255, 0);
   text-align: center;
   font-size: 15px;
-	font-weight: 500;
-	font-family: 'Noto Sans KR', sans-serif;
-	color: rgba(17, 21, 226, 0.918);
-  border: 1px solid rgba(17, 21, 226, 0.918);
+  font-weight: 500;
+  font-family: "Noto Sans KR", sans-serif;
   cursor: pointer;
-  border-radius: 3px;
-  margin-left: 15px;
 }
 
-
+input[type="submit" i]:hover {
+  border-top: 1px solid rgba(17, 21, 226, 0.918);
+  border-bottom: 1px solid rgba(17, 21, 226, 0.918);
+}
 
 input[type="button" i] {
   width: 100px;
@@ -232,18 +240,22 @@ input[type="button" i] {
   text-align: right;
   cursor: default;
   box-sizing: border-box;
+  color: buttontext;
   padding: 1px 6px;
   border-width: 0;
   border-style: none;
+  border-color: buttonborder;
   background-color: rgba(255, 255, 255, 0);
   text-align: center;
-	border-radius: 3px;
-	font-size: 15px;
-	font-weight: 500;
-	font-family: 'Noto Sans KR', sans-serif;
-	color: rgba(17, 21, 226, 0.918);
-  border: 1px solid rgba(17, 21, 226, 0.918);
+  font-size: 15x;
+  font-weight: 500;
+  font-family: "Noto Sans KR", sans-serif;
   cursor: pointer;
+}
+
+input[type="button" i]:hover {
+  border-top: 1px solid rgba(17, 21, 226, 0.918);
+  border-bottom: 1px solid rgba(17, 21, 226, 0.918);
 }
 
 .innerfooter {
