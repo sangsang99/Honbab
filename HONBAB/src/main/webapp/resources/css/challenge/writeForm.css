@@ -22,7 +22,9 @@ a:visited {
 }
 
 hr {
-	background-color: rgb(240, 240, 240);
+		background: rgba(180, 180, 180, 0.7);
+    height:1px;
+    border:0;
 }
 
 .line {
@@ -57,20 +59,22 @@ aside {
   float: left;
 }
 
-.text {
-  width: 350px;
-  padding-left: 100px;
-  margin-top: 70px;
- 	font-size: 12px;
-	font-family: "Noto Sans KR", sans-serif;
-}
-
 .honbab {
   width: 350px;
   padding-left: 100px;
   font-size: 45px;
   font-weight: 800;
+	margin-top: 70px;
 }
+
+.text {
+  width: 350px;
+  padding-left: 100px;
+  margin-top: 60px;
+ 	font-size: 12px;
+	font-family: "Noto Sans KR", sans-serif;
+}
+
 
 /*
 ----------------------------------
@@ -102,7 +106,7 @@ main {
   margin-top: 80px;
 }
 
-select, .text {
+select, #text {
 	display: inline-block;
 	float: left;
 	position: absolute;
@@ -110,16 +114,25 @@ select, .text {
 }
 
 select {
-width: 100px;
-height: 34px;
-padding-left: 20px;
+width: 150px;
+height: 30px;
+/* padding-left: 50px; */
 border: none;
 font-size: 16px;
 font-weight: 400;
 font-family: 'Noto Sans KR', sans-serif;
-border-radius: 5px 0 0 5px;
+border-radius: 3px;
 background-color: rgba(40, 40, 40, 0);
-top: 100px;
+top: 110px;
+text-align: left;
+}
+
+select:focus {
+	outline: none;
+}
+
+#text {
+	width: 350px;	
 }
 
 .index_en {
@@ -159,10 +172,10 @@ textarea {
   padding: 5px;
   resize: none;
   float: right;
-  border-radius: 5px;
+  border-radius: 3px;
   border: 1px solid rgba(202, 202, 202, 0.527);
   background-color: rgba(240, 248, 255, 0);
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 400;
   color: rgb(40, 40, 40);
   font-family: "Noto Sans KR", sans-serif;
@@ -213,7 +226,7 @@ input[type="submit" i] {
   text-align: right;
   cursor: default;
   box-sizing: border-box;
-  color: buttontext;
+  color: rgba(17, 21, 226, 0.918);
   padding: 1px 6px;
   border-width: 0;
   border-style: none;
@@ -224,6 +237,7 @@ input[type="submit" i] {
   font-weight: 500;
   font-family: "Noto Sans KR", sans-serif;
   cursor: pointer;
+  
 }
 
 input[type="submit" i]:hover {
@@ -240,7 +254,7 @@ input[type="button" i] {
   text-align: right;
   cursor: default;
   box-sizing: border-box;
-  color: buttontext;
+  color: rgba(17, 21, 226, 0.918);
   padding: 1px 6px;
   border-width: 0;
   border-style: none;

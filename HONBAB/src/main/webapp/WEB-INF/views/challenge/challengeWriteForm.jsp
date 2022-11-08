@@ -18,6 +18,7 @@
 	rel="stylesheet" />
 <script
 	src="${pageContext.request.contextPath}/resources/js/writeForm.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
 	function challengeLv(e) {
 		let level = document.getElementById("challenge");
@@ -46,7 +47,6 @@
 		document.getElementById("text").innerText = text;
 	}
 </script>
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
 	function readURL(input) {
 		var file = input.files[0]; // 파일 정보
@@ -75,6 +75,9 @@
 
 	<aside>
 		<div class="aside_wrap">
+		<div class="honbab">
+			<span>CHALLENGE</span>
+		</div>
 			<div class="text">
 				<span>‘혼밥 레벨 테스트’</span>
 				<div>밥맛은 누구에게나 공평하다</div>
@@ -85,9 +88,6 @@
 					<span>출처: [매일경제] 혼자의 시대, 나는 무엇으로 사는가…혼밥! 혼술! 혼영!</span>
 				</div>
 			</div>
-		</div>
-		<div class="honbab">
-			<span>HONBAB</span>
 		</div>
 		<div class="innerfooter">
 			<c:import url="../main/footer.jsp" />
@@ -114,12 +114,12 @@
 				<span id="text"></span>
 				<ul>
 					<li>
-						<span class="index_en">Title</span>
+						<span class="index_kr">제목</span>
 						<input type="text" placeholder="제목 작성" name="title" />
 					</li>
 					<hr />
 					<div class="line"></div>
-					<li><span class="index_en">Writer</span> <input type="hidden"
+					<li><span class="index_kr">작성자</span> <input type="hidden"
 						value="${loginUser}" name="id"> <input type="text"
 						name="nickName" readonly="readonly" value="nickName" /> <!-- 임시로 value 닉네임 넣어논 것이니 나중에 로그인 유저 닉네임 받아서 넣을 수 있도록 -->
 					</li>
@@ -140,8 +140,8 @@
 					<hr />
 					<div class="line"></div>
 				</ul>
-				<input type="submit" value="Save" /> 
-				<input type="button" value="글목록" onclick="location.href='${contextPath}/challengeAllList'">
+				<input type="submit" value="저장" /> 
+				<input type="button" value="목록" onclick="location.href='${contextPath}/challengeAllList'">
 			</form>
 		</div>
 	</main>
