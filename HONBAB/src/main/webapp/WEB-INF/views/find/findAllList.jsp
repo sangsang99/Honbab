@@ -36,36 +36,34 @@
 		<form>
 			<div class="search">
 				<select id="region" name="region">
-					<option value="0">거주지역</option>
-					<option value="1">서울</option>
-					<option value="2">부산</option>
-					<option value="3">대구</option>
-					<option value="4">인천</option>
-					<option value="5">광주</option>
-					<option value="6">대전</option>
-					<option value="7">울산</option>
-					<option value="8">강원</option>
-					<option value="9">경기</option>
-					<option value="10">경남</option>
-					<option value="11">경북</option>
-					<option value="12">전남</option>
-					<option value="13">전북</option>
-					<option value="14">제주</option>
-					<option value="15">충남</option>
-					<option value="16">충북</option>
+					<option value="">거주지역</option>
+					<option value="서울">서울</option>
+					<option value="부산">부산</option>
+					<option value="대구">대구</option>
+					<option value="인천">인천</option>
+					<option value="광주">광주</option>
+					<option value="대전">대전</option>
+					<option value="울산">울산</option>
+					<option value="강원">강원</option>
+					<option value="경기">경기</option>
+					<option value="경남">경남</option>
+					<option value="경북">경북</option>
+					<option value="전남">전남</option>
+					<option value="전북">전북</option>
+					<option value="제주">제주</option>
+					<option value="충남">충남</option>
+					<option value="충북">충북</option>
 				</select> 
 				<select id="gender" name="gender">
 
-					<option value="0">성별</option>
-					<option value="1">남성</option>
-					<option value="2">여성</option>
+					<option value="">성별</option>
+					<option value="남성">남성</option>
+					<option value="여성">여성</option>
 				</select> <select id="Age" name="Age">
 					<option value="0">나이대</option>
-					<option value="1">10대 이하</option>
-					<option value="1">10대</option>
-					<option value="2">20대</option>
-					<option value="3">30대</option>
-					<option value="4">40대 그외</option>
+					<option value="20">20대 이하</option>
+					<option value="30">30대</option>
+					<option value="40">40대 이상</option>
 				</select> 
 				<input type="submit" value="검색하기">
 			</div>
