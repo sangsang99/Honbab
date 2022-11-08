@@ -129,9 +129,9 @@ public class MemberController implements MemberSession, AdminSession{
 		return "member/modifyForm";
 	}
 	
-	@PostMapping("Modify")
-	public void modify(MultipartHttpServletRequest mul, HttpServletResponse response, HttpServletRequest request) throws IOException {
-		String message = ms.modify(mul, request);
+	@PostMapping("modifySave")
+	public void modifySave(MultipartHttpServletRequest mul, HttpServletRequest request, HttpServletResponse response) throws IOException{
+		String message = ms.modifySave(mul, request);
 		response.setContentType("text/html; charset=utf-8");
 		PrintWriter out = response.getWriter();
 		out.println(message);

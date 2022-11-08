@@ -14,6 +14,6 @@ public interface MemberMapper {
 	public int delete(String id);
 	
 
-	public int modify(MemberDTO dto);
+	public int modifySave(MemberDTO dto);
 
 }

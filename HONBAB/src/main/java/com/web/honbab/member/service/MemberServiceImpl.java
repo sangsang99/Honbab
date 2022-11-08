@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.web.honbab.find.dto.FindDTO;
 import com.web.honbab.member.dto.BizMemberDTO;
 import com.web.honbab.member.dto.MemberDTO;
 import com.web.honbab.member.service.MemberService;
@@ -84,7 +85,8 @@ public class MemberServiceImpl implements MemberService {
 
 
 	@Override
-	public String modify(MultipartHttpServletRequest mul, HttpServletRequest request) {
+	public String modifySave(MultipartHttpServletRequest mul, HttpServletRequest request) {
+		
 		MemberDTO dto = new MemberDTO();
 		dto.setEmail(mul.getParameter("email"));
 		dto.setGender(mul.getParameter("gender"));
@@ -97,23 +99,21 @@ public class MemberServiceImpl implements MemberService {
 		
 		int result = 0;
 		try {
-			result = mapper.modify(dto);
+			result = mapper.modifySave(dto);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
 		String msg,url;
 		if(result == 1) {
-			msg = "수 정";
+			msg = "구인 글이 등록 되었습니다.";
 			url = "/member/info?id="+dto.getId();
 		} else {
 			msg ="문제가 생겼습니다";
 			url = "/member/modifyForm?id="+dto.getId();
 		}
 		return getMessage(request,msg,url);
-		
 	}
-
 
 
 }
