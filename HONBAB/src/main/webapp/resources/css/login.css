@@ -30,7 +30,7 @@ a {
 aside {
   position: relative;
   width: 40%;
-  height: 92vh;
+  height: 85vh;
   /* background-color: aliceblue; */
   float: left;
   padding: 50px 0;
@@ -58,12 +58,8 @@ aside {
     aside footer
 ----------------------------------
 */
-footer {
-  width: 400px;
-  margin-left: 100px;
-  /* padding-left: 100px; */
-  position: absolute;
-  bottom: 50px;
+.innerfooter {
+	float: left;
 }
 
 /*

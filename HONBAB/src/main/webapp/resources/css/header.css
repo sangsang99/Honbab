@@ -66,20 +66,27 @@ header {
 }
 
 #find {
-	margin-left: 40px;
+  margin-left: 40px;
 }
 
 .board {
   float: left;
   width: fit-content;
   height: 26px;
-  text-align: left;
+  text-align: center;
   font-size: 16px;
   font-weight: 500;
   font-family: "Kumbh Sans", sans-serif;
   margin: 0 40px;
   vertical-align: middle;
   padding-top: 5px;
+}
+
+.board:hover {
+  font-weight: 400;
+  font-family: "Noto Sans KR", sans-serif;
+  transform: translate(0, 0);
+  transition: transform 0.8s easy-in-out;
 }
 
 .user {
