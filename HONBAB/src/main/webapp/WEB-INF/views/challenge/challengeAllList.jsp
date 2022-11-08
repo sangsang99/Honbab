@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>혼밥 레벨</title>
-<link href="${contextPath}/resources/css/challenge/allList.css?ver=4" rel="stylesheet" />
+<link href="${contextPath}/resources/css/login.css?ver=4.4" rel="stylesheet" />
 <!-- font -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
