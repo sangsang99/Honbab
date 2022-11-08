@@ -35,7 +35,7 @@ function modify(){
 	<c:import url="../main/header.jsp"/>
 	<h1 align="center">회원정보 수정</h1>
 	<div class="wrap">
-		<form id="modify" action="modifyForm" enctype="multipart/form-data" method="post">
+		<form id="modify" action="modifySave" enctype="multipart/form-data" method="post">
 			<table border="1">
 				<tr>
 					<th>아이디</th>
