@@ -126,7 +126,8 @@
 	<select id="selectReviewCountForNick" resultType="Integer">
 		SELECT COUNT(*) FROM REVIEW_BOARD WHERE NICKNAME like '%'||#{keyword}||'%' 
 	</select>
-
+	
+	<!--ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡSEARCH ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ-->
 	<select id="searchForTitle" resultMap="review">
 		SELECT B.* FROM
 		(SELECT ROWNUM RN, A.* FROM
