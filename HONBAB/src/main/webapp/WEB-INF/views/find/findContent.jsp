@@ -55,7 +55,7 @@
 									html += "<div class='re_wrap'><div id='re' align='left'><b>by. </b>" + redata.reNick + "님 / ";
 					html += writeDate + "<br>" 
 					html += redata.reComent + "</div>"
-					html += "<a id='re_del' onclick=del(${reviewContent.writeNo})>댓글 삭제</a></div>";
+					html += "<a id='re_del' onclick=del(${findContent.writeNo})>댓글 삭제</a></div>";
 				})
 				$("#reply").html(html)
 			}, error:function(){
@@ -72,7 +72,7 @@
  	}
 </script>
 </head>
-<body>
+<body onload="reply_data()">
 	<!-- header -->
 	<c:import url="../main/header.jsp" />
 
