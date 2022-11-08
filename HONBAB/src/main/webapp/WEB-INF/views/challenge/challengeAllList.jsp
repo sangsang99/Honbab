@@ -46,6 +46,7 @@ function getLevelValue() {
 frm.level.value = "<%=request.getParameter("level")%>";
 frm.keyword.value = "<%=request.getParameter("keyword")%>";	
 }
+
 </script>
 </head>
 <body onload="getLevelValue()">
@@ -53,7 +54,7 @@ frm.keyword.value = "<%=request.getParameter("keyword")%>";
 	<c:import url="../main/header.jsp"/>
 	
 	<section>
-     <form id="challengeSearch" name="challengeSearch" action="${contextPath }/challengeSearch"	enctype="multipart/form-data" method="post">
+     <form id="challengeSearch" name="challengeSearch" action="${contextPath }/challengeSearch"	enctype="multipart/form-data" method="post" autocomplete="off">
         <div class="search">
           <div id="searchForm">
           <select id="level" name="level">
@@ -69,6 +70,7 @@ frm.keyword.value = "<%=request.getParameter("keyword")%>";
           </select>
 	          <input type="text" id="keyword" name="keyword" class="searchKey" placeholder="검색어를 입력하세요." />
     	      <input type="submit" value="검색" />
+    	      <%-- <img id="magnifier" src="${contextPath}/resources/img/search.svg"> --%>
           </div>
     	    <br>
 	    		<a href="javascript:showPopUp()" id="levelGuide">혼밥 레벨?</a>
@@ -101,7 +103,7 @@ frm.keyword.value = "<%=request.getParameter("keyword")%>";
       </ul>
     </div>
 		<c:if test="${challengeList.size() == 0 }">
-			<h1>LV. <%=request.getParameter("level")%> 에 등록된 글이 없습니다.</h1>
+			<h1>LV. <%=request.getParameter("level")%> '<%=request.getParameter("keyword")%>'에 해당하는 글이 없습니다.</h1>
 		</c:if>
 		<c:set var="no" value="${allCount - ((currentPage - 1) * 8)}" />
 		<%-- <c:forEach var="dto" items="${challengeList }" > --%>

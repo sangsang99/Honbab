@@ -1,3 +1,9 @@
+/*
+----------------------------------
+	challenge allList
+----------------------------------
+*/
+
 @charset "UTF-8";
 
 *, a {
@@ -45,10 +51,18 @@ section {
 	width: 600px;
 	height: 35px;
 	vertical-align: middle;
+	border-radius: 3px;
 	border: 1px solid rgb(200, 200, 200);
-	border-radius: 5px;
 	margin: 0 auto;
 	font-family: 'Noto Sans KR', sans-serif;
+	background-color: rgba(230, 230, 230, 0.4);
+}
+
+.search:focus-within{
+	background-color: rgba(230, 230, 230, 0);
+	animation-fill-mode: forwards;
+	border-radius: 3px;
+	border: 1px solid rgba(17, 21, 226, 0.918);
 }
 
 select {
@@ -153,10 +167,6 @@ input[type="submit" i] {
 	float: right;
 }
 
-/* input[type="submit" i]:hover {
-	border-radius: 5px;
-}
- */
 input[type="radio" i], label {
 	display: inline-block;
 	vertical-align: middle;
@@ -165,22 +175,31 @@ input[type="radio" i], label {
 	font-family: "Noto Sans KR", sans-serif;
 }
 
+/*
+----------------------------------
+    input button
+----------------------------------
+*/
 input[type="button" i] {
 	width: 100px;
 	height: 30px;
-	margin: 10px 0;
+	margin: 15px 0;
 	float: right;
-	text-align: center;
-	font-size: 16px;
+	background-color: rgba(245, 222, 179, 0);
+	outline: none;
+	border: none;
+	font-size: 15px;
 	font-weight: 500;
 	font-family: 'Noto Sans KR', sans-serif;
 	color: rgba(17, 21, 226, 0.918);
-	outline: none;
-	border: none;
-	border-radius: 3px;
-	border-color: 1px solid rgba(17, 21, 226, 0.918);
-	cursor: pointer;
+/* 	border-radius: 3px; */
+/*   border: 1px solid rgba(17, 21, 226, 0.918); */
 }
+
+input[type="button" i]:hover {
+	border-top: 1px solid rgba(17, 21, 226, 0.918);
+	border-bottom: 1px solid rgba(17, 21, 226, 0.918);
+} 
 
 /*
 ----------------------------------
@@ -232,7 +251,7 @@ li>span {
 }
 
 .writeNo {
-	width: 60px;
+	width: 70px;
 	font-weight: 600;
 }
 
@@ -242,7 +261,7 @@ li>span {
 }
 
 .ch_title {
-	width: 430px;
+	width: 470px;
 	overflow: hidden;
 	text-overflow: ellipsis;
 }
@@ -255,7 +274,7 @@ li>span {
 }
 
 .view {
-	width: 80px;
+	width: 60px;
 	float: right;
 }
 
@@ -265,26 +284,6 @@ li>span {
 	float: right;
 }
 
-#writebtn {
-	width: 100px;
-	height: 30px;
-	margin: 10px 0;
-	float: right;
-	text-align: center;
-	font-size: 16px;
-	font-weight: 500;
-	font-family: 'Noto Sans KR', sans-serif;
-	border-radius: 3px;
-	border-color: 1px solid rgba(17, 21, 226, 0.918);
-}
-
-#writebtn > a {
-	width: 100px;
-	height: 30px;
-	color: rgba(17, 21, 226, 0.918);
-	border-radius: 3px;
-	border-color: 1px solid rgba(17, 21, 226, 0.918);
-}
 
 .paging {
 	width: 1200px;
@@ -301,4 +300,9 @@ li>span {
 	margin: 0 20px;
 	text-align: center;
 	font-size: 16px;
+}
+
+.paging>a:focus, .paging>a:active, .paging>a:focus-within  {
+	color: rgba(17, 21, 226, 0.918);
+	font-weight: 500;
 }

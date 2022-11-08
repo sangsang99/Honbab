@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <title>reviewAllList</title>
 <link
-	href="${pageContext.request.contextPath}/resources/css/challenge/allList.css?ver=4"
+	href="${pageContext.request.contextPath}/resources/css/review/allList.css?ver=4"
 	rel="stylesheet" />
 <!-- font -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -54,8 +54,8 @@
 		<div class="index_wrap">
 			<ul class="index">
 				<li class="writeNo"><span>NO</span></li>
-				<li class="writer"><span>WRITER</span></li>
 				<li class="ch_title"><span>TITLE</span></li>
+				<li class="writer"><span>WRITER</span></li>
 				<li class="date"><span>DATE</span></li>
 				<li class="view"><span>VIEWS</span></li>
 				<li class="lv"><span>LIKE</span></li>
@@ -74,14 +74,14 @@
 					<li class="writeNo">
 						<span>${review.writeNo }</span>
 					</li>
-					<li class="writer">
-						<span>${review.nickname }</span>
-					</li>
 					<li class="ch_title">
 						<span>
 						<a href="#" onclick="upViews(${review.writeNo}); return false">${review.title}</a>
 						<c:if test='${review.imgName != "None"}'> ★ </c:if>
 					</span>
+					</li>
+					<li class="writer">
+						<span>${review.nickname }</span>
 					</li>
 					<li class="date">
 						<span>${review.writeDate }</span>

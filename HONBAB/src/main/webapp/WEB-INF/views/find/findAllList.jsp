@@ -67,7 +67,7 @@
 					<option value="3">30대</option>
 					<option value="4">40대 그외</option>
 				</select> 
-				<input type="button" value="검색하기">
+				<input type="submit" value="검색하기">
 			</div>
 		</form>
 	</section>
@@ -75,8 +75,8 @@
 	<div class="index_wrap">
 		<ul class="index">
 			<li class="writeNo"><span>NO</span></li>
-			<li class="writer"><span>WRITER</span></li>
 			<li class="title"><span>TITLE</span></li>
+			<li class="writer"><span>WRITER</span></li>
 			<li class="age"><span>AGE</span></li>
 			<li class="reg"><span>REGION</span></li>
 			<li class="gender"><span>GENDER</span></li>
@@ -105,10 +105,10 @@
 			<div class="content_wrap">
 				<ul class="index">
 					<li class="writeNo"><span>${find.writeNo }</span></li>
-					<li class="writer"><span>${find.nickName }</span></li>
 					<li class="title">
 						<a href="#" onclick="upViews(${find.writeNo}); return false">${find.title}</a>
 					</li>
+					<li class="writer"><span>${find.nickName }</span></li>
 					<li class="age"><span>${find.age }</span></li>
 					<li class="reg"><span>${find.region }</span></li>
 					<li class="gender"><span>${find.gen }</span></li>

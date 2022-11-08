@@ -1,8 +1,9 @@
 /*
 ----------------------------------
-	Find all list css
+	review allList
 ----------------------------------
 */
+
 @charset "UTF-8";
 
 *, a {
@@ -50,9 +51,8 @@ section {
 	width: 600px;
 	height: 35px;
 	vertical-align: middle;
-/* 	border: 1px solid rgb(25, 11, 223); */
+	border-radius: 3px;
 	border: 1px solid rgb(200, 200, 200);
-	border-radius: 5px;
 	margin: 0 auto;
 	font-family: 'Noto Sans KR', sans-serif;
 	background-color: rgba(230, 230, 230, 0.4);
@@ -66,7 +66,7 @@ section {
 }
 
 select {
-/* width: 150px; */
+width: 150px;
 height: 34px;
 padding-left: 20px;
 float: left;
@@ -74,7 +74,12 @@ border: none;
 font-size: 15px;
 font-weight: 400;
 font-family: 'Noto Sans KR', sans-serif;
+border-radius: 5px 0 0 5px;
 background-color: rgba(40, 40, 40, 0);
+
+/* -webkit-appearance: none; 화살표 없애기 for chrome*/
+/* -moz-appearance: none; 화살표 없애기 for firefox*/
+/* appearance: none;  화살표 없애기 공통*/
 }
 
 select:focus {
@@ -85,6 +90,15 @@ select:focus {
 
 select::-ms-expand {
 display: none; /* 화살표 없애기 for IE10, 11*/
+}
+
+option {
+	padding: 5px 0;
+	border: none;
+}
+
+option:checked {
+	color: rgb(25, 11, 223);
 }
 
 #levelGuide {
@@ -116,6 +130,9 @@ datalist {
 ----------------------------------
 */
 input {
+	height: 34px;
+	font-size: 14px;
+	font-family: 'Noto Sans KR', sans-serif;
 	padding: 5px;
 	outline: none;
 	border: none;
@@ -127,7 +144,7 @@ input:focus {
 }
 
 input[type="submit" i] {
-	width: 60px;
+	width: 80px;
 	appearance: auto;
 	user-select: none;
 	white-space: pre;
@@ -136,10 +153,10 @@ input[type="submit" i] {
 	cursor: default;
 	box-sizing: border-box;
 	color: buttontext;
-	padding: 4px 5px;
-	border-width: 0;
-	border-style: none;
-	border-color: buttonborder;
+	padding: 4px 20px;
+/* 	border-width: 0; */
+/* 	border-style: none; */
+	border-color: 1px solid rgba(17, 21, 226, 0.918);
 	background-color: rgba(255, 255, 255, 0);
 	text-align: center;
 	font-size: 15px;
@@ -147,8 +164,16 @@ input[type="submit" i] {
 /* 	font-family: "Nunito Sans", sans-serif; */
 	font-family: "Noto Sans KR", sans-serif;
 	cursor: pointer;
+	float: right;
 }
 
+input[type="radio" i], label {
+	display: inline-block;
+	vertical-align: middle;
+	font-size: 13px;	
+	color: rgb(60, 60, 60);
+	font-family: "Noto Sans KR", sans-serif;
+}
 
 /*
 ----------------------------------
@@ -176,7 +201,6 @@ input[type="button" i]:hover {
 	border-bottom: 1px solid rgba(17, 21, 226, 0.918);
 } 
 
-
 /*
 ----------------------------------
     main
@@ -186,6 +210,7 @@ main {
 	width: 1200px;
 	height: 75vh;
 	margin: 0 auto;
+	/* background-color: rgb(245, 244, 243); */
 }
 
 .index_wrap {
@@ -230,45 +255,38 @@ li>span {
 	font-weight: 600;
 }
 
-.title {
-	width: 400px;
+.lv {
+	width: 50px;
+}
+
+.ch_title {
+	margin: 0 20px;
+	width: 470px;
 	overflow: hidden;
 	text-overflow: ellipsis;
-	margin: 0 20px;
-}
-
-.age {
-	width: 50px;
-	margin: 0 20px;
-	
-}
-
-.reg {
-	width: 80px;
-}
-
-.gender {
-	width: 60px;
-	margin: 0 20px;
+/* 	text-align: left; */
 }
 
 .writer {
-	width: 150px;
+	width: 230px;
+	margin: 0 20px;
 	overflow: hidden;
 	text-overflow: ellipsis;
+/* 	text-align: left; */
+}
+
+.view {
+	width: 60px;
+	float: right;
+	margin-left: 20px;
 }
 
 .date {
 	width: 150px;
-	float: right;
-/* 	margin: 0 20px; */
 	margin-left: 20px;
+	float: right;
 }
 
-.view {
-	width: 80px;
-	float: right;
-}
 
 .paging {
 	width: 1200px;
@@ -285,4 +303,9 @@ li>span {
 	margin: 0 20px;
 	text-align: center;
 	font-size: 16px;
+}
+
+.paging>a:focus, .paging>a:active, .paging>a:focus-within  {
+	color: rgba(17, 21, 226, 0.918);
+	font-weight: 500;
 }
