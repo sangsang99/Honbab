@@ -35,11 +35,11 @@ function modify(){
 	<c:import url="../main/header.jsp"/>
 	<h1 align="center">회원정보 수정</h1>
 	<div class="wrap">
-		<form id="modify" action="${contextPath }/member/modify" method="post">
+		<form id="modify" action="modifyForm" enctype="multipart/form-data" method="post">
 			<table border="1">
 				<tr>
 					<th>아이디</th>
-					<td><input type="text" id="id" name="id" value="${info.id}" disabled></td>
+					<td><input type="text" id="id" name="id" value="${info.id}"></td>
 				</tr>
 				<tr>
 					<th>비밀번호</th>
@@ -58,9 +58,7 @@ function modify(){
 				<tr>
 					<th>전화번호</th>
 					<td>
-					<input type="tel" id="tel1" name="tel">-
-					<input type="tel" id="tel2">-
-					<input type="tel" id="tel3">
+					<input type="tel" id="tel" name="tel">
 					</td>
 				</tr>
 				<tr>
