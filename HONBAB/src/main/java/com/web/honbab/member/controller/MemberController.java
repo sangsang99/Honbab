@@ -18,16 +18,21 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.web.honbab.admin.service.OperService;
 import com.web.honbab.member.dto.MemberDTO;
 import com.web.honbab.member.service.MemberService;
+import com.web.honbab.session.admin.AdminSession;
 import com.web.honbab.session.name.MemberSession;
 
 @Controller
 @RequestMapping("member")
-public class MemberController implements MemberSession{
+public class MemberController implements MemberSession, AdminSession{
 	
 	@Autowired
 	private MemberService ms;
+	
+	@Autowired
+	private OperService os;
 
 	@PostMapping("user_check")
 	public String userCheck(HttpServletRequest request, RedirectAttributes rs) {
@@ -51,7 +56,23 @@ public class MemberController implements MemberSession{
 	@RequestMapping("successLogin")
 	public String successLogin(@RequestParam("id") String id, HttpSession session) {
 		session.setAttribute(LOGIN, id);
-		return "member/successLogin";
+		return "index";
+	}
+	
+	@RequestMapping("adminUserCheck")
+	public String adminUserCheck(HttpServletRequest request, RedirectAttributes rs) {
+		int result = os.adminUserCheck(request);
+		if(result == 0) {
+			rs.addAttribute("id", request.getParameter("id"));
+			return "redirect:successADMLogin";
+		}
+		return "redirect:login";
+	}
+	
+	@RequestMapping("successADMLogin")
+	public String successADMLogin(@RequestParam("id") String id, HttpSession session) {
+		session.setAttribute(ADMIN, id);
+		return "admin/ADMIndex";
 	}
 	
 	@GetMapping("login")
