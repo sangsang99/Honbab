@@ -19,21 +19,48 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.web.honbab.admin.dto.NoticeRepDTO;
 import com.web.honbab.admin.service.OperService;
 import com.web.honbab.promo.service.PromoService;
 import com.web.honbab.review.dto.ReviewRepDTO;
+import com.web.honbab.session.admin.AdminSession;
 
 @Controller
 @RequestMapping("oper")
-public class OperController{
+public class OperController implements AdminSession{
 
 	@Autowired
 	private OperService os;
 	
 	@Autowired
 	private PromoService ps;
+	
+	@RequestMapping("adminUser_check")
+	public String adminUserCheck(HttpServletRequest request, RedirectAttributes rs) {
+		int result = os.adminUserCheck(request);
+		if(result == 0) {
+			rs.addAttribute("id", request.getParameter("id"));
+			return "redirect:successADMLogin";
+		}
+		return "redirect:login";
+	}
+	
+	@RequestMapping("successADMLogin")
+	public String successLogin(@RequestParam("id") String id, HttpSession session) {
+		session.setAttribute(ADMIN, id);
+		return "admin/ADMIndex";
+	}
+
+	
+	@GetMapping("logout")
+	public String logout(HttpSession session) {
+		if(session.getAttribute("loginUser") != null) {
+			session.invalidate();
+		}
+		return "redirect:/index";
+	}
 	
 	//영업관리 메인페이지
 	@RequestMapping("operation")
