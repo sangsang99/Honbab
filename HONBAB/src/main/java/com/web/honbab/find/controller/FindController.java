@@ -41,7 +41,6 @@ public class FindController implements SearchSession{
 		session.removeAttribute(SEARCHOPTION);
 		session.removeAttribute(SEARCHOPTION2);
 		session.removeAttribute(SEARCHOPTION3);
-		session.removeAttribute(SEARCHVALUE);
 		fs.findAllList(model, num);
 		return "find/findAllList";
 	}
@@ -124,4 +123,6 @@ public class FindController implements SearchSession{
 		  fs.deleteBoard(writeNo); 
 	  return "redirect:/find/findContent?writeGroup=" + writeNo; 
 	  }
+	
+	
 }
