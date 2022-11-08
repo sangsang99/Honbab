@@ -31,5 +31,5 @@ public interface FindService {
 	
 	public boolean deleteBoard(int writeGroup);
 
-	
+	public void searchReview(Model model, int num);
 }

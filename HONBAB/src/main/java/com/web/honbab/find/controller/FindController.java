@@ -24,10 +24,11 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import com.web.honbab.find.dto.FindRepDTO;
 import com.web.honbab.find.service.FindService;
 import com.web.honbab.review.dto.ReviewRepDTO;
+import com.web.honbab.session.search.SearchSession;
 
 @Controller
 @RequestMapping("find")
-public class FindController {
+public class FindController implements SearchSession{
 	
 	
 	@Autowired
@@ -35,7 +36,12 @@ public class FindController {
 	
 	@RequestMapping(value="findAllList")
 	public String findAllList(Model model, 
-								@RequestParam(value = "num", required = false, defaultValue = "1") int num) {
+								@RequestParam(value = "num", required = false, defaultValue = "1") int num,
+								HttpSession session) {
+		session.removeAttribute(SEARCHOPTION);
+		session.removeAttribute(SEARCHOPTION2);
+		session.removeAttribute(SEARCHOPTION3);
+		session.removeAttribute(SEARCHVALUE);
 		fs.findAllList(model, num);
 		return "find/findAllList";
 	}

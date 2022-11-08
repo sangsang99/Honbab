@@ -94,5 +94,21 @@
 		DELETE FROM FIND_RE
 		WHERE WRITE_GROUP = #{writeNo}
 	</delete>
-	 
+	
+	<!--ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡSEARCH ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ--> 
+<!-- 	<select id="selectReviewCountForTitle" resultType="Integer">
+		SELECT COUNT(*) FROM REVIEW_BOARD WHERE TITLE like '%'||#{keyword}||'%' 
+		SELECT COUNT(*)
+		FROM FIND_BOARD
+		WHERE REGION = '%'||#{region}||'%'
+		AND GENDER = '%'||#{gender}||'%'
+		AND AGE = BETWEEN #{age} AND #{age+9}
+	</select>
+
+	<select id="searchForNick" resultMap="review">
+		SELECT B.* FROM
+		(SELECT ROWNUM RN, A.* FROM
+		(SELECT * FROM REVIEW_BOARD WHERE NICKNAME like '%'||#{keyword}||'%' ORDER BY WRITE_DATE DESC) A) B 
+		WHERE RN BETWEEN #{s} AND #{e}
+	</select> -->
 </mapper>

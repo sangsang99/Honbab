@@ -73,7 +73,8 @@
 					<div class="line"></div>					
 					<li>
 						<span class="index_en">Region</span> 
-						<input type="text" name="region" maxlength="2" placeholder="ex) 서울, 경기...">
+						<!-- <input type="text" name="region" maxlength="2" placeholder="ex) 서울, 경기..."> -->
+						<c:import url="../member/region.jsp"/>
 					</li>
 					<hr />
 					<div class="line"></div>						
