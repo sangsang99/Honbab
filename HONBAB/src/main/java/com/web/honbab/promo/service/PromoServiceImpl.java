@@ -3,6 +3,8 @@ package com.web.honbab.promo.service;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,11 +16,12 @@ import com.web.honbab.common.service.CommonService;
 import com.web.honbab.mybatis.promo.PromoMapper;
 import com.web.honbab.promo.dto.PromoDTO;
 import com.web.honbab.promo.dto.PromoRepDTO;
+import com.web.honbab.session.search.SearchSession;
 
 
 
 @Service
-public class PromoServiceImpl implements PromoService {
+public class PromoServiceImpl implements PromoService, SearchSession{
 	
 	@Autowired
 	PromoMapper mapper;
@@ -28,6 +31,9 @@ public class PromoServiceImpl implements PromoService {
 	
 	@Autowired
 	CommonService cms;
+	
+	@Autowired
+	HttpSession session;
 	
 	@Override
 	public void promoList(Model model, int num) {
@@ -49,6 +55,8 @@ public class PromoServiceImpl implements PromoService {
 		dto.setId(mul.getParameter("id"));
 		dto.setTitle(mul.getParameter("title"));
 		dto.setContent(mul.getParameter("content"));
+		dto.setAddress(mul.getParameter("address"));
+		dto.setComName(mul.getParameter("comName"));
 		MultipartFile file = mul.getFile("image_file_name");
 		
 		if(file.getSize() != 0) {
@@ -92,6 +100,8 @@ public class PromoServiceImpl implements PromoService {
 			dto.setWriteNo(Integer.parseInt(mul.getParameter("writeNo")));
 			dto.setTitle(mul.getParameter("title"));
 			dto.setContent(mul.getParameter("content"));
+			dto.setAddress(mul.getParameter("address"));
+			dto.setComName(mul.getParameter("comName"));
 			MultipartFile file = mul.getFile("image_file_name");
 			
 			if(file.getSize() != 0) {
@@ -148,7 +158,32 @@ public class PromoServiceImpl implements PromoService {
 			return mapper.getRepList(write_group);
 		}
 
+		@Override
+		public void getSearch(Model model, int num) {
 
+			String keyword = (String) session.getAttribute(SEARCHVALUE);
+			String select = (String) session.getAttribute(SEARCHOPTION);
+			int allCount;
+			int[] startEnd = new int[1];
+
+			switch (select) {
+			case "comName":
+				allCount = mapper.selectPromoCountForComName(keyword); 
+				startEnd = cms.paging(model, num, allCount);
+				model.addAttribute("promoList", mapper.searchForComName(keyword, startEnd[0], startEnd[1]));
+				model.addAttribute("isSearchPage", true);
+				break;
+			case "address":
+				allCount = mapper.selectPromoCountForAddress(keyword); 
+				startEnd = cms.paging(model, num, allCount);
+				model.addAttribute("promoList", mapper.searchForAddress(keyword, startEnd[0], startEnd[1]));
+				model.addAttribute("isSearchPage", true);
+				break;
+			default:
+				System.out.println("에러발생");
+				break;
+			}
+		}
 		
 	
 }	

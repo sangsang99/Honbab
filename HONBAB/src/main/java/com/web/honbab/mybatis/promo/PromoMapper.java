@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Param;
 
 import com.web.honbab.promo.dto.PromoDTO;
 import com.web.honbab.promo.dto.PromoRepDTO;
+import com.web.honbab.review.dto.ReviewDTO;
 
 
 public interface PromoMapper {
@@ -28,7 +29,14 @@ public interface PromoMapper {
 	public void addReply(PromoRepDTO dto);
 
 	public List<PromoRepDTO> getRepList(int write_group);
+
+	public int selectPromoCountForComName(String keyword);
+
+	public int selectPromoCountForAddress(String keyword);
+
+	public List<PromoRepDTO> searchForComName(@Param("keyword") String keyword, @Param("s")  int start, @Param("e") int end);
+
+	public List<PromoRepDTO> searchForAddress(@Param("keyword") String keyword, @Param("s")  int start, @Param("e") int end);
 	
-	
-	
+
 }
