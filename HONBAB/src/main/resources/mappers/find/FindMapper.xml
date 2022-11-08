@@ -96,19 +96,23 @@
 	</delete>
 	
 	<!--ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡSEARCH ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ--> 
-<!-- 	<select id="selectReviewCountForTitle" resultType="Integer">
-		SELECT COUNT(*) FROM REVIEW_BOARD WHERE TITLE like '%'||#{keyword}||'%' 
+ 	<select id="selectFindCountForOptions" resultType="Integer">
 		SELECT COUNT(*)
 		FROM FIND_BOARD
-		WHERE REGION = '%'||#{region}||'%'
-		AND GENDER = '%'||#{gender}||'%'
-		AND AGE = BETWEEN #{age} AND #{age+9}
+		WHERE REGION LIKE '%'||#{optRegion}||'%'
+		AND GENDER LIKE '%'||#{optGender}||'%'
+		AND AGE BETWEEN #{btwA} AND #{btwB}
 	</select>
 
-	<select id="searchForNick" resultMap="review">
+	<select id="searchForOptions" resultMap="find">
 		SELECT B.* FROM
 		(SELECT ROWNUM RN, A.* FROM
-		(SELECT * FROM REVIEW_BOARD WHERE NICKNAME like '%'||#{keyword}||'%' ORDER BY WRITE_DATE DESC) A) B 
-		WHERE RN BETWEEN #{s} AND #{e}
-	</select> -->
+			(SELECT * FROM FIND_BOARD 
+				WHERE REGION LIKE '%'||#{optRegion}||'%'
+				AND GENDER LIKE '%'||#{optGender}||'%'
+				AND AGE BETWEEN #{btwA} AND #{btwB}
+				ORDER BY WRITE_DATE DESC) A) B 
+		WHERE RN BETWEEN #{s} AND #{e}		
+	</select> 
+	
 </mapper>

@@ -41,6 +41,7 @@ public class FindController implements SearchSession{
 		session.removeAttribute(SEARCHOPTION);
 		session.removeAttribute(SEARCHOPTION2);
 		session.removeAttribute(SEARCHOPTION3);
+		session.removeAttribute(SEARCHVALUE);
 		fs.findAllList(model, num);
 		return "find/findAllList";
 	}
@@ -124,5 +125,28 @@ public class FindController implements SearchSession{
 	  return "redirect:/find/findContent?writeGroup=" + writeNo; 
 	  }
 	
+	@GetMapping(value= "search")
+	public String searchList(Model model,
+			@RequestParam(value = "num", required = false, defaultValue = "1") int num,
+			HttpSession session) throws IOException{
+		fs.searchReview(model, num);
+		return "find/findAllList";
+	}
+	
+	@PostMapping(value = "search") // 
+	public String searchList(MultipartHttpServletRequest mul, Model model,
+			@RequestParam(value = "num", required = false, defaultValue = "1") int num,
+			HttpSession session) throws IOException{
+		session.removeAttribute(SEARCHOPTION);
+		session.removeAttribute(SEARCHOPTION2);
+		session.removeAttribute(SEARCHOPTION3);
+		session.removeAttribute(SEARCHVALUE);
+		session.setAttribute(SEARCHOPTION, mul.getParameter("region"));
+		session.setAttribute(SEARCHOPTION2, mul.getParameter("gender"));
+		session.setAttribute(SEARCHOPTION3, mul.getParameter("age"));
+
+		fs.searchReview(model, num);
+		return "find/findAllList";
+	}
 	
 }

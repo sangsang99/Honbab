@@ -34,13 +34,13 @@ public interface FindMapper {
 	
 	public boolean deleteBoard(int writeGroup);
 	
-	public int selectFindCountForOptions(@Param("opt") String optRegion,
-			 @Param("opt2") String optGender,
+	public int selectFindCountForOptions(@Param("optRegion") String optRegion,
+			 @Param("optGender") String optGender,
 			 @Param("btwA") int btwA,
 				 @Param("btwB") int btwB);
 	
-	public List<FindRepDTO> searchForOptions(@Param("opt") String optRegion, 
-				@Param("opt2") String optGender,
+	public List<FindRepDTO> searchForOptions(@Param("optRegion") String optRegion, 
+				@Param("optGender") String optGender,
 				@Param("btwA") int btwA,
 				@Param("btwB") int btwB,
 				@Param("s") int start, @Param("e") int end);
