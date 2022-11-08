@@ -12,6 +12,7 @@
 		<result property="imageFileName" column="image_file_name" />
 		<result property="id" column="id" />		
 		<result property="comName" column="comName" />		
+		<result property="address" column="address" />		
 	</resultMap>
 
 	<resultMap type="com.web.honbab.promo.dto.PromoRepDTO" id="reply">
@@ -77,4 +78,28 @@
 		write_group=#{write_group}
 		order by write_date desc
 	</select> 
+	
+	<!--ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡSEARCH for Paging ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ-->
+	<select id="selectPromoCountForComName" resultType="Integer">
+		SELECT COUNT(*) FROM PROMO_BOARD WHERE COMNAME like '%'||#{keyword}||'%' 
+	</select>
+
+	<select id="selectPromoCountForAddress" resultType="Integer">
+		SELECT COUNT(*) FROM PROMO_BOARD WHERE ADDRESS like '%'||#{keyword}||'%' 
+	</select>
+	
+	<!--ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡSEARCH ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ-->
+	<select id="searchForComName" resultMap="promotion">
+		SELECT B.* FROM
+		(SELECT ROWNUM RN, A.* FROM
+		(SELECT * FROM PROMO_BOARD WHERE COMNAME like '%'||#{keyword}||'%' ORDER BY SAVE_DATE DESC) A) B 
+		WHERE RN BETWEEN #{s} AND #{e}
+	</select>
+	
+	<select id="searchForAddress" resultMap="promotion">
+		SELECT B.* FROM
+		(SELECT ROWNUM RN, A.* FROM
+		(SELECT * FROM PROMO_BOARD WHERE ADDRESS like '%'||#{keyword}||'%' ORDER BY SAVE_DATE DESC) A) B 
+		WHERE RN BETWEEN #{s} AND #{e}
+	</select>
 </mapper>

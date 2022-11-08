@@ -37,8 +37,9 @@
 	<h1 class="write_title"> 글쓰기</h1>
 	<div class="wrap" align="center">
 		<form action="${contextPath}/promotion/writeSave" enctype="multipart/form-data" method="post">
-			<b>작성자</b><br>
-			<input type="text" name="id" value="${loginUser}" readonly><br>
+			<input type="hidden" name="id" value="${loginUser}"><br>
+			<b>상호명</b><br>
+			<input type="text" name="comName"><br>
 			<b>제 목</b><br>
 			<input type="text" name="title" size="50"><br>
 			<b>내 용</b><br>
@@ -51,7 +52,9 @@
 				</textarea><br>
 			<b>파일 첨부</b><br>
 			<input type="file" name="image_file_name" onchange="readURL(this)">
-			<img src="#" id=preview width="100px" height="100px"> <br><br>
+			<img src="#" id=preview width="100px" height="100px">
+			<b>주 소</b><br>
+			<input type="text" name="address" size="50"><br><br>
 			<input type="submit" value="작성완료"> &nbsp;
 			<input type="button" value="글목록" onclick="location.href='${contextPath }/promotion/promoAllList'">
 		</form>

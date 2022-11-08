@@ -11,6 +11,7 @@ import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,10 +29,11 @@ import com.web.honbab.admin.service.OperService;
 import com.web.honbab.promo.dto.PromoDTO;
 import com.web.honbab.promo.service.PromoFileService;
 import com.web.honbab.promo.service.PromoService;
+import com.web.honbab.session.search.SearchSession;
 
 @Controller
 @RequestMapping(value="promotion")
-public class PromoController {
+public class PromoController implements SearchSession {
 	
 	@Autowired
 	private PromoService ps;
@@ -45,7 +47,10 @@ public class PromoController {
 		return "promotion/promoADList";
 	}
 	@GetMapping("promoAllList")
-	public String promoAllList(Model model, @RequestParam(value="num", required = false, defaultValue ="1") int num) {
+	public String promoAllList(Model model, @RequestParam(value="num", required = false, defaultValue ="1") int num,
+								HttpSession session) {
+		session.removeAttribute(SEARCHOPTION);
+		session.removeAttribute(SEARCHVALUE);
 		ps.promoList(model, num);
 		return "promotion/promoAllList";
 	}
@@ -109,6 +114,24 @@ public class PromoController {
 		out.println(message);
 	}
 	
+	@GetMapping(value= "search")
+	public String searchList(Model model,
+			@RequestParam(value = "num", required = false, defaultValue = "1") int num,
+			HttpSession session) throws IOException{
+		ps.getSearch(model, num);
+		return "promotion/promoAllList";
+	}
 	
+	@PostMapping(value = "search") // 
+	public String searchList(MultipartHttpServletRequest mul, Model model,
+			@RequestParam(value = "num", required = false, defaultValue = "1") int num,
+			HttpSession session) throws IOException{
+		session.removeAttribute(SEARCHOPTION);
+		session.removeAttribute(SEARCHVALUE);
+		session.setAttribute(SEARCHOPTION, mul.getParameter("option"));
+		session.setAttribute(SEARCHVALUE, mul.getParameter("text"));
+		ps.getSearch(model, num);
+		return "promotion/promoAllList";
+	}
 	
 }

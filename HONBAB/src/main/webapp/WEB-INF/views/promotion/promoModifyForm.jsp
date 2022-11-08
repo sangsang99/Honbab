@@ -40,6 +40,8 @@
 		<form action="${contextPath}/promotion/modify" enctype="multipart/form-data" method="post">
 			<input type="hidden" name="writeNo" value="${data.writeNo }">
 			<input type="hidden" name="originFileName" value="${data.imageFileName }"> <!-- 이미지 변경시 해당 파일 삭제 -->
+			<b>상호명</b><br>
+			<input type="text" name="comName"><br>
 			<b>제 목</b><br>
 			<input type="text" name="title" value="${data.title }" size="50"><br>
 			<b>내 용</b><br>
@@ -47,6 +49,8 @@
 			<b>파일 첨부</b><br>
 			<img src="${contextPath }/promotion/download?imageFileName=${data.imageFileName}" id="preview" width="100px" height="100px"> <br><br>
 			<input type="file" name="image_file_name" onchange="readURL(this)">
+			<b>주 소</b><br>
+			<input type="text" name="address" size="50"><br><br>
 			<input type="submit" value="수정완료"> &nbsp;
 			<input type="button" value="글목록" onclick="location.href='${contextPath }/promotion/promoAllList'">
 		</form>
