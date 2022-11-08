@@ -106,10 +106,10 @@ public class MemberServiceImpl implements MemberService {
 		
 		String msg,url;
 		if(result == 1) {
-			msg = "구인 글이 등록 되었습니다.";
+			msg = "회원정보를 수정하였습니다.";
 			url = "/member/info?id="+dto.getId();
 		} else {
-			msg ="문제가 생겼습니다";
+			msg ="회원정보 수정에 실패하였습니다. 다시 시도해주세요.";
 			url = "/member/modifyForm?id="+dto.getId();
 		}
 		return getMessage(request,msg,url);
