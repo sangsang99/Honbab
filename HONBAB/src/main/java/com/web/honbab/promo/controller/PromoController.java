@@ -88,7 +88,7 @@ public class PromoController implements SearchSession {
 		in.close();
 	}
 	
-	@GetMapping("modify_form")
+	@GetMapping("promoModifyForm")
 	public String modify_form(@RequestParam int writeNo, Model model) {
 		ps.contentView(writeNo, model);
 		return "promotion/promoModifyForm";
