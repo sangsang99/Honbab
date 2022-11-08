@@ -129,7 +129,9 @@
 
 			<div class="like">
 				<a href="#"
-					onclick="isLogin(${reviewContent.writeNo})">좋아요♥</a> <span class="age">${reviewContent.likes}</span>
+					onclick="isLogin(${reviewContent.writeNo})">
+					<img id="heart" src="${contextPath}/resources/img/heart.svg"></a>
+					<span class="age">${reviewContent.likes}</span>
 			</div>
 	
 			<c:if test="${reviewContent.imgName == 'None'}">

@@ -25,6 +25,6 @@ public interface PromoService {
 
 	List<PromoRepDTO> getRepList(int write_group);
 
-	
+	public void getSearch(Model model, int num);
 
 }

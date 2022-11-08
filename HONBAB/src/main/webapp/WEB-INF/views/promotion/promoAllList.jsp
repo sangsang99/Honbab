@@ -38,13 +38,13 @@
 
 		<section>
 			<form id="search" name="saerch"
-				action="${contextPath }/review/search" enctype="multipart/form-data"
+				action="${contextPath }/promotion/search" enctype="multipart/form-data"
 				method="post">
 				<div class="search">
 					<div id="searchForm">
 						<select name="option" id="option">
-							<option value="comname">상호명으로 검색</option>
-							<option value="region">지역으로 검색</option>
+							<option value="comName">상호명으로 검색</option>
+							<option value="address">지역으로 검색</option>
 						</select> <input type="text" name="text" id="text" placeholder="검색어 입력">
 						<input type="submit" value="검색">
 					</div>
