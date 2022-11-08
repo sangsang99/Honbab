@@ -15,6 +15,8 @@
 </div>
 
 <div class="cd1">
+${loginUser} 님 관리자로 로그인하셨습니다.
+<a id="logout" href="${contextPath }/oper/logout">Logout</a>
   <h1>어드민홈</h1>
   <h2>제목</h2>
   <p>내용</p>

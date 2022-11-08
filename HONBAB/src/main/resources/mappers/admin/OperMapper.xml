@@ -3,6 +3,12 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.web.honbab.mybatis.admin.OperMapper">
+
+	<resultMap type="com.web.honbab.admin.dto.AdminDTO" id="adminLogin">
+		<id property="adminId" column="ADMIN_ID" />
+		<result property="adminPw" column="ADMIN_PW" />
+	</resultMap>
+
 	<resultMap type="com.web.honbab.admin.dto.NoticeBoardDTO" id="admin">
 		<id property="writeNo" column="WRITE_NO" />
 		<result property="title" column="TITLE" />
@@ -18,6 +24,11 @@
 		<result property="reDate" column="RE_DATE" />
 		<result property="reNick" column="RE_NICK" />
 	</resultMap>
+
+
+	<select id="adminUserCheck" resultMap="adminLogin">
+		select * from ADMIN_LOGIN where ADMIN_ID=#{adminId}
+	</select>
 
 	<insert id="noticeWrite">
 		INSERT INTO ADMIN_NOTICE_BOARD(WRITE_NO, TITLE, CONTENT)

@@ -11,6 +11,8 @@ import com.web.honbab.review.dto.ReviewRepDTO;
 
 public interface OperService {
 
+	public int adminUserCheck(HttpServletRequest request);
+	
 	public String getMessage(HttpServletRequest request, String msg, String url);
 	public String noticeWrite(HttpServletRequest request);
 	public void viewNoticeList(Model model);
@@ -23,4 +25,5 @@ public interface OperService {
 	
 	public int setAD(HttpServletRequest request);
 	public void promoList(Model model, int num);
+	
 }

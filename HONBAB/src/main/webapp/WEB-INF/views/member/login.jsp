@@ -69,7 +69,7 @@ $(document).ready(function(){
 			</form>
 		</div>
 		<div id="admin">
-			<form action="${contextPath }/admin" method="post">
+			<form action="${contextPath }/oper/adminUser_check" method="post">
 				<input type="text" name="id" placeholder="관리자아이디"><br><br>
 				<input type="password" name="pw" placeholder="관리자비밀번호"><br><br>
 				<input type="submit" value="login"> &nbsp; 

@@ -8,6 +8,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 import com.web.honbab.admin.dto.ADDTO;
+import com.web.honbab.admin.dto.AdminDTO;
 import com.web.honbab.admin.dto.NoticeBoardDTO;
 import com.web.honbab.admin.dto.NoticeRepDTO;
 import com.web.honbab.promo.dto.PromoDTO;
@@ -35,6 +36,8 @@ public interface OperMapper {
 	public List<PromoDTO> promoList();
 
 	public int beforeDeleteAD();
+
+	public AdminDTO adminUserCheck(String adminId);
 
 
 }

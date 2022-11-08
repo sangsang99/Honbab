@@ -11,8 +11,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import com.web.honbab.admin.dto.ADDTO;
+import com.web.honbab.admin.dto.AdminDTO;
 import com.web.honbab.admin.dto.NoticeBoardDTO;
 import com.web.honbab.admin.dto.NoticeRepDTO;
+import com.web.honbab.member.dto.MemberDTO;
 import com.web.honbab.mybatis.admin.OperMapper;
 import com.web.honbab.review.dto.ReviewRepDTO;
 
@@ -21,7 +23,19 @@ public class OperServiceImpl implements OperService {
 
 	@Autowired
 	private OperMapper mapper;
+
 	
+	@Override
+	public int adminUserCheck(HttpServletRequest request) {
+		AdminDTO dto = mapper.adminUserCheck(request.getParameter("id"));
+		if(dto != null) {
+			if(request.getParameter("pw").equals(dto.getAdminPw())){
+				return 0;
+			}
+		}
+		return 1;
+	}
+
 	@Override
 	public String getMessage(HttpServletRequest request, String msg, String url) {
 		String message = null;
