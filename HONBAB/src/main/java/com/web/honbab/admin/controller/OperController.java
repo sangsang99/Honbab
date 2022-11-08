@@ -37,30 +37,7 @@ public class OperController implements AdminSession{
 	@Autowired
 	private PromoService ps;
 	
-	@RequestMapping("adminUser_check")
-	public String adminUserCheck(HttpServletRequest request, RedirectAttributes rs) {
-		int result = os.adminUserCheck(request);
-		if(result == 0) {
-			rs.addAttribute("id", request.getParameter("id"));
-			return "redirect:successADMLogin";
-		}
-		return "redirect:login";
-	}
-	
-	@RequestMapping("successADMLogin")
-	public String successLogin(@RequestParam("id") String id, HttpSession session) {
-		session.setAttribute(ADMIN, id);
-		return "admin/ADMIndex";
-	}
 
-	
-	@GetMapping("logout")
-	public String logout(HttpSession session) {
-		if(session.getAttribute("loginUser") != null) {
-			session.invalidate();
-		}
-		return "redirect:/index";
-	}
 	
 	//영업관리 메인페이지
 	@RequestMapping("operation")
