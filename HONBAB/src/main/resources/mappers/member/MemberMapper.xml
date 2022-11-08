@@ -47,7 +47,7 @@
 		select * from BUSINES_JOIN where id=#{id}
 	</select>
 	
-	<update id="modify">
+	<update id="modifySave">
 		update USER_JOIN set 
 		pw=#{pw}, 
 		name=#{name}, 
