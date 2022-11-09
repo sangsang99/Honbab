@@ -73,14 +73,14 @@ public class ReviewServiceImpl implements ReviewService, SearchSession {
 		dto.setTitle(mul.getParameter("title"));
 		dto.setContent(mul.getParameter("content"));
 		MultipartFile file = mul.getFile("image_file_name");
-
+		
 		if (file.getSize() != 0) {
 			dto.setImgName(rfs.saveFile(file));
 			rfs.deleteImage(mul.getParameter("originFileName"));
 		} else {
 			dto.setImgName(mul.getParameter("originFileName"));
 		}
-
+		System.out.println(dto.getImgName());
 		int result = 0;
 		try {
 			result = mapper.modifyReview(dto);

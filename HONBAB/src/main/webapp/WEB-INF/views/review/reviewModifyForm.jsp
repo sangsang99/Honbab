@@ -96,43 +96,43 @@
 				action="${contextPath}/review/review_modify"
 				enctype="multipart/form-data" method="post" onsubmit="AllChk()">
 				<ul>
-					<li><span class="index_en">Writer</span> <input type="text"
-						name="nickname" value="${reviewContent.nickname}" readonly>
+					<li><span class="index_en">Writer</span>
+						<input type="hidden" name="writeNo" value="${reviewContent.writeNo}"> <!-- 쿼리문(where)에 쓸거 -->
+						<input type="text" name="nickname" value="${reviewContent.nickname}" readonly>
 					</li>
 					<hr />
 					<div class="line"></div>
-					<li><span class="index_en">Title</span> <input type="text"
-						name="title" value="${reviewContent.title}"></li>
-					<hr />
-					<div class="line"></div>
-
-					<li class="content"><span class="index_kr">내용</span> <textarea
-							maxlength="999" name="content">${reviewContent.content}</textarea>
+					
+					<li><span class="index_en">Title</span>
+						<input type="text" name="title" value="${reviewContent.title}">
 					</li>
-
 					<hr />
 					<div class="line"></div>
-					<li class="upload_file"><span class="index_kr">사진 첨부</span> <input
-						type="file" name="image_file_name" onchange="readURL(this)">
-						<img
-						src="${contextPath }/download?imageFileName=${reviewContent.imgName}"
+					
+					<li class="content"><span class="index_kr">내용</span>
+						<textarea maxlength="999" name="content">${reviewContent.content}</textarea>
+					</li>
+					<hr />
+					<div class="line"></div>
+					
+					
+					<li class="upload_file"><span class="index_kr">사진 첨부</span>
+					 <input type="hidden" name="originFileName" value="${reviewContent.imgName }"> <!-- 기존파일삭제시 -->
+					 <input type="file" name="image_file_name" onchange="readURL(this)">
+						<img src="${contextPath }/download?imageFileName=${reviewContent.imgName}"
 						id=preview width="100px" height="100px"></li>
+						
 					<hr />
 					<div class="line"></div>
 				</ul>
 				<input type="submit" value="수정완료"> 
 				<input type="button"
 					value="글목록" onclick="location.href='${contextPath }/review/reviewAllList'">
+				
 			</form>
 		</div>
 	</main>
 
-	<!-- 저는 글번호 안넣었는데 넣을 경우 어디 위치에 위치해야할지.. -->
-	<input type="hidden" name="writeNo" value="${reviewContent.writeNo }">
-	<!-- 얜 ?? 넣다가 길 잃은 애입니다. -->
-	<input type="hidden" name="originFileName"
-		value="${reviewContent.imgName }">
-	<!-- 이미지 변경시 해당 파일 삭제 -->
 
 	<%-- <b>작성자 not null</b>
 	<br>

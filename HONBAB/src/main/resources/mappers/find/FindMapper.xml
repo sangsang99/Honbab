@@ -31,8 +31,6 @@
 		VALUES(FIND_BOARD_SEQ.NEXTVAL, #{nickName}, #{title}, #{content}, #{age}, #{region}, #{gen},#{id})
 	</insert> 
 	
-	
-	
 	<select id="findAllList" resultMap="find">
 		SELECT B.* FROM
 		(SELECT ROWNUM RN, A.* FROM
