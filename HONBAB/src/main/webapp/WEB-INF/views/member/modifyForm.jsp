@@ -13,22 +13,9 @@
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Nunito+Sans:wght@400;600;700&display=swap"
 	rel="stylesheet" />
 <link href="${pageContext.request.contextPath}/resources/css/home.css?ver=4" rel="stylesheet"/> 
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script>
-function modify(){
-	tel1 = $("#tel1").val()
-	tel2 = $("#tel2").val()
-	tel3 = $("#tel3").val()
-	tel1 = tel1 + "-" + tel2 + "-" + tel3
-	$("#tel1").val(tel1)
-	modify_form.submit()
-}
-//	const str = "010-1234-5678";
-//	let words = str.split('-');
-//	words[0];
-//	words[1];
-//	words[2];
-
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script type="text/javascript">
+$.getScript( '../resources/js/modify.js');
 </script>
 <style type="text/css">
 body>.join_form_wrap {
@@ -93,7 +80,7 @@ li>#gender{
 					<input type="text" id="email" name="email" value="${info.email}">
 				</li>
 			</ul>
-			<input type="submit" value="Edit" >
+			<button type="button" name="join" onclick="joinform_check(); return false;"> EDIT</button>
 		</form>
 	</div>
 	
