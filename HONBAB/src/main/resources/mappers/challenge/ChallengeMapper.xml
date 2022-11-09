@@ -76,11 +76,9 @@
 	</update>
 	
 	<select id="challengeBestList" resultMap="challenge">
-		SELECT * FROM 
-			(SELECT * FROM 
-			LEVEL_CHALLENGE 
-			ORDER BY VIEWS DESC)
-		WHERE ROWNUM BETWEEN 1 AND 5
+		SELECT *
+		FROM (SELECT * FROM LEVEL_CHALLENGE ORDER BY VIEWS DESC) A
+		<![CDATA[WHERE ROWNUM <= 5]]>
 	</select>
 	
 	<!-- 검색 -->

@@ -24,7 +24,7 @@ public interface ChallengeMapper {
 	
 	public int upView(int writeNo);
 	
-	public List<ChallengeDTO> challengeBestList(int views);
+	public List<ChallengeDTO> challengeBestList(); 
 	
 	// 검색
 	public int challengeSearchCount();
@@ -37,6 +37,8 @@ public interface ChallengeMapper {
 	public List<ChallengeDTO> searchLevelSix(@Param("keyword") String keyword, @Param("level") int level); 
 	public List<ChallengeDTO> searchLevelSeven(@Param("keyword") String keyword, @Param("level") int level); 
 	public List<ChallengeDTO> searchLevelEight(@Param("keyword") String keyword, @Param("level") int level); 
-	public List<ChallengeDTO> searchLevelNine(@Param("keyword") String keyword, @Param("level") int level); 
+	public List<ChallengeDTO> searchLevelNine(@Param("keyword") String keyword, @Param("level") int level);
+
+
 	
 }

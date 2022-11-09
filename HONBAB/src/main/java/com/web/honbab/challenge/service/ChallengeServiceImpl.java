@@ -144,10 +144,8 @@ public class ChallengeServiceImpl implements ChallengeService {
 	}
 	
 	@Override
-	public void challengeBestList(int views, Model model) {
-		
-		model.addAttribute("challengeBestList", mapper.challengeBestList(views));
-		System.out.println(mapper.challengeBestList(views));
+	public void challengeBestList(Model model) {		
+		model.addAttribute("challengeBestList", mapper.challengeBestList());
 	}
 
 	
@@ -200,6 +198,7 @@ public class ChallengeServiceImpl implements ChallengeService {
 			break;
 		}
 	}
+
 
 	
 	/*

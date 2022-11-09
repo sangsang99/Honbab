@@ -1,5 +1,8 @@
 package com.web.honbab.find.dto;
 
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+
 public class FindDTO {
 	private int writeNo ;
 	private String nickName;
@@ -46,9 +49,11 @@ public class FindDTO {
 	public String getWriteDate() {
 		return writeDate;
 	}
-	public void setWriteDate(String writeDate) {
-		this.writeDate = writeDate;
+	public void setWriteDate(Timestamp writeDate) {
+		SimpleDateFormat smallFormat = new SimpleDateFormat("YYYY-MM-dd");
+		this.writeDate = smallFormat.format(writeDate);
 	}
+	
 	public int getAge() {
 		return age;
 	}

@@ -102,12 +102,6 @@ public class ChallengeController implements MemberSession {
 		return "challenge/challengePop";
 	}
 	
-	@RequestMapping(value= "challengeBestList")
-	public String challengeBestList(@RequestParam int views, Model model) {
-		cs.challengeBestList(views, model);
-		
-		return "challenge/challengeBestList";
-	}
 
 	/*
 	@PostMapping(value = "challengeSearch") 
