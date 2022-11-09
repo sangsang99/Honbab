@@ -53,8 +53,8 @@
 					<div class="line"></div>
 					<li>
 						<span class="index_kr">작성자</span> 
-						<input type="hidden" value="id-session" name="id">
-						<input type="text" name="nickName" readonly="readonly">
+						<input type="hidden" value="${loginUser}" name="id">
+						<input type="text" name="nickName" value="${loginNick}" readonly="readonly">
 					</li>
 					<hr />
 					<div class="line"></div>						

@@ -32,7 +32,7 @@
 				width="1200px" />
 		</div>
 	</main>
-
+	
 	<article>
 		<!-- find best -->
 		<div class="article_wrap">

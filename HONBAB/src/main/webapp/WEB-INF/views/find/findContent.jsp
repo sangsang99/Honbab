@@ -120,7 +120,6 @@
       <div class="panel">
 				<form id="form" name="form">        
 					<input type="hidden" name="writeNo" value="${findContent.writeNo}">
-					<input type="hidden" name="id" value="${reviewContent.id}">
 	        <div class="rep">
 	          <span>by. ${findContent.nickName}</span>
 	          <span>savedate</span><br>

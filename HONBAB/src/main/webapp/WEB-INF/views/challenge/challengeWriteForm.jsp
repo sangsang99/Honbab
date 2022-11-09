@@ -122,7 +122,7 @@
 					<div class="line"></div>
 					<li><span class="index_kr">작성자</span> <input type="hidden"
 						value="${loginUser}" name="id"> <input type="text"
-						name="nickName" readonly="readonly" value="nickName" /> <!-- 임시로 value 닉네임 넣어논 것이니 나중에 로그인 유저 닉네임 받아서 넣을 수 있도록 -->
+						name="nickName" readonly="readonly" value="${loginNick}" /> <!-- 임시로 value 닉네임 넣어논 것이니 나중에 로그인 유저 닉네임 받아서 넣을 수 있도록 -->
 					</li>
 					<hr />
 					<div class="line"></div>

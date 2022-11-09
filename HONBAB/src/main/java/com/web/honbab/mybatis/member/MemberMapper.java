@@ -16,4 +16,5 @@ public interface MemberMapper {
 
 	public int modifySave(MemberDTO dto);
 
+
 }

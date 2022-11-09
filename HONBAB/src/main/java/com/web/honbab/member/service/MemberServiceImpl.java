@@ -1,30 +1,33 @@
 package com.web.honbab.member.service;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import com.web.honbab.find.dto.FindDTO;
 import com.web.honbab.member.dto.BizMemberDTO;
 import com.web.honbab.member.dto.MemberDTO;
-import com.web.honbab.member.service.MemberService;
 import com.web.honbab.mybatis.member.MemberMapper;
+import com.web.honbab.session.name.MemberSession;
 
 @Service
-public class MemberServiceImpl implements MemberService {
+public class MemberServiceImpl implements MemberService, MemberSession {
 	
 	@Autowired
 	private MemberMapper mapper;
+	
+	@Autowired
+	private HttpSession session;
 	
 	@Override
 	public int user_check(HttpServletRequest request) {
 		MemberDTO dto = mapper.user_check(request.getParameter("id"));
 		if(dto != null) {
 			if(request.getParameter("pw").equals(dto.getPw())) {
+				session.setAttribute(NICK, dto.getNickName());
 				return 0;
 			}
 		}
@@ -34,6 +37,7 @@ public class MemberServiceImpl implements MemberService {
 		BizMemberDTO dto = mapper.bizuser_check(request.getParameter("id"));
 		if(dto != null) {
 			if(request.getParameter("pw").equals(dto.getPw())) {
+				session.setAttribute(NICK, dto.getComName());
 				return 0;
 			}
 		}
@@ -116,4 +120,5 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 
+	
 }
