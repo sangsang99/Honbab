@@ -33,7 +33,7 @@
 	} */
  	
  	//Ajax??
- 	function rep() {
+ 	/* function rep() {
 		let form = {};
 		let arr = $("#frm").serializeArray(); //해당데이터 직렬화 처리 //[{name: "", value:""}, {name: "", value:""}]
 		for(i=0; i<arr.length; i++){
@@ -85,7 +85,7 @@
 			}
 		})
 		
-		}
+		} */
 </script>
 
 </head>
@@ -108,8 +108,8 @@
 		<div class="line"></div>
 
 		<div class="writer_wrap">
-			<span class="writer">by. ${data.id }</span> <span
-				class="date">${data.saveDate }</span> 
+			<span class="writer">by. ${data.id }</span> 
+			<%-- <span class="date">${data.saveDate }</span>  --%>
 
 		<%-- 	<div class="like">
 				<a href="#" onclick="isLogin(${reviewContent.writeNo})"> <img
@@ -243,7 +243,7 @@
 		</table>
 	</div> --%>
 
-	<section>
+	<%-- <section>
 		<div class="plus">
 			<a>+ 댓글</a>
 		</div>
@@ -267,7 +267,7 @@
 				</form>
 			</div>
 		</c:if>
-	</section>
+	</section> --%>
 
 
 
