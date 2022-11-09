@@ -54,7 +54,7 @@ li>#gender{
 			<ul>
 				<li>
 					<span class="index">아이디</span>
-					<input type="text" value="${info.id }" disabled>
+					<input type="text" value="${info.id }" readonly>
 				</li>
 				<li>
 					<span class="index">비밀번호</span>
@@ -84,7 +84,9 @@ li>#gender{
 					<input type="text" value="${info.email }" disabled>
 				</li>
 				<li>
+				
 				<button onclick="window.open('${contextPath}/member/modifyForm?id=${loginUser}');">수정</button>
+				
 				<button type="button" onclick="test();">삭제</button>
 				</li>
 			</ul>

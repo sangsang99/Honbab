@@ -41,7 +41,7 @@ li>#gender{
 	<c:import url="../main/header.jsp"/>
 	
 	<div class="join_form_wrap">
-		<<h1 align="center">회원정보 수정</h1>
+		<h1 align="center">회원정보 수정</h1>
 		<form class="join_form" id="modify" action="modifySave" enctype="multipart/form-data" method="post">
 			<ul>
 				<li>
@@ -62,7 +62,7 @@ li>#gender{
 				</li>
 				<li>
 					<span class="index">전화번호</span>
-					<input type="tel" id="tel1" name="tel" value="${info.tel}">
+					<input type="tel" id="tel" name="tel" value="${info.tel}">
 				</li>
 				<li>
 					<span class="index">거주지</span>
@@ -71,6 +71,7 @@ li>#gender{
 				<li>
 					<span class="index">성별</span>
 					<select id="gender" name="gender" size="1">
+						<option value="">-선택하세요-</option>
 						<option value="m">남자</option>
 						<option value="f">여자</option>
 					</select>

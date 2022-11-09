@@ -1,6 +1,6 @@
 function id_check() {
-  //window.open("팝업될 문서 경로", "팝업될 문서 이름", "옵션");
-  window.open("", "", "width=600, height=200, left=200, top=100");
+  window.open("idcheck", "", "width=600, height=200, left=200, top=100");
+//  window.open("", "", "width=600, height=200, left=200, top=100");
 };
 
 
@@ -75,5 +75,5 @@ function joinform_check() {
 	};
 
   //입력 값 전송
-  document.register_form.submit(); //유효성 검사의 포인트   
+  document.getElementById('register_form').submit(); //유효성 검사의 포인트   
 };
