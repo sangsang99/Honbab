@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>reviewWirte</title>
+<!-- 수정 11.09 -->
 <link
 	href="${pageContext.request.contextPath}/resources/css/challenge/writeForm.css?ver=4"
 	rel="stylesheet" />
@@ -76,6 +77,9 @@
 
 	<aside>
 		<div class="aside_wrap">
+		<div class="honbab">
+			<span>REVIEW</span>
+		</div>
 			<div class="text">
 				<span>리뷰</span>
 				<div>글쓰세요</div>
@@ -84,9 +88,6 @@
 				설명같은 짧은 글임
 				</div>
 			</div>
-		</div>
-		<div class="honbab">
-			<span>HONBAB</span>
 		</div>
 		<div class="innerfooter">
 			<c:import url="../main/footer.jsp" />
@@ -100,7 +101,7 @@
 				<!-- other 조회수(controller), 게시글번호(sql-seq), 작성일자(sql-default), 좋아요(content-button),-->
 				<ul>
 					<li>
-						<span class="index_en">Writer</span> 
+						<span class="index_kr">작성자</span> 
 						<input type="hidden" value="${loginUser}" name="id">
 						<input type="text" name="nickname">
 					</li>
@@ -108,7 +109,7 @@
 					<div class="line"></div>
 
 					<li>
-						<span class="index_en">Title</span>
+						<span class="index_kr">제목</span>
 						<input type="text" placeholder="제목 작성" name="title" />
 					</li>
 					<hr />
@@ -130,8 +131,8 @@
 					<hr />
 					<div class="line"></div>
 				</ul>
-				<input type="submit" value="Save" /> 
-				<input type="button" value="글목록" onclick="location.href='${contextPath}/challengeAllList'">
+				<input type="submit" value="저장" /> 
+				<input type="button" value="목록" onclick="location.href='${contextPath}/challengeAllList'">
 			</form>
 		</div>
 	</main>
