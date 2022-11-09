@@ -118,16 +118,16 @@ td {
 					<tr>
 						<td><span>글번호</span></td>
 						<td class="title"><span>제목</span></td>
-						<td><span>작성자</span></td>
 						<td><span>작성일</span></td>
+						<td><span>작성자</span></td>
 						<td><span>홍보순서</span></td>
 					</tr>		
-					<c:forEach var="promo" items="${promoList}">
+					<c:forEach var="promo" items="${promoAllList}">
 					<tr>
 						<td><span>${promo.writeNo }</span></td>
 						<td class="title"><a href="${contextPath }/promotion/contentView?writeNo=${promo.writeNo}">${promo.title}</a></td>
-						<td><span>${promo.id }</span></td>
 						<td><span>${promo.saveDate}</span></td>
+						<td><span>${promo.id }</span></td>
 						<td><span>
 							<input type="checkbox" name="chk" onclick="count_chk(this)" value="${promo.writeNo}">
 							<input type="number" name="adNo" min="1" max="5" disabled></span></td>

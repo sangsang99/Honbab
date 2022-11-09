@@ -45,7 +45,13 @@ public class PromoServiceImpl implements PromoService, SearchSession{
 		model.addAttribute("isSearchPage", false);
 		model.addAttribute("promoList", mapper.promoList(startEnd[0], startEnd[1])); 
 	}
-		
+	
+	@Override
+	public void promoAllList(Model model) {
+		model.addAttribute("isSearchPage", false);
+		model.addAttribute("promoAllList", mapper.promoAllList()); 
+	}
+
 	@Override
 	public int isBizUser(String user) {
 		int result = 0;

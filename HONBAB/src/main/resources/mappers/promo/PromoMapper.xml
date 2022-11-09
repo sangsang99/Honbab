@@ -32,6 +32,12 @@
 		where rn between #{s} and #{e}
 	</select>
 
+	<select id="promoAllList" resultMap="promotion">
+		select B.* from <!-- 시작번호 끝번호만 뽑기 -->
+		(select rownum rn, A.* from <!-- 페이지가 거꾸로 나와야 해서 rownum으로 재정렬 -->
+		(select * from PROMO_BOARD order by write_no desc) A) B <!-- 우선 글번호 대로 정렬 -->
+	</select>
+
 	<insert id="writeSave">
 		insert into PROMO_BOARD(write_no, id, title, content,
 		image_file_name)
