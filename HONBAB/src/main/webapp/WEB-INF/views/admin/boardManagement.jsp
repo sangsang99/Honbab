@@ -13,6 +13,8 @@
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Nunito+Sans:wght@400;600;700&display=swap"
 	rel="stylesheet" />
 <link href="${pageContext.request.contextPath}/resources/css/admin.css?ver=4" rel="stylesheet"/> 
+<style type="text/css">
+</style>
 <title>동형</title>
 </head>
 <body>
@@ -20,21 +22,21 @@
 	<ul class="aside">
 		<li>
 		<a id="admin" href="${contextPath}/ban/userManagement">사용자관리</a>	
-		정욱<input type="button" value="관리자삭제"> <br>
 		</li>
 		<li>
-		<a id="admin" href="${contextPath}/admin/boardManagement">게시글관리</a>
-		동형 <input type="button" value="게시글관리"> <br>
+		<a id="admin" href="${contextPath }/admin">▼ 게시글관리</a>
 			<ul>
-				<li><a id="admin" href="${contextPath}/find/findAllList">구인 게시판</a></li>
-				<li><a id="admin" href="${contextPath}/admin/challBoard">도전 혼밥 게시판</a></li>
-				<li><a id="admin" href="${contextPath}/review/reviewAllList">혼밥 후기 게시판</a></li>
-				<li><a id="admin" href="${contextPath}/admin/promoBoard">홍보 게시판</a></li>
+				<li><a id="admin" href="${contextPath}/find/findAllList"> &nbsp;&gt;구인 게시판</a></li>
+				<li><a id="admin" href="${contextPath}/challengeAllList"> &nbsp;&gt;도전 혼밥 게시판</a></li>
+				<li><a id="admin" href="${contextPath}/review/reviewAllList"> &nbsp;&gt;혼밥 후기 게시판</a></li>
+				<li><a id="admin" href="${contextPath}/promotion/promoAllList"> &nbsp;&gt;홍보 게시판</a></li>
 			</ul>
 		</li>
-		<li>
+		<li class="menu">
 		<a href="${contextPath}/oper/operation">영업관리</a> <!-- 우상  -->
-		우상 <input type="button" value="영업관리"><br>
+		</li>
+		<li class="menu">
+		<a id="logout" href="${contextPath }/member/logout">Logout</a>
 		</li>
 	</ul>
 </aside>

@@ -43,13 +43,31 @@
           </li>
           <li class="empty">&nbsp;</li>
           <c:if test="${loginUser == null}">
-		  			<li class="user"><a id="join" href="${contextPath }/member/register_form">Join</a></li>
+		  	<li class="user"><a id="join" href="${contextPath }/member/register_form">Join</a></li>
           	<li class="user"><a id="login" href="${contextPath }/member/login">Login</a></li>
-		  		</c:if>
-		  		<c:if test="${loginUser != null}">
+		  </c:if>
+<%-- 		  <c:if test="${loginUser == admin}">
+          	<li class="user"><a id="mypage" href="${contextPath }/admin">MANAGE</a></li>
+	        <li class="user"><a id="logout" href="${contextPath }/member/logout">Logout</a></li>
+		  </c:if>
+		  <c:if test="${loginUser != null}">
           	<li class="user"><a id="mypage" href="${contextPath }/member/info?id=${loginUser}">Mypage</a></li>
-	        	<li class="user"><a id="logout" href="${contextPath }/member/logout">Logout</a></li>
-		 			</c:if>
+	        <li class="user"><a id="logout" href="${contextPath }/member/logout">Logout</a></li>
+		  </c:if>
+		   --%>
+		  
+		  <c:if test="${loginUser != null}">
+		  		<c:if test="${loginUser == 'admin'}">
+		        	<li class="user"><a id="mypage" href="${contextPath }/admin">Manage</a></li>
+		        </c:if>
+		        <c:if test="${loginUser != 'admin'}">
+	          		<li class="user"><a id="mypage" href="${contextPath }/member/info?id=${loginUser}">Mypage</a></li>
+		 	 	</c:if>  
+	        <li class="user"><a id="logout" href="${contextPath }/member/logout">Logout</a></li>        
+		  </c:if>
+		  
+		  
+		  
         </ul>
       </div>
     </header>
