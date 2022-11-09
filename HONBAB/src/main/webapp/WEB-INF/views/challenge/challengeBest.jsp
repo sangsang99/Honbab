@@ -18,7 +18,7 @@
 <body>
     <div class="main">
       <div class="best_wrap">
-        <div class="head">LEVEL CHALLENGE</div>
+        <div class="head">도전 혼밥 레벨 : <span class="eng_title">HONBAB LEVEL CHALLENGE</span></div>
         <aside>
           <div class="line"></div>
           <div class="text">Best Challenge</div>
@@ -37,7 +37,7 @@
 	          <form>
 	            <ul class="index">
 	              <li class="no">${best.writeNo}</li>
-	              <li class="title">${best.title}</li>
+	              <li class="title"><a href="${contextPath }/challengeView?writeNo=${best.writeNo }">${best.title}</a></li>
 	              <li class="writer">${best.nickName}</li>
 	              <li class="date">${best.saveDate}</li>
 	              <li class="view">${best.views}</li>

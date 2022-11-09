@@ -28,7 +28,7 @@
 <body>
 	<div class="main">
 		<div class="best_wrap">
-			<div class="head">FIND HONBAB</div>
+			<div class="head">구인 : <span class="eng_title">FIND HONBAB MATE</span></div>
 			<aside>
 				<div class="line"></div>
 				<div class="text">NEW Find</div>

@@ -28,7 +28,7 @@
 <body>
 	<div class="main">
 		<div class="best_wrap">
-			<div class="head">REVIEW HONBAB</div>
+			<div class="head">혼밥 후기 : <span class="eng_title">HONBAB REVIEW</span></div>
 			<aside>
 				<div class="line"></div>
 				<div class="text">Best Review</div>

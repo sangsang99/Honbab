@@ -30,6 +30,11 @@ a {
   color: rgba(17, 21, 226, 0.918);
 }
 
+.eng_title {
+	font-size: 26px;
+	  font-family: "Nunito Sans", sans-serif;
+}
+
 .best {
   width: 300px;
   height: 350px;
@@ -69,7 +74,7 @@ aside {
   padding-top: 6px;
   font-weight: 700;
   color: rgba(17, 21, 226, 0.918);
-  font-family: "Nunito Sans", sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
 }
 
 /*

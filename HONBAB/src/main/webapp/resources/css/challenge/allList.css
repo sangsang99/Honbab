@@ -51,9 +51,9 @@ section {
 	width: 600px;
 	height: 35px;
 	vertical-align: middle;
+	margin: 0 auto;
 	border-radius: 3px;
 	border: 1px solid rgb(200, 200, 200);
-	margin: 0 auto;
 	font-family: 'Noto Sans KR', sans-serif;
 	background-color: rgba(230, 230, 230, 0.4);
 }
@@ -180,6 +180,8 @@ input[type="radio" i], label {
     input button
 ----------------------------------
 */
+
+
 input[type="button" i] {
 	width: 100px;
 	height: 30px;
@@ -196,10 +198,43 @@ input[type="button" i] {
 /*   border: 1px solid rgba(17, 21, 226, 0.918); */
 }
 
+
+/* input[type="button" i] {
+	width: 100px;
+	height: 30px;
+	margin: 15px 0;
+	float: right;
+	background-color: rgba(245, 222, 179, 0);
+	outline: none;
+	border: none;
+	font-size: 15px;
+	font-weight: 500;
+	font-family: 'Noto Sans KR', sans-serif;
+	color: rgb(60, 60, 60);
+	border-radius: 3px;
+	border: 1px solid rgb(200, 200, 200);
+	font-family: 'Noto Sans KR', sans-serif;
+	background-color: rgba(230, 230, 230, 0.4);
+	vertical-align: middle;
+} */
+
+
 input[type="button" i]:hover {
 	border-top: 1px solid rgba(17, 21, 226, 0.918);
 	border-bottom: 1px solid rgba(17, 21, 226, 0.918);
-} 
+}
+
+ 
+/* input[type="button" i]:hover{
+	background-color: rgba(230, 230, 230, 0);
+	animation-fill-mode: forwards;
+	border-radius: 3px;
+	border: 1px solid rgba(17, 21, 226, 0.918);
+		color: rgba(17, 21, 226, 0.918);
+}  */
+
+
+
 
 /*
 ----------------------------------
