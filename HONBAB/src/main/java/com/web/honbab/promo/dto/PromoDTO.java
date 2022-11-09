@@ -1,5 +1,8 @@
 package com.web.honbab.promo.dto;
 
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+
 import com.web.honbab.admin.dto.ADDTO;
 
 public class PromoDTO {
@@ -38,8 +41,9 @@ public class PromoDTO {
 	public String getSaveDate() {
 		return saveDate;
 	}
-	public void setSaveDate(String saveDate) {
-		this.saveDate = saveDate;
+	public void setSaveDate(Timestamp saveDate) {
+		SimpleDateFormat smallFormat = new SimpleDateFormat("YYYY-MM-dd");
+		this.saveDate = smallFormat.format(saveDate);
 	}
 	public int getHit() {
 		return hit;

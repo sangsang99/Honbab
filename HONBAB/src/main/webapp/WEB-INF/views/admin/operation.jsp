@@ -1,17 +1,52 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<c:set var="contextPath" value="${pageContext.request.contextPath }"/>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="contextPath" value="${pageContext.request.contextPath }" />
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>영업 관리(우상)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Nunito+Sans:wght@400;600;700&display=swap"
+	rel="stylesheet" />
 
 <style type="text/css">
-div {width: 700px; height: 200px; overflow: auto; }
-div table { white-space: nowrap; border-collapse: collapse; }
+.scroll {
+	width: 888px;
+	height: 222px;
+	overflow: auto;
+	border: 1px solid skyblue
+}
+
+.scroll table {
+	white-space: nowrap;
+	border-collapse: collapse;
+}
+
+li, span{
+	display: inline-block;
+}
+
+.menu{
+	display: block;
+}
+
+.cd1 {
+  padding-top: 2rem;
+}
+
+td {
+	width: 130px;
+}
+
+.title{
+	width: 300px;
+}
 </style>
+
 
 <script type="text/javascript">
 	function count_chk(obj) {
@@ -19,71 +54,113 @@ div table { white-space: nowrap; border-collapse: collapse; }
 		var chkBox = document.getElementsByName("chk");
 		var chkCnt = 0;
 		for (var i = 0; i < chkBox.length; i++) {
-			if(chkBox[i].checked){			
-				chkCnt++; 			
+			if (chkBox[i].checked) {
+				chkCnt++;
 				adNo[i].disabled = false;
-			}else{
+			} else {
 				adNo[i].disabled = true;
 			}
 		}
-		if(chkCnt > 5){
+		if (chkCnt > 5) {
 			alert("5개까지만 체크가능");
 			obj.checked = false;
 			return false;
 		}
 	}
+	
+	function setad() {
+		document.getElementById('setAD').submit();
+	}
+	
+	function goNoticeForm() {
+		location.href='${contextPath}/oper/writeNoticeForm';
+	}
 </script>
 </head>
 <body>
-	<h3>현재 설정된 홍보 리스트 : 이거는 검증 후 고객용 게시판에 적용</h3>
-	<table border="1">
-		<c:forEach var="promoAD" items="${promoListAD}">
-		<tr>
-			<td>글번호 </td><td>${promoAD.writeNo }</td>
-			<td>제목</td><td><a href="${contextPath}/promotion/contentView?writeNo=${promoAD.writeNo } ">${promoAD.title}</a></td>
-			<td>작성일 </td><td>${promoAD.saveDate }</td>
-			<td>홍보번호</td><td>${promoAD.addto.adNo}</td>
-		</tr> 
-		</c:forEach>	
-	</table>
 	
-	<h3>홍보 순서관리</h3>
-	<p>광고글은 5개, 체크박스도 5개까지만 가능하도록 했으며</p>
-	<p>체크박스를 눌러야  number(1~5) 설정 가능, 1번이 1순위</p>
-	<p>체크된 wrtieno와 홍보순서로 설정한 number값 post로 전송후 INSERT 쿼리문 반복실행 하는 원리</p>
-	<p>제약조건 만족하기 위해서 체크박스 1개라도 다시 설정하면 기존 순위는 삭제됨</p>
-		
-	<form name="setAD" id="setAD" action="${contextPath}/oper/setAD" method="post">	
-		<div>
+	<div>
+		<c:import url="../admin/boardManagement.jsp"></c:import>
+	</div>
+	<div class="cd1">
+		<h2>현재 설정된 홍보 리스트 미리보기</h2>
 		<table border="1">
-			<c:forEach var="promo" items="${promoList}">
 			<tr>
-				<td>글번호 </td><td>${promo.writeNo }</td>
-				<td>제목</td><td><a href="${contextPath}/promotion/contentView?writeNo=${promo.writeNo } ">${promo.title}</a></td>
-				<td>작성일 </td><td>${promo.saveDate }</td>
-				<td>홍보순서</td>
-					<td><input type="checkbox" name="chk" onclick="count_chk(this)" value="${promo.writeNo}">
-						<input type="number" name="adNo" min="1" max="5" disabled></td>
-			</tr> 
+				<td>글번호</td>
+				<td class="title">제목</td>
+				<td>작성일</td>
+				<td>홍보번호</td>
+			</tr>
+			<c:forEach var="promoAD" items="${promoListAD}">
+				<tr>
+					
+					<td>${promoAD.writeNo }</td>
+					
+					<td><a
+						href="${contextPath}/promotion/contentView?writeNo=${promoAD.writeNo } ">${promoAD.title}</a></td>
+					
+					<td>${promoAD.saveDate }</td>
+					
+					<td>${promoAD.addto.adNo}</td>
+				</tr>
 			</c:forEach>
 		</table>
+		<br> <br>
+		<hr>
+
+		<h2>홍보 순서관리</h2>
+		<p>광고글은 5개까지만 가능합니다</p>
+		<p>체크박스를 눌러야 number(순서) 설정이 가능합니다[1번이 1순위]</p>
+		<p>제출하는 순간 기존 광고 순서는 삭제되니 신중하게 작성해주세요</p>
+		<div class="scroll">
+			<form name="setAD" id="setAD" action="${contextPath}/oper/setAD" method="post">
+				<table>
+					<tr>
+						<td><span>글번호</span></td>
+						<td class="title"><span>제목</span></td>
+						<td><span>작성자</span></td>
+						<td><span>작성일</span></td>
+						<td><span>홍보순서</span></td>
+					</tr>		
+					<c:forEach var="promo" items="${promoList}">
+					<tr>
+						<td><span>${promo.writeNo }</span></td>
+						<td class="title"><a href="${contextPath }/promotion/contentView?writeNo=${promo.writeNo}">${promo.title}</a></td>
+						<td><span>${promo.id }</span></td>
+						<td><span>${promo.saveDate}</span></td>
+						<td><span>
+							<input type="checkbox" name="chk" onclick="count_chk(this)" value="${promo.writeNo}">
+							<input type="number" name="adNo" min="1" max="5" disabled></span></td>
+					</tr>
+					</c:forEach>			
+				</table>
+			</form>
 		</div>
-		<input type="submit" value="설정완료">
-	</form>
-	<br>
-		
-	<h3>2. 게시글 리스트 최신순 정렬(제목누르면 들어가짐)</h3>
-	<table border="1">
-	<c:forEach var="notice" items="${noticeList}">
-		<tr>
-			<td>글번호 </td><td>${notice.writeNo }</td>
-			<td>제목</td><td><a href="${contextPath}/oper/noticeConetentView?writeNo=${notice.writeNo } ">${notice.title}</a></td>
-			<td>작성일 </td><td>${notice.writeDate }</td>
-		</tr> 
-	</c:forEach>
-	</table>
-	
-	<a href="${contextPath}/oper/writeNoticeForm">게시글 쓰기 버튼</a>
-	일단 요정도 ㅎㅎ
+		<input type="button" value="설정완료" onclick="setad()">
+		<br> <br>
+		<hr>
+
+		<h2>공지사항[beta]</h2>
+		<div class="">
+		<ul class="">
+		<li class="">글번호</li>
+		<li class="">제목</li>
+		<li class="">작성일</li>
+			</ul>
+				</div>
+		<div class="">
+			<ul class="">
+			<c:forEach var="notice" items="${noticeList}">	
+					<li class="">${notice.writeNo }</li>					
+					<li class=""><a
+						href="${contextPath}/oper/noticeConetentView?writeNo=${notice.writeNo } ">${notice.title}</a></li>				
+					<li class="">${notice.writeDate }</li>
+					<br>
+			</c:forEach>
+			</ul>
+			<input type="button" value="공지글쓰기" onclick="goNoticeForm()">
+		</div>
+	</div>
 </body>
+
 </html>
