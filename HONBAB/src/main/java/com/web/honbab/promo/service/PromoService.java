@@ -27,4 +27,6 @@ public interface PromoService {
 
 	public void getSearch(Model model, int num);
 
+	int isBizUser(String user);
+
 }

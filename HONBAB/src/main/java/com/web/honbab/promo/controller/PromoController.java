@@ -29,11 +29,12 @@ import com.web.honbab.admin.service.OperService;
 import com.web.honbab.promo.dto.PromoDTO;
 import com.web.honbab.promo.service.PromoFileService;
 import com.web.honbab.promo.service.PromoService;
+import com.web.honbab.session.name.MemberSession;
 import com.web.honbab.session.search.SearchSession;
 
 @Controller
 @RequestMapping(value="promotion")
-public class PromoController implements SearchSession {
+public class PromoController implements SearchSession, MemberSession {
 	
 	@Autowired
 	private PromoService ps;
@@ -52,6 +53,13 @@ public class PromoController implements SearchSession {
 		session.removeAttribute(SEARCHOPTION);
 		session.removeAttribute(SEARCHVALUE);
 		ps.promoList(model, num);
+		String user= (String) session.getAttribute(LOGIN);
+		if(user != null) {
+			int result = ps.isBizUser(user);
+			if(result == 1) {
+				model.addAttribute("isBizUser", true);
+			}
+		}
 		return "promotion/promoAllList";
 	}
 	

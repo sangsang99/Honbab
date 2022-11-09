@@ -79,11 +79,12 @@
 				</ul>
 			</div>
 		</c:forEach>
-
+		
+		<c:if test="${isBizUser == true}">
 		<div id="writebtn">
 			<input type="button" value="글쓰기" onclick="promoWrite()">
 		</div>
-
+		</c:if>
 
 		<!--  페이징  -->
 		<c:if test="${!isSearchPage}">

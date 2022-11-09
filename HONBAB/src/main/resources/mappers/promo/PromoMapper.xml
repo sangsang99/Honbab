@@ -79,6 +79,12 @@
 		order by write_date desc
 	</select> 
 	
+	<select id="isBizUser" resultType="Integer">
+		select count(*)
+		from BUSINES_JOIN 
+		WHERE id = #{id}
+	</select>
+	
 	<!--ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡSEARCH for Paging ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ-->
 	<select id="selectPromoCountForComName" resultType="Integer">
 		SELECT COUNT(*) FROM PROMO_BOARD WHERE COMNAME like '%'||#{keyword}||'%' 
