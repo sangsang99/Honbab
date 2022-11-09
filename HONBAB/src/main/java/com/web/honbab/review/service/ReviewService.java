@@ -29,7 +29,7 @@ public interface ReviewService {
 
 	public void upViews(int writeNo);
 
-	public int reviewLike(int writeNo);
+	public int reviewLike(int writeNo, Model model);
 
 	public void searchReview(Model model, int num);
 	
