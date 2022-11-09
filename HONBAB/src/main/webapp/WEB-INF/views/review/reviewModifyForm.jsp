@@ -76,14 +76,14 @@
 
 	<aside>
 		<div class="aside_wrap">
+		<div class="honbab">
+			<span>REVIEW</span>
+		</div>
 			<div class="text">
 				<span>리뷰</span>
 				<div>글쓰세요</div>
 				<div>글은 알아서 쓰세요 설명같은 짧은 글임</div>
 			</div>
-		</div>
-		<div class="honbab">
-			<span>HONBAB</span>
 		</div>
 		<div class="innerfooter">
 			<c:import url="../main/footer.jsp" />
@@ -96,38 +96,42 @@
 				action="${contextPath}/review/review_modify"
 				enctype="multipart/form-data" method="post" onsubmit="AllChk()">
 				<ul>
-					<li><span class="index_en">Writer</span>
+					<li>
+						<span class="index_kr">작성자</span>
 						<input type="hidden" name="writeNo" value="${reviewContent.writeNo}"> <!-- 쿼리문(where)에 쓸거 -->
 						<input type="text" name="nickname" value="${reviewContent.nickname}" readonly>
 					</li>
 					<hr />
 					<div class="line"></div>
 					
-					<li><span class="index_en">Title</span>
+					<li>
+						<span class="index_kr">제목</span>
 						<input type="text" name="title" value="${reviewContent.title}">
 					</li>
 					<hr />
 					<div class="line"></div>
 					
-					<li class="content"><span class="index_kr">내용</span>
+					<li class="content">
+						<span class="index_kr">내용</span>
 						<textarea maxlength="999" name="content">${reviewContent.content}</textarea>
 					</li>
 					<hr />
 					<div class="line"></div>
 					
 					
-					<li class="upload_file"><span class="index_kr">사진 첨부</span>
-					 <input type="hidden" name="originFileName" value="${reviewContent.imgName }"> <!-- 기존파일삭제시 -->
-					 <input type="file" name="image_file_name" onchange="readURL(this)">
+					<li class="upload_file">
+						<span class="index_kr">사진 첨부</span>
+					 	<input type="hidden" name="originFileName" value="${reviewContent.imgName }"> <!-- 기존파일삭제시 -->
+					 	<input type="file" name="image_file_name" onchange="readURL(this)">
 						<img src="${contextPath }/download?imageFileName=${reviewContent.imgName}"
 						id=preview width="100px" height="100px"></li>
 						
 					<hr />
 					<div class="line"></div>
 				</ul>
-				<input type="submit" value="수정완료"> 
+				<input type="submit" value="수정"> 
 				<input type="button"
-					value="글목록" onclick="location.href='${contextPath }/review/reviewAllList'">
+					value="목록" onclick="location.href='${contextPath }/review/reviewAllList'">
 				
 			</form>
 		</div>
