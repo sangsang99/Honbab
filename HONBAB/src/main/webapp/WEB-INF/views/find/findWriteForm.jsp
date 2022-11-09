@@ -6,7 +6,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>findWriteForm</title>
+<!-- 수정 11.09 -->
 <link
 	href="${pageContext.request.contextPath}/resources/css/find/writeForm.css?ver=4"
 	rel="stylesheet" />
@@ -24,6 +25,9 @@
 
 	<aside>
 		<div class="aside_wrap">
+		<div class="honbab">
+			<span>FIND</span>
+		</div>
 			<div class="text">
 				<span>‘사람찾기’</span>
 				<div>쓰세요</div>
@@ -31,9 +35,6 @@
 					글 쓰세요 알아서
 				</div>
 			</div>
-		</div>
-		<div class="honbab">
-			<span>HONBAB</span>
 		</div>
 		<div class="innerfooter">
 			<c:import url="../main/footer.jsp" />
@@ -45,26 +46,26 @@
 			<form action="${contextPath}/find/findWrite" enctype="multipart/form-data" method="post">
 				<ul>
 					<li>
-						<span class="index_en">Title</span> 
+						<span class="index_kr">제목</span> 
 						<input type="text"placeholder="제목 작성" name="title" />
 					</li>
 					<hr />
 					<div class="line"></div>
 					<li>
-						<span class="index_en">Writer</span> 
+						<span class="index_kr">작성자</span> 
 						<input type="hidden" value="id-session" name="id">
 						<input type="text" name="nickName" readonly="readonly">
 					</li>
 					<hr />
 					<div class="line"></div>						
 					<li>
-						<span class="index_en">Age</span> 
+						<span class="index_kr">나이</span> 
 						<input type="number" name="age" min="1" max="99" autocomplete="off">
 					</li>
 					<hr />
 					<div class="line"></div>						
 					<li class="gender">
-						<span class="index_en">Gender</span> 
+						<span class="index_kr">성별</span> 
 						<div class="btn">
 							<label>
 	            	<span class="g">남성</span>
@@ -80,20 +81,24 @@
 					</li>	
 					<hr />
 					<div class="line"></div>					
-					<li>
-						<span class="index_en">Region</span> 
+					<li class="reg_li">
+						<span class="index_kr" id="reg">지역</span> 
 						<!-- <input type="text" name="region" maxlength="2" placeholder="ex) 서울, 경기..."> -->
-						<c:import url="../member/region.jsp"/>
+						<div class="selec">
+							<c:import url="../member/region.jsp" />
+						</div>
 					</li>
 					<hr />
 					<div class="line"></div>						
-					<li>
-						<span class="index_en">내용</span> 
+					<li class="content">
+						<span class="index_kr">내용</span> 
 						<textarea maxlength="999" name="content"></textarea>
-					</li>						
+					</li>		
+					<hr />
+					<div class="line"></div>				
 				</ul>
-				<input type="submit" value="Save" />
-				<input type="button" value="글목록" onclick="location.href='${contextPath}/find/findAllList'">
+				<input type="submit" value="저장" />
+				<input type="button" value="목록" onclick="location.href='${contextPath}/find/findAllList'">
 			</form>
 		</div>
 	</main>
