@@ -132,7 +132,7 @@ frm.keyword.value = "<%=request.getParameter("keyword")%>";
 	      </ul>
 	    </div>
 		</c:forEach>
-		<c:set var="no" value="${no+1}"></c:set>
+		<c:set var="no" value="${no - 1}"></c:set>
 	
 		<div id="writebtn">
 			<input type="button" onclick="user_check()" value="글 쓰기">

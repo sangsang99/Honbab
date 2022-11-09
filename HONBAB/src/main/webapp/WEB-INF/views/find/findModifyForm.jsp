@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link
-	href="${pageContext.request.contextPath}/resources/css/challenge/writeForm.css?ver=4"
+	href="${pageContext.request.contextPath}/resources/css/find/writeForm.css?ver=4"
 	rel="stylesheet" />
 <!-- font -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -23,8 +23,11 @@
 	<!-- header -->
 	<c:import url="../main/header.jsp" />
 	
-		<aside>
+	<aside>
 		<div class="aside_wrap">
+		<div class="honbab">
+			<span>FIND</span>
+		</div>
 			<div class="text">
 				<span>‘사람찾기’</span>
 				<div>쓰세요</div>
@@ -33,58 +36,63 @@
 				</div>
 			</div>
 		</div>
-		<div class="honbab">
-			<span>HONBAB</span>
-		</div>
 		<div class="innerfooter">
 			<c:import url="../main/footer.jsp" />
 		</div>
 	</aside>
+
 	
 		<main>
 		<div class="main_wrap">
-			<form action="${contextPath}/find/find_Modify"
-				enctype="multipart/form-data" method="post">
+			<form action="${contextPath}/find/find_Modify" enctype="multipart/form-data" method="post">
 				<ul>
 					<li>
-						<span class="index_en">Title</span> 
+						<span class="index_kr">제목</span> 
 						<input type="hidden" name="writeNo" value="${findContent.writeNo}"> <!-- 쿼리문(where)에 쓸거 -->
 						<input type="text"placeholder="제목 작성" name="title" value="${findContent.title}" />
 					</li>
 					<hr />
 					<div class="line"></div>
 					<li>
-						<span class="index_en">Writer</span>
+						<span class="index_kr">작성자</span> 
 						<input type="text" name="nickName" readonly="readonly" value="${findContent.nickName}">
 					</li>
 					<hr />
 					<div class="line"></div>						
 					<li>
-						<span class="index_en">Age</span> 
+						<span class="index_kr">나이</span> 
 						<input type="text" name="age" value="${findContent.age}">
 					</li>
 					<hr />
 					<div class="line"></div>						
-					<li>
-						<span class="index_en">Gender</span> 
-						<input type="radio" name="gen" value="남성" checked>남성
-						<input type="radio" name="gen" value="여성">여성
+					<li class="gender">
+						<span class="index_kr">성별</span> 
+						<div class="btn">
+							<label>
+	            	<span class="g">남성</span>
+	              <input type="radio" name="gen" value="남성" checked />
+	            </label>
+	            <label>
+	              <span class="g">여성</span>
+	              <input type="radio" name="gen" value="여성" />
+	            </label>
+          	</div>  
 					</li>	
 					<hr />
 					<div class="line"></div>					
-					<li>
-						<span class="index_en">Region</span> 
+					<li class="reg_text">
+						<span class="index_kr" id="reg">지역</span> 
 						<input type="text" name="region" maxlength="2" value="${findContent.region}">
 					</li>
 					<hr />
 					<div class="line"></div>						
-					<li>
-						<span class="index_en">내용</span> 
+					<li class="content">
+						<span class="index_kr">내용</span> 
 						<textarea maxlength="999" name="content">${findContent.content }</textarea>
 					</li>						
 				</ul>
 				<input type="submit" value="수정"> 
-				<input type="button" value="글목록" onclick="location.href='${contextPath}/find/findAllList'"> 
+				<input type="button" value="목록" onclick="location.href='${contextPath}/find/findAllList'"> 
 			</form>
 		</div>
 	</main>

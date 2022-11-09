@@ -235,6 +235,10 @@ input[type="radio" i] {
 	display: flex;
 }
 
+.reg_text {
+	margin-left: 100px;
+}
+
 .reg {
 	width: 600px;
   height: 30px;
