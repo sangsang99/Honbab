@@ -105,14 +105,14 @@ frm.keyword.value = "<%=request.getParameter("keyword")%>";
 		<c:if test="${challengeList.size() == 0 }">
 			<h1>LV. <%=request.getParameter("level")%> '<%=request.getParameter("keyword")%>'에 해당하는 글이 없습니다.</h1>
 		</c:if>
-		<c:set var="no" value="${allCount - ((currentPage - 1) * 8)}" />
-		<%-- <c:forEach var="dto" items="${challengeList }" > --%>
+
 		<c:forEach var="dto" items="${challengeList }" varStatus="status">
 
 			<div class="content_wrap">
 	      <ul class="index">
 	        <li class="writeNo">
-	          <span>${allCount - ((currentPage-1) * pageLetter + status.index)}</span>
+	        	<c:set var="number" value="${allCount - ((currentPg-1) * pageLetter + status.index)}"/>
+	          <span>${number}</span>
 	        </li>
 	        <li class="lv">
 	          <span>레벨 ${dto.chLevel }</span>
