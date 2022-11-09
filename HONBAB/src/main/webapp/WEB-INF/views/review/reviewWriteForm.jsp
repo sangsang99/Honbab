@@ -103,7 +103,7 @@
 					<li>
 						<span class="index_kr">작성자</span> 
 						<input type="hidden" value="${loginUser}" name="id">
-						<input type="text" name="nickname">
+						<input type="text" name="nickname" value="${loginNick }" readonly>
 					</li>
 					<hr />
 					<div class="line"></div>

@@ -115,7 +115,7 @@ public class ReviewController implements MemberSession, SearchSession{
 	@ResponseBody //JSON{\"result\":true} 요거쓰려면 상단에 @RestController 작성하거나 아니면 해당메서드에 @ResponeseBody 요거작성해야함
 	public String addReply(@RequestBody Map<String, Object> map, HttpSession session)  {
 		ReviewRepDTO dto = new ReviewRepDTO();
-		dto.setReNick("testID");
+		dto.setReNick((String)session.getAttribute(NICK));
 		dto.setReId((String)session.getAttribute(LOGIN));
 		dto.setWriteGroup(Integer.parseInt((String)map.get("writeNo")));
 		dto.setReComent((String)map.get("coment"));

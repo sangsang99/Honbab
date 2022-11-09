@@ -54,7 +54,6 @@
 					<div class="line"></div>
 					<li>
 						<span class="index_en">Writer</span> 
-						<input type="hidden" value="id-session" name="id">
 						<input type="text" name="nickName" readonly="readonly" value="${findContent.nickName}">
 					</li>
 					<hr />
@@ -80,7 +79,7 @@
 					<div class="line"></div>						
 					<li>
 						<span class="index_en">내용</span> 
-						<textarea maxlength="999" name="content">${findContent.writeNo }</textarea>
+						<textarea maxlength="999" name="content">${findContent.content }</textarea>
 					</li>						
 				</ul>
 				<input type="submit" value="수정"> 

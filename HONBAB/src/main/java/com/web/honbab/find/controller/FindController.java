@@ -24,11 +24,12 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import com.web.honbab.find.dto.FindRepDTO;
 import com.web.honbab.find.service.FindService;
 import com.web.honbab.review.dto.ReviewRepDTO;
+import com.web.honbab.session.name.MemberSession;
 import com.web.honbab.session.search.SearchSession;
 
 @Controller
 @RequestMapping("find")
-public class FindController implements SearchSession{
+public class FindController implements SearchSession, MemberSession{
 	
 	
 	@Autowired
@@ -103,8 +104,8 @@ public class FindController implements SearchSession{
 	public String addReply(@RequestBody Map<String, Object> map, HttpSession session) {
 		FindRepDTO dto = new FindRepDTO();
 		//dto.setId((String)session.getAttribute(LOGIN)); //session 諛� 濡쒓렇�씤 濡쒖쭅 �셿�꽦�썑 �닔�젙
-		dto.setReNick("testID");
-		dto.setReId("id");
+		dto.setReNick((String)session.getAttribute(NICK));
+		dto.setReId((String)session.getAttribute(LOGIN));
 		dto.setWriteGroup(Integer.parseInt((String)map.get("writeNo")));
 		dto.setReComent((String)map.get("coment"));
 		fs.addReply(dto);
