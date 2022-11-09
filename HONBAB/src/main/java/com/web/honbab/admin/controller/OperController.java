@@ -43,7 +43,7 @@ public class OperController implements AdminSession{
 	@RequestMapping("operation")
 	public String goNoticeWriteFrom(Model model, @RequestParam(value="num", required = false, defaultValue ="1") int num) {
 		os.viewNoticeList(model);
-		ps.promoList(model, num);
+		ps.promoAllList(model);
 		os.promoList(model, num);
 		return "admin/operation";
 	}
@@ -122,7 +122,7 @@ public class OperController implements AdminSession{
 		os.setAD(request);
 		os.viewNoticeList(model);
 		os.promoList(model, num);
-		ps.promoList(model, num);
+		ps.promoAllList(model);
 		return "admin/operation";
 	}
 }
