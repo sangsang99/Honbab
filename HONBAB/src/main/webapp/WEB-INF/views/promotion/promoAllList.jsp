@@ -55,8 +55,8 @@
 		<div class="index_wrap">
 			<ul class="index">
 				<li class="writeNo"><span>NO</span></li>
-				<li class="writer"><span>WRITER</span></li>
 				<li class="title"><span>TITLE</span></li>
+				<li class="writer"><span>WRITER</span></li>
 				<li class="date"><span>DATE</span></li>
 				<li class="view"><span>VIEWS</span></li>
 			</ul>
@@ -70,10 +70,10 @@
 			<div class="content_wrap">
 				<ul class="index">
 					<li class="writeNo"><span>${dto.writeNo }</span></li>
-					<li class="writer"><span>${dto.id }</span></li>
 					<li class="title"><a
 						href="${contextPath }/promotion/contentView?writeNo=${dto.writeNo}">${dto.title}</a>
 					</li>
+					<li class="writer"><span>${dto.id }</span></li>
 					<li class="date"><span>${dto.saveDate}</span></li>
 					<li class="view"><span>${dto.hit }</span></li>
 				</ul>

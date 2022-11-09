@@ -1,13 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <c:set var="contextPath" value="${pageContext.request.contextPath }" />
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>promotion/contentView.jsp</title>
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+<link
+	href="${pageContext.request.contextPath}/resources/css/find/allList.css?ver=4"
+	rel="stylesheet" />
+
+<!-- font -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Nunito+Sans:wght@400;600;700&display=swap"
+	rel="stylesheet" />
 <script type="text/javascript">
  	
  	function slide_click() {
@@ -111,7 +123,7 @@
 	text_align: center;
 }
 
-#star fieldset{
+/* #star fieldset{
     display: inline-block;
     direction: rtl;
     border:0;
@@ -145,12 +157,16 @@
     border-radius: 5px;
     font-size: 16px;
     resize: none;
-}
-</style>
+} */
+</style> 
 </head>
 <body onload="reply_data()">
 
- 	<form class="rating" name="star" id="star" method="post">
+<!-- header -->
+	<c:import url="../main/header.jsp" />
+
+
+ 	<!-- <form class="rating" name="star" id="star" method="post">
 	<fieldset>
 		<span class="text-bold">평균 평점</span>
 		<input type="radio" name="reviewStar" value="5" id="rate1"><label
@@ -168,7 +184,7 @@
 		<textarea class="col-auto form-control" type="text" id="reviewContents"
 				  placeholder="당사 파트너 업체들에 대한 여러분의 소중한 평가는 저희 서비스 향상에 큰 도움이 됩니다"></textarea>
 	</div>
-</form>	
+</form>	 -->
 
 	<div id="modal_wrap">
 		<div id="first">
@@ -195,13 +211,15 @@
 			</div>
 		</div>
 	</div>
-
-
+	<br>
+	<br>
+	<br>
+	<br>
 	<h1 class="view_title" align="center">파트너 홍보</h1>
 	<div class="content_view" align="center">
-		<table border="1">
+		<!-- <table border="1"> -->
 			<tr>
-				<th width="100px">글번호</th>
+				<th width="200px">글번호</th>
 				<td width="200px">${data.writeNo }</td>
 				<th width="100px">작성자</th>
 				<td width="200px">${data.id }</td>
@@ -238,7 +256,33 @@
 			</tr>
 		</table>
 	</div>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
 
+<!-- footer -->
+	<c:import url="../main/footer.jsp" />
 
 
 </body>
