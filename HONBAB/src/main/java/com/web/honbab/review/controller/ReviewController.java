@@ -130,9 +130,9 @@ public class ReviewController implements MemberSession, SearchSession{
 	}
 	
 	@GetMapping(value ="reviewLike")
-	public String reviewLike(@RequestParam int writeNo) {
+	public String reviewLike(@RequestParam int writeNo, Model model) {
 		
-		int result = rs.reviewLike(writeNo);
+		int result = rs.reviewLike(writeNo, model);
 		if(result == 1)
 		return "redirect:reviewContent?writeNo=" + writeNo;
 		else 

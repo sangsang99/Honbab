@@ -128,9 +128,14 @@
 				class="date">${reviewContent.writeDate}</span> <span class="view">${reviewContent.views}</span>
 
 			<div class="like">
-				<a href="#" onclick="isLogin(${reviewContent.writeNo})"> <img
-					id="heart" src="${contextPath}/resources/img/heart.svg"></a> <span
-					class="age">${reviewContent.likes}</span>
+				<a href="#" onclick="isLogin(${reviewContent.writeNo})">
+				<c:if test="${likeIt == 'yes'}">
+				<img id="heart" src="${contextPath}/resources/img/heart-fill.svg"></c:if>
+				<c:if test="${likeIt == 'no'}">
+				<img id="heart" src="${contextPath}/resources/img/heart.svg"></c:if>				
+				</a>
+				<span class="age">${reviewContent.likes}</span>
+					
 			</div>
 
 			<c:if test="${reviewContent.imgName == 'None'}">

@@ -119,6 +119,16 @@ public class ReviewServiceImpl implements ReviewService, SearchSession {
 	@Override
 	public void reviewContent(int writeNo, Model model) {
 		model.addAttribute("reviewContent", mapper.reviewContent(writeNo));
+		model.addAttribute("likeIt", "no");
+		String likeId = (String) session.getAttribute("loginUser");
+
+		if(likeId !=null) {
+			int isAlreadyLike = mapper.reviewLikeChk(likeId, writeNo);
+			
+			if ((isAlreadyLike) == 1) { 
+				model.addAttribute("likeIt", "yes");
+			} 
+		}
 	}
 
 	@Override
@@ -155,19 +165,15 @@ public class ReviewServiceImpl implements ReviewService, SearchSession {
 	}
 
 	@Override
-	public int reviewLike(int writeNo) {
+	public int reviewLike(int writeNo, Model model) {
 
 		String likeId = (String) session.getAttribute("loginUser");
 		int isAlreadyLike = mapper.reviewLikeChk(likeId, writeNo);
 		int result = 0;
-		System.out.println(isAlreadyLike);
-		System.out.println(likeId);
-		System.out.println(writeNo);
 
 		// 아직 좋아요를 안눌렀고
 		if ((isAlreadyLike) == 0) { 
 			result = mapper.reviewLikeUp(writeNo);
-			System.out.println(result);
 			if(result == 1) mapper.reviewLikeEnrl(likeId, writeNo);
 		// 이미 좋아요를 눌렀고
 		} else if((isAlreadyLike) == 1) {
