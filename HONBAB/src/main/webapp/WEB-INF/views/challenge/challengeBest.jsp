@@ -36,11 +36,11 @@
 					<c:forEach var="best" items="${challengeBestList }" >        
 	          <form>
 	            <ul class="index">
-	              <li class="no">{best.writeNo}</li>
-	              <li class="title">{best.title}</li>
-	              <li class="writer">{best.nickName}</li>
-	              <li class="date">{best.saveDate}</li>
-	              <li class="view">{best.views}</li>
+	              <li class="no">${best.writeNo}</li>
+	              <li class="title">${best.title}</li>
+	              <li class="writer">${best.nickName}</li>
+	              <li class="date">${best.saveDate}</li>
+	              <li class="view">${best.views}</li>
 	            </ul>
 	          </form>
 					</c:forEach>

@@ -42,7 +42,7 @@
 	
     <select id="findBestList" resultMap="find">
 		SELECT *
-		FROM (SELECT * FROM FIND_BOARD ORDER BY VIEWS DESC) A
+		FROM (SELECT * FROM FIND_BOARD ORDER BY WRITE_DATE DESC) A
 		<![CDATA[WHERE ROWNUM <= 5]]> 
 	</select>
 	

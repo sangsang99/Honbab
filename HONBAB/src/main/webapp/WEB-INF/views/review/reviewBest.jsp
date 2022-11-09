@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Index에 보일 Find 페이지</title>
+<title>Index에 보일 리뷰 페이지</title>
 <link
 	href="${pageContext.request.contextPath}/resources/css/best.css?ver=4"
 	rel="stylesheet" />
@@ -21,17 +21,17 @@
 </style>
 <script type="text/javascript">
 	function upViews(writeNo){
-		location.href="find/upViews?writeNo=" + writeNo;
+		location.href="review/upViews?writeNo=" + writeNo;
 	}
 </script>
 </head>
 <body>
 	<div class="main">
 		<div class="best_wrap">
-			<div class="head">FIND HONBAB</div>
+			<div class="head">REVIEW HONBAB</div>
 			<aside>
 				<div class="line"></div>
-				<div class="text">NEW FIND</div>
+				<div class="text">Best Review</div>
 			</aside>
 
 			<section>
@@ -42,21 +42,21 @@
 					<li class="date">DATE</li>
 					<li class="view">VIEWS</li>
 				</ul>
-				<c:if test="${findBestList.size() == 0}">
-					<li class="">함께라면 어느식당도 두렵지 않아요</li>
+				<c:if test="${reviewBestList.size() == 0}">
+					<li class="">멋진 혼밥후기를 등록해보세요!</li>
 				</c:if>
-				<c:forEach var="best" items="${findBestList }">
+				<c:forEach var="best" items="${reviewBestList }">
 					<form>
 						<ul class="index">
-							<li class="no">{best.writeNo}</li>
+							<li class="no">${best.writeNo}</li>
 							<li class="title">
 								<c:if test='${best.imgName != "None"}'>
 								★
 								</c:if> <a href="#" onclick="upViews(${best.writeNo}); return false">${best.title}</a>
 							</li>
-							<li class="writer">{best.nickName}</li>
-							<li class="date">{best.writeDate}</li>
-							<li class="view">{best.views}</li>
+							<li class="writer">${best.nickname}</li>
+							<li class="date">${best.writeDate}</li>
+							<li class="view">${best.views}</li>
 						</ul>
 					</form>
 				</c:forEach>

@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Index에 보일 리뷰 페이지</title>
+<title>Index에 보일 Find 페이지</title>
 <link
 	href="${pageContext.request.contextPath}/resources/css/best.css?ver=4"
 	rel="stylesheet" />
@@ -21,17 +21,17 @@
 </style>
 <script type="text/javascript">
 	function upViews(writeNo){
-		location.href="review/upViews?writeNo=" + writeNo;
+		location.href="find/upViews?writeNo=" + writeNo;
 	}
 </script>
 </head>
 <body>
 	<div class="main">
 		<div class="best_wrap">
-			<div class="head">REVIEW HONBAB</div>
+			<div class="head">FIND HONBAB</div>
 			<aside>
 				<div class="line"></div>
-				<div class="text">BEST REVIEW</div>
+				<div class="text">NEW Find</div>
 			</aside>
 
 			<section>
@@ -42,21 +42,19 @@
 					<li class="date">DATE</li>
 					<li class="view">VIEWS</li>
 				</ul>
-				<c:if test="${reviewBestList.size() == 0}">
-					<li class="">멋진 혼밥후기를 등록해보세요!</li>
+				<c:if test="${findBestList.size() == 0}">
+					<li class="">함께라면 어느식당도 두렵지 않아요</li>
 				</c:if>
-				<c:forEach var="best" items="${reviewBestList }">
+				<c:forEach var="best" items="${findBestList }">
 					<form>
 						<ul class="index">
-							<li class="no">{best.writeNo}</li>
+							<li class="no">${best.writeNo}</li>
 							<li class="title">
-								<c:if test='${best.imgName != "None"}'>
-								★
-								</c:if> <a href="#" onclick="upViews(${best.writeNo}); return false">${best.title}</a>
+								<a href="#" onclick="upViews(${best.writeNo}); return false">${best.title}</a>
 							</li>
-							<li class="writer">{best.nickName}</li>
-							<li class="date">{best.writeDate}</li>
-							<li class="view">{best.views}</li>
+							<li class="writer">${best.nickName}</li>
+							<li class="date">${best.writeDate}</li>
+							<li class="view">${best.views}</li>
 						</ul>
 					</form>
 				</c:forEach>
@@ -67,30 +65,6 @@
 			</section>
 		</div>
 	</div>
-	<%-- 	<table id="bestReview" border="1">
-	<tr>
-		<td>글번호</td>
-		<td>닉네임</td>
-		<td>제목</td>
-		<td>작성일</td>
-		<td>조회수</td>
-		<td>추천수</td>
-	</tr>	
-	<c:if test="${reviewBestList.size() == 0}">
-		<tr><td colspan="6">작성된 글이 없습니다.</td></tr>
-	</c:if>
-	<c:forEach var="review" items="${reviewBestList}">
-	<tr>
-		<td>${review.writeNo }</td>
-		<td>${review.nickname }</td>
-		<td width="200px">
-			
-		</td>
-		<td>${review.writeDate }</td>
-		<td>${review.views }</td>
-		<td>${review.likes }</td>
-	</tr>
-	</c:forEach>
-	</table> --%>
+
 </body>
 </html>

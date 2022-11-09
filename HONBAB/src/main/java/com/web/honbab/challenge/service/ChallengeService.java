@@ -17,7 +17,7 @@ public interface ChallengeService {
 	
 	public String challengeDelete(int writeNo, HttpServletRequest request);
 	
-	public void challengeBestList(int views, Model model);
+	public void challengeBestList(Model model);
 	
 	/*
 	 * public int likesCount(int writeNo);
@@ -29,7 +29,8 @@ public interface ChallengeService {
 	
 	// 검색
 	//public void challengeSearch(MultipartHttpServletRequest mul, Model model); 
-	public void challengeSearch(MultipartHttpServletRequest mul, Model model); 
+	public void challengeSearch(MultipartHttpServletRequest mul, Model model);
+
 	
 	
 }
