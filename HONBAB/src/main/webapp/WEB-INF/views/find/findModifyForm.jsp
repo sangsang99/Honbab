@@ -43,17 +43,18 @@
 	
 		<main>
 		<div class="main_wrap">
-			<form action="${contextPath}/find/findWrite"
+			<form action="${contextPath}/find/find_Modify"
 				enctype="multipart/form-data" method="post">
 				<ul>
 					<li>
 						<span class="index_en">Title</span> 
+						<input type="hidden" name="writeNo" value="${findContent.writeNo}"> <!-- 쿼리문(where)에 쓸거 -->
 						<input type="text"placeholder="제목 작성" name="title" value="${findContent.title}" />
 					</li>
 					<hr />
 					<div class="line"></div>
 					<li>
-						<span class="index_en">Writer</span> 
+						<span class="index_en">Writer</span>
 						<input type="text" name="nickName" readonly="readonly" value="${findContent.nickName}">
 					</li>
 					<hr />

@@ -91,8 +91,8 @@ public class ChallengeServiceImpl implements ChallengeService {
 	public String challengeModify(MultipartHttpServletRequest mul, HttpServletRequest request) {
 		
 		ChallengeDTO dto = new ChallengeDTO();
-		/* dto.setWriteNo(Integer.parseInt(mul.getParameter("writeNo"))); */
-		dto.setChLevel(mul.getParameter("chLevel"));
+		dto.setWriteNo(Integer.parseInt(mul.getParameter("writeNo")));
+		dto.setChLevel(mul.getParameter("level"));
 		dto.setTitle(mul.getParameter("title"));
 		dto.setContent(mul.getParameter("content"));
 		MultipartFile file = mul.getFile("imgName");

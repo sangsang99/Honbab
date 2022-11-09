@@ -86,9 +86,6 @@
 	<main>
 		<div class="main_wrap">
 			<div class="wrap" align="center">
-				<input type="hidden" name="writeNo"
-					value="${challengeData.writeNo }"> <input type="hidden"
-					name="originFileName" value="${challengeData.imgName }">
 				<div class="challenge_save modify">
 					<form action="${contextPath }/challengeModify"
 						enctype="multipart/form-data" method="post">
@@ -123,7 +120,8 @@
 								<c:if test="${challengeData.chLevel == '9' }">selected="selected"</c:if>
 								value="9">레벨 9</option>
 						</select> <span id="text"></span> --%>
-						
+						<input type="hidden" name="writeNo" value="${challengeData.writeNo }">
+						<input type="hidden" name="originFileName" value="${challengeData.imgName }">
 						<ul>
 							<li>
 								<span class="index_en">Level</span> 
@@ -156,6 +154,7 @@
 
 							<li class="upload_file">
 								<span class="index_kr">사진 첨부</span>
+								<input type="hidden" name="originFileName" value="${challengeData.imgName }"> <!-- 기존파일삭제시 -->
 								<input type="file" name="imgName" onchange="readURL(this)"><br>
 								<c:if test="${challengeData.imgName != 'nan'}">
 									<img src="${contextPath }/download?imgName=${challengeData.imgName}" id="preview" width="100px">
