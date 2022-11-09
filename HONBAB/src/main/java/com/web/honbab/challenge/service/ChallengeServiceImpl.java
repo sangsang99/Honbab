@@ -1,5 +1,6 @@
 package com.web.honbab.challenge.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.web.honbab.challenge.dto.ChallengeDTO;
+import com.web.honbab.common.service.CommonService;
 import com.web.honbab.mybatis.challenge.ChallengeMapper;
 
 @Service
@@ -22,6 +24,9 @@ public class ChallengeServiceImpl implements ChallengeService {
 	@Autowired
 	ChallengeFileService cfs;
 
+	@Autowired
+	CommonService cms;
+	
 	@Override
 	public String challengeSave(MultipartHttpServletRequest mul, HttpServletRequest request) {
 		ChallengeDTO dto = new ChallengeDTO();
@@ -161,42 +166,66 @@ public class ChallengeServiceImpl implements ChallengeService {
 	 */
 	
 	@Override
-	public void challengeSearch(MultipartHttpServletRequest mul, Model model) {
+	public void challengeSearch(MultipartHttpServletRequest mul, Model model, int num) {
 		int level = Integer.parseInt(mul.getParameter("level"));
 		String keyword = mul.getParameter("keyword");
+		List<ChallengeDTO> challList = new ArrayList<>();
 		
 		switch(level) {
 		case 1:
-			model.addAttribute("challengeList", mapper.searchLevelOne(keyword, level));
+			challList = mapper.searchLevelOne(keyword, level);
+			model.addAttribute("challengeList", challList);
 			break;
 		case 2:
-			model.addAttribute("challengeList", mapper.searchLevelTwo(keyword, level));
+			challList = mapper.searchLevelTwo(keyword, level);
+			model.addAttribute("challengeList", challList);
 			break;
 		case 3:
-			model.addAttribute("challengeList", mapper.searchLevelThree(keyword, level));
+			challList = mapper.searchLevelThree(keyword, level);
+			model.addAttribute("challengeList", challList);
 			break;
 		case 4:
-			model.addAttribute("challengeList", mapper.searchLevelFour(keyword, level));
+			challList = mapper.searchLevelFour(keyword, level);
+			model.addAttribute("challengeList", challList);
 			break;
 		case 5:
-			model.addAttribute("challengeList", mapper.searchLevelFive(keyword, level));
+			challList = mapper.searchLevelFive(keyword, level);
+			model.addAttribute("challengeList", challList);
 			break;
 		case 6:
-			model.addAttribute("challengeList", mapper.searchLevelSix(keyword, level));
+			challList = mapper.searchLevelSix(keyword, level);
+			model.addAttribute("challengeList", challList);
 			break;
 		case 7:
-			model.addAttribute("challengeList", mapper.searchLevelSeven(keyword, level));
+			challList = mapper.searchLevelSeven(keyword, level);
+			model.addAttribute("challengeList", challList);
 			break;
 		case 8:
-			model.addAttribute("challengeList", mapper.searchLevelEight(keyword, level));
+			challList = mapper.searchLevelEight(keyword, level);
+			model.addAttribute("challengeList", challList);
 			break;
 		case 9:
-			model.addAttribute("challengeList", mapper.searchLevelNine(keyword, level));
+			challList = mapper.searchLevelNine(keyword, level);
+			model.addAttribute("challengeList", challList);
 			break;
 		default:
 			System.out.println("검색 중 오류");
 			break;
 		}
+		
+		int currentPg = num;
+		int pageLetter = 8;
+		int allCount = challList.size();
+		int repeat = allCount/pageLetter; // 마지막 페이지 번호
+		if(allCount % pageLetter != 0)
+			repeat += 1;
+//		int end = num * pageLetter;
+//		int start = end + 1 - pageLetter;
+		
+		model.addAttribute("pageLetter", pageLetter);	// 한 페이지당 최대 글 갯수
+		model.addAttribute("currentPg", currentPg);		// 현재 페이지
+		model.addAttribute("allCount", allCount);		// 작성된 글의 총 갯수
+		model.addAttribute("repeat", repeat);			// 마지막 페이지 번호
 	}
 
 

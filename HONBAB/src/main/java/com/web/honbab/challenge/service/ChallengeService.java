@@ -29,7 +29,7 @@ public interface ChallengeService {
 	
 	// 검색
 	//public void challengeSearch(MultipartHttpServletRequest mul, Model model); 
-	public void challengeSearch(MultipartHttpServletRequest mul, Model model);
+	public void challengeSearch(MultipartHttpServletRequest mul, Model model, int num);
 
 	
 	
