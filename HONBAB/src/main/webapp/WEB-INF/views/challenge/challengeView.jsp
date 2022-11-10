@@ -113,7 +113,7 @@ function like() {
 		</div>
 	
 		<input type="button" value="글목록" onclick="location.href='${contextPath}/challengeAllList'">
-		<c:if test="${challengeData.id == loginUser }">
+		<c:if test="${challengeData.id == loginUser || loginUser == 'admin'}">
 			<input type="button" value="글수정" id="modify_btn" 
 				onclick="location.href='${contextPath}/challengeModifyForm?writeNo=${challengeData.writeNo }'" style="margin-left: 10px;">
 			<input type="button" value="글삭제" id="delete_btn" 

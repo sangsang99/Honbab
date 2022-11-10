@@ -96,9 +96,12 @@
 			</div>
 		</c:forEach>
 
+		<c:if test="${loginUser != null}">
 		<div id="writebtn">
 			<input type="button" value="글쓰기" onclick="reviewWirte()">
 		</div>
+		</c:if>
+		
 		<!--  페이징  -->
 		<c:if test="${!isSearchPage}">
 			<div class="paging">

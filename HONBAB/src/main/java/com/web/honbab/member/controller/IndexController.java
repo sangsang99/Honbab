@@ -19,8 +19,11 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.web.honbab.admin.service.OperService;
+import com.web.honbab.challenge.service.ChallengeService;
+import com.web.honbab.find.service.FindService;
 import com.web.honbab.member.dto.MemberDTO;
 import com.web.honbab.member.service.MemberService;
+import com.web.honbab.review.service.ReviewService;
 import com.web.honbab.session.admin.AdminSession;
 import com.web.honbab.session.name.MemberSession;
 
@@ -31,6 +34,8 @@ public class IndexController implements MemberSession{
 	@Autowired
 	private MemberService ms;
 
+
+	
 	@PostMapping("user_check")
 	public String userCheck(HttpServletRequest request, RedirectAttributes rs) {
 		int result = ms.user_check(request);
@@ -51,8 +56,9 @@ public class IndexController implements MemberSession{
 	}
 	
 	@RequestMapping("successLogin")
-	public String successLogin(@RequestParam("id") String id, HttpSession session) {
+	public String successLogin(@RequestParam("id") String id, HttpSession session, Model model) {
 		session.setAttribute(LOGIN, id);
+		
 		return "index";
 	}
 	

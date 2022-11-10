@@ -131,10 +131,12 @@
 		</tr>	
 		</c:forEach>
 		</table> --%>
-		
+		<c:if test="${loginUser != null}">
 		<div id="writebtn">
 			<input type="button" value="글쓰기" onclick="findWrite()">
 		</div>
+		</c:if>
+		
 		<c:if test="${!isSearchPage}">
 		<div class="paging">
 			<c:if test="${startPage > block }">
