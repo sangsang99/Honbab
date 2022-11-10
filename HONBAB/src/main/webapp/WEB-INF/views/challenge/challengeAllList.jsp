@@ -133,13 +133,14 @@ frm.keyword.value = "<%=request.getParameter("keyword")%>";
 	    </div>
 		</c:forEach>
 		<c:set var="no" value="${no - 1}"></c:set>
-	
+		<c:if test="${loginUser != null}">
 		<div id="writebtn">
 			<input type="button" onclick="user_check()" value="글 쓰기">
 		</div>
+		</c:if>
 		<div class="paging">
 			<c:forEach var="num" begin="1" end="${repeat }">
-				<a href="challengeAllList?num=${num}">${num}</a>
+				<a href="${contextPath }/challengeAllList?num=${num}">${num}</a>
 			</c:forEach>
 		</div>
    </main>

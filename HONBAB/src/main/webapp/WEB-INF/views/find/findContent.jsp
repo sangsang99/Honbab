@@ -106,7 +106,7 @@
 
 		<input type="button" value="글목록"
 			onclick="location.href='${contextPath}/find/findAllList'">
-			<c:if test="${loginUser == findContent.id}">
+			<c:if test="${loginUser == findContent.id || loginUser == 'admin'}">
 			<input type="button" value="글수정" id="modify_btn"
 				onclick="location.href='${contextPath}/find/find_modify_form?writeNo=${findContent.writeNo}'">
 			<input type="button" value="글삭제" id="delete_btn"

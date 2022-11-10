@@ -45,7 +45,7 @@
 	          </form>
 					</c:forEach>
 				
-          <div class="more"><a href="challengeAllList">+ MORE</a></div>
+          <div class="more"><a href="${contextPath }/challengeAllList">+ MORE</a></div>
         </section>
       </div>
     </div>

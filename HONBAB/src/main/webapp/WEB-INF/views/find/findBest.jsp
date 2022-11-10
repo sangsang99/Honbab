@@ -60,7 +60,7 @@
 				</c:forEach>
 
 				<div class="more">
-					<a href="reviewAllList">+ MORE</a>
+					<a href="${contextPath }/find/findAllList">+ MORE</a>
 				</div>
 			</section>
 		</div>

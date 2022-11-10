@@ -160,7 +160,7 @@
 		<!-- buttons -->
 		<input type="button" value="글목록"
 			onclick="location.href='${contextPath}/review/reviewAllList'">
-		<c:if test="${loginUser == reviewContent.id}">
+		<c:if test="${loginUser == reviewContent.id || loginUser == 'admin'}">
 			<!-- 로그인되어있고 , reviewContent.uNickname 과 일치하면 노출-->
 			<input type="button" value="글수정" id="modify_btn"
 				onclick="location.href='${contextPath}/review/review_modify_form?writeNo=${reviewContent.writeNo}'">

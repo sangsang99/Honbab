@@ -62,7 +62,7 @@
 				</c:forEach>
 
 				<div class="more">
-					<a href="reviewAllList">+ MORE</a>
+					<a href="${contextPath }/review/reviewAllList">+ MORE</a>
 				</div>
 			</section>
 		</div>

@@ -139,7 +139,7 @@
 		<!-- buttons -->
 		<input type="button" value="글목록"
 			onclick="location.href='${contextPath}/promotion/promoAllList'">
-		<c:if test="${data.id == loginUser}">
+		<c:if test="${data.id == loginUser || loginUser == 'admin'}">
 			<!-- 로그인되어있고 , reviewContent.uNickname 과 일치하면 노출-->
 			<input type="button" value="글수정" id="modify_btn"
 				onclick="location.href='${contextPath}/promotion/promoModifyForm?writeNo=${data.writeNo }'">
