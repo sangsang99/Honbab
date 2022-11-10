@@ -1,7 +1,5 @@
 package com.web.honbab.member.interceptor;
 
-import java.io.PrintWriter;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -21,13 +19,8 @@ public class MemberInterceptor extends HandlerInterceptorAdapter implements Memb
 		HttpSession session = request.getSession();
 		if(session.getAttribute(LOGIN) == null) {
 			response.setContentType("text/html; charset=utf-8");
-			response.sendRedirect("/honbab/member/login");
+			response.sendRedirect("/honbab/index");
 			
-//			PrintWriter out = response.getWriter();
-//			out.println("<script>alert('로그인 하세요');" 
-//			           + "location.href='"
-//					   + request.getContextPath()
-//					   + "/member/login'</script>");
 			return false;
 		}
 		return true;
