@@ -28,13 +28,10 @@
 		<beans:property name="maxUploadSize" value="52428800"/>
 	</beans:bean>
 	
+	
 	<interceptors>
            <interceptor>
-               <mapping path="/member/**"/>
-               <exclude-mapping path="/member/login"/> 
-               <exclude-mapping path="/member/register_form"/>
-               <exclude-mapping path="/member/region"/> 
-               <exclude-mapping path="/member/idcheck"/> 
+               <mapping path="/mamber/**"/>
                    <beans:bean id="memberInterceptor" class="com.web.honbab.member.interceptor.MemberInterceptor"/>
         </interceptor>
     </interceptors>

@@ -4,7 +4,7 @@
 	
 <mapper namespace="com.web.honbab.mybatis.member.MemberMapper">
 
-	<resultMap type="com.web.honbab.member.dto.MemberDTO" id="member">
+	<resultMap type="com.web.honbab.member.dto.MemberDTO" id="main">
 		<id property = "id" column="id"></id>
 		<result property = "pw" column="pw"></result>
 		<result property = "name" column="name"></result>
@@ -16,11 +16,11 @@
 	</resultMap>
 	
 	
-	<select id="user_check" resultMap="member">
+	<select id="user_check" resultMap="main">
 		select * from USER_JOIN where id=#{id}
 	</select>
 	
-	<select id="getMember" resultMap="member">
+	<select id="getMember" resultMap="main">
 		select * from USER_JOIN where id=#{id}
 	</select>
 	
