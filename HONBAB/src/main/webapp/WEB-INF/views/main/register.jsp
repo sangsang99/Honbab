@@ -47,7 +47,7 @@ li>#gender{
 				<li>
 					<span class="index">아이디</span>
 					<input type="text" id="id" name="id" placeholder="아이디를 입력하세요.">
-					<button type="button" name="check" onclick="id_check(); return false;">중복확인</button>
+					<!-- <button type="button" name="check" onclick="id_check(); return false;">중복확인</button> -->
 				</li>
 				<li>
 					<span class="index">비밀번호</span>
@@ -64,7 +64,7 @@ li>#gender{
 				<li>
 					<span class="index">닉네임</span>
 					<input type="text" id="nickName" name="nickName" placeholder="닉네임을 입력하세요.">
-					<button type="button" name="check" onclick="id_check(); return false;">중복확인</button>
+					<!-- <button type="button" name="check" onclick="id_check(); return false;">중복확인</button> -->
 				</li>
 				<li>
 					<span class="index">전화번호</span>
