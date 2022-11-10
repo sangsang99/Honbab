@@ -64,6 +64,7 @@ li>#gender{
 				<li>
 					<span class="index">닉네임</span>
 					<input type="text" id="nickName" name="nickName" placeholder="닉네임을 입력하세요.">
+					<button type="button" name="check" onclick="id_check(); return false;">중복확인</button>
 				</li>
 				<li>
 					<span class="index">전화번호</span>
@@ -86,7 +87,6 @@ li>#gender{
 					<input type="text" id="email" name="email" placeholder="이메일을 입력하세요.">
 				</li>
 			</ul>
-			<!-- <input type="submit" value="회원가입"> -->
 			<button type="button" name="join" onclick="joinform_check(); return false;"> JOIN</button>
 		</form>
 	</div>

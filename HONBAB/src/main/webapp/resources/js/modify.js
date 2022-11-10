@@ -55,5 +55,5 @@ function joinform_check() {
 	};
 
   //입력 값 전송
-  document.modify.submit(); //유효성 검사의 포인트   
+  document.getElementById('modify').submit(); //유효성 검사의 포인트   
 };
