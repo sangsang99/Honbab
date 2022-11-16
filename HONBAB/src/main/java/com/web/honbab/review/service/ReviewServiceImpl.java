@@ -11,7 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import com.web.honbab.common.service.CommonService;
+import com.web.honbab.aacommon.service.CommonService;
 import com.web.honbab.mybatis.review.ReviewMapper;
 import com.web.honbab.review.dto.ReviewDTO;
 import com.web.honbab.review.dto.ReviewRepDTO;

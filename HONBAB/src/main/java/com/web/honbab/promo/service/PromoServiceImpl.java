@@ -11,7 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import com.web.honbab.common.service.CommonService;
+import com.web.honbab.aacommon.service.CommonService;
 import com.web.honbab.mybatis.promo.PromoMapper;
 import com.web.honbab.promo.dto.PromoDTO;
 import com.web.honbab.promo.dto.PromoRepDTO;

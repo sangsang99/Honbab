@@ -1,4 +1,4 @@
-package com.web.honbab.main.controller;
+package com.web.honbab.aamain.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

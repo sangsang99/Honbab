@@ -132,7 +132,7 @@
 					<div class="line"></div>
 				</ul>
 				<input type="submit" value="저장" /> 
-				<input type="button" value="목록" onclick="location.href='${contextPath}/challengeAllList'">
+				<input type="button" value="목록" onclick="location.href='${contextPath}/review/reviewAllList'">
 			</form>
 		</div>
 	</main>

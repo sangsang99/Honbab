@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import com.web.honbab.common.service.CommonService;
+import com.web.honbab.aacommon.service.CommonService;
 import com.web.honbab.find.dto.FindDTO;
 import com.web.honbab.find.dto.FindRepDTO;
 import com.web.honbab.mybatis.find.FindMapper;

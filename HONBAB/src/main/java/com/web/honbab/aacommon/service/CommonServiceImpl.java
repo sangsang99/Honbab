@@ -1,4 +1,4 @@
-package com.web.honbab.common.service;
+package com.web.honbab.aacommon.service;
 
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;

@@ -11,8 +11,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.web.honbab.aacommon.service.CommonService;
 import com.web.honbab.challenge.dto.ChallengeDTO;
-import com.web.honbab.common.service.CommonService;
 import com.web.honbab.mybatis.challenge.ChallengeMapper;
 
 @Service
