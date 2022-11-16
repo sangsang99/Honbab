@@ -137,33 +137,5 @@
 		</div>
 	</main>
 
-
-	<%-- <b>작성자 not null</b>
-	<br>
-	<input type="text" name="nickname" value="${reviewContent.nickname}"
-		readonly>
-	<br>
-	<b>제 목 not null</b>
-	<br>
-	<input type="text" name="title" value="${reviewContent.title}">
-	<br>
-	<br>
-	<b>내 용 not null</b>
-	<br>
-	<textarea cols="20" rows="5" name="content">${reviewContent.content}</textarea>
-	<br>
-	<b>파일 첨부</b>
-	<br>
-	<input type="file" name="image_file_name" onchange="readURL(this)">
-	<b>이미지 미리보기</b>
-	<img
-		src="${contextPath }/download?imageFileName=${reviewContent.imgName}"
-		id=preview width="100px" height="100px">
-	<br>
-	<br>
-	<input type="submit" value="수정완료">
-	<input type="button" value="글목록"
-		onclick="location.href='${contextPath }/boardAllList'">
- --%>
 </body>
 </html>

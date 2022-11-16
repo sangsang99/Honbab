@@ -12,18 +12,25 @@ import com.web.honbab.review.dto.ReviewRepDTO;
 public interface OperService {
 
 	public int adminUserCheck(HttpServletRequest request);
-	
+
 	public String getMessage(HttpServletRequest request, String msg, String url);
+
 	public String noticeWrite(HttpServletRequest request);
+
 	public void viewNoticeList(Model model);
+
 	public void noticeConetentView(Model model, int writeNo);
+
 	public String deleteNoticeContent(int writeNo, HttpServletRequest request);
+
 	public String updateNoticeContent(int writeNo, HttpServletRequest request);
-	
+
 	public void addReply(NoticeRepDTO dto);
+
 	public List<ReviewRepDTO> getRepList(int writeNo);
-	
+
 	public int setAD(HttpServletRequest request);
+
 	public void promoList(Model model, int num);
-	
+
 }

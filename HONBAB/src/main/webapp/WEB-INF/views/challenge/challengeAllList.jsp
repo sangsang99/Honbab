@@ -19,8 +19,6 @@ function user_check() {
 		location.href="challengeWriteForm";			
 	} else {
 		alert("로그인 후 작성 가능합니다.")
-/* 		location.href="member/login";		 */	
-/* 		location.href="${contextPath }/member/login";			 */
 	}
 }
 

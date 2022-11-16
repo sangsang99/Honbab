@@ -1,51 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-	"http://mabits.org/dtd/mybatis-3-mapper.dtd">
-	
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
 <mapper namespace="com.web.honbab.mybatis.member.MemberMapper">
 
-	<resultMap type="com.web.honbab.member.dto.MemberDTO" id="member">
-		<id property = "id" column="id"></id>
-		<result property = "pw" column="pw"></result>
-		<result property = "name" column="name"></result>
-		<result property = "nickName" column="nickName"></result>
-		<result property = "tel" column="tel"></result>
-		<result property = "region" column="region"></result>
-		<result property = "gender" column="gender"></result>
-		<result property = "email" column="email"></result>
+	<resultMap type="com.web.honbab.member.dto.MemberDTO"
+		id="main">
+		<id property="id" column="id"></id>
+		<result property="pw" column="pw"></result>
+		<result property="name" column="name"></result>
+		<result property="nickName" column="nickName"></result>
+		<result property="tel" column="tel"></result>
+		<result property="region" column="region"></result>
+		<result property="gender" column="gender"></result>
+		<result property="email" column="email"></result>
 	</resultMap>
-	
-	
-	<select id="user_check" resultMap="member">
-		select * from USER_JOIN where id=#{id}
+
+
+	<select id="user_check" resultMap="main">
+		select * from USER_JOIN where
+		id=#{id}
 	</select>
-	
-	<select id="getMember" resultMap="member">
-		select * from USER_JOIN where id=#{id}
+
+	<select id="getMember" resultMap="main">
+		select * from USER_JOIN where
+		id=#{id}
 	</select>
-	
+
 	<insert id="register">
-		insert into USER_JOIN values(#{id}, #{pw}, #{name}, #{nickName}, #{tel}, #{region}, #{gender}, #{email})
+		insert into USER_JOIN values(#{id}, #{pw}, #{name},
+		#{nickName}, #{tel}, #{region}, #{gender}, #{email})
 	</insert>
-	
+
 	<delete id="delete">
 		delete from USER_JOIN where id=#{id}
 	</delete>
 
-	<resultMap type="com.web.honbab.member.dto.BizMemberDTO" id="bizmember">
-		<id property = "id" column="id"></id>
-		<result property = "pw" column="pw"></result>
-		<result property = "name" column="name"></result>
-		<result property = "comName" column="comName"></result>
-		<result property = "tel" column="tel"></result>
-		<result property = "addr" column="addr"></result>
-		<result property = "bizNum" column="bizNum"></result>
-		<result property = "email" column="email"></result>
+	<resultMap type="com.web.honbab.member.dto.BizMemberDTO"
+		id="bizmember">
+		<id property="id" column="id"></id>
+		<result property="pw" column="pw"></result>
+		<result property="name" column="name"></result>
+		<result property="comName" column="comName"></result>
+		<result property="tel" column="tel"></result>
+		<result property="addr" column="addr"></result>
+		<result property="bizNum" column="bizNum"></result>
+		<result property="email" column="email"></result>
 	</resultMap>
-	
-	<select id="bizuser_check" resultMap="bizmember">
-		select * from BUSINES_JOIN where id=#{id}
-	</select>
-	
 
+	<select id="bizuser_check" resultMap="bizmember">
+		select * from BUSINES_JOIN
+		where id=#{id}
+	</select>
+
+	<update id="modifySave">
+		update USER_JOIN set
+		pw=#{pw},
+		name=#{name},
+		nickname=#{nickName},
+		tel=#{tel},
+		region=#{region},
+		gender=#{gender},
+		email=#{email}
+		where id=#{id}
+	</update>
 </mapper>

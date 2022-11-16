@@ -14,7 +14,7 @@ public interface PromoService {
 	void promoList(Model model, int num);
 
 	public void promoAllList(Model model);
-	
+
 	String writeSave(MultipartHttpServletRequest mul, HttpServletRequest request);
 
 	void contentView(int writeNo, Model model);

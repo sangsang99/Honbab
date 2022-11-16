@@ -3,22 +3,22 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.web.honbab.mybatis.admin.AdminMapper">
-	<resultMap type="com.web.honbab.admin.dto.AdminDTO" id="admin">
-		<id property = "adminId" column="ADMIN_ID"></id>
-		<result property = "adminPw" column="ADMIN_PW"></result>		
-	</resultMap>	
-	
-	<!-- <select id="admin_check" resultMap="admin">
-		select * from ADMIN_LOGIN where id=#{adminId}
-	</select> -->
-	
+	<resultMap type="com.web.honbab.admin.dto.AdminDTO"
+		id="admin">
+		<id property="adminId" column="ADMIN_ID"></id>
+		<result property="adminPw" column="ADMIN_PW"></result>
+	</resultMap>
+
+	<!-- <select id="admin_check" resultMap="admin"> select * from ADMIN_LOGIN 
+		where id=#{adminId} </select> -->
+
 	<delete id="ban">
 		delete from USER_JOIN where id = #{id}
 	</delete>
-	
+
 	<delete id="partnerBan">
 		delete from BUSINES_JOIN where id = #{id}
-	</delete>	
-	
-	
+	</delete>
+
+
 </mapper>

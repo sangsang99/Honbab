@@ -146,44 +146,7 @@
 			</form>
 		</div>
 	</main>
-	
 
-	<%-- <div class="wrap" align="center">
-		<div class="challenge_save write">
-			<form action="${contextPath }/challengeSave"
-				enctype="multipart/form-data" method="post">
-				<select id="challenge" onchange="challengeLv(this)" name="chLevel">
-					<option selected disabled hidden>레벨 선택</option>
-					<option value="1">레벨 1</option>
-					<option value="2">레벨 2</option>
-					<option value="3">레벨 3</option>
-					<option value="4">레벨 4</option>
-					<option value="5">레벨 5</option>
-					<option value="6">레벨 6</option>
-					<option value="7">레벨 7</option>
-					<option value="8">레벨 8</option>
-					<option value="9">레벨 9</option>
-				</select> <span id="text"></span> <input type="hidden" value="${loginUser}"
-					name="id">
-				<p>작성자</p>
-				<input type="text" name="nickName" value="nickName"
-					readonly="readonly">
-
-				<p>제목</p>
-				<input type="text" name="title" size="50"><br>
-
-				<p>내용</p>
-				<textarea rows="10" cols="50" name="content"></textarea>
-				<br> <b>첨부한 파일</b> <input type="file" name="imgName"
-					onchange="readURL(this)"><br> <img src="#"
-					id="preview" width="100px"><br> <br> <input
-					type="submit" value="저장"> &nbsp; <input type="button"
-					value="글목록"
-					onclick="location.href='${contextPath}/challengeAllList'">
-			</form>
-		</div>
-	</div>
- --%>
 </body>
 
 </html>

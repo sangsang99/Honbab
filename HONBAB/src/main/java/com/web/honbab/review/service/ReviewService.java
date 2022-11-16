@@ -14,9 +14,9 @@ public interface ReviewService {
 	String reviewSave(MultipartHttpServletRequest mul, HttpServletRequest request);
 
 	String reviewModify(MultipartHttpServletRequest mul, HttpServletRequest request);
-	
+
 	public void reviewBestList(Model model);
-	
+
 	public void reviewAllList(Model model, int num);
 
 	public void reviewContent(int writeNo, Model model);
@@ -32,10 +32,7 @@ public interface ReviewService {
 	public int reviewLike(int writeNo, Model model);
 
 	public void searchReview(Model model, int num);
-	
+
 	public boolean deleteBoard1(int writeGroup);
 
-
-
-	
 }

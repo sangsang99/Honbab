@@ -139,24 +139,6 @@
     </section>
 
 
-
-	<%-- <div id="reply">
-		<!-- 해당글에 답변이 있으면 노출 -->
-	</div>
-	<hr>
-	<c:if test="${loginUser != null}">
-		<!-- 로그인되어있으면 노출 -->
-		<form id="form">
-			<input type="hidden" name="writeNo" value="${findContent.writeNo}">
-			<input type="hidden" name="id" value="${reviewContent.id}">
-			<b>작성자 : ${findContent.nickName}</b><br> <b>내용</b>
-			<textarea id="coment" name="coment" rows="5" cols="30"></textarea>
-			<br>
-			<button type="button" onclick="rep()">답글 달기</button>
-			&nbsp;
-		</form>
-	</c:if> --%>
-
 	<!-- footer -->
 	<c:import url="../main/footer.jsp" />
 	

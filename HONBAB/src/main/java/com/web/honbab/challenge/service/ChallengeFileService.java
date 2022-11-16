@@ -13,7 +13,5 @@ public interface ChallengeFileService {
 	public String saveFile(MultipartFile file);
 	
 	public void deleteImage(String originFileName);
-	
-	
 
 }

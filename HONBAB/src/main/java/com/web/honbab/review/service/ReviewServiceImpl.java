@@ -31,7 +31,7 @@ public class ReviewServiceImpl implements ReviewService, SearchSession {
 
 	@Autowired
 	private CommonService cms;
-	
+
 	@Override
 	public String reviewSave(MultipartHttpServletRequest mul, HttpServletRequest request) {
 		ReviewDTO dto = new ReviewDTO();
@@ -73,7 +73,7 @@ public class ReviewServiceImpl implements ReviewService, SearchSession {
 		dto.setTitle(mul.getParameter("title"));
 		dto.setContent(mul.getParameter("content"));
 		MultipartFile file = mul.getFile("image_file_name");
-		
+
 		if (file.getSize() != 0) {
 			dto.setImgName(rfs.saveFile(file));
 			rfs.deleteImage(mul.getParameter("originFileName"));
@@ -122,12 +122,12 @@ public class ReviewServiceImpl implements ReviewService, SearchSession {
 		model.addAttribute("likeIt", "no");
 		String likeId = (String) session.getAttribute("loginUser");
 
-		if(likeId !=null) {
+		if (likeId != null) {
 			int isAlreadyLike = mapper.reviewLikeChk(likeId, writeNo);
-			
-			if ((isAlreadyLike) == 1) { 
+
+			if ((isAlreadyLike) == 1) {
 				model.addAttribute("likeIt", "yes");
-			} 
+			}
 		}
 	}
 
@@ -172,18 +172,19 @@ public class ReviewServiceImpl implements ReviewService, SearchSession {
 		int result = 0;
 
 		// 아직 좋아요를 안눌렀고
-		if ((isAlreadyLike) == 0) { 
+		if ((isAlreadyLike) == 0) {
 			result = mapper.reviewLikeUp(writeNo);
-			if(result == 1) mapper.reviewLikeEnrl(likeId, writeNo);
-		// 이미 좋아요를 눌렀고
-		} else if((isAlreadyLike) == 1) {
+			if (result == 1)
+				mapper.reviewLikeEnrl(likeId, writeNo);
+			// 이미 좋아요를 눌렀고
+		} else if ((isAlreadyLike) == 1) {
 			result = mapper.reviewLikeDown(writeNo);
-			if(result == 1) mapper.reviewLikeWtdr(likeId, writeNo);
-		} else 
+			if (result == 1)
+				mapper.reviewLikeWtdr(likeId, writeNo);
+		} else
 			System.out.println("알 수 없는 오류");
-			
-		
-		// result가 1이면 정상 1이아니면 오류   ..라고 컨트롤러에게 전달
+
+		// result가 1이면 정상 1이아니면 오류 ..라고 컨트롤러에게 전달
 		return result;
 	}
 
@@ -213,11 +214,11 @@ public class ReviewServiceImpl implements ReviewService, SearchSession {
 			break;
 		}
 	}
-	
-	@Override 
-	  public boolean deleteBoard1(int writeGroup) { 
-		  
-		  return mapper.deleteBoard1(writeGroup); 
-		  }
+
+	@Override
+	public boolean deleteBoard1(int writeGroup) {
+
+		return mapper.deleteBoard1(writeGroup);
+	}
 
 }

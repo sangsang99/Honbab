@@ -138,26 +138,5 @@
 	</main>
 
 
-<!-- 	<b>글쓴이-session</b>
-	<br>
-	<input type="text" name="nickname">
-	<br>
-	<b>제 목-not null</b>
-	<br>
-	<input type="text" name="title">
-	<br>
-	<br>
-	<b>내 용 -not null[네이버 텍스트에디터]</b>
-	<br>
-	<textarea cols="20" rows="5" name="content"></textarea>
-	<br>
-	<b>파일 첨부</b>
-	<br>
-	<input type="file" name="image_file_name" onchange="readURL(this)">
-	<b>이미지 미리보기</b>
-	<img src="#" id=preview width="100px" height="100px">
-	<br>
-	<br>
-	<input type="submit" value="작성완료"> -->
 </body>
 </html>

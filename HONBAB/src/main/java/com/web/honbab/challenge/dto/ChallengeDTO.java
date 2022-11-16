@@ -108,9 +108,9 @@ public class ChallengeDTO {
 	public void setId(String id) {
 		this.id = id;
 	}
-	
+
 	private int level;
-	
+
 	private String keyword;
 
 	public int getLevel() {
@@ -128,7 +128,5 @@ public class ChallengeDTO {
 	public void setKeyword(String keyword) {
 		this.keyword = keyword;
 	}
-	
-	
 
 }

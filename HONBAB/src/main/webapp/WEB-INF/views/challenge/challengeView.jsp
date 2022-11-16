@@ -76,19 +76,7 @@ function like() {
 					<c:out value="${challengeData.likes}"/> 
 				</a>
 <!-- 				</button> -->
-<%-- 				<span>${challengeData.likes}</span> --%>
 			</div>
-		<%-- 				
-			<c:choose>
-				<c:when test="${defaultLike == 0 || defaultLike == null}">
-			</c:when>
-					
-				<c:when test="${like == 1}">
-					<input type="hidden" id="likeChk" value=w"${like }">
-					<button type="button" class="btn notLike-btn" id="notLikeBtn">💢</button>
-				</c:when>
-			</c:choose> 
-		--%>
 
 			<c:if test="${challengeData.imgName == 'nan'}">
 				<div id="imgx">
@@ -124,61 +112,6 @@ function like() {
 	<!-- footer -->
 	<c:import url="../main/footer.jsp"/>
 	
-<%-- 	<form id="frm">
-		<ul class="ch_title">
-			<li>Title :</li>
-			<li><b>${challengeData.title }</b></li>
-		</ul>
-		<ul>
-			<li>작성 일자 :</li>
-			<li>${challengeData.saveDate }</li>
-		</ul>
-		<ul>
-			<li>작성자 :</li>
-			<!-- 추후 닉네임으로 바꿀것 -->
-			<li>${challengeData.nickName }</li>
-		</ul>
-		<hr>
-		<div class="content_wrap">
-			작성 글 내용
-			<div>${challengeData.content }</div>
-		</div>
-		<hr>
-		<c:if test="${challengeData.imgName == 'nan'}">
-			<b>첨부된 이미지가 없음</b>
-		</c:if>
-		<c:if test="${challengeData.imgName != 'nan'}">
-			<img src="${contextPath}/download?imgName=${challengeData.imgName }"
-				width="200px"></img>
-		</c:if>
-	</form>
-
-	<div id="like">
-		<c:choose>
-			<c:when test="${like == 0 || like == null}">
-				<!-- 현재는 아무런 데이터가 없는데.. 왜지  기본값 0 줬는데 -->
-				<button type="button" class="btn like-btn" id="likeBtn">🤍</button>
-				<input type="hidden" id="likeChk" value="${like }">
-			</c:when>
-			<c:when test="${like == 1}">
-				<button type="button" class="btn notLike-btn" id="notLikeBtn">💢</button>
-				<input type="hidden" id="likeChk" value="${like }">
-			</c:when>
-		</c:choose>
-
-	</div>
-
-	<c:if test="${challengeData.id == loginUser }">
-		<input type="button" value="글수정"
-			onclick="location.href='${contextPath}/challengeModifyForm?writeNo=${challengeData.writeNo }'">
-		<input type="button" value="글삭제"
-			onclick="location.href='${contextPath}/challengeDelete?writeNo=${challengeData.writeNo }&imgName${challengeData.imgName }'">
-	</c:if>
-
-	<input type="button" value="글목록"
-		onclick="location.href='${contextPath}/challengeAllList'">
-
-	<c:import url="../main/footer.jsp" /> --%>
 
 </body>
 </html>

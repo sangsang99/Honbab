@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-	"http://mabits.org/dtd/mybatis-3-mapper.dtd">
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
 
 <mapper namespace="com.web.honbab.mybatis.promo.PromoMapper">
 	<resultMap type="com.web.honbab.promo.dto.PromoDTO" id="promotion">
@@ -12,6 +13,7 @@
 		<result property="imageFileName" column="image_file_name" />
 		<result property="id" column="id" />		
 		<result property="comName" column="comName" />		
+		<result property="address" column="address" />		
 	</resultMap>
 
 	<resultMap type="com.web.honbab.promo.dto.PromoRepDTO" id="reply">
@@ -29,6 +31,12 @@
 		(select rownum rn, A.* from <!-- 페이지가 거꾸로 나와야 해서 rownum으로 재정렬 -->
 		(select * from PROMO_BOARD order by write_no desc) A) B <!-- 우선 글번호 대로 정렬 -->
 		where rn between #{s} and #{e}
+	</select>
+
+	<select id="promoAllList" resultMap="promotion">
+		select B.* from <!-- 시작번호 끝번호만 뽑기 -->
+		(select rownum rn, A.* from <!-- 페이지가 거꾸로 나와야 해서 rownum으로 재정렬 -->
+		(select * from PROMO_BOARD order by write_no desc) A) B <!-- 우선 글번호 대로 정렬 -->
 	</select>
 
 	<insert id="writeSave">
@@ -61,7 +69,7 @@
 		where write_no=#{writeNo}
 	</delete>
 
-	<select id="selectBoardCount" resultType="Integer">
+	<select id="selectPromoAllCount" resultType="Integer">
 		select count(*) from
 		PROMO_BOARD
 	</select>
@@ -77,4 +85,34 @@
 		write_group=#{write_group}
 		order by write_date desc
 	</select> 
+	
+	<select id="isBizUser" resultType="Integer">
+		select count(*)
+		from BUSINES_JOIN 
+		WHERE id = #{id}
+	</select>
+	
+	<!--ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡSEARCH for Paging ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ-->
+	<select id="selectPromoCountForComName" resultType="Integer">
+		SELECT COUNT(*) FROM PROMO_BOARD WHERE COMNAME like '%'||#{keyword}||'%' 
+	</select>
+
+	<select id="selectPromoCountForAddress" resultType="Integer">
+		SELECT COUNT(*) FROM PROMO_BOARD WHERE ADDRESS like '%'||#{keyword}||'%' 
+	</select>
+	
+	<!--ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡSEARCH ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ-->
+	<select id="searchForComName" resultMap="promotion">
+		SELECT B.* FROM
+		(SELECT ROWNUM RN, A.* FROM
+		(SELECT * FROM PROMO_BOARD WHERE COMNAME like '%'||#{keyword}||'%' ORDER BY SAVE_DATE DESC) A) B 
+		WHERE RN BETWEEN #{s} AND #{e}
+	</select>
+	
+	<select id="searchForAddress" resultMap="promotion">
+		SELECT B.* FROM
+		(SELECT ROWNUM RN, A.* FROM
+		(SELECT * FROM PROMO_BOARD WHERE ADDRESS like '%'||#{keyword}||'%' ORDER BY SAVE_DATE DESC) A) B 
+		WHERE RN BETWEEN #{s} AND #{e}
+	</select>
 </mapper>

@@ -89,37 +89,7 @@
 				<div class="challenge_save modify">
 					<form action="${contextPath }/challengeModify"
 						enctype="multipart/form-data" method="post">
-						<%-- <select id="challenge" onchange="challengeLv(this)" name="chLevel">
-							<option selected disabled hidden>레벨 선택</option>
-							<!-- 작성 시 선택했던 레벨 출력 -->
-							<option
-								<c:if test="${challengeData.chLevel == '1' }">selected="selected"</c:if>
-								value="1">레벨 1</option>
-							<option
-								<c:if test="${challengeData.chLevel == '2' }">selected="selected"</c:if>
-								value="2">레벨 2</option>
-							<option
-								<c:if test="${challengeData.chLevel == '3' }">selected="selected"</c:if>
-								value="3">레벨 3</option>
-							<option
-								<c:if test="${challengeData.chLevel == '4' }">selected="selected"</c:if>
-								value="4">레벨 4</option>
-							<option
-								<c:if test="${challengeData.chLevel == '5' }">selected="selected"</c:if>
-								value="5">레벨 5</option>
-							<option
-								<c:if test="${challengeData.chLevel == '6' }">selected="selected"</c:if>
-								value="6">레벨 6</option>
-							<option
-								<c:if test="${challengeData.chLevel == '7' }">selected="selected"</c:if>
-								value="7">레벨 7</option>
-							<option
-								<c:if test="${challengeData.chLevel == '8' }">selected="selected"</c:if>
-								value="8">레벨 8</option>
-							<option
-								<c:if test="${challengeData.chLevel == '9' }">selected="selected"</c:if>
-								value="9">레벨 9</option>
-						</select> <span id="text"></span> --%>
+
 						<input type="hidden" name="writeNo" value="${challengeData.writeNo }">
 						<input type="hidden" name="originFileName" value="${challengeData.imgName }">
 						<ul>
@@ -175,26 +145,6 @@
 		</div>
 	</main>
 	
-
-	<%-- 				<p>제목</p>
-				<input type="text" name="title" size="50" value="${challengeData.title }"><br>
-				<p>내용</p>
-				<textarea rows="10" cols="50" name="content">${challengeData.content }</textarea>
-				<br> 
-				<b>사진 첨부</b> 
-				<input type="file" name="imgName" onchange="readURL(this)"><br> 
-				<c:if test="${challengeData.imgName != 'nan'}">
-					<img src="${contextPath }/download?imgName=${challengeData.imgName}" id="preview" width="100px"><br> <br>
-				</c:if>
-				<c:if test="${challengeData.imgName == 'nan'}">
-					<img src="#" id="preview" width="100px"><br> <br> 
-				</c:if>
-		
-				<input type="submit" value="수정"> &nbsp; 
-				<input type="button" value="글목록" onclick="location.href='${contextPath}/challengeAllList'">
-			</form>
-		</div>
-	</div> --%>
 
 </body>
 </html>

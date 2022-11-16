@@ -1,19 +1,12 @@
 package com.web.honbab.mybatis.admin;
 
-
-
-
 import java.util.List;
-
-import org.apache.ibatis.annotations.Param;
-
 import com.web.honbab.admin.dto.ADDTO;
 import com.web.honbab.admin.dto.AdminDTO;
 import com.web.honbab.admin.dto.NoticeBoardDTO;
 import com.web.honbab.admin.dto.NoticeRepDTO;
 import com.web.honbab.promo.dto.PromoDTO;
 import com.web.honbab.review.dto.ReviewRepDTO;
-
 
 public interface OperMapper {
 
@@ -38,6 +31,5 @@ public interface OperMapper {
 	public int beforeDeleteAD();
 
 	public AdminDTO adminUserCheck(String adminId);
-
 
 }

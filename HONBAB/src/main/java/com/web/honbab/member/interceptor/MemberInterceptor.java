@@ -10,20 +10,20 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 import com.web.honbab.session.name.MemberSession;
 
 @Component
-public class MemberInterceptor extends HandlerInterceptorAdapter implements MemberSession{
+public class MemberInterceptor extends HandlerInterceptorAdapter implements MemberSession {
 
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 
 		HttpSession session = request.getSession();
-		if(session.getAttribute(LOGIN) == null) {
+		if (session.getAttribute(LOGIN) == null) {
 			response.setContentType("text/html; charset=utf-8");
 			response.sendRedirect("/honbab/index");
-			
+
 			return false;
 		}
 		return true;
-		
+
 	}
 }

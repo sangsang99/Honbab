@@ -4,7 +4,7 @@
 
 <mapper namespace="com.web.honbab.mybatis.find.FindMapper">
 
-	 <resultMap type="com.web.honbab.find.dto.FindDTO" id="find">
+	<resultMap type="com.web.honbab.find.dto.FindDTO" id="find">
 		<id property="writeNo" column="WRITE_NO" />
 		<result property="nickName" column="NICKNAME" />
 		<result property="title" column="TITLE" />
@@ -16,78 +16,113 @@
 		<result property="views" column="VIEWS" />
 		<result property="id" column="ID" />
 	</resultMap>
-	
-	<resultMap type="com.web.honbab.find.dto.FindRepDTO" id="findRep">
+
+	<resultMap type="com.web.honbab.find.dto.FindRepDTO"
+		id="findRep">
 		<id property="writeGroup" column="WRITE_GROUP" />
 		<result property="reNick" column="RE_NICK" />
 		<result property="reDate" column="RE_DATE" />
 		<result property="reComent" column="RE_COMENT" />
 		<result property="reId" column="RE_ID" />
 	</resultMap>
-	
-	 <insert id="findSave">
-		INSERT INTO 
+
+	<insert id="findSave">
+		INSERT INTO
 		FIND_BOARD(WRITE_NO, NICKNAME, TITLE, CONTENT, AGE, REGION, GENDER, ID)
-		VALUES(FIND_BOARD_SEQ.NEXTVAL, #{nickName}, #{title}, #{content}, #{age}, #{region}, #{gen},#{id})
-	</insert> 
-	
-	
-	
+		VALUES(FIND_BOARD_SEQ.NEXTVAL, #{nickName}, #{title}, #{content},
+		#{age}, #{region}, #{gen},#{id})
+	</insert>
+
 	<select id="findAllList" resultMap="find">
 		SELECT B.* FROM
-		(SELECT ROWNUM RN, A.* FROM
-		(SELECT * FROM FIND_BOARD ORDER BY WRITE_NO DESC) A) B 
+		(SELECT ROWNUM
+		RN, A.* FROM
+		(SELECT * FROM FIND_BOARD ORDER BY WRITE_NO DESC) A) B
 		WHERE RN BETWEEN #{s} and #{e}
 	</select>
-	
-    <select id="findBestList" resultMap="find">
+
+	<select id="findBestList" resultMap="find">
 		SELECT *
-		FROM (SELECT * FROM FIND_BOARD ORDER BY VIEWS DESC) A
-		<![CDATA[WHERE ROWNUM <= 5]]> 
+		FROM (SELECT * FROM FIND_BOARD ORDER BY WRITE_DATE DESC) A
+		<![CDATA[WHERE ROWNUM <= 5]]>
 	</select>
-	
+
 	<select id="findContent" resultMap="find">
 		SELECT * FROM FIND_BOARD
 		WHERE WRITE_NO=#{writeNo}
 	</select>
-	
+
 	<update id="upViews">
-		UPDATE FIND_BOARD SET VIEWS=VIEWS+1 WHERE WRITE_NO=#{writeNo}
+		UPDATE FIND_BOARD SET VIEWS=VIEWS+1 WHERE
+		WRITE_NO=#{writeNo}
 	</update>
-	
+
 	<delete id="findDelete">
 		DELETE FROM FIND_BOARD WHERE
-		WRITE_NO=#{writeNo}	
+		WRITE_NO=#{writeNo}
 	</delete>
-	
+
 	<select id="selectFindCount" resultType="Integer">
-		SELECT COUNT(*) FROM FIND_BOARD
-		</select>
-		
-	 <select id="findPgCount" resultType="Integer">
 		SELECT COUNT(*) FROM
 		FIND_BOARD
 	</select>
-	
+
+	<select id="findPgCount" resultType="Integer">
+		SELECT COUNT(*) FROM
+		FIND_BOARD
+	</select>
+
 	<update id="modifyFind">
-		UPDATE FIND_BOARD SET 
+		UPDATE FIND_BOARD SET
 		TITLE=#{title},
 		CONTENT=#{content},
 		AGE=#{age},
 		REGION=#{region},
 		GENDER=#{gen}
-		WHERE WRITE_NO=#{writeNo}
+		WHERE
+		WRITE_NO=#{writeNo}
 	</update>
-	
+
 	<insert id="addReply">
-		INSERT INTO FIND_RE(RE_NICK, RE_COMENT, WRITE_GROUP, RE_ID)
+		INSERT INTO FIND_RE(RE_NICK, RE_COMENT, WRITE_GROUP,
+		RE_ID)
 		VALUES(#{reNick}, #{reComent}, #{writeGroup}, #{reId})
 	</insert>
-	
+
 	<select id="getRepList" resultMap="findRep">
 		SELECT * FROM FIND_RE
-		WHERE WRITE_GROUP = #{writeNo}
+		WHERE
+		WRITE_GROUP = #{writeNo}
 		ORDER BY RE_DATE DESC
 	</select>
-	 
+
+	<delete id="deleteBoard" parameterType="Integer">
+		DELETE FROM FIND_RE
+		WHERE
+		WRITE_GROUP = #{writeNo}
+	</delete>
+
+	<!--ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡSEARCH ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
+	<select id="selectFindCountForOptions" resultType="Integer">
+		SELECT
+		COUNT(*)
+		FROM FIND_BOARD
+		WHERE REGION LIKE '%'||#{optRegion}||'%'
+		AND
+		GENDER LIKE '%'||#{optGender}||'%'
+		AND AGE BETWEEN #{btwA} AND #{btwB}
+	</select>
+
+	<select id="searchForOptions" resultMap="find">
+		SELECT B.* FROM
+		(SELECT
+		ROWNUM RN, A.* FROM
+		(SELECT * FROM FIND_BOARD
+		WHERE REGION LIKE '%'||#{optRegion}||'%'
+		AND GENDER LIKE '%'||#{optGender}||'%'
+		AND AGE BETWEEN #{btwA} AND #{btwB}
+		ORDER BY WRITE_DATE DESC) A) B
+		WHERE RN BETWEEN #{s} AND #{e}
+	</select>
+
 </mapper>

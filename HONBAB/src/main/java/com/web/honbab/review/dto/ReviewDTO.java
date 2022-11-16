@@ -29,20 +29,21 @@ public class ReviewDTO {
 	private String imgName;
 	private int likes;
 	private String id;
-	
+
 	private ReviewLikeDTO reviewLikeDTO;
-	
+
 	public ReviewLikeDTO getReviewLikeDTO() {
 		return reviewLikeDTO;
 	}
+
 	public void setReviewLikeDTO(ReviewLikeDTO reviewLikeDTO) {
 		this.reviewLikeDTO = reviewLikeDTO;
 	}
-	
-	
+
 	public int getWriteNo() {
 		return writeNo;
 	}
+
 	public void setWriteNo(int writeNo) {
 		this.writeNo = writeNo;
 	}
@@ -50,50 +51,65 @@ public class ReviewDTO {
 	public String getNickname() {
 		return nickname;
 	}
+
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
 	}
+
 	public String getTitle() {
 		return title;
 	}
+
 	public void setTitle(String title) {
 		this.title = title;
 	}
+
 	public String getContent() {
 		return content;
 	}
+
 	public void setContent(String content) {
 		this.content = content;
 	}
+
 	public int getViews() {
 		return views;
 	}
+
 	public void setViews(int views) {
 		this.views = views;
 	}
+
 	public Date getWriteDate() {
 		return writeDate;
 	}
+
 	public void setWriteDate(Date writeDate) {
 		this.writeDate = writeDate;
 	}
+
 	public String getImgName() {
 		return imgName;
 	}
+
 	public void setImgName(String imgName) {
 		this.imgName = imgName;
 	}
+
 	public int getLikes() {
 		return likes;
 	}
+
 	public void setLikes(int likes) {
 		this.likes = likes;
 	}
+
 	public String getId() {
 		return id;
 	}
+
 	public void setId(String id) {
 		this.id = id;
 	}
-	
+
 }

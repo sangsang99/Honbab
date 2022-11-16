@@ -19,16 +19,6 @@ public interface ChallengeService {
 	
 	public void challengeBestList(Model model);
 	
-	/*
-	 * public int likesCount(int writeNo);
-	 * 
-	 * public int updateLike(int writeNo) throws Exception;
-	 * 
-	 * public int unLike(int writeNo) throws Exception;
-	 */
-	
-	// 검색
-	//public void challengeSearch(MultipartHttpServletRequest mul, Model model); 
 	public void challengeSearch(MultipartHttpServletRequest mul, Model model, int num);
 
 	

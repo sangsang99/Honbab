@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -29,42 +28,43 @@ import com.web.honbab.session.name.MemberSession;
 
 @Controller
 @RequestMapping("member")
-public class MemberController implements MemberSession, AdminSession{
-	
+public class MemberController implements MemberSession, AdminSession {
+
 	@Autowired
 	private MemberService ms;
-	
+
 	@Autowired
 	private OperService os;
 
 	@Autowired
 	private ReviewService rs;
-	
+
 	@Autowired
 	private FindService fs;
-	
+
 	@Autowired
 	private ChallengeService cs;
-	
+
 	@PostMapping("user_check")
 	public String userCheck(HttpServletRequest request, RedirectAttributes rs) {
 		int result = ms.user_check(request);
-		if(result == 0) {
+		if (result == 0) {
 			rs.addAttribute("id", request.getParameter("id"));
 			return "redirect:successLogin";
 		}
 		return "redirect:login";
 	}
+
 	@PostMapping("bizuser_check")
 	public String bizuserCheck(HttpServletRequest request, RedirectAttributes rs) {
 		int result = ms.bizuser_check(request);
-		if(result == 0) {
+		if (result == 0) {
 			rs.addAttribute("id", request.getParameter("id"));
 			return "redirect:successLogin";
 		}
 		return "redirect:login";
 	}
-	
+
 	@RequestMapping("successLogin")
 	public String successLogin(@RequestParam("id") String id, HttpSession session, Model model) {
 		session.setAttribute(LOGIN, id);
@@ -73,83 +73,84 @@ public class MemberController implements MemberSession, AdminSession{
 		cs.challengeBestList(model);
 		return "index";
 	}
-	
+
 	@RequestMapping("adminUserCheck")
 	public String adminUserCheck(HttpServletRequest request, RedirectAttributes rs) {
 		int result = os.adminUserCheck(request);
-		if(result == 0) {
+		if (result == 0) {
 			rs.addAttribute("id", request.getParameter("id"));
 			return "redirect:successADMLogin";
 		}
 		return "redirect:login";
 	}
-	
+
 	@RequestMapping("successADMLogin")
 	public String successADMLogin(@RequestParam("id") String id, HttpSession session) {
 		session.setAttribute(ADMIN, id);
 		return "admin/ADMIndex";
 	}
-	
+
 	@GetMapping("login")
 	public String login() {
 		return "member/login";
 	}
-	
+
 	@GetMapping("idcheck")
 	public String idcheck() {
 		return "member/idcheck";
 	}
+
 	@GetMapping("logout")
 	public String logout(HttpSession session) {
-		if(session.getAttribute("loginUser") != null) {
+		if (session.getAttribute("loginUser") != null) {
 			session.invalidate();
 		}
 		return "redirect:/index";
 	}
-	
+
 	@RequestMapping("/info")
 	public String info(@RequestParam("id") String id, Model model) {
 		ms.info(id, model);
 		return "member/info";
 	}
-	
-	
+
 	@RequestMapping("/register_form")
 	public String register_form() {
 		return "member/register";
 	}
-	
+
 	@RequestMapping("/register")
 	public String register(MemberDTO member) {
 		int result = ms.register(member);
-		if(result == 1) {
+		if (result == 1) {
 			return "redirect:login";
 		}
 		return "redirect:register_form";
 	}
-	
+
 	@GetMapping("delete")
-	public void delete(@RequestParam("id") String id,HttpServletResponse response, HttpServletRequest request) throws IOException{
+	public void delete(@RequestParam("id") String id, HttpServletResponse response, HttpServletRequest request)
+			throws IOException {
 		String message = ms.memberDelete(id, request);
 		response.setContentType("text/html; charset=utf-8");
 		PrintWriter out = response.getWriter();
 		out.println(message);
 	}
-	
+
 	@RequestMapping("/callback")
 	public String callback() {
 		return "redirect:register_form";
 	}
-
 
 	@RequestMapping("modifyForm")
 	public String modifyForm(@RequestParam("id") String id, Model model) {
 		ms.info(id, model);
 		return "member/modifyForm";
 	}
-	
+
 	@PostMapping("modifySave")
-	public void modifySave(MultipartHttpServletRequest mul, HttpServletRequest request, HttpServletResponse response) throws IOException{
+	public void modifySave(MultipartHttpServletRequest mul, HttpServletRequest request, HttpServletResponse response)
+			throws IOException {
 		String message = ms.modifySave(mul, request);
 		response.setContentType("text/html; charset=utf-8");
 		PrintWriter out = response.getWriter();

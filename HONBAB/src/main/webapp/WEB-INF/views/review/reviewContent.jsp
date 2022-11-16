@@ -195,28 +195,6 @@
 		</c:if>
 	</section>
 
-
-	<%-- <!-- reply -->
-	<h2>답글페이지</h2>
-
-	<div id="reply">
-		<!-- 해당글에 답변이 있으면 노출 -->
-	</div>
-	<hr>
-	<c:if test="${loginUser != null}">
-		<!-- 로그인되어있으면 노출 -->
-		<form id="form" name="form">
-			<input type="hidden" name="writeNo" value="${reviewContent.writeNo}">
-			<input type="hidden" name="id" value="${reviewContent.id}"> <b>작성자
-				: ${reviewContent.nickname}</b><br> <b>내용</b> <b id="notice">10글자
-				이상 작성해야합니다.</b>
-			<textarea id="coment" name="coment" rows="5" cols="30"></textarea>
-			<br>
-			<button type="button" onclick="rep()">답글 달기</button>
-			&nbsp;
-		</form>
-	</c:if>
- --%>
 	<c:import url="../main/footer.jsp" />
 
 	<script>

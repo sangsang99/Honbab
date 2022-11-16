@@ -83,18 +83,6 @@
 		</ul>
 	</div>
 
-	<!-- 	<table border="1"> -->
-	<!-- 		<tr>
-			<th> 글번호 </th>
-			<th> 닉네임 </th>
-			<th> 제 목 </th>
-			<th> 나 이 </th>
-			<th> 지 역 </th>
-			<th> 성 별 </th>
-			<th> 작성일 </th>
-			<th> 조회수 </th>
-		</tr> -->
-
 		<c:if test="${findAllList.size() == 0}">
 			<h1>등록된 글이 없습니다.</h1>
 		</c:if>
@@ -116,21 +104,7 @@
 			</div>
 		</c:forEach>
 
-		<%-- 		<c:forEach var="find" items="${findAllList}">
-		<tr>
-			<td>${find.writeNo }</td>
-			<td>${find.nickName }</td>
-			<td width="200px">
-				<a href="#" onclick="upViews(${find.writeNo}); return false">${find.title}</a>
-			</td>
-			<td>${find.age }</td>
-			<td>${find.region }</td>
-			<td>${find.gen }</td>
-			<td>${find.writeDate }</td>
-			<td>${find.views }</td>
-		</tr>	
-		</c:forEach>
-		</table> --%>
+
 		<c:if test="${loginUser != null}">
 		<div id="writebtn">
 			<input type="button" value="글쓰기" onclick="findWrite()">

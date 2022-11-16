@@ -15,41 +15,50 @@ CONSTRAINT FK_REVIEW_RE_BOARD FOREIGN KEY(WRITE_GROUP) REFERENCES REVIEW_BOARD(W
 
 public class ReviewRepDTO {
 
-	private String reId; 
+	private String reId;
 	private String reComent;
 	private int writeGroup;
 	private Date reDate;
 	private String reNick;
-	
+
 	public String getReId() {
 		return reId;
 	}
+
 	public void setReId(String reId) {
 		this.reId = reId;
 	}
+
 	public String getReComent() {
 		return reComent;
 	}
+
 	public void setReComent(String reComent) {
 		this.reComent = reComent;
 	}
+
 	public int getWriteGroup() {
 		return writeGroup;
 	}
+
 	public void setWriteGroup(int writeGroup) {
 		this.writeGroup = writeGroup;
 	}
+
 	public Date getReDate() {
 		return reDate;
 	}
+
 	public void setReDate(Date reDate) {
 		this.reDate = reDate;
 	}
+
 	public String getReNick() {
 		return reNick;
 	}
+
 	public void setReNick(String reNick) {
 		this.reNick = reNick;
 	}
-	
+
 }
