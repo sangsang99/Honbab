@@ -13,7 +13,7 @@
 	rel="stylesheet" />
 <!-- font -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preconnect" href="https://fonts.gstatic.com"  />
 <link
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Nunito+Sans:wght@400;600;700&display=swap"
 	rel="stylesheet" />
@@ -127,9 +127,12 @@
 						<span class="index_kr">사진 첨부</span> 
 						<input type="file" name="image_file_name" onchange="readURL(this)">
 						<img src="#" id="preview" width="100px">
+						
 					</li>
-					<hr />
 					<div class="line"></div>
+					<hr>
+					
+					
 				</ul>
 				<input type="submit" value="저장" /> 
 				<input type="button" value="목록" onclick="location.href='${contextPath}/review/reviewAllList'">

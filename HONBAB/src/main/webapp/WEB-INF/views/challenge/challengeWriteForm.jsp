@@ -13,7 +13,7 @@
 	rel="stylesheet" />
 <!-- font -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preconnect" href="https://fonts.gstatic.com" />
 <link
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Nunito+Sans:wght@400;600;700&display=swap"
 	rel="stylesheet" />
@@ -101,7 +101,7 @@
 				enctype="multipart/form-data" method="post">
 				<!-- 셀렉트 태그 css 먹여라 진짜 좋게말할때 해라 -->
 				<select id="challenge" onchange="challengeLv(this)" name="chLevel">
-					<option selected disabled hidden>레벨 선택</option>
+					<option selected disabled>레벨 선택</option>
 					<option value="1">레벨 1</option>
 					<option value="2">레벨 2</option>
 					<option value="3">레벨 3</option>

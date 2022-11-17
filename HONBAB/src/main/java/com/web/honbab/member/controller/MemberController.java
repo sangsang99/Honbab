@@ -95,10 +95,6 @@ public class MemberController implements MemberSession, AdminSession {
 		return "member/login";
 	}
 
-	@GetMapping("idcheck")
-	public String idcheck() {
-		return "member/idcheck";
-	}
 
 	@GetMapping("logout")
 	public String logout(HttpSession session) {

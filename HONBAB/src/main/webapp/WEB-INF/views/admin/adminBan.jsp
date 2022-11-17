@@ -41,7 +41,7 @@
 </div>
 
 <div class="cd1">
-	<table border="1" width="500px">
+	<table border="1" style="width:500px">
 		<tr>
 			<td><br><span style="color: green; font-weight: bold;">
 					회원 강제 탈퇴<%-- (${generalDelete.id }) --%></span>
@@ -59,7 +59,7 @@
 	<br>
 	<br>
 
-	<table border="1" width="500px">
+	<table border="1" style="width:500px">
 		<tr>
 			<td><br> <span style="color: green; font-weight: bold;">회원
 					강제 탈퇴(파트너)</span>
@@ -77,7 +77,7 @@
 	<br>
 	<br>
 
-	<table border="1" width="500px">
+	<table border="1" style="width:500px">
 		<tr>
 			<td><br> <span style="color: green; font-weight: bold;">파트너승인</span>
 				<form action="email">

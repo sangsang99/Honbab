@@ -10,7 +10,7 @@
 	<link href="${pageContext.request.contextPath}/resources/css/header.css?ver=4" rel="stylesheet"/> 
 	<!-- font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.gstatic.com"  />
     <link
       href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;700&family=Nunito+Sans:wght@400;600;700&family=Ramabhadra&display=swap"
       rel="stylesheet"
@@ -43,8 +43,8 @@
           </li>
           <li class="empty">&nbsp;</li>
           <c:if test="${loginUser == null}">
-		  	<li class="user"><a id="join" href="${contextPath }/main/register_form">Join</a></li>
-          	<li class="user"><a id="login" href="${contextPath }/main/login">Login</a></li>
+		  	<li class="user"><a id="join" href="${contextPath }/member/register_form">Join</a></li>
+          	<li class="user"><a id="login" href="${contextPath }/member/login">Login</a></li>
 		  </c:if>
 		  
 		  <c:if test="${loginUser != null}">

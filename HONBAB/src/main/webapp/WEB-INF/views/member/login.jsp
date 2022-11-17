@@ -10,7 +10,7 @@
 <link href="${contextPath}/resources/css/login.css?ver=4.4" rel="stylesheet" />
 <!-- font -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.gstatic.com" >
 <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;700&family=Nunito+Sans:wght@400;600;700&family=Ramabhadra&display=swap" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
@@ -92,7 +92,6 @@ $(document).ready(function(){
           </ul>
           <input type="submit" value="Login" />
         </form>
-        <!-- <c:import url="../member/naver.jsp" /> -->
       </div>
 
       <div id="business">
