@@ -9,13 +9,21 @@
 
 	<!-- Root Context : defines shared resources visible to all other web components -->
 	<!-- 히카리 컨넥션 풀 빈 등록 -->
-	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
+<!-- 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
 		<property name="driverClassName" value="oracle.jdbc.OracleDriver"/>
 		<property name="jdbcUrl" value="jdbc:oracle:thin:@DBHONBAB_high?TNS_ADMIN=D:/HONBAB/CLOUDWALLET/Wallet_DBHONBAB"/>
 		<property name="username" value="ADMIN"/>
 		<property name="password" value="Honbabhasijo1"/>
 		<property name="maximumPoolSize" value="30"></property>
-	</bean>	
+	</bean>	 -->
+	<!-- LocalDB -->
+	 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
+		<property name="driverClassName" value="oracle.jdbc.OracleDriver"/>
+		<property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521:xe"/>
+		<property name="username" value="HONBAB"/>
+		<property name="password" value="honbab"/>
+		<property name="maximumPoolSize" value="30"></property>
+	</bean>
 	
 	<!-- 히카리 데이터소스 빈 등록 -->
 	<bean id= "ds" class="com.zaxxer.hikari.HikariDataSource">
