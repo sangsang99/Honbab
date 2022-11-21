@@ -15,6 +15,7 @@
 		<result property="gen" column="GENDER" />
 		<result property="views" column="VIEWS" />
 		<result property="id" column="ID" />
+		<result property="likes" column="LIKES" />
 	</resultMap>
 
 	<resultMap type="com.web.honbab.find.dto.FindRepDTO"
@@ -24,6 +25,12 @@
 		<result property="reDate" column="RE_DATE" />
 		<result property="reComent" column="RE_COMENT" />
 		<result property="reId" column="RE_ID" />
+	</resultMap>
+
+	<resultMap type="com.web.honbab.find.dto.FindLikeDTO"
+		id="findLike">
+		<id property="likeId" column="LIKE_ID" />
+		<result property="likeWriteNo" column="LIKE_WRITE_NO" />
 	</resultMap>
 
 	<insert id="findSave">
@@ -101,7 +108,38 @@
 		WHERE
 		WRITE_GROUP = #{writeNo}
 	</delete>
+	<!--ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡLikeㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
+	<select id="findLikeChk" resultType="Integer">
+		SELECT COUNT(*)
+		FROM
+		FIND_LIKE
+		WHERE LIKE_ID = #{likeId}
+		AND LIKE_WRITE_NO = #{writeNo}
+	</select>
 
+	<update id="findLikeUp">
+		UPDATE FIND_BOARD SET
+		LIKES = LIKES + 1
+		WHERE WRITE_NO=#{writeNo}
+	</update>
+
+	<update id="findLikeDown">
+		UPDATE FIND_BOARD SET
+		LIKES = LIKES - 1
+		WHERE WRITE_NO=#{writeNo}
+	</update>
+
+	<insert id="findLikeEnrl">
+		INSERT INTO FIND_LIKE
+		VALUES(#{likeId}, #{writeNo})
+	</insert>
+
+	<delete id="findLikeWtdr">
+		DELETE FROM FIND_LIKE
+		WHERE LIKE_ID = #{likeId}
+		AND
+		LIKE_WRITE_NO = #{writeNo}
+	</delete>
 	<!--ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡSEARCH ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
 	<select id="selectFindCountForOptions" resultType="Integer">
 		SELECT

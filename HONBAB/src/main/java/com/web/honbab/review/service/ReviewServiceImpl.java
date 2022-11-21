@@ -119,6 +119,8 @@ public class ReviewServiceImpl implements ReviewService, SearchSession {
 	@Override
 	public void reviewContent(int writeNo, Model model) {
 		model.addAttribute("reviewContent", mapper.reviewContent(writeNo));
+		
+		//like처리
 		model.addAttribute("likeIt", "no");
 		String likeId = (String) session.getAttribute("loginUser");
 

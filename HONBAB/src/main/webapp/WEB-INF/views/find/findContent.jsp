@@ -70,6 +70,25 @@
  			location.href='delete1?writeGroup='+writeGroup;
  		}
  	}
+ 	
+ 	function isLogin(writeNo) {
+		var user = '${loginUser}';
+		if(user != ''){
+			location.href="${contextPath}/find/findLike?writeNo="+writeNo;
+			return true;	
+		} else{
+			var goLogin = confirm("로그인 하신 유저만 좋아요를 누를 수 있어요. 로그인하러 가실래요?");
+			if(goLogin){
+				location.href="${contextPath}/member/login";
+				return false;
+				
+			}else{
+				location.href="${contextPath}/find/findContent?writeNo="+writeNo;
+				return false;
+			}
+			
+		} 
+	}
 </script>
 </head>
 <body onload="reply_data()">
@@ -91,6 +110,16 @@
 	<div class="writer_wrap">
 		<span class="writer">by. ${findContent.nickName}</span> 
 		<span class="date">${findContent.writeDate}</span><br>
+		<div class="like">
+				<a href="#" onclick="isLogin(${findContent.writeNo})">
+				<c:if test="${likeIt == 'yes'}">
+				<img id="heart" src="${contextPath}/resources/img/heart-fill.svg"></c:if>
+				<c:if test="${likeIt == 'no'}">
+				<img id="heart" src="${contextPath}/resources/img/heart.svg"></c:if>				
+				</a>
+				<span class="age">${findContent.likes}</span>
+					
+			</div>
 		<span class="age">나이 ${findContent.age}</span><br>
 		<span class="gen">성별 ${findContent.gen}</span><br>
 		<span class="reg">지역 ${findContent.region}</span><br>

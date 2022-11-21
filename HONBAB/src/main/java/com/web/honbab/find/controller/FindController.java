@@ -57,6 +57,16 @@ public class FindController implements SearchSession, MemberSession {
 		return "find/findContent";
 	}
 
+	@GetMapping(value = "findLike")
+	public String reviewLike(@RequestParam int writeNo, Model model) {
+
+		int result = fs.findLike(writeNo, model);
+		if (result == 1)
+			return "redirect:findContent?writeNo=" + writeNo;
+		else
+			return "redirect:findContent?writeNo=" + writeNo;
+	}
+	
 	@RequestMapping("findWriteForm")
 	public String findWriteForm(Model model) {
 		return "find/findWriteForm";

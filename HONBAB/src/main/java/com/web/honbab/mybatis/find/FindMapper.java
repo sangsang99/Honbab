@@ -37,4 +37,10 @@ public interface FindMapper {
 	public List<FindRepDTO> searchForOptions(@Param("optRegion") String optRegion, @Param("optGender") String optGender,
 			@Param("btwA") int btwA, @Param("btwB") int btwB, @Param("s") int start, @Param("e") int end);
 
+	public int findLikeChk(@Param("likeId") String likeId, @Param("writeNo") int writeNo);
+	public int findLikeUp(@Param("writeNo") int writeNo);
+	public int findLikeDown(@Param("writeNo") int writeNo);
+	public int findLikeEnrl(@Param("likeId") String likeId, @Param("writeNo") int writeNo);
+	public int findLikeWtdr(@Param("likeId") String likeId, @Param("writeNo") int writeNo);
+
 }

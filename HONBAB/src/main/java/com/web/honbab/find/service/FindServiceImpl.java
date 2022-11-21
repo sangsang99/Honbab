@@ -86,8 +86,46 @@ public class FindServiceImpl implements FindService, SearchSession {
 	@Override
 	public void findContent(int writeNo, Model model) {
 		model.addAttribute("findContent", mapper.findContent(writeNo));
+		
+		// like처리
+		model.addAttribute("likeIt", "no");
+
+		String likeId = (String) session.getAttribute("loginUser");
+
+		if (likeId != null) {
+			int isAlreadyLike = mapper.findLikeChk(likeId, writeNo);
+
+			if ((isAlreadyLike) == 1) {
+				model.addAttribute("likeIt", "yes");
+			}
+		}
+		 
 	}
 
+	@Override
+	public int findLike(int writeNo, Model model) {
+
+		String likeId = (String) session.getAttribute("loginUser");
+		int isAlreadyLike = mapper.findLikeChk(likeId, writeNo);
+		int result = 0;
+
+		// 아직 좋아요를 안눌렀고
+		if ((isAlreadyLike) == 0) {
+			result = mapper.findLikeUp(writeNo);
+			if (result == 1)
+				mapper.findLikeEnrl(likeId, writeNo);
+			// 이미 좋아요를 눌렀고
+		} else if ((isAlreadyLike) == 1) {
+			result = mapper.findLikeDown(writeNo);
+			if (result == 1)
+				mapper.findLikeWtdr(likeId, writeNo);
+		} else
+			System.out.println("알 수 없는 오류");
+
+		// result가 1이면 정상 1이아니면 오류 ..라고 컨트롤러에게 전달
+		return result;
+	}
+	
 	@Override
 	public String findModify(MultipartHttpServletRequest mul, HttpServletRequest request) {
 		FindDTO dto = new FindDTO();

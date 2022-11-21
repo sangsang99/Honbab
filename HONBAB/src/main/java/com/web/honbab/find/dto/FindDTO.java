@@ -14,6 +14,19 @@ public class FindDTO {
 	private String region;
 	private String gen;
 	private String id;
+	private int likes;
+	
+	public int getLikes() {
+		return likes;
+	}
+
+	public void setLikes(int likes) {
+		this.likes = likes;
+	}
+
+	public void setWriteDate(String writeDate) {
+		this.writeDate = writeDate;
+	}
 
 	public int getWriteNo() {
 		return writeNo;
