@@ -10,6 +10,8 @@ public interface ChallengeService {
 	public String challengeSave(MultipartHttpServletRequest mul, HttpServletRequest request);
 	
 	public void challengeView(int writeNo, Model model);
+	
+	public int challengeLike(int writeNo, Model model);
 
 	public void challengeAllList(Model model, int num);
 	

@@ -48,6 +48,16 @@ public class ChallengeController implements MemberSession {
 
 		return "challenge/challengeView";
 	}
+	
+	@GetMapping(value = "challengeLike")
+	public String challengeLike(@RequestParam int writeNo, Model model) {
+
+		int result = cs.challengeLike(writeNo, model);
+		if (result == 1)
+			return "redirect:challengeView?writeNo=" + writeNo;
+		else
+			return "redirect:challengeView?writeNo=" + writeNo;
+	}
 
 	@RequestMapping(value = "challengeAllList")
 	public String challengeAllList(Model model,

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,9 +15,10 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import com.web.honbab.aacommon.service.CommonService;
 import com.web.honbab.challenge.dto.ChallengeDTO;
 import com.web.honbab.mybatis.challenge.ChallengeMapper;
+import com.web.honbab.session.name.MemberSession;
 
 @Service
-public class ChallengeServiceImpl implements ChallengeService {
+public class ChallengeServiceImpl implements ChallengeService, MemberSession {
 
 	@Autowired
 	ChallengeMapper mapper;
@@ -26,6 +28,9 @@ public class ChallengeServiceImpl implements ChallengeService {
 
 	@Autowired
 	CommonService cms;
+	
+	@Autowired
+	private HttpSession session;
 
 	@Override
 	public String challengeSave(MultipartHttpServletRequest mul, HttpServletRequest request) {
@@ -66,6 +71,42 @@ public class ChallengeServiceImpl implements ChallengeService {
 	public void challengeView(int writeNo, Model model) {
 		model.addAttribute("challengeData", mapper.challengeView(writeNo));
 		upView(writeNo);
+		
+		// like처리
+		model.addAttribute("likeIt", "no");
+		String likeId = (String) session.getAttribute("loginUser");
+
+		if (likeId != null) {
+			int isAlreadyLike = mapper.challengeLikeChk(likeId, writeNo);
+
+			if ((isAlreadyLike) == 1) {
+				model.addAttribute("likeIt", "yes");
+			}
+		}
+	}
+	
+	@Override
+	public int challengeLike(int writeNo, Model model) {
+
+		String likeId = (String) session.getAttribute("loginUser");
+		int isAlreadyLike = mapper.challengeLikeChk(likeId, writeNo);
+		int result = 0;
+
+		// 아직 좋아요를 안눌렀고
+		if ((isAlreadyLike) == 0) {
+			result = mapper.challengeLikeUp(writeNo);
+			if (result == 1)
+				mapper.challengeLikeEnrl(likeId, writeNo);
+			// 이미 좋아요를 눌렀고
+		} else if ((isAlreadyLike) == 1) {
+			result = mapper.challengeLikeDown(writeNo);
+			if (result == 1)
+				mapper.challengeLikeWtdr(likeId, writeNo);
+		} else
+			System.out.println("알 수 없는 오류");
+
+		// result가 1이면 정상 1이아니면 오류 ..라고 컨트롤러에게 전달
+		return result;
 	}
 
 	@Override

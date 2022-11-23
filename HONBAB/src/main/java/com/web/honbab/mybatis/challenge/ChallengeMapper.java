@@ -47,4 +47,14 @@ public interface ChallengeMapper {
 
 	public List<ChallengeDTO> searchLevelNine(@Param("keyword") String keyword, @Param("level") int level);
 
+	public int challengeLikeChk(@Param("likeId") String likeId, @Param("writeNo") int writeNo);
+
+	public int challengeLikeUp(@Param("writeNo") int writeNo);
+
+	public void challengeLikeEnrl(@Param("likeId")String likeId, @Param("writeNo") int writeNo);
+
+	public int challengeLikeDown(@Param("writeNo") int writeNo);
+
+	public void challengeLikeWtdr(@Param("likeId")String likeId, @Param("writeNo") int writeNo);
+
 }
