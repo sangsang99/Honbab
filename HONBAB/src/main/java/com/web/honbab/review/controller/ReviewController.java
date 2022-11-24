@@ -20,10 +20,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.web.honbab.review.dto.ReviewLikeDTO;
 import com.web.honbab.review.dto.ReviewRepDTO;
 import com.web.honbab.review.service.ReviewFileService;
 import com.web.honbab.review.service.ReviewService;
@@ -127,14 +129,30 @@ public class ReviewController implements MemberSession, SearchSession {
 		return rs.getRepList(writeNo);
 	}
 
-	@GetMapping(value = "reviewLike")
-	public String reviewLike(@RequestParam int writeNo, Model model) {
-
-		int result = rs.reviewLike(writeNo, model);
-		if (result == 1)
-			return "redirect:reviewContent?writeNo=" + writeNo;
+	@RequestMapping(value = "reviewLike/{writeNo}", method = RequestMethod.GET)
+	@ResponseBody
+	public String reviewLike(ReviewLikeDTO likeDTO, @PathVariable int writeNo) {
+		int res = rs.reviewLike(writeNo);
+		if(res == 1)
+			likeDTO.setIsLike("yes");
+		else if(res == 0)
+			likeDTO.setIsLike("no");
 		else
-			return "redirect:reviewContent?writeNo=" + writeNo;
+			System.out.println("무결성 오류");
+		return likeDTO.getIsLike();
+	}
+	
+	@RequestMapping(value = "reviewLikeLoad/{writeNo}", method = RequestMethod.GET)
+	@ResponseBody
+	public String reviewLikeLoad(ReviewLikeDTO likeDTO, @PathVariable int writeNo) {
+		int res = rs.reviewLikeLoad(writeNo);
+		if(res == 1)
+			likeDTO.setIsLike("yes");
+		else if(res == 0)
+			likeDTO.setIsLike("no");
+		else
+			System.out.println("무결성 오류 : " + res);
+		return likeDTO.getIsLike();
 	}
 
 	@GetMapping(value = "search")

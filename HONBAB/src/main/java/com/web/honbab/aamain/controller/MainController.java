@@ -27,6 +27,11 @@ public class MainController {
 		return "home";
 	}
 
+	@RequestMapping(value = "jstest")
+	public String jstest(Model model) {
+		return "jstest";
+	}
+
 	@RequestMapping(value = "index")
 	public String defalutMainIndex(Model model) {
 		rs.reviewBestList(model);

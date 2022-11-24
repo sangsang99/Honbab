@@ -120,19 +120,61 @@ public class ReviewServiceImpl implements ReviewService, SearchSession {
 	public void reviewContent(int writeNo, Model model) {
 		model.addAttribute("reviewContent", mapper.reviewContent(writeNo));
 		
-		//like처리
-		model.addAttribute("likeIt", "no");
+	}
+	
+	@Override
+	public int reviewLikeLoad(int writeNo) {
+		//like처리 : 1=좋아요, 0=안좋아요, else=오류
+		int isLike = -1; 
+		
 		String likeId = (String) session.getAttribute("loginUser");
 
 		if (likeId != null) {
 			int isAlreadyLike = mapper.reviewLikeChk(likeId, writeNo);
 
 			if ((isAlreadyLike) == 1) {
-				model.addAttribute("likeIt", "yes");
+				return isLike = 1;
+			} else if((isAlreadyLike) == 0){
+				return isLike = 0;
+			} else {
+				System.out.println("무결성 오류 from isAlreadyLike : " + isAlreadyLike);
+				return isLike;
 			}
+		} else {
+			return isLike = 0;
 		}
+		
+		
 	}
+	
+	@Override
+	public int reviewLike(int writeNo) {
 
+		String likeId = (String) session.getAttribute("loginUser");
+		int isAlreadyLike = mapper.reviewLikeChk(likeId, writeNo);
+		int result = 0;
+		int isLike = -1;
+		
+		// 아직 좋아요를 안눌렀고
+		if ((isAlreadyLike) == 0) {
+			result = mapper.reviewLikeUp(writeNo);
+			if (result == 1)
+				mapper.reviewLikeEnrl(likeId, writeNo);
+				isLike = 1;
+		// 이미 좋아요를 눌렀고
+		} else if ((isAlreadyLike) == 1) {
+			result = mapper.reviewLikeDown(writeNo);
+			if (result == 1)
+				mapper.reviewLikeWtdr(likeId, writeNo);
+				isLike = 0;
+		// 오류
+		} else
+			System.out.println("DB 무결성 오류  : " + isAlreadyLike );
+
+		// isLike가 1이면 좋아요누름 0이면 좋아요취소 ..라고 컨트롤러에게 전달
+		return isLike;
+	}
+	
 	@Override
 	public void upViews(int writeNo) {
 		mapper.upViews(writeNo);
@@ -166,29 +208,7 @@ public class ReviewServiceImpl implements ReviewService, SearchSession {
 		return mapper.getRepList(writeNo);
 	}
 
-	@Override
-	public int reviewLike(int writeNo, Model model) {
-
-		String likeId = (String) session.getAttribute("loginUser");
-		int isAlreadyLike = mapper.reviewLikeChk(likeId, writeNo);
-		int result = 0;
-
-		// 아직 좋아요를 안눌렀고
-		if ((isAlreadyLike) == 0) {
-			result = mapper.reviewLikeUp(writeNo);
-			if (result == 1)
-				mapper.reviewLikeEnrl(likeId, writeNo);
-			// 이미 좋아요를 눌렀고
-		} else if ((isAlreadyLike) == 1) {
-			result = mapper.reviewLikeDown(writeNo);
-			if (result == 1)
-				mapper.reviewLikeWtdr(likeId, writeNo);
-		} else
-			System.out.println("알 수 없는 오류");
-
-		// result가 1이면 정상 1이아니면 오류 ..라고 컨트롤러에게 전달
-		return result;
-	}
+	
 
 	@Override
 	public void searchReview(Model model, int num) {

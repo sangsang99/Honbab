@@ -29,10 +29,14 @@ public interface ReviewService {
 
 	public void upViews(int writeNo);
 
-	public int reviewLike(int writeNo, Model model);
+	public int reviewLike(int writeNo);
+	
+	public int reviewLikeLoad(int writeNo);
 
 	public void searchReview(Model model, int num);
 
 	public boolean deleteBoard1(int writeGroup);
+
+
 
 }

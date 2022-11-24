@@ -74,28 +74,54 @@
 			}
 		})
 	} 
-
-		
-	function isLogin(writeNo) {
+	function likeLoad(){
+		$.ajax({
+			url: "reviewLikeLoad/" + ${reviewContent.writeNo},
+			type: "GET",
+			success: function(data) {
+				if (data == "yes") {
+					$(`<img src="${contextPath}/resources/img/heart-fill.svg">`).appendTo($('#heart'));
+				}else if (data == "no"){
+					$(`<img src='${contextPath}/resources/img/heart.svg'>`).appendTo($('#heart'));
+				}else {
+					alert("코드가 한순간 빛났지만 아무일도 일어나지 않았습니다.")
+				}
+			}, error:function(){
+				alert("데이터를 가져올 수 없습니다.");
+			}
+		});
+	};
+	
+ 	function like() {
+ 	
+ 		var form;
+		$.ajax({
+			url: "reviewLike/" + ${reviewContent.writeNo},
+			type: "GET",
+			success: function(data){
+				alert("like 저장성공");
+				likeLoad();
+			}, error:function(){
+				alert("문제 발생");
+			}
+		});
+	};
+ 	
+	function isLogin() {
 		var user = '${loginUser}';
 		if(user != ''){
-			location.href="${contextPath}/review/reviewLike?writeNo="+writeNo;
-			return true;	
+			like();
 		} else{
 			var goLogin = confirm("로그인 하신 유저만 좋아요를 누를 수 있어요. 로그인하러 가실래요?");
 			if(goLogin){
-				alert("goLogin true");
-				location.href="${contextPath}/member/login";
-				return false;
-				
+				location.href="${contextPath}/member/login";				
 			}else{
-				alert("goLogin false");
-				location.href="${contextPath}/review/reviewContent?writeNo="+writeNo;
-				return false;
-			}
-			
-		} 
+				location.href="${contextPath}/review/reviewContent?writeNo="+${reviewContent.writeNo};
+			}			
+		}
 	}
+		 
+
 	
 	function del(writeGroup){
  		var chk = confirm("정말 삭제하실껀가요?");
@@ -103,10 +129,11 @@
  			location.href='delete2?writeGroup='+writeGroup;
  		}
  	}
- 	
+	
+	$(document).ready(likeLoad());
 </script>
 </head>
-<body onload="reply_data()">
+<body onload="window.reply_data()">
 
 	<c:import url="../main/header.jsp" />
 	<!-- write -->
@@ -128,14 +155,22 @@
 				class="date">${reviewContent.writeDate}</span> <span class="view">${reviewContent.views}</span>
 
 			<div class="like">
-				<a href="#" onclick="isLogin(${reviewContent.writeNo})">
-				<c:if test="${likeIt == 'yes'}">
-				<img id="heart" src="${contextPath}/resources/img/heart-fill.svg"></c:if>
-				<c:if test="${likeIt == 'no'}">
-				<img id="heart" src="${contextPath}/resources/img/heart.svg"></c:if>				
-				</a>
-				<span class="age">${reviewContent.likes}</span>
-					
+			
+				<button type="button" class="heart" id="heart" onclick="isLogin()">
+				</button>
+				
+					<%-- <c:if test="${likeIt == 'yes'}">
+					<img id="heart" src="${contextPath}/resources/img/heart-fill.svg"></c:if>
+					<c:if test="${likeIt == 'no'}">
+					<img id="heart" src="${contextPath}/resources/img/heart.svg"></c:if> --%>
+				<span class="age">${reviewContent.likes}, ${likeIt }</span>
+				<!-- <input type="button" value="fetch" onclick="
+					fetch('review/reviewAllList').then(function(response){
+						response.text().then(function(text){
+							document.querySelector('body').innerHTML = text;
+						})
+					})
+				">	 -->
 			</div>
 
 			<c:if test="${reviewContent.imgName == 'None'}">
