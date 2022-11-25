@@ -132,27 +132,15 @@ public class ReviewController implements MemberSession, SearchSession {
 	@RequestMapping(value = "reviewLike/{writeNo}", method = RequestMethod.GET)
 	@ResponseBody
 	public String reviewLike(ReviewLikeDTO likeDTO, @PathVariable int writeNo) {
-		int res = rs.reviewLike(writeNo);
-		if(res == 1)
-			likeDTO.setIsLike("yes");
-		else if(res == 0)
-			likeDTO.setIsLike("no");
-		else
-			System.out.println("무결성 오류");
-		return likeDTO.getIsLike();
+		rs.reviewLike(writeNo);
+		return "{\"result\":true}";
 	}
 	
 	@RequestMapping(value = "reviewLikeLoad/{writeNo}", method = RequestMethod.GET)
 	@ResponseBody
-	public String reviewLikeLoad(ReviewLikeDTO likeDTO, @PathVariable int writeNo) {
-		int res = rs.reviewLikeLoad(writeNo);
-		if(res == 1)
-			likeDTO.setIsLike("yes");
-		else if(res == 0)
-			likeDTO.setIsLike("no");
-		else
-			System.out.println("무결성 오류 : " + res);
-		return likeDTO.getIsLike();
+	public ReviewLikeDTO reviewLikeLoad(ReviewLikeDTO likeDTO, @PathVariable int writeNo) {
+		rs.reviewLikeLoad(writeNo, likeDTO);
+		return likeDTO;
 	}
 
 	@GetMapping(value = "search")

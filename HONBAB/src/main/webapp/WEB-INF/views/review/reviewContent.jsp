@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <title>reviewContent</title>
 <link
-	href="${pageContext.request.contextPath}/resources/css/review/view.css?ver=4"
+	href="${pageContext.request.contextPath}/resources/css/review/view.css?ver=5"
 	rel="stylesheet" />
 <!-- font -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -17,7 +17,9 @@
 	href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;700&family=Nunito+Sans:wght@400;600;700&family=Ramabhadra&display=swap"
 	rel="stylesheet" />
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script type="text/javascript">
+<script type="text/javascript">	
+	$(document).ready(likeLoad());
+
  	//Ajax??
  	function rep() {
  		
@@ -79,13 +81,15 @@
 			url: "reviewLikeLoad/" + ${reviewContent.writeNo},
 			type: "GET",
 			success: function(data) {
-				if (data == "yes") {
-					$(`<img src="${contextPath}/resources/img/heart-fill.svg">`).appendTo($('#heart'));
-				}else if (data == "no"){
-					$(`<img src='${contextPath}/resources/img/heart.svg'>`).appendTo($('#heart'));
+				let html = ""
+				if (data.isLike == "yes") {
+					html = `<img src="${contextPath}/resources/img/heart-fill.svg">`+data.howManyLike
+				}else if (data.isLike == "no"){
+					html = `<img src="${contextPath}/resources/img/heart.svg">`+data.howManyLike
 				}else {
 					alert("코드가 한순간 빛났지만 아무일도 일어나지 않았습니다.")
 				}
+				$("#heart").html(html);
 			}, error:function(){
 				alert("데이터를 가져올 수 없습니다.");
 			}
@@ -93,13 +97,10 @@
 	};
 	
  	function like() {
- 	
- 		var form;
 		$.ajax({
 			url: "reviewLike/" + ${reviewContent.writeNo},
 			type: "GET",
 			success: function(data){
-				alert("like 저장성공");
 				likeLoad();
 			}, error:function(){
 				alert("문제 발생");
@@ -130,7 +131,7 @@
  		}
  	}
 	
-	$(document).ready(likeLoad());
+	
 </script>
 </head>
 <body onload="window.reply_data()">
@@ -155,22 +156,8 @@
 				class="date">${reviewContent.writeDate}</span> <span class="view">${reviewContent.views}</span>
 
 			<div class="like">
-			
 				<button type="button" class="heart" id="heart" onclick="isLogin()">
 				</button>
-				
-					<%-- <c:if test="${likeIt == 'yes'}">
-					<img id="heart" src="${contextPath}/resources/img/heart-fill.svg"></c:if>
-					<c:if test="${likeIt == 'no'}">
-					<img id="heart" src="${contextPath}/resources/img/heart.svg"></c:if> --%>
-				<span class="age">${reviewContent.likes}, ${likeIt }</span>
-				<!-- <input type="button" value="fetch" onclick="
-					fetch('review/reviewAllList').then(function(response){
-						response.text().then(function(text){
-							document.querySelector('body').innerHTML = text;
-						})
-					})
-				">	 -->
 			</div>
 
 			<c:if test="${reviewContent.imgName == 'None'}">

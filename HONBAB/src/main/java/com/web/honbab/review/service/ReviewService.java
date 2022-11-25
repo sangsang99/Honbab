@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.web.honbab.review.dto.ReviewLikeDTO;
 import com.web.honbab.review.dto.ReviewRepDTO;
 
 public interface ReviewService {
@@ -29,9 +30,9 @@ public interface ReviewService {
 
 	public void upViews(int writeNo);
 
-	public int reviewLike(int writeNo);
+	public void reviewLike(int writeNo);
 	
-	public int reviewLikeLoad(int writeNo);
+	public void reviewLikeLoad(int writeNo, ReviewLikeDTO likeDTO);
 
 	public void searchReview(Model model, int num);
 

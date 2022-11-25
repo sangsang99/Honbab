@@ -5,6 +5,7 @@ public class ReviewLikeDTO {
 	private String likeId;
 	private int likeWriteNo;
 	private String isLike;
+	private int howManyLike;
 	
 	public String getIsLike() {
 		return isLike;
@@ -36,6 +37,14 @@ public class ReviewLikeDTO {
 
 	public void setLikeWriteNo(int likeWriteNo) {
 		this.likeWriteNo = likeWriteNo;
+	}
+
+	public int getHowManyLike() {
+		return howManyLike;
+	}
+
+	public void setHowManyLike(int howManyLike) {
+		this.howManyLike = howManyLike;
 	}
 
 }

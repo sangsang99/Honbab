@@ -103,6 +103,11 @@
 		WHERE LIKE_ID = #{likeId}
 		AND LIKE_WRITE_NO = #{writeNo}
 	</select>
+	
+	<select id="howManyLike" resultType="Integer">
+		SELECT LIKES FROM REVIEW_BOARD
+		WHERE WRITE_NO=#{writeNo}
+	</select>
 
 	<update id="reviewLikeUp">
 		UPDATE REVIEW_BOARD SET

@@ -34,6 +34,7 @@ public interface ReviewMapper {
 	public int reviewLikeDown(@Param("writeNo") int writeNo);
 	public int reviewLikeEnrl(@Param("likeId") String likeId, @Param("writeNo") int writeNo);
 	public int reviewLikeWtdr(@Param("likeId") String likeId, @Param("writeNo") int writeNo);
+	public int howManyLike(@Param("writeNo")int writeNo);
 
 	public List<ReviewDTO> searchForTitle(@Param("keyword") String keyword, @Param("s") int startEnd, @Param("e") int startEnd2);
 	public List<ReviewDTO> searchForNick(@Param("keyword") String keyword, @Param("s") int startEnd, @Param("e") int startEnd2);
@@ -41,6 +42,8 @@ public interface ReviewMapper {
 	public int selectReviewCountForNick(@Param("keyword") String keyword);
 
 	public boolean deleteBoard1(int writeGroup);
+
+	
 
 
 

@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import com.web.honbab.aacommon.service.CommonService;
 import com.web.honbab.mybatis.review.ReviewMapper;
 import com.web.honbab.review.dto.ReviewDTO;
+import com.web.honbab.review.dto.ReviewLikeDTO;
 import com.web.honbab.review.dto.ReviewRepDTO;
 import com.web.honbab.session.search.SearchSession;
 
@@ -31,7 +32,7 @@ public class ReviewServiceImpl implements ReviewService, SearchSession {
 
 	@Autowired
 	private CommonService cms;
-
+	
 	@Override
 	public String reviewSave(MultipartHttpServletRequest mul, HttpServletRequest request) {
 		ReviewDTO dto = new ReviewDTO();
@@ -123,9 +124,7 @@ public class ReviewServiceImpl implements ReviewService, SearchSession {
 	}
 	
 	@Override
-	public int reviewLikeLoad(int writeNo) {
-		//like처리 : 1=좋아요, 0=안좋아요, else=오류
-		int isLike = -1; 
+	public void reviewLikeLoad(int writeNo, ReviewLikeDTO likeDTO) {
 		
 		String likeId = (String) session.getAttribute("loginUser");
 
@@ -133,46 +132,42 @@ public class ReviewServiceImpl implements ReviewService, SearchSession {
 			int isAlreadyLike = mapper.reviewLikeChk(likeId, writeNo);
 
 			if ((isAlreadyLike) == 1) {
-				return isLike = 1;
-			} else if((isAlreadyLike) == 0){
-				return isLike = 0;
-			} else {
+				likeDTO.setIsLike("yes");
+			}else if((isAlreadyLike) == 0){
+				likeDTO.setIsLike("no");
+			}else {
 				System.out.println("무결성 오류 from isAlreadyLike : " + isAlreadyLike);
-				return isLike;
-			}
+			}		
 		} else {
-			return isLike = 0;
-		}
-		
-		
+			likeDTO.setIsLike("no");
+		}	
+		likeDTO.setHowManyLike(mapper.howManyLike(writeNo));
 	}
 	
 	@Override
-	public int reviewLike(int writeNo) {
+	public void reviewLike(int writeNo) {
 
 		String likeId = (String) session.getAttribute("loginUser");
 		int isAlreadyLike = mapper.reviewLikeChk(likeId, writeNo);
 		int result = 0;
-		int isLike = -1;
 		
 		// 아직 좋아요를 안눌렀고
 		if ((isAlreadyLike) == 0) {
 			result = mapper.reviewLikeUp(writeNo);
 			if (result == 1)
 				mapper.reviewLikeEnrl(likeId, writeNo);
-				isLike = 1;
+
 		// 이미 좋아요를 눌렀고
 		} else if ((isAlreadyLike) == 1) {
 			result = mapper.reviewLikeDown(writeNo);
 			if (result == 1)
 				mapper.reviewLikeWtdr(likeId, writeNo);
-				isLike = 0;
-		// 오류
-		} else
-			System.out.println("DB 무결성 오류  : " + isAlreadyLike );
 
-		// isLike가 1이면 좋아요누름 0이면 좋아요취소 ..라고 컨트롤러에게 전달
-		return isLike;
+		// 오류
+		} else {
+			System.out.println("DB 무결성 오류  : " + isAlreadyLike );
+			
+		}
 	}
 	
 	@Override
