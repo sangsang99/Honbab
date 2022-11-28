@@ -131,7 +131,7 @@ public class ReviewController implements MemberSession, SearchSession {
 
 	@RequestMapping(value = "reviewLike/{writeNo}", method = RequestMethod.GET)
 	@ResponseBody
-	public String reviewLike(ReviewLikeDTO likeDTO, @PathVariable int writeNo) {
+	public String reviewLike(@PathVariable int writeNo) {
 		rs.reviewLike(writeNo);
 		return "{\"result\":true}";
 	}

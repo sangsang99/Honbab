@@ -125,10 +125,6 @@ public class ChallengeServiceImpl implements ChallengeService, MemberSession {
 		model.addAttribute("allCount", allCount); // 작성된 글의 총 갯수
 		model.addAttribute("repeat", repeat); // 마지막 페이지 번호
 		model.addAttribute("challengeList", mapper.challengeAllList(start, end));
-		// System.out.println(pageLetter);
-		System.out.println("현재 페이지 " + currentPg);
-		System.out.println("총 글 수 " + allCount);
-		System.out.println("한 페이지 글 수 " + (allCount - ((currentPg - 1) * pageLetter)));
 	}
 
 	@Override
@@ -197,48 +193,9 @@ public class ChallengeServiceImpl implements ChallengeService, MemberSession {
 		String keyword = mul.getParameter("keyword");
 		List<ChallengeDTO> challList = new ArrayList<>();
 
-		switch (level) {
-		case 1:
-			challList = mapper.searchLevelOne(keyword, level);
-			model.addAttribute("challengeList", challList);
-			break;
-		case 2:
-			challList = mapper.searchLevelTwo(keyword, level);
-			model.addAttribute("challengeList", challList);
-			break;
-		case 3:
-			challList = mapper.searchLevelThree(keyword, level);
-			model.addAttribute("challengeList", challList);
-			break;
-		case 4:
-			challList = mapper.searchLevelFour(keyword, level);
-			model.addAttribute("challengeList", challList);
-			break;
-		case 5:
-			challList = mapper.searchLevelFive(keyword, level);
-			model.addAttribute("challengeList", challList);
-			break;
-		case 6:
-			challList = mapper.searchLevelSix(keyword, level);
-			model.addAttribute("challengeList", challList);
-			break;
-		case 7:
-			challList = mapper.searchLevelSeven(keyword, level);
-			model.addAttribute("challengeList", challList);
-			break;
-		case 8:
-			challList = mapper.searchLevelEight(keyword, level);
-			model.addAttribute("challengeList", challList);
-			break;
-		case 9:
-			challList = mapper.searchLevelNine(keyword, level);
-			model.addAttribute("challengeList", challList);
-			break;
-		default:
-			System.out.println("검색 중 오류");
-			break;
-		}
-
+		challList = mapper.searchForLevel(keyword, level);
+		model.addAttribute("challengeList", challList);
+		
 		int currentPg = num;
 		int pageLetter = 8;
 		int allCount = challList.size();

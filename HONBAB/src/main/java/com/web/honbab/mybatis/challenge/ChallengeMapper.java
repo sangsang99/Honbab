@@ -7,6 +7,8 @@ import org.apache.ibatis.annotations.Param;
 import com.web.honbab.challenge.dto.ChallengeDTO;
 
 public interface ChallengeMapper {
+	
+	// 기본 CRUD
 
 	public int challengeWrite(ChallengeDTO dto);
 
@@ -20,6 +22,8 @@ public interface ChallengeMapper {
 
 	public int challengeDelete(int writeNo);
 
+	
+	// 부가기능
 	public int challengePgCount();
 
 	public int upView(int writeNo);
@@ -29,23 +33,10 @@ public interface ChallengeMapper {
 	// 검색
 	public int challengeSearchCount();
 
-	public List<ChallengeDTO> searchLevelOne(@Param("keyword") String keyword, @Param("level") int level);
-
-	public List<ChallengeDTO> searchLevelTwo(@Param("keyword") String keyword, @Param("level") int level);
-
-	public List<ChallengeDTO> searchLevelThree(@Param("keyword") String keyword, @Param("level") int level);
-
-	public List<ChallengeDTO> searchLevelFour(@Param("keyword") String keyword, @Param("level") int level);
-
-	public List<ChallengeDTO> searchLevelFive(@Param("keyword") String keyword, @Param("level") int level);
-
-	public List<ChallengeDTO> searchLevelSix(@Param("keyword") String keyword, @Param("level") int level);
-
-	public List<ChallengeDTO> searchLevelSeven(@Param("keyword") String keyword, @Param("level") int level);
-
-	public List<ChallengeDTO> searchLevelEight(@Param("keyword") String keyword, @Param("level") int level);
-
-	public List<ChallengeDTO> searchLevelNine(@Param("keyword") String keyword, @Param("level") int level);
+	public List<ChallengeDTO> searchForLevel(@Param("keyword") String keyword, @Param("level") int level);
+	
+	
+	// 좋아요
 
 	public int challengeLikeChk(@Param("likeId") String likeId, @Param("writeNo") int writeNo);
 

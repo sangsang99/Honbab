@@ -91,68 +91,14 @@
 		WHERE CH_LEVEL=#{level} AND TITLE like '%'||#{keyword}||'%'
 	</select>
 
-	<select id="searchLevelOne" resultMap="challenge">
+
+	<select id="searchForLevel" resultMap="challenge">
 		SELECT * FROM
 		LEVEL_CHALLENGE
 		WHERE CH_LEVEL=#{level} AND TITLE like '%'||#{keyword}||'%'
 		ORDER BY WRITE_NO DESC
 	</select>
 
-	<select id="searchLevelTwo" resultMap="challenge">
-		SELECT * FROM
-		LEVEL_CHALLENGE
-		WHERE CH_LEVEL=#{level} AND TITLE like '%'||#{keyword}||'%'
-		ORDER BY WRITE_NO DESC
-	</select>
-
-	<select id="searchLevelThree" resultMap="challenge">
-		SELECT * FROM
-		LEVEL_CHALLENGE
-		WHERE CH_LEVEL=#{level} AND TITLE like '%'||#{keyword}||'%'
-		ORDER BY WRITE_NO DESC
-	</select>
-
-	<select id="searchLevelFour" resultMap="challenge">
-		SELECT * FROM
-		LEVEL_CHALLENGE
-		WHERE CH_LEVEL=#{level} AND TITLE like '%'||#{keyword}||'%'
-		ORDER BY WRITE_NO DESC
-	</select>
-
-	<select id="searchLevelFive" resultMap="challenge">
-		SELECT * FROM
-		LEVEL_CHALLENGE
-		WHERE CH_LEVEL=#{level} AND TITLE like '%'||#{keyword}||'%'
-		ORDER BY WRITE_NO DESC
-	</select>
-
-	<select id="searchLevelSix" resultMap="challenge">
-		SELECT * FROM
-		LEVEL_CHALLENGE
-		WHERE CH_LEVEL=#{level} AND TITLE like '%'||#{keyword}||'%'
-		ORDER BY WRITE_NO DESC
-	</select>
-
-	<select id="searchLevelSeven" resultMap="challenge">
-		SELECT * FROM
-		LEVEL_CHALLENGE
-		WHERE CH_LEVEL=#{level} AND TITLE like '%'||#{keyword}||'%'
-		ORDER BY WRITE_NO DESC
-	</select>
-
-	<select id="searchLevelEight" resultMap="challenge">
-		SELECT * FROM
-		LEVEL_CHALLENGE
-		WHERE CH_LEVEL=#{level} AND TITLE like '%'||#{keyword}||'%'
-		ORDER BY WRITE_NO DESC
-	</select>
-
-	<select id="searchLevelNine" resultMap="challenge">
-		SELECT * FROM
-		LEVEL_CHALLENGE
-		WHERE CH_LEVEL=#{level} AND TITLE like '%'||#{keyword}||'%'
-		ORDER BY WRITE_NO DESC
-	</select>
 	<!--ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡLIKE ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
 	<select id="challengeLikeChk" resultType="Integer">
 		SELECT COUNT(*)

@@ -129,9 +129,7 @@
 				</c:if>
 			</div>
 		</c:if>
-		
-	
-		
+			
 	</main>
 
 	<!-- footer -->
