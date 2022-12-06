@@ -6,3 +6,5 @@ public interface SearchSession {
 	public String SEARCHOPTION2 = "searchOption2";
 	public String SEARCHOPTION3 = "searchOption3";
 }
+
+//git 연동 테스트
