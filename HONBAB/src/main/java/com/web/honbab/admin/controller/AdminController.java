@@ -47,4 +47,5 @@ public class AdminController implements AdminSession {
 		return "member/info";
 	}
 
+
 }

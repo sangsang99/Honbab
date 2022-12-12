@@ -31,7 +31,9 @@
 		}
 	}
 	
-	
+	function goBizRegister() {
+		location.href = "${contextPath}/member/bizRegister_form";
+	}
 </script>
 </head>
 <body>
@@ -84,10 +86,13 @@
 					<br> -파트너 이메일 전송(가입 승인)- <input type="email" name="email"
 						placeholder="이메일 주소입력"><br> <br>
 					<button type="submit" name="submit">승인 메일 전송</button>
+					<input type="button" value="파트너 정보 등록" onclick="goBizRegister();">
 					<br> <br>
-				</form></td>
+			</form></td>
 		</tr>
 	</table>
+	
+	
 	
 
 </div>

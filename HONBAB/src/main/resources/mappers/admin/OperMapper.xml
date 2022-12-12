@@ -94,17 +94,17 @@
 		INSERT ALL
 		<foreach collection="list" item="adList" index="index"
 			separator=" " close="SELECT * FROM DUAL">
-			INTO AD_MANAGE VALUES (#{adList.adNo}, #{adList.adWriteNo})
+			INTO ADMIN_MANAGE VALUES (#{adList.adNo}, #{adList.adWriteNo})
 		</foreach>
 	</insert>
 
 	<delete id="beforeDeleteAD">
-		DELETE FROM AD_MANAGE
+		DELETE FROM ADMIN_MANAGE
 	</delete>
 
 	<select id="promoList" resultMap="promotionAD">
 		SELECT * FROM PROMO_BOARD PB,
-		AD_MANAGE AD
+		ADMIN_MANAGE AD
 		WHERE PB.WRITE_NO = AD.AD_WRITE_NO
 		ORDER BY AD.AD_NO
 	</select>

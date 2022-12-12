@@ -50,4 +50,14 @@ public class MainController {
 	public String goAdmin(Model model) {
 		return "admin/ADMIndex";
 	}
+	
+	@RequestMapping(value = "juso")
+	public String jusoAPI() {
+		return "juso/Sample";
+	}
+	
+	@RequestMapping(value = "juso/jusoPopup")
+	public String jusoPopup() {
+		return "juso/jusoPopup";
+	}
 }
