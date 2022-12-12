@@ -3,23 +3,33 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath }"/> 
 
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta charset="UTF-8">
 <title>buisness Join</title>
-
+<!-- FONT START-->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com"  />
 <link
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Nunito+Sans:wght@400;600;700&display=swap"
 	rel="stylesheet" />
-<link href="${pageContext.request.contextPath}/resources/css/home.css?ver=4" rel="stylesheet"/> 
-<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-<script type="text/javascript">
-$.getScript( '../resources/js/register.js');
+<!-- FONT END-->
+
+<!-- 주소 API START-->
+<script type="text/javascript"> 
+function goPopup(){
+	var pop = window.open("../juso/jusoPopup","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 0
+}
+
+function jusoCallBack(roadFullAddr, roadAddrPart1,addrDetail,roadAddrPart2,engAddr, jibunAddr, zipNo, admCd, rnMgtSn, bdMgtSn,detBdNmList,bdNm,bdKdcd,siNm,sggNm,emdNm,liNm,rn,udrtYn,buldMnnm,buldSlno,mtYn,lnbrMnnm,lnbrSlno,emdNo){
+		document.bizRegister.roadFullAddr.value = roadFullAddr;
+}
 </script>
 
+<link href="${pageContext.request.contextPath}/resources/css/admin/home.css?ver=1" rel="stylesheet"/> 
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<!-- 주소 API END-->
 <style type="text/css">
 body>.join_form_wrap {
 	width: 800px;
@@ -30,14 +40,7 @@ footer{
 	position : absolute;
 	bottom : 0;
 	}
-li>#gender{
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	vertical-align: baseline;
-	list-style: none;
-}
+
 </style> 
 </head>
 <body>
@@ -46,7 +49,7 @@ li>#gender{
 	</div>
 	<div class="join_form_wrap">
 	<form action="{contextPath}/member/bizRegister" method="post" name="bizRegister" id="bizRegister">
-			<ul>
+			<ul class="join_form_wrap">
 				<li>
 					<span class="index">아이디</span>
 					<input type="text" id="id" name="id" placeholder="아이디를 입력하세요.">
@@ -71,9 +74,10 @@ li>#gender{
 					<span class="index">전화번호</span>
 					<input type="tel" id="tel" name="tel" placeholder="숫자만 입력하세요.">
 				</li>
-				<li>
-					<span class="index">거주지</span>
-					<c:import url="../member/region.jsp"/>
+				<li class="callBackDiv">
+					<span class="index">식당위치</span>
+					<input type="text" id="roadFullText" name="roadFullAddr">
+					<input type="button" id="FullAddrBtn" onClick="goPopup();" value="주소검색"/>				
 				</li>
 				<li>
 					<span class="index">이메일</span>

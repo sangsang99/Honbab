@@ -32,7 +32,7 @@
 	}
 	
 	function goBizRegister() {
-		location.href = "${contextPath}/member/bizRegister_form";
+		location.href = "${contextPath}/member/bRegister_form";
 	}
 </script>
 </head>

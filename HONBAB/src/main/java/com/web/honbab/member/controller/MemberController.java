@@ -115,7 +115,7 @@ public class MemberController implements MemberSession, AdminSession {
 		return "member/register";
 	}
 
-	@RequestMapping("/bizRegister_form")
+	@RequestMapping("/bRegister_form")
 	public String bizRegisterForm() {
 		return "member/bizRegister";
 	}
