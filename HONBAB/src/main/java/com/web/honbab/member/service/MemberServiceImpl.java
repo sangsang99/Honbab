@@ -52,9 +52,9 @@ public class MemberServiceImpl implements MemberService, MemberSession {
 	}
 
 	@Override
-	public int register(MemberDTO member) {
+	public int join(MemberDTO member) {
 		try {
-			return mapper.register(member);
+			return mapper.join(member);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return 0;

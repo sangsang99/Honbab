@@ -28,7 +28,7 @@
 		id=#{id}
 	</select>
 
-	<insert id="register">
+	<insert id="join">
 		insert into USER_JOIN values(#{id}, #{pw}, #{name},
 		#{nickName}, #{tel}, #{region}, #{gender}, #{email})
 	</insert>

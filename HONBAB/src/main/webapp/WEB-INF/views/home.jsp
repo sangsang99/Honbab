@@ -4,9 +4,10 @@
 <c:set var="contextPath" value="${pageContext.request.contextPath }" />
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8" />
-<title>write form</title>
+<title>home</title>
 <!-- font -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" />
@@ -14,32 +15,23 @@
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Nunito+Sans:wght@400;600;700&display=swap"
 	rel="stylesheet" />
 
-<script
-	src="${pageContext.request.contextPath}/resources/js/jquery-2.1.3.min.js"></script>
-<script
-	src="${pageContext.request.contextPath}/resources/js/jquery.easing.1.3.js"></script>
-<script
-	src="${pageContext.request.contextPath}/resources/js/jquery.parallax-scroll.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/p5.min.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/sketch.js"></script>
-<script
-	src="${pageContext.request.contextPath}/resources/js/imgSequence?ver=1.js"></script>
+<!-- css -->
 <link
 	href="${pageContext.request.contextPath}/resources/css/home.css?ver=4"
 	rel="stylesheet" />
+	
+<!-- jQuery -->
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-<script type="text/javascript">
-	$.getScript('./resources/js/imgSequence.js');
-</script>
 </head>
+
 <body>
 	<!-- 출처:https://www.youtube.com/watch?v=b9EEKpj7U6k -->
-	<!-- <div class="container" ></div> -->
+	<!-- 접시 회전하는 부분 -->
 	<section class="sequence">
 		<div class="img-sequence"
 			data-parallax='{"y":1250,  "from-scroll":0, "distance":1250, "smoothness":0}'>
-			<a href="${contextPath}/index"><canvas width="1024" height="768"
-					class="screen" id="screen"></canvas></a>
+			<a href="${contextPath}/index">
+			<canvas width="1024" height="768" class="screen" id="screen"></canvas></a>
 		</div>
 	</section>
 
@@ -49,8 +41,9 @@
 
 	<section class="sequence"></section>
 	<!-- 여기까지 -->
+	
+	<!-- LOGIN : 페이지이동 / JOIN : 스크롤이동 -->
 	<section class="sequence">
-		<!-- 로그인 / 회원가입 묻는 창 -->
 		<div class="login_join_view">
 			<header>&nbsp;</header>
 			<div class="login_join">
@@ -59,9 +52,9 @@
 			</div>
 		</div>
 	</section>
-
+	
+	<!-- home의 회원가입 부분 START-->
 	<section class="sequence">
-		<!-- 회원가입 페이지 -->
 		<div class="join_view">
 			<aside>
 				<div class="aside_wrap">
@@ -81,37 +74,42 @@
 					<span>HONBAB</span>
 				</div>
 			</aside>
-<!-- 로그인 폼 import 하기 ??  -->
+			
+
 			<main class="join">
 				<div class="join_form_wrap">
-					<form class="join_form">
+					<form class="join_form" action='${contextPath}/member/join'>
 						<ul>
-							<li><span class="index">Id*</span> <input type="text"
+							<li><span class="index">Id*</span> <input type="text" id="id" name="id"
 								placeholder="아이디를 입력하세요." /></li>
-							<li><span class="index">Password*</span> <input
+							<li><span class="index">Password*</span> <input id="pw" name="pw"
 								type="password" placeholder="비밀번호를 입력하세요." /></li>
-							<li><span class="index">Password*</span> <input
+							<li><span class="index">Password*</span> <input id="repw" name="repw"
 								type="password" placeholder="비밀번호를 재입력하세요." /></li>
-							<li><span class="index">Name*</span> <input type="text"
+							<li><span class="index">Name*</span> <input type="text" id="name" name="name"
 								placeholder="이름을 입력하세요." /></li>
-							<li><span class="index">NickName*</span> <input type="text"
+							<li><span class="index">NickName*</span> <input type="text" id="nickName" name="nickName"
 								placeholder="별칭? 별명? 뭐든 입력하세요." /></li>
-							<li><span class="index">Tel*</span> <input type="tel"
+							<li><span class="index">Tel*</span> <input type="tel" id="tel" name="tel"
 								placeholder="전화번호를 입력하세요." /></li>
-							<li><span class="index">Region*</span> <input type="text"
-								placeholder="거주 지역을 선택해주세요." /></li>
-							<li><span class="index">Gender*</span> <input type="text"
-								placeholder="성별을 선택해주세요." /></li>
-							<li><span class="index">Email*</span> <input type="email"
+							<li><span class="index">Email*</span> <input type="email" id="email" name="email"
 								placeholder="이메일 주소를 입력해주세요." /></li>
+							<li><span class="index">Region*</span> <c:import
+									url="./member/region.jsp" /></li>
+							<li><span class="index">Gender*</span> <select id="gender"
+								name="gender" size="1">
+									<option value="">-선택하세요-</option>
+									<option value="m">남자</option>
+									<option value="f">여자</option>
+							</select></li>
 						</ul>
-						<input type="submit" value="Join"
-							onclick="location.href='${contextPath}/member/login'" />
+						<input type="submit" value="Join"/>
 					</form>
 				</div>
 			</main>
 		</div>
 	</section>
+	<!-- 회원가입 부분 END -->
 
 	<!-- 사장님 회원가입 이메일 제출 -->
 	<div class="biz_join_view">
@@ -133,14 +131,12 @@
 		<c:import url="main/footer.jsp"></c:import>
 	</div>
 
-	<!-- javascript -->
-	<script src="script/jquery-2.1.3.min.js"></script>
-	<script src="script/jquery.easing.1.3.js"></script>
-	<script src="script/jquery.parallax-scroll.js"></script>
-	<script src="script/p5.min.js"></script>
-	<script src="script/sketch.js"></script>
-	<script src="script/imgSequence.js"></script>
+	<!-- 접시, 페이지 이동 javascript -->
+	<script src="${pageContext.request.contextPath}/resources/js/jquery-2.1.3.min.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/jquery.easing.1.3.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/jquery.parallax-scroll.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/p5.min.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/imgSequence.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/writeForm.js"></script>
 </body>
-<script
-	src="${pageContext.request.contextPath}/resources/js/writeForm.js"></script>
 </html>

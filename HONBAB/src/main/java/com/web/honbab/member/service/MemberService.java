@@ -14,7 +14,7 @@ public interface MemberService {
 
 	public void info(String id, Model model);
 
-	public int register(MemberDTO member);
+	public int join(MemberDTO member);
 
 	public String memberDelete(String id, HttpServletRequest request);
 

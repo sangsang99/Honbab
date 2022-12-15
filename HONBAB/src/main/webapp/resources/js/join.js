@@ -75,5 +75,5 @@ function joinform_check() {
 	};
 
   //입력 값 전송
-  document.getElementById('register_form').submit(); //유효성 검사의 포인트   
+  document.getElementById('join_form').submit(); //유효성 검사의 포인트   
 };

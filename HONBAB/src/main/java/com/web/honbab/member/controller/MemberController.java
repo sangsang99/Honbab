@@ -110,9 +110,9 @@ public class MemberController implements MemberSession, AdminSession {
 		return "member/info";
 	}
 
-	@RequestMapping("/register_form")
-	public String register_form() {
-		return "member/register";
+	@RequestMapping("/join_form")
+	public String join_form() {
+		return "member/join";
 	}
 
 	@RequestMapping("/bRegister_form")
@@ -120,13 +120,14 @@ public class MemberController implements MemberSession, AdminSession {
 		return "member/bizRegister";
 	}
 	
-	@RequestMapping("/register")
-	public String register(MemberDTO member) {
-		int result = ms.register(member);
+	@RequestMapping("join")
+	public String join(MemberDTO member) {
+		System.out.println(member.getId());
+		int result = ms.join(member);
 		if (result == 1) {
 			return "redirect:login";
 		}
-		return "redirect:register_form";
+		return "redirect:join_form";
 	}
 
 	@GetMapping("delete")
