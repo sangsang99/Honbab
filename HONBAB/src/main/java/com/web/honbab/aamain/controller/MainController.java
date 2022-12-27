@@ -22,11 +22,11 @@ public class MainController {
 
 	// "http://localhost:8080/honbab/" 으로 (firstView) 들어가면 나오는 것
 	// 접시페이지
-	@RequestMapping(value = "/")
+/*	@RequestMapping(value = "/")
 	public String defalutMain(Model model) {
 		return "home";
 	}
-
+*/
 	@RequestMapping(value = "jstest")
 	public String jstest(Model model) {
 		return "jstest";
@@ -60,4 +60,10 @@ public class MainController {
 	public String jusoPopup() {
 		return "juso/jusoPopup";
 	}
+	
+	@RequestMapping(value = "/")
+	public String bootTest() {
+		return "boot";
+	}
+	
 }

@@ -112,6 +112,8 @@ public class OperController implements AdminSession {
 	public List<ReviewRepDTO> replyData(@PathVariable int writeNo) {
 		return os.getRepList(writeNo);
 	}
+	
+
 
 	@PostMapping(value = "setAD")
 	public String setAD(HttpServletRequest request, Model model,
