@@ -663,7 +663,7 @@ progress {
 }
 @media (min-width: 1400px) {
   .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
-    max-width: 1320px;
+    max-width: 1200px;
   }
 }
 .row {
@@ -3240,7 +3240,7 @@ textarea.form-control-lg {
 }
 
 .btn-dark {
-  color: #fff;
+  color: white;
   background-color: #212529;
   border-color: #212529;
 }
@@ -11302,6 +11302,7 @@ p {
 
 .page-section {
   padding: 6rem 0;
+  width: auto;
 }
 .page-section h2.section-heading, .page-section .section-heading.h2 {
   font-size: 2.5rem;

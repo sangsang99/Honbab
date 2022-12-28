@@ -34,7 +34,7 @@
 				<div class="text">Best Review</div>
 			</aside>
 
-			<section>
+			<section class="best_section">
 				<ul class="index" id="first">
 					<li class="no">NO</li>
 					<li class="title">TITLE</li>
