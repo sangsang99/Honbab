@@ -13,51 +13,46 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Nunito+Sans:wght@400;600;700&display=swap"
 	rel="stylesheet" />
+	
+<!-- CSS Core -->
 <link href="${pageContext.request.contextPath}/resources/css/home.css?ver=4" rel="stylesheet"/> 
+
+<!-- jQuery -->
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+<!-- radio btn -->
 <script type="text/javascript">
 $.getScript( '../resources/js/join.js');
 
-
-
-
-
 $(document).ready(function(){
-	var user = true; 
-	if(user = true){
-		$(".biz_join_form_wrap").hide(); 
-		user = false;
-	}
-	
-	var biz = document.getElementById('btn_join_biz');
-	var user = document.getElementById('btn_join');
+	$('#biz_join_form_wrap').hide(); 
+	$("input[name='btn_join']").change(function(){
+		if($("input[name='btn_join']:checked").val() == '사업자회원'){
+			$('#biz_join_form_wrap').show();
+			$('#join_form_wrap').hide();
+		}
+		else if($("input[name='btn_join']:checked").val() == '일반회원'){
+			$('#biz_join_form_wrap').hide();
+			$('#join_form_wrap').show();
+		}
+	});
 });
-	
-function btn_listener(event){
-    switch(event.target.id){
-        case 'btn_join_biz':
-	        	$(".biz_join_form_wrap").show(); 		
-	    			$(".join_form_wrap").hide();
-           break;
-        case 'btn_join':
-	        	$(".join_form_wrap").show(); 
-	    			$(".biz_join_form_wrap").hide();
-           break;
-    }
+</script> <!-- radio btn end -->
+
+<!-- 주소 API START-->
+<script type="text/javascript"> 
+function goPopup(){
+	var pop = window.open("../juso/jusoPopup","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 0
 }
 
-
-user.addEventListener('click', btn_listener);
-biz.addEventListener('click', btn_listener);
-
+function jusoCallBack(roadFullAddr, roadAddrPart1,addrDetail,roadAddrPart2,engAddr, jibunAddr, zipNo, admCd, rnMgtSn, bdMgtSn,detBdNmList,bdNm,bdKdcd,siNm,sggNm,emdNm,liNm,rn,udrtYn,buldMnnm,buldSlno,mtYn,lnbrMnnm,lnbrSlno,emdNo){
+		document.bizRegister.roadFullAddr.value = roadFullAddr;
+}
 </script>
 
-<script type="text/javascript">
-$(function() {
-    
-})
+<link href="${pageContext.request.contextPath}/resources/css/admin/home.css?ver=1" rel="stylesheet"/> 
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script> <!-- 주소 API END-->
 
-</script>
 
 <style type="text/css">
 body>.join_form_wrap {
@@ -65,10 +60,13 @@ body>.join_form_wrap {
 	margin: 0 auto;
 	margin-top: 50px;
 }
-footer{
-	position : absolute;
-	bottom : 0;
-	}
+
+body>.biz_join_form_wrap {
+	width: 650px;
+	margin: 0 auto;
+	margin-top: 50px;
+}
+
 li>#gender{
 	margin: 0;
 	padding: 0;
@@ -80,15 +78,17 @@ li>#gender{
 </style> 
 </head>
 <body>
+	<!-- main -->
 	<c:import url="../main/header.jsp"/>
-	<div class="join_form_wrap">
+	
+	<div id="join_form_wrap" class="join_form_wrap">
 		<h1 align="center">회원 가입</h1>
 		<form class="join_form" id="join_form" action="${contextPath}/member/join" method="post">
 			<ul>
 				<li>
 					<span class="index">아이디</span>
 					<input type="text" id="id" name="id" placeholder="아이디를 입력하세요.">
-<!-- 					<button type="button" name="check" onclick="id_check(); return false;">중복확인</button> -->
+			<!-- <button type="button" name="check" onclick="id_check(); return false;">중복확인</button> -->
 				</li>
 				<li>
 					<span class="index">비밀번호</span>
@@ -130,14 +130,14 @@ li>#gender{
 			</ul>
 			<button type="button" name="join" onclick="joinform_check(); return false;"> JOIN</button>
 		</form>
-		<input type="button" id="btn_join_biz"  class="btn_join" value="사장님이신가요?">
 	</div>
 	
 	
 	<!-- 사장님 회원가입 -->
-	<div class="biz_join_form_wrap">
-	<form action="{contextPath}/member/bizRegister" method="post" name="bizRegister" id="bizRegister">
-			<ul class="join_form_wrap">
+	<div id="biz_join_form_wrap" class="join_form_wrap">
+		<h1 align="center">사업자 회원 가입</h1>
+		<form action="${contextPath}/member/bizRegister" method="post" class="join_form" id="join_form">
+			<ul>
 				<li>
 					<span class="index">아이디</span>
 					<input type="text" id="id" name="id" placeholder="아이디를 입력하세요.">
@@ -164,22 +164,31 @@ li>#gender{
 				</li>
 				<li class="callBackDiv">
 					<span class="index">식당위치</span>
-					<input type="text" id="roadFullText" name="roadFullAddr">
-					<input type="button" id="FullAddrBtn" onClick="goPopup();" value="주소검색"/>				
+					<input type="text" id="roadFullText" name="roadFullAddr" width="400px">
+					<input type="button" id="FullAddrBtn" width="100px" onClick="goPopup();" value="주소검색"/>				
 				</li>
 				<li>
 					<span class="index">이메일</span>
 					<input type="text" id="email" name="email" placeholder="이메일을 입력하세요.">
 				</li>
 			</ul>
-			<input type="submit" name="join" value="Register">	
-		</form> 
-		<input type="button" id="btn_join" class="btn_join" value="일반유저 가입">
+			<button type="button" name="join" onclick="joinform_check(); return false;"> Biz-JOIN</button>
+		</form>
 	</div>
 	
-	<footer>
-		<c:import url="../main/footer.jsp"/>
-	</footer>
-</body>
+	<!-- radio btn -->
+    <div class="btn">
+      <label>
+        <span class="mem">일반회원</span>
+        <input type="radio" name="btn_join" value="일반회원" checked="checked"/>
+      </label>
+      <label>
+        <span class="mem">사업자회원</span>
+        <input type="radio" name="btn_join" value="사업자회원"/>
+      </label>
+    </div>
+	
+	<c:import url="../main/footer.jsp"/>
 
+</body>
 </html>

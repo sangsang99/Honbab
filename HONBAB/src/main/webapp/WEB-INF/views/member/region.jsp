@@ -3,9 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title></title>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script type="text/javascript">
 function disabled(){
@@ -110,8 +107,6 @@ $(document).ready(function(){
 		});
 });
 </script>
-</head>
-<body>
 		<select id="city" name="city" size="1">
 			<option value="">-선택하세요-</option>
 			<option value="Seoul">서울</option>
@@ -413,5 +408,4 @@ $(document).ready(function(){
 			<option value="제주 제주시">제주시</option>
 			<option value="제주 서귀포시">서귀포시</option>
 		</select>
-</body>
 </html>
