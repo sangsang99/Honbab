@@ -37,11 +37,14 @@ hr {
 ----------------------------------
 */
 aside {
-  position: relative;
+  position: absolute;
   width: 25%;
-  height: 92vh;
   /* background-color: aliceblue; */
   float: left;
+  top:20%;
+  bottom: 20%;
+  margin-left: 20px;
+  left:13%;
 }
 
 .text {
@@ -67,7 +70,10 @@ aside {
 */
 main {
   width: 75%;
-  height: 92vh;
+  height: 80%;
+  top: 20%;
+  bottom: 20%;
+  right: 0;
   float: right;
   /* background-color: aquamarine; */
 }

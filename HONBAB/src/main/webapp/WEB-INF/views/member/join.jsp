@@ -41,16 +41,15 @@ $(document).ready(function(){
 
 <!-- 주소 API START-->
 <script type="text/javascript"> 
-function goPopup(){
-	var pop = window.open("../juso/jusoPopup","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 0
-}
-
-function jusoCallBack(roadFullAddr, roadAddrPart1,addrDetail,roadAddrPart2,engAddr, jibunAddr, zipNo, admCd, rnMgtSn, bdMgtSn,detBdNmList,bdNm,bdKdcd,siNm,sggNm,emdNm,liNm,rn,udrtYn,buldMnnm,buldSlno,mtYn,lnbrMnnm,lnbrSlno,emdNo){
-		document.bizRegister.roadFullAddr.value = roadFullAddr;
-}
+	function goPopup(){
+		var pop = window.open("../juso/jusoPopup","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 0
+	}
+	
+	function jusoCallBack(roadFullAddr, roadAddrPart1,addrDetail,roadAddrPart2,engAddr, jibunAddr, zipNo, admCd, rnMgtSn, bdMgtSn,detBdNmList,bdNm,bdKdcd,siNm,sggNm,emdNm,liNm,rn,udrtYn,buldMnnm,buldSlno,mtYn,lnbrMnnm,lnbrSlno,emdNo){
+			document.bizRegister.roadFullAddr.value = roadFullAddr;
+	}
 </script>
 
-<link href="${pageContext.request.contextPath}/resources/css/admin/home.css?ver=1" rel="stylesheet"/> 
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script> <!-- 주소 API END-->
 
 
@@ -131,7 +130,7 @@ li>#gender{
 			<button type="button" name="join" onclick="joinform_check(); return false;"> JOIN</button>
 		</form>
 	</div>
-	
+
 	
 	<!-- 사장님 회원가입 -->
 	<div id="biz_join_form_wrap" class="join_form_wrap">
@@ -173,11 +172,11 @@ li>#gender{
 				</li>
 			</ul>
 			<button type="button" name="join" onclick="joinform_check(); return false;"> Biz-JOIN</button>
-		</form>
+		</form>	
 	</div>
 	
 	<!-- radio btn -->
-    <div class="btn">
+    <div class="btn-join">
       <label>
         <span class="mem">일반회원</span>
         <input type="radio" name="btn_join" value="일반회원" checked="checked"/>

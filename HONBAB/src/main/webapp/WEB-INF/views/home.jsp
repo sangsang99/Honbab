@@ -57,6 +57,9 @@
 	<section class="sequence">
 		<div class="join_view">
 			<aside>
+				<div class="honbab">
+					<span>HONBAB</span>
+				</div>
 				<div class="aside_wrap">
 					<div class="text">
 						<span>혼자서도 잘 먹어요</span>
@@ -69,9 +72,6 @@
 							ducimus?
 						</div>
 					</div>
-				</div>
-				<div class="honbab">
-					<span>HONBAB</span>
 				</div>
 			</aside>
 			
@@ -118,19 +118,16 @@
 				<li><span id="biz">사장님이신가요?</span></li>
 				<li><input type="text" id="biz_email"
 					placeholder="회원가입문의 이메일 제출" /></li>
-				<li class="btn"><input type="submit" id="biz_submit" value="제출" />
-				</li>
+				<li><input type="submit" id="biz_submit" value="제출" /></li>	
 			</ul>
-		</div>
-	</div>
-
-	<!-- footer -->
-	<div class="footer">
-		<a><img id="up"
+			<a><img id="up"
 			src="${contextPath}/resources/img/icon/arrow-up.svg"></a>
-		<c:import url="main/footer.jsp"></c:import>
+		</div>
+		
 	</div>
 
+
+	<c:import url="main/footer.jsp"></c:import>
 	<!-- 접시, 페이지 이동 javascript -->
 	<script src="${pageContext.request.contextPath}/resources/js/jquery-2.1.3.min.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/js/jquery.easing.1.3.js"></script>
@@ -138,5 +135,11 @@
 	<script src="${pageContext.request.contextPath}/resources/js/p5.min.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/js/imgSequence.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/js/writeForm.js"></script>
+	
+	<!-- footer -->	
+	<style>.footer{position:static;}</style>
+
+		
+	
 </body>
 </html>
