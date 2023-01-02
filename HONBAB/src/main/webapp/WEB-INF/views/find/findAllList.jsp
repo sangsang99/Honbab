@@ -24,7 +24,7 @@
 	}
 	
 	function upViews(writeNo){
-		location.href="upViews?writeNo=" + writeNo;
+		location.href="${contextPath}/find/upViews?writeNo=" + writeNo;
 	}
 </script>
 </head>

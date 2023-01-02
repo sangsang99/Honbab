@@ -218,7 +218,6 @@
 	</section>
 
 	<c:import url="../main/footer.jsp" />
-
 	<script>
       var plus = document.getElementsByClassName("plus");
       var i;
@@ -235,6 +234,8 @@
         });
       }
     </script>
+    
+    
 
 </body>
 </html>

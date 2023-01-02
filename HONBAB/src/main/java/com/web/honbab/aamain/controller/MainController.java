@@ -4,7 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.web.honbab.admin.service.OperService;
 import com.web.honbab.challenge.service.ChallengeService;
 import com.web.honbab.find.service.FindService;
 import com.web.honbab.review.service.ReviewService;
@@ -20,6 +22,9 @@ public class MainController {
 	@Autowired
 	private ChallengeService cs;
 
+	@Autowired
+	private OperService os;
+	
 	// "http://localhost:8080/honbab/" 으로 (firstView) 들어가면 나오는 것
 	// 접시페이지
 	@RequestMapping(value = "/")
@@ -33,11 +38,12 @@ public class MainController {
 	}
 
 	@RequestMapping(value = "index")
-	public String defalutMainIndex(Model model) {
+	public String defalutMainIndex(Model model,
+			@RequestParam(value = "num", required = false, defaultValue = "1")  int num) {
 		rs.reviewBestList(model);
 		fs.findBestList(model);
 		cs.challengeBestList(model);
-
+		os.promoList(model, num);
 		return "index";
 	}
 

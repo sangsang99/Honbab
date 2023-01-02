@@ -66,11 +66,13 @@ public class MemberController implements MemberSession, AdminSession {
 	}
 
 	@RequestMapping("successLogin")
-	public String successLogin(@RequestParam("id") String id, HttpSession session, Model model) {
+	public String successLogin(@RequestParam("id") String id, HttpSession session, Model model,
+			@RequestParam(value = "num", required = false, defaultValue = "1")  int num) {
 		session.setAttribute(LOGIN, id);
 		rs.reviewBestList(model);
 		fs.findBestList(model);
 		cs.challengeBestList(model);
+		os.promoList(model, num);
 		return "index";
 	}
 

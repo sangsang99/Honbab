@@ -66,8 +66,8 @@
 	                            <img class="img-fluid" src="${contextPath }/resources/assets/img/portfolio/1.jpg" alt="..." />
 	                        </a>
 	                        <div class="portfolio-caption">
-	                            <div class="portfolio-caption-heading">Threads</div>
-	                            <div class="portfolio-caption-subheading text-muted">Illustration</div>
+	                            <div class="portfolio-caption-heading">${promoListAD[0].title }</div>
+	                            <div class="portfolio-caption-subheading text-muted">${promoListAD[0].content }</div>
 	                        </div>
 	                    </div>
 	                </div>
@@ -81,8 +81,14 @@
 	                            <img class="img-fluid" src="${contextPath }/resources/assets/img/portfolio/2.jpg" alt="..." />
 	                        </a>
 	                        <div class="portfolio-caption">
-	                            <div class="portfolio-caption-heading">Explore</div>
-	                            <div class="portfolio-caption-subheading text-muted">Graphic Design</div>
+	                            <div class="portfolio-caption-heading">
+	                            	<c:if test="${promoListAD[1]==none}">NONE</c:if>
+	                            	<c:if test="${promoListAD[1]!=none}">${promoListAD[1].title }</c:if>                        	
+	                            	</div>
+	                            <div class="portfolio-caption-subheading text-muted">
+	                           		<c:if test="${promoListAD[1]==none}">NONE</c:if>
+	                            	<c:if test="${promoListAD[1]!=none}">${promoListAD[1].content }</c:if> 
+	                            </div>
 	                        </div>
 	                    </div>
 	                </div>
@@ -96,8 +102,14 @@
 	                            <img class="img-fluid" src="${contextPath }/resources/assets/img/portfolio/3.jpg" alt="..." />
 	                        </a>
 	                        <div class="portfolio-caption">
-	                            <div class="portfolio-caption-heading">Finish</div>
-	                            <div class="portfolio-caption-subheading text-muted">Identity</div>
+	                            <div class="portfolio-caption-heading">
+		                            <c:if test="${promoListAD[2]==none}">NONE</c:if>
+	                            	<c:if test="${promoListAD[2]!=none}">${promoListAD[2].title }</c:if> 
+	                            </div>
+	                            <div class="portfolio-caption-subheading text-muted">
+									<c:if test="${promoListAD[2]==none}">NONE</c:if>
+	                            	<c:if test="${promoListAD[2]!=none}">${promoListAD[2].content }</c:if> 
+							</div>
 	                        </div>
 	                    </div>
 	                </div>
@@ -111,8 +123,14 @@
 	                            <img class="img-fluid" src="${contextPath }/resources/assets/img/portfolio/4.jpg" alt="..." />
 	                        </a>
 	                        <div class="portfolio-caption">
-	                            <div class="portfolio-caption-heading">Lines</div>
-	                            <div class="portfolio-caption-subheading text-muted">Branding</div>
+	                            <div class="portfolio-caption-heading">
+		                            <c:if test="${promoListAD[3]==none}">NONE</c:if>
+		                           	<c:if test="${promoListAD[3]!=none}">${promoListAD[3].title }</c:if> 
+	                            </div>
+	                            <div class="portfolio-caption-subheading text-muted">
+									<c:if test="${promoListAD[3]==none}">NONE</c:if>
+	                            	<c:if test="${promoListAD[3]!=none}">${promoListAD[3].content }</c:if> 
+								</div>
 	                        </div>
 	                    </div>
 	                </div>
@@ -126,8 +144,14 @@
 	                            <img class="img-fluid" src="${contextPath }/resources/assets/img/portfolio/5.jpg" alt="..." />
 	                        </a>
 	                        <div class="portfolio-caption">
-	                            <div class="portfolio-caption-heading">Southwest</div>
-	                            <div class="portfolio-caption-subheading text-muted">Website Design</div>
+	                            <div class="portfolio-caption-heading">
+	                            	<c:if test="${promoListAD[4]==none}">NONE</c:if>
+		                           	<c:if test="${promoListAD[4]!=none}">${promoListAD[4].title }</c:if> 
+		                        </div>
+	                            <div class="portfolio-caption-subheading text-muted">
+	                            	<c:if test="${promoListAD[4]==none}">NONE</c:if>
+	                            	<c:if test="${promoListAD[4]!=none}">${promoListAD[4].content }</c:if> 
+	                            </div>
 	                        </div>
 	                    </div>
 	                </div>
@@ -141,8 +165,14 @@
 	                            <img class="img-fluid" src="${contextPath }/resources/assets/img/portfolio/6.jpg" alt="..." />
 	                        </a>
 	                        <div class="portfolio-caption">
-	                            <div class="portfolio-caption-heading">Window</div>
-	                            <div class="portfolio-caption-subheading text-muted">Photography</div>
+	                            <div class="portfolio-caption-heading">
+		                            <c:if test="${promoListAD[5]==none}">NONE</c:if>
+		                           	<c:if test="${promoListAD[5]!=none}">${promoListAD[5].title }</c:if> 
+	                            </div>
+	                            <div class="portfolio-caption-subheading text-muted">
+	                            	<c:if test="${promoListAD[5]==none}">NONE</c:if>
+	                            	<c:if test="${promoListAD[5]!=none}">${promoListAD[5].content }</c:if>
+								</div>
 	                        </div>
 	                    </div>
 	                </div>
