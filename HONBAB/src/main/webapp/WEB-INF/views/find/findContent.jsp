@@ -170,8 +170,9 @@
 
 	<!-- footer -->
 	<c:import url="../main/footer.jsp" />
+	<style>.footer{position:static;}</style>
 	
-		    <script>
+	<script>
       var plus = document.getElementsByClassName("plus");
       var i;
 

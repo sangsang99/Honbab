@@ -55,6 +55,6 @@
 			<input type="button" value="글목록" onclick="location.href='${contextPath }/promotion/promoAllList'">
 		</form>
 		</div>
-	
+	<c:import url="../main/footer.jsp" />
 </body>
 </html>

@@ -15,7 +15,7 @@
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Nunito+Sans:wght@400;600;700&display=swap"
 	rel="stylesheet" />
 <link
-	href="${pageContext.request.contextPath}/resources/css/find/allList.css?ver=4"
+	href="${pageContext.request.contextPath}/resources/css/promo/allList.css?ver=4"
 	rel="stylesheet" />
 
 <script type="text/javascript">
@@ -32,10 +32,10 @@
 
 </head>
 <body>
-	<main>
-		<!-- header -->
-		<c:import url="../main/header.jsp" />
 
+	<!-- header -->	
+	<c:import url="../main/header.jsp" />
+	<main>
 		<section>
 			<form id="search" name="saerch"
 				action="${contextPath }/promotion/search" enctype="multipart/form-data"
@@ -54,9 +54,9 @@
 
 		<div class="index_wrap">
 			<ul class="index">
-				<li class="writeNo"><span>NO</span></li>
-				<li class="title"><span>TITLE</span></li>
+				<li class="writeNo"><span>NO</span></li>				
 				<li class="writer"><span>WRITER</span></li>
+				<li class="title"><span>TITLE</span></li>
 				<li class="date"><span>DATE</span></li>
 				<li class="view"><span>VIEWS</span></li>
 			</ul>
@@ -69,13 +69,13 @@
 		<c:forEach var="dto" items="${promoList }">
 			<div class="content_wrap">
 				<ul class="index">
-					<li class="writeNo"><span>${dto.writeNo }</span></li>
+					<li class="writeNo"><span>${dto.writeNo }</span></li>				
+					<li class="writer"><span>${dto.id }</span></li>
 					<li class="title"><a
 						href="${contextPath }/promotion/contentView?writeNo=${dto.writeNo}">${dto.title}</a>
 					</li>
-					<li class="writer"><span>${dto.id }</span></li>
 					<li class="date"><span>${dto.saveDate}</span></li>
-					<li class="view"><span>${dto.hit }</span></li>
+					<li class="view"><span>${dto.hit}</span></li>
 				</ul>
 			</div>
 		</c:forEach>
@@ -114,5 +114,7 @@
 			</div>
 		</c:if>
 	</main>
+	
+	<c:import url="../main/footer.jsp"></c:import>
 </body>
 </html>

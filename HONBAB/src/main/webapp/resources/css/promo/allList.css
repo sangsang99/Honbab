@@ -124,6 +124,8 @@ datalist {
 	height: 30px;
 }
 
+
+
 /*
 ----------------------------------
     input
@@ -251,24 +253,17 @@ li>span {
 }
 
 .writeNo {
-	width: 70px;
+	width: 10%;
 	font-weight: 600;
 }
 
-.lv {
-	width: 50px;
+.title{
+	width: 50%;
 }
 
-.ch_title {
-	margin: 0 20px;
-	width: 470px;
-	overflow: hidden;
-	text-overflow: ellipsis;
-/* 	text-align: left; */
-}
 
 .writer {
-	width: 230px;
+	width: 10%;
 	margin: 0 20px;
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -276,15 +271,12 @@ li>span {
 }
 
 .view {
-	width: 60px;
-	float: right;
+	width: 10%;
 	margin-left: 20px;
 }
 
 .date {
-	width: 150px;
-	margin-left: 20px;
-	float: right;
+	width: 10%;
 }
 
 

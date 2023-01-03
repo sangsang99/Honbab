@@ -141,8 +141,9 @@
 		</c:if>
 	</main>
 
-<!-- footer -->
+	<!-- footer -->
 	<c:import url="../main/footer.jsp" />
+	<style>.footer{position:static;}</style>
 	
 	<script>
       var plus = document.getElementsByClassName("plus");

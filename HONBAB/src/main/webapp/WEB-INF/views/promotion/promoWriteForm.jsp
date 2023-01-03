@@ -139,6 +139,6 @@
 		</div>
 	</main>
 
-
+	<c:import url="../main/footer.jsp" />
 </body>
 </html>
