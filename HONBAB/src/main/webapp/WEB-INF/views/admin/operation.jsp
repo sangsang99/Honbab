@@ -61,8 +61,8 @@ td {
 				adNo[i].disabled = true;
 			}
 		}
-		if (chkCnt > 5) {
-			alert("5개까지만 체크가능");
+		if (chkCnt > 6) {
+			alert("6개까지만 체크가능");
 			obj.checked = false;
 			return false;
 		}
@@ -109,7 +109,7 @@ td {
 		<hr>
 
 		<h2>홍보 순서관리</h2>
-		<p>광고글은 5개까지만 가능합니다</p>
+		<p>광고글은 6개까지만 가능합니다</p>
 		<p>체크박스를 눌러야 number(순서) 설정이 가능합니다[1번이 1순위]</p>
 		<p>제출하는 순간 기존 광고 순서는 삭제되니 신중하게 작성해주세요</p>
 		<div class="scroll">
@@ -130,7 +130,7 @@ td {
 						<td><span>${promo.id }</span></td>
 						<td><span>
 							<input type="checkbox" name="chk" onclick="count_chk(this)" value="${promo.writeNo}">
-							<input type="number" name="adNo" min="1" max="5" disabled></span></td>
+							<input type="number" name="adNo" min="1" max="6" disabled></span></td>
 					</tr>
 					</c:forEach>			
 				</table>

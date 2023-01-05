@@ -217,8 +217,11 @@
 		</c:if>
 	</section>
 
+	<!-- footer -->	
 	<c:import url="../main/footer.jsp" />
-
+	<style>.footer{position:static;}</style>
+	
+	
 	<script>
       var plus = document.getElementsByClassName("plus");
       var i;
@@ -235,6 +238,8 @@
         });
       }
     </script>
+    
+    
 
 </body>
 </html>

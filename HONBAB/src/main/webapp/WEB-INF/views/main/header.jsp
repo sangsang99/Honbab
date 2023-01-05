@@ -37,7 +37,7 @@
             </a>
           </li>
           <li class="board">
-            <a class="eng" id="promotion" href="${contextPath}/promotion/promoADList" onmouseover="this.innerHTML='혼밥 식당 광고'" onmouseout="this.innerHTML='Advertisement'">
+            <a class="eng" id="promotion" href="${contextPath}/promotion/promoAllList" onmouseover="this.innerHTML='혼밥 식당 광고'" onmouseout="this.innerHTML='Advertisement'">
             Advertisement
             </a>
           </li>

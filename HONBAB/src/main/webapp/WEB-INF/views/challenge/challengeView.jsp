@@ -138,7 +138,7 @@
 
 	<!-- footer -->
 	<c:import url="../main/footer.jsp" />
-
+	<style>.footer{position:static;}</style>
 
 </body>
 </html>

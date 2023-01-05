@@ -76,23 +76,6 @@ aside {
 	font-family: "Noto Sans KR", sans-serif;
 }
 
-
-/*
-----------------------------------
-    aside footer
-----------------------------------
-*/
-footer {
-  width: 350px;
-  padding-left: 100px;
-  position: absolute;
-  bottom: 60px;
-}
-
-.innerfooter {
-	float: left;
-}
-
 /*
 ----------------------------------
     main

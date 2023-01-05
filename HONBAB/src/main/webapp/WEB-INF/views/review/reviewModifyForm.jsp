@@ -85,9 +85,6 @@
 				<div>글은 알아서 쓰세요 설명같은 짧은 글임</div>
 			</div>
 		</div>
-		<div class="innerfooter">
-			<c:import url="../main/footer.jsp" />
-		</div>
 	</aside>
 
 	<main>
@@ -136,6 +133,7 @@
 			</form>
 		</div>
 	</main>
-
+	<c:import url="../main/footer.jsp" />
+	
 </body>
 </html>

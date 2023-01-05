@@ -80,7 +80,7 @@
 		<div class="honbab">
 			<span>HONBAB</span>
 		</div>
-		<div class="innerfooter"><c:import url="../main/footer.jsp" /></div>
+		
 	</aside>
 
 	<main>
@@ -144,7 +144,7 @@
 			</div>
 		</div>
 	</main>
-	
 
+	<c:import url="../main/footer.jsp" />
 </body>
 </html>

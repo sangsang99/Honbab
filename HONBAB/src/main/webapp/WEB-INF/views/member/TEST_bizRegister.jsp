@@ -48,7 +48,7 @@ footer{
 		<c:import url="../admin/boardManagement.jsp"></c:import>
 	</div>
 	<div class="join_form_wrap">
-	<form action="{contextPath}/member/bizRegister" method="post" name="bizRegister" id="bizRegister">
+	<form action="${contextPath}/member/bizRegister" method="post" name="bizRegister" id="bizRegister">
 			<ul class="join_form_wrap">
 				<li>
 					<span class="index">아이디</span>

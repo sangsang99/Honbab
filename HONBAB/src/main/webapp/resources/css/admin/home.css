@@ -22,7 +22,7 @@ html, body {
 }
 
 .container {
-	height: 33rem;
+/* 	height: 33rem; */
 }
 
 .sequence {
@@ -84,14 +84,12 @@ aside {
 	position: relative;
 	width: 25%;
 	height: 100vh;
-	/* background-color: aliceblue; */
 	float: left;
 }
 
 .text {
 	width: 350px;
 	padding-left: 100px;
-	margin-top: 250px;
 }
 
 .honbab {
@@ -144,6 +142,7 @@ main {
 
 .join_form_wrap > ul{
 	height: 50px;
+	float:left;
 }
 .join_form_wrap > li{
 	height: 50px;
