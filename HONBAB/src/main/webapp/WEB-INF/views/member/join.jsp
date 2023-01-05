@@ -66,14 +66,16 @@ body>.biz_join_form_wrap {
 	margin-top: 50px;
 }
 
-li>#gender{
-	margin: 0;
+li>#gender, #city{
+	margin-left: 6rem;
 	padding: 0;
 	border: 0;
 	font-size: 100%;
 	vertical-align: baseline;
 	list-style: none;
 }
+
+
 </style> 
 </head>
 <body>
@@ -115,7 +117,7 @@ li>#gender{
 					<c:import url="../member/region.jsp"/>
 				</li>
 				<li>
-					<span class="index">성별</span>
+					<span class="index">성별&nbsp;</span>
 					<select id="gender" name="gender" size="1">
 						<option value="">-선택하세요-</option>
 						<option value="m">남자</option>
@@ -135,31 +137,35 @@ li>#gender{
 	<!-- 사장님 회원가입 -->
 	<div id="biz_join_form_wrap" class="join_form_wrap">
 		<h1 align="center">사업자 회원 가입</h1>
-		<form action="${contextPath}/member/bizRegister" method="post" class="join_form" id="join_form">
+		<form class="join_form" id="biz_join_form" action="${contextPath}/member/biz_join" method="post">
 			<ul>
 				<li>
 					<span class="index">아이디</span>
-					<input type="text" id="id" name="id" placeholder="아이디를 입력하세요.">
+					<input type="text" id="biz_id" name="id" placeholder="아이디를 입력하세요.">
 				</li>
 				<li>
 					<span class="index">비밀번호</span>
-					<input type="password" id="pw" name="pw" placeholder="비밀번호를 입력하세요.">
+					<input type="password" id="biz_pw" name="pw" placeholder="비밀번호를 입력하세요.">
 				</li>
 				<li>
 					<span class="index">비밀번호 확인</span>
-					<input type="password" id="repw" name="repw" placeholder="비밀번호를 다시입력하세요.">
+					<input type="password" id="biz_repw" name="repw" placeholder="비밀번호를 다시입력하세요.">
 				</li>
 				<li>
-					<span class="index">이름</span>
-						<input type="text" id="name" name="name" placeholder="이름을 입력하세요."> 
+					<span class="index">상호명</span>
+						<input type="text" id="biz_name" name="name" placeholder="고객에게 노출될 상호명을 입력하세요"> 
 				</li>
 				<li>
-					<span class="index">닉네임</span>
-					<input type="text" id="nickName" name="nickName" placeholder="닉네임을 입력하세요.">
+					<span class="index">사업자명</span>
+					<input type="text" id="biz_comName" name="comName" placeholder="사업자 등록증 상의 기업명 입력하세요.">
 				</li>
 				<li>
-					<span class="index">전화번호</span>
-					<input type="tel" id="tel" name="tel" placeholder="숫자만 입력하세요.">
+					<span class="index">연락처(사업자용)</span>
+					<input type="tel" id="biz_tel" name="tel" placeholder="사이트 관리자와 연락할 번호를 입력하세요.">
+				</li>
+				<li>
+					<span class="index">연락처(고객용)</span>
+					<input type="tel" id="biz_num" name="biznum" placeholder="고객에게 노출될 번호를 입력하세요.">
 				</li>
 				<li class="callBackDiv">
 					<span class="index">식당위치</span>
@@ -168,10 +174,11 @@ li>#gender{
 				</li>
 				<li>
 					<span class="index">이메일</span>
-					<input type="text" id="email" name="email" placeholder="이메일을 입력하세요.">
+					<input type="text" id="biz_email" name="email" placeholder="이메일을 입력하세요.">
 				</li>
+
 			</ul>
-			<button type="button" name="join" onclick="joinform_check(); return false;"> Biz-JOIN</button>
+			<button type="button" name="join" onclick="biz_joinform_check(); return false;"> Biz-JOIN</button>
 		</form>	
 	</div>
 	

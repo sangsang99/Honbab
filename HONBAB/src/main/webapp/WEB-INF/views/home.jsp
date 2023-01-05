@@ -126,8 +126,10 @@
 		
 	</div>
 
-
+	<!-- footer -->	
 	<c:import url="main/footer.jsp"></c:import>
+	<style>.footer{position:static;}</style>
+	
 	<!-- 접시, 페이지 이동 javascript -->
 	<script src="${pageContext.request.contextPath}/resources/js/jquery-2.1.3.min.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/js/jquery.easing.1.3.js"></script>
@@ -136,8 +138,7 @@
 	<script src="${pageContext.request.contextPath}/resources/js/imgSequence.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/js/writeForm.js"></script>
 	
-	<!-- footer -->	
-	<style>.footer{position:static;}</style>
+	
 
 		
 	

@@ -19,15 +19,15 @@
 	rel="stylesheet" />
 
 <script type="text/javascript">
+
 	function promoWrite() {
-		if (true) {
-			location.href = "writeForm";
-		}
+		location.href = `${contextPath}` + "/promotion/writeForm"
 	}
 
 	function upViews(writeNo) {
 		location.href = "upViews?writeNo=" + writeNo;
 	}
+
 </script>
 
 </head>
@@ -80,7 +80,7 @@
 			</div>
 		</c:forEach>
 		
-		<c:if test="${isBizUser == true}">
+		<c:if test="${loginBiz == true}">
 		<div id="writebtn">
 			<input type="button" value="글쓰기" onclick="promoWrite()">
 		</div>

@@ -97,9 +97,6 @@
 				<div></div>
 			</div>
 		</div>
-		<div class="innerfooter">
-			<c:import url="../main/footer.jsp" />
-		</div>
 	</aside>
 
 	<main>
@@ -140,5 +137,7 @@
 	</main>
 
 	<c:import url="../main/footer.jsp" />
+	<style>.footer{position:static;}</style>
+	
 </body>
 </html>

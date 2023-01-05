@@ -20,6 +20,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.web.honbab.admin.service.OperService;
 import com.web.honbab.challenge.service.ChallengeService;
 import com.web.honbab.find.service.FindService;
+import com.web.honbab.member.dto.BizMemberDTO;
 import com.web.honbab.member.dto.MemberDTO;
 import com.web.honbab.member.service.MemberService;
 import com.web.honbab.review.service.ReviewService;
@@ -45,6 +46,14 @@ public class MemberController implements MemberSession, AdminSession {
 	@Autowired
 	private ChallengeService cs;
 
+	
+	/*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ 로그인 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
+	
+	@GetMapping("login")
+	public String login() {
+		return "member/login";
+	}
+	
 	@PostMapping("user_check")
 	public String userCheck(HttpServletRequest request, RedirectAttributes rs) {
 		int result = ms.user_check(request);
@@ -56,10 +65,11 @@ public class MemberController implements MemberSession, AdminSession {
 	}
 
 	@PostMapping("bizuser_check")
-	public String bizuserCheck(HttpServletRequest request, RedirectAttributes rs) {
+	public String bizuserCheck(HttpServletRequest request,  HttpSession session, RedirectAttributes rs) {
 		int result = ms.bizuser_check(request);
 		if (result == 0) {
 			rs.addAttribute("id", request.getParameter("id"));
+			session.setAttribute(BIZ, true);
 			return "redirect:successLogin";
 		}
 		return "redirect:login";
@@ -92,11 +102,6 @@ public class MemberController implements MemberSession, AdminSession {
 		return "admin/ADMIndex";
 	}
 
-	@GetMapping("login")
-	public String login() {
-		return "member/login";
-	}
-
 
 	@GetMapping("logout")
 	public String logout(HttpSession session) {
@@ -106,17 +111,13 @@ public class MemberController implements MemberSession, AdminSession {
 		return "redirect:/index";
 	}
 
-	@RequestMapping("/info")
-	public String info(@RequestParam("id") String id, Model model) {
-		ms.info(id, model);
-		return "member/info";
-	}
-
+	/*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ 회원가입 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
 	@RequestMapping("/join_form")
 	public String join_form() {
 		return "member/join";
 	}
 
+	//admin페이지에서 접속
 	@RequestMapping("/bRegister_form")
 	public String bizRegisterForm() {
 		return "member/bizRegister";
@@ -131,7 +132,33 @@ public class MemberController implements MemberSession, AdminSession {
 		}
 		return "redirect:join_form";
 	}
-
+	
+	@RequestMapping("biz_join")
+	public String bizJoin(BizMemberDTO member) {
+		System.out.println(member.getId());
+		System.out.println(member.getPw());
+		System.out.println(member.getName());
+		System.out.println(member.getComName());
+		System.out.println(member.getTel());
+		System.out.println(member.getBiznum());
+		System.out.println(member.getRoadFullAddr());
+		System.out.println(member.getEmail());
+		int result = ms.bizJoin(member);
+		if (result == 1) {
+			return "redirect:login";
+		}
+		return "redirect:join_form";
+	}
+	
+	
+	/*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ 마이페이지 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
+		
+	@RequestMapping("/info")
+	public String info(@RequestParam("id") String id, Model model) {
+		ms.info(id, model);
+		return "member/info";
+	}
+	
 	@GetMapping("delete")
 	public void delete(@RequestParam("id") String id, HttpServletResponse response, HttpServletRequest request)
 			throws IOException {
@@ -141,6 +168,7 @@ public class MemberController implements MemberSession, AdminSession {
 		out.println(message);
 	}
 
+	//어디에 쓰는건지 확인필요
 	@RequestMapping("/callback")
 	public String callback() {
 		return "redirect:register_form";

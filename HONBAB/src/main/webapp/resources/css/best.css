@@ -12,7 +12,7 @@ a {
 .best_wrap {
   width: 1200px;
   height: 400px;
-  margin: 0 auto;
+  margin-bottom: 50px;
 }
 /*
 ----------------------------------
@@ -85,6 +85,7 @@ aside {
 
 .best_section{
   width: 900px;
+  height: 150px;
   float: right;
   padding-top: 30px;
 }

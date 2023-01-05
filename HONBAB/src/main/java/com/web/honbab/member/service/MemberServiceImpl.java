@@ -22,6 +22,8 @@ public class MemberServiceImpl implements MemberService, MemberSession {
 	@Autowired
 	private HttpSession session;
 
+	
+	/*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ로그인ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
 	@Override
 	public int user_check(HttpServletRequest request) {
 		MemberDTO dto = mapper.user_check(request.getParameter("id"));
@@ -44,13 +46,9 @@ public class MemberServiceImpl implements MemberService, MemberSession {
 		}
 		return 1;
 	}
-
-	@Override
-	public void info(String id, Model model) {
-		MemberDTO dto = mapper.getMember(id);
-		model.addAttribute("info", dto);
-	}
-
+	
+	
+	/*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ회원가입ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
 	@Override
 	public int join(MemberDTO member) {
 		try {
@@ -59,6 +57,24 @@ public class MemberServiceImpl implements MemberService, MemberSession {
 			e.printStackTrace();
 			return 0;
 		}
+	}
+	
+	@Override
+	public int bizJoin(BizMemberDTO member) {
+		try {
+			return mapper.biz_join(member);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return 0;
+		}
+	}
+	
+	
+	/*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ마이페이지ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
+	@Override
+	public void info(String id, Model model) {
+		MemberDTO dto = mapper.getMember(id);
+		model.addAttribute("info", dto);
 	}
 
 	@Override
@@ -74,17 +90,6 @@ public class MemberServiceImpl implements MemberService, MemberSession {
 			url = "/member/info?id=" + id;
 		}
 		return getMessage(request, msg, url);
-	}
-
-	@Override
-	public String getMessage(HttpServletRequest request, String msg, String url) {
-
-		String message = null;
-		String path = request.getContextPath();
-		message = "<script>alert('" + msg + "');";
-		message += "location.href='" + path + url + "';</script>";
-		return message;
-
 	}
 
 	@Override
@@ -117,5 +122,17 @@ public class MemberServiceImpl implements MemberService, MemberSession {
 		}
 		return getMessage(request, msg, url);
 	}
+	
+	
+	/*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ기타ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
+	@Override
+	public String getMessage(HttpServletRequest request, String msg, String url) {
 
+		String message = null;
+		String path = request.getContextPath();
+		message = "<script>alert('" + msg + "');";
+		message += "location.href='" + path + url + "';</script>";
+		return message;
+	}
+	
 }
