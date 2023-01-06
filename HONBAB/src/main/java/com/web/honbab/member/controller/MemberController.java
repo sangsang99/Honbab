@@ -135,14 +135,6 @@ public class MemberController implements MemberSession, AdminSession {
 	
 	@RequestMapping("biz_join")
 	public String bizJoin(BizMemberDTO member) {
-		System.out.println(member.getId());
-		System.out.println(member.getPw());
-		System.out.println(member.getName());
-		System.out.println(member.getComName());
-		System.out.println(member.getTel());
-		System.out.println(member.getBiznum());
-		System.out.println(member.getRoadFullAddr());
-		System.out.println(member.getEmail());
 		int result = ms.bizJoin(member);
 		if (result == 1) {
 			return "redirect:login";
