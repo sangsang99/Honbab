@@ -110,13 +110,13 @@
 		<div class="writer_wrap">
 			<span class="writer">by. ${data.id }</span> 
 
-			<c:if test="${data.imageFileName == 'Nan'}">
+			<c:if test="${data.imageFileName == 'nan'}">
 				<div id="imgx">
 					<span>Θ</span>
 				</div>
 			</c:if>
 
-			<c:if test="${data.imageFileName != 'Nan'}">
+			<c:if test="${data.imageFileName != 'nan'}">
 				<img
 					src="${contextPath }/promotion/download?imageFileName=${data.imageFileName}"
 					width="400px" style="float: right" />
