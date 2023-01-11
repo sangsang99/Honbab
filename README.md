@@ -24,3 +24,15 @@
 <b>DB</b> : mySQL, AWS RDB  <br>
 <b>Tools(DB)</b> :  <br>
 <b>util & library</b> :  <br>
+
+<br><hr>
+
+<h4>TODO</h4>
+광고게시글 사진 연동<br>
+사업자회원가입 사진파일 등록<br>
+주소api 재등록<br>
+댓글삭제(1개씩)<br>
+댓글수정(1개씩)<br>
+쪽지<br>
+내가쓴글보기<br>
+에디터?<br>
