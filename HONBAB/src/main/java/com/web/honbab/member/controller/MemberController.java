@@ -150,6 +150,12 @@ public class MemberController implements MemberSession, AdminSession {
 		ms.info(id, model);
 		return "member/info";
 	}
+
+	@RequestMapping("bizInfo")
+	public String bizInfo(@RequestParam("id") String id, Model model) {
+		ms.bizInfo(id, model);
+		return "member/bizInfo";
+	}
 	
 	@GetMapping("delete")
 	public void delete(@RequestParam("id") String id, HttpServletResponse response, HttpServletRequest request)
@@ -160,7 +166,16 @@ public class MemberController implements MemberSession, AdminSession {
 		out.println(message);
 	}
 
-	//어디에 쓰는건지 확인필요
+	@GetMapping("bizDelete")
+	public void bizDelete(@RequestParam("id") String id, HttpServletResponse response, HttpServletRequest request)
+			throws IOException {
+		String message = ms.bizMemberDelete(id, request);
+		response.setContentType("text/html; charset=utf-8");
+		PrintWriter out = response.getWriter();
+		out.println(message);
+	}
+
+	//TODO 어디에 쓰는건지 확인필요
 	@RequestMapping("/callback")
 	public String callback() {
 		return "redirect:register_form";
@@ -170,6 +185,12 @@ public class MemberController implements MemberSession, AdminSession {
 	public String modifyForm(@RequestParam("id") String id, Model model) {
 		ms.info(id, model);
 		return "member/modifyForm";
+	}
+
+	@RequestMapping("bizModifyForm")
+	public String bizModifyForm(@RequestParam("id") String id, Model model) {
+		ms.bizInfo(id, model);
+		return "member/bizModifyForm";
 	}
 
 	@PostMapping("modifySave")

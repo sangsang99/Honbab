@@ -76,6 +76,13 @@ public class MemberServiceImpl implements MemberService, MemberSession {
 		MemberDTO dto = mapper.getMember(id);
 		model.addAttribute("info", dto);
 	}
+	
+	
+	@Override
+	public void bizInfo(String id, Model model) {
+		BizMemberDTO dto = mapper.getBizMember(id);
+		model.addAttribute("info",dto);
+	}
 
 	@Override
 	public String memberDelete(String id, HttpServletRequest request) {
@@ -84,10 +91,27 @@ public class MemberServiceImpl implements MemberService, MemberSession {
 
 		if (result == 1) {
 			msg = "회원탈퇴가 완료되었습니다.";
+			session.invalidate();
 			url = "/index";
 		} else {
 			msg = "오류 발생, 작업이 완료되지 않았습니다.";
 			url = "/member/info?id=" + id;
+		}
+		return getMessage(request, msg, url);
+	}
+
+	@Override
+	public String bizMemberDelete(String id, HttpServletRequest request) {
+		int result = mapper.bizDelete(id);
+		String msg, url;
+		
+		if (result == 1) {
+			msg = "회원탈퇴가 완료되었습니다.";
+			session.invalidate();
+			url = "/index";
+		} else {
+			msg = "오류 발생, 작업이 완료되지 않았습니다.";
+			url = "/member/bizInfo?id=" + id;
 		}
 		return getMessage(request, msg, url);
 	}

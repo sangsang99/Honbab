@@ -7,7 +7,7 @@ public class BizMemberDTO {
 	private String comName;
 	private String tel;
 	private String biznum;
-	private String roadFullAddr;
+	private String addr;
 	private String email;
 	
 	public String getId() {
@@ -46,11 +46,11 @@ public class BizMemberDTO {
 	public void setBiznum(String biznum) {
 		this.biznum = biznum;
 	}
-	public String getRoadFullAddr() {
-		return roadFullAddr;
+	public String getAddr() {
+		return addr;
 	}
-	public void setRoadFullAddr(String roadFullAddr) {
-		this.roadFullAddr = roadFullAddr;
+	public void setAddr(String addr) {
+		this.addr = addr;
 	}
 	public String getEmail() {
 		return email;

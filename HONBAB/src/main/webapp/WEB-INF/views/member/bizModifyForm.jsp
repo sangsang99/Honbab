@@ -39,47 +39,48 @@ li>#gender{
 </head>
 <body>
 	<c:import url="../main/header.jsp"/>
-	
 	<div class="join_form_wrap">
 		<h1 align="center">회원정보 수정</h1>
 		<form class="join_form" id="modify" action="modifySave" enctype="multipart/form-data" method="post">
 			<ul>
 				<li>
 					<span class="index">아이디</span>
-					<input type="text" id="id" name="id" value="${info.id}" readonly>
+					<input type="text" id="biz_id" name="id" value="${info.id }">
 				</li>
 				<li>
 					<span class="index">비밀번호</span>
-					<input type="password" id="pw" name="pw" placeholder="비밀번호를 입력하세요.">
+					<input type="password" id="biz_pw" name="pw" value="${info.pw }">
 				</li>
 				<li>
-					<span class="index">이름</span>
-						<input type="text" id="name" name="name" value="${info.name}"> 
+					<span class="index">비밀번호 확인</span>
+					<input type="password" id="biz_repw" name="repw">
 				</li>
 				<li>
-					<span class="index">닉네임</span>
-					<input type="text" id="nickName" name="nickName" value="${info.nickName}">
+					<span class="index">상호명</span>
+						<input type="text" id="biz_name" name="name" value="${info.name }"> 
 				</li>
 				<li>
-					<span class="index">전화번호</span>
-					<input type="tel" id="tel" name="tel" value="${info.tel}">
+					<span class="index">사업자명</span>
+					<input type="text" id="biz_comName" name="comName" value="${info.comName }">
 				</li>
 				<li>
-					<span class="index">거주지</span>
-					<c:import url="../member/region.jsp"/>
+					<span class="index">연락처(사업자용)</span>
+					<input type="tel" id="biz_tel" name="tel" value="${info.tel }">
 				</li>
 				<li>
-					<span class="index">성별</span>
-					<select id="gender" name="gender" size="1">
-						<option value="">-선택하세요-</option>
-						<option value="m">남자</option>
-						<option value="f">여자</option>
-					</select>
+					<span class="index">연락처(고객용)</span>
+					<input type="tel" id="biz_num" name="biznum" value="${info.biznum }">
+				</li>
+				<li class="callBackDiv">
+					<span class="index">식당위치</span>
+					<input type="text" id="roadFullText" name="roadFullAddr" width="400px" value="${info.addr }">
+					<input type="button" id="FullAddrBtn" width="100px" onClick="goPopup();" value="주소검색"/>				
 				</li>
 				<li>
 					<span class="index">이메일</span>
-					<input type="text" id="email" name="email" value="${info.email}">
+					<input type="text" id="biz_email" name="email" placeholder="이메일을 입력하세요." value="${info.email }">
 				</li>
+
 			</ul>
 			<button type="button" name="join" onclick="joinform_check(); return false;"> EDIT</button>
 		</form>

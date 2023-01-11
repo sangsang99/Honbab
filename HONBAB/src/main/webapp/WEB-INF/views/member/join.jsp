@@ -46,7 +46,8 @@ $(document).ready(function(){
 	}
 	
 	function jusoCallBack(roadFullAddr, roadAddrPart1,addrDetail,roadAddrPart2,engAddr, jibunAddr, zipNo, admCd, rnMgtSn, bdMgtSn,detBdNmList,bdNm,bdKdcd,siNm,sggNm,emdNm,liNm,rn,udrtYn,buldMnnm,buldSlno,mtYn,lnbrMnnm,lnbrSlno,emdNo){
-			document.bizRegister.roadFullAddr.value = roadFullAddr;
+/* 			document.bizRegister.roadFullAddr.value = roadFullAddr; */
+			document.querySelector('#roadFullText') = roadFullAddr;
 	}
 </script>
 
@@ -169,7 +170,7 @@ li>#gender, #city{
 				</li>
 				<li class="callBackDiv">
 					<span class="index">식당위치</span>
-					<input type="text" id="roadFullText" name="roadFullAddr" width="400px">
+					<input type="text" id="roadFullText" name="addr" width="400px">
 					<input type="button" id="FullAddrBtn" width="100px" onClick="goPopup();" value="주소검색"/>				
 				</li>
 				<li>

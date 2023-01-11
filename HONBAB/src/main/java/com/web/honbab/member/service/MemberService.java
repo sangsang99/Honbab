@@ -25,13 +25,19 @@ public interface MemberService {
 	/*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ마이페이지ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
 	public void info(String id, Model model);
 	
+	public void bizInfo(String id, Model model);
+	
 	public String memberDelete(String id, HttpServletRequest request);
+	
+	public String bizMemberDelete(String id, HttpServletRequest request);
 
 	String modifySave(MultipartHttpServletRequest mul, HttpServletRequest request);
 	
 	
 	/*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ기타ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/	
 	public String getMessage(HttpServletRequest request, String msg, String url);
+
+
 
 
 }

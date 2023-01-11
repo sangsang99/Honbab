@@ -20,7 +20,7 @@ function test() {
     if (!confirm("정말 탈퇴하시겠습니까?")) {
         alert("취소되었습니다.");
     } else {
-    	window.location.href ='${contextPath}/member/delete?id=${info.id }';
+    	window.location.href ='${contextPath}/member/bizDelete?id=${info.id }';
     }
 }
 </script>
@@ -66,7 +66,7 @@ li>#gender{
 				</li>
 				<li>
 					<span class="index">닉네임</span>
-					<input type="text" value="${info.nickName }" disabled>
+					<input type="text" value="${info.comName }" disabled>
 				</li>
 				<li>
 					<span class="index">전화번호</span>
@@ -74,18 +74,18 @@ li>#gender{
 				</li>
 				<li>
 					<span class="index">거주지</span>
-					<input type="text" value="${info.region }" disabled>
+					<input type="text" value="${info.biznum }" disabled>
 				</li>
 				<li>
 					<span class="index">성별</span>
-					<input type="text" value="${info.gender }" disabled>
+					<input type="text" value="${info.addr }" disabled>
 				<li>
 					<span class="index">이메일</span>
 					<input type="text" value="${info.email }" disabled>
 				</li>
 				<li>
 				
-				<button onclick="window.open('${contextPath}/member/modifyForm?id=${loginUser}');">수정</button>
+				<button onclick="window.open('${contextPath}/member/bizModifyForm?id=${loginUser}');">수정</button>
 				
 				<button type="button" onclick="test();">삭제</button>
 				</li>

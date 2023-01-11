@@ -8,6 +8,16 @@
 <head>
 <meta charset="UTF-8">
 <title>board/modify_form.jsp</title>
+<!-- 수정 11.09 -->
+<link
+	href="${pageContext.request.contextPath}/resources/css/challenge/writeForm.css?ver=4"
+	rel="stylesheet" />
+<!-- font -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" />
+<link
+	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Nunito+Sans:wght@400;600;700&display=swap"
+	rel="stylesheet" />
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
 	function readURL(input) {
@@ -31,8 +41,33 @@
 	margin : auto;
 }
 </style>
+
+<style type="text/css">
+.write_title {
+	text-align: center;
+}
+
+.write {
+	width: 500px;
+	margin: auto;
+}
+</style>
 </head>
 <body>
+	<c:import url="../main/header.jsp" />
+	
+	<aside>
+		<div class="aside_wrap">
+			<div class="honbab">
+				<span>PROMOTION</span>
+			</div>
+			<div class="text">
+				<span>홍보</span>
+				<div>광고글 수정</div>
+				<div></div>
+			</div>
+		</div>
+	</aside>
 	
 	<h1 class="modify_title"> 글수정</h1>
 		<div class="modify" align="center">
@@ -55,6 +90,8 @@
 			<input type="button" value="글목록" onclick="location.href='${contextPath }/promotion/promoAllList'">
 		</form>
 		</div>
+		
 	<c:import url="../main/footer.jsp" />
+
 </body>
 </html>

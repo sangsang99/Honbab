@@ -22,11 +22,17 @@ public interface MemberMapper {
 	/*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ마이페이지ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
 	public ArrayList<MemberDTO> memberInfo(); //미확인 함수
 	
-	public MemberDTO getMember(String id); //info
+	public MemberDTO getMember(String id); 
+
+	public BizMemberDTO getBizMember(String id); 
 	
 	public int delete(String id);
 
+	public int bizDelete(String id);
+	
 	public int modifySave(MemberDTO dto);
+
+
 
 	
 	/*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ기타공통ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
