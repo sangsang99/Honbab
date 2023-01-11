@@ -60,14 +60,22 @@
 	                    <!-- Portfolio item 1-->
 	                    <div class="portfolio-item">
 	                        <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal1">
-	                            <div class="portfolio-hover">
+	                           	<div class="portfolio-hover">
 	                                <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
 	                            </div>
-	                            <img class="img-fluid" src="${contextPath }/resources/assets/img/portfolio/1.jpg" alt="..." />
-	                        </a>
+	                            <c:if test="${promoListAD[0].imageFileName == 'nan' || promoListAD[0] == null}">
+                                	<img class="img-fluid" src="${contextPath }/resources/img/none.png" alt="..." /></c:if>
+								<c:if test="${promoListAD[0].imageFileName != 'nan' && promoListAD[0] != null}">
+	                            	<img class="img-fluid" src="${contextPath }/promotion/download?imageFileName=${promoListAD[0].imageFileName}"/></c:if>	                        </a>
 	                        <div class="portfolio-caption">
-	                            <div class="portfolio-caption-heading">${promoListAD[0].title }</div>
-	                            <div class="portfolio-caption-subheading text-muted">${promoListAD[0].content }</div>
+	                            <div class="portfolio-caption-heading">
+	                            	<c:if test="${promoListAD[0]==none}">NONE</c:if>
+	                            	<c:if test="${promoListAD[0]!=none}">${promoListAD[1].title }</c:if>                        	
+	                            	</div>
+	                            <div class="portfolio-caption-subheading text-muted">
+	                           		<c:if test="${promoListAD[0]==none}">NONE</c:if>
+	                            	<c:if test="${promoListAD[0]!=none}">${promoListAD[1].content }</c:if> 
+	                            </div>
 	                        </div>
 	                    </div>
 	                </div>
@@ -78,8 +86,10 @@
 	                            <div class="portfolio-hover">
 	                                <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
 	                            </div>
-	                            <img class="img-fluid" src="${contextPath }/resources/assets/img/portfolio/2.jpg" alt="..." />
-	                        </a>
+	                            <c:if test="${promoListAD[1].imageFileName == 'nan' || promoListAD[1] == null}">
+                                	<img class="img-fluid" src="${contextPath }/resources/img/none.png" alt="..." /></c:if>
+								<c:if test="${promoListAD[1].imageFileName != 'nan' && promoListAD[1] != null}">
+	                            	<img class="img-fluid" src="${contextPath }/promotion/download?imageFileName=${promoListAD[1].imageFileName}"/></c:if>	                        </a>
 	                        <div class="portfolio-caption">
 	                            <div class="portfolio-caption-heading">
 	                            	<c:if test="${promoListAD[1]==none}">NONE</c:if>
@@ -99,8 +109,10 @@
 	                            <div class="portfolio-hover">
 	                                <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
 	                            </div>
-	                            <img class="img-fluid" src="${contextPath }/resources/assets/img/portfolio/3.jpg" alt="..." />
-	                        </a>
+	                            <c:if test="${promoListAD[2].imageFileName == 'nan' || promoListAD[2] == null}">
+                                	<img class="img-fluid" src="${contextPath }/resources/img/none.png" alt="..." /></c:if>
+								<c:if test="${promoListAD[2].imageFileName != 'nan' && promoListAD[2] != null}">
+	                            	<img class="img-fluid" src="${contextPath }/promotion/download?imageFileName=${promoListAD[2].imageFileName}"/></c:if>	                        </a>
 	                        <div class="portfolio-caption">
 	                            <div class="portfolio-caption-heading">
 		                            <c:if test="${promoListAD[2]==none}">NONE</c:if>
@@ -120,7 +132,10 @@
 	                            <div class="portfolio-hover">
 	                                <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
 	                            </div>
-	                            <img class="img-fluid" src="${contextPath }/resources/assets/img/portfolio/4.jpg" alt="..." />
+	                            <c:if test="${promoListAD[3].imageFileName == 'nan' || promoListAD[3] == null}">
+                                	<img class="img-fluid" src="${contextPath }/resources/img/none.png" alt="..." /></c:if>
+								<c:if test="${promoListAD[3].imageFileName != 'nan' && promoListAD[3] != null}">
+	                            	<img class="img-fluid" src="${contextPath }/promotion/download?imageFileName=${promoListAD[3].imageFileName}"/></c:if>
 	                        </a>
 	                        <div class="portfolio-caption">
 	                            <div class="portfolio-caption-heading">
@@ -131,7 +146,16 @@
 									<c:if test="${promoListAD[3]==none}">NONE</c:if>
 	                            	<c:if test="${promoListAD[3]!=none}">${promoListAD[3].content }</c:if> 
 								</div>
+								<!-- 
+								<c:if test="${promoListAD[3]==none}}">
+		                        	<div class="portfolio-caption-heading">NONE</div>
+		                        	<div class="portfolio-caption-subheading text-muted">NONE</div></c:if>
+		                        <c:if test="${promoListAD[3]!=none}}">
+		                        	<div class="portfolio-caption-heading">${promoListAD[3].title }</div>
+		                        	<div class="portfolio-caption-subheading text-muted">${promoListAD[3].content }</div></c:if> -->
 	                        </div>
+	                        
+	                        
 	                    </div>
 	                </div>
 	                <div class="col-lg-4 col-sm-6 mb-4 mb-sm-0">
@@ -141,8 +165,10 @@
 	                            <div class="portfolio-hover">
 	                                <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
 	                            </div>
-	                            <img class="img-fluid" src="${contextPath }/resources/assets/img/portfolio/5.jpg" alt="..." />
-	                        </a>
+	                            <c:if test="${promoListAD[4].imageFileName == 'nan' || promoListAD[4] == null}">
+                                	<img class="img-fluid" src="${contextPath }/resources/img/none.png" alt="..." /></c:if>
+								<c:if test="${promoListAD[4].imageFileName != 'nan' && promoListAD[4] != null}">
+	                            	<img class="img-fluid" src="${contextPath }/promotion/download?imageFileName=${promoListAD[4].imageFileName}"/></c:if>	                        </a>
 	                        <div class="portfolio-caption">
 	                            <div class="portfolio-caption-heading">
 	                            	<c:if test="${promoListAD[4]==none}">NONE</c:if>
@@ -162,15 +188,17 @@
 	                            <div class="portfolio-hover">
 	                                <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
 	                            </div>
-	                            <img class="img-fluid" src="${contextPath }/resources/assets/img/portfolio/6.jpg" alt="..." />
-	                        </a>
+	                            <c:if test="${promoListAD[5].imageFileName == 'nan' || promoListAD[5] == null}">
+                                	<img class="img-fluid" src="${contextPath }/resources/img/none.png" alt="..." /></c:if>
+								<c:if test="${promoListAD[5].imageFileName != 'nan' && promoListAD[5] != null}">
+	                            	<img class="img-fluid" src="${contextPath }/promotion/download?imageFileName=${promoListAD[5].imageFileName}"/></c:if>	                        </a>
 	                        <div class="portfolio-caption">
 	                            <div class="portfolio-caption-heading">
 		                            <c:if test="${promoListAD[5]==none}">NONE</c:if>
 		                           	<c:if test="${promoListAD[5]!=none}">${promoListAD[5].title }</c:if> 
 	                            </div>
 	                            <div class="portfolio-caption-subheading text-muted">
-	                            	<c:if test="${promoListAD[5]==none}">NONE</c:if>
+	                            	<c:if test="${promoListAD[5]==null}">NONE</c:if>
 	                            	<c:if test="${promoListAD[5]!=none}">${promoListAD[5].content }</c:if>
 								</div>
 	                        </div>
