@@ -1,7 +1,14 @@
 package com.web.honbab.aacommon.service;
 
+import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
+import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public class CommonServiceImpl implements CommonService {
@@ -29,5 +36,44 @@ public class CommonServiceImpl implements CommonService {
 		model.addAttribute("repeat", repeat); // jsp파일에 보낼값
 
 		return new int[] { start, end };
+	}
+	
+	/*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡfile저장ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
+	@Override
+	// service에서 file저장 실행결과에따라 message에 들어갈 msg,url값을 전달받는다.
+	// request는 Cotroller-Service-FileService 순으로 들어와서 주소 경로를 전달한다.
+	public String getMessage(HttpServletRequest request, String msg, String url) {
+		String message = null;
+		String path = request.getContextPath();
+		message = "<script> alert('" + msg + "');";
+		message += "location.href='" + path + url + "';</script>";
+		return message;
+	}
+
+	@Override
+	public String saveFile(MultipartFile file, String route) {
+		// 파일이름에 저장날짜 삽입하기
+		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd-");
+		Calendar calendar = Calendar.getInstance();
+		String sysFileName = format.format(calendar.getTime());
+		sysFileName += file.getOriginalFilename();
+
+		// 파일경로 + 파일이름
+		File saveFile = new File(route + "/" + sysFileName);
+
+		try {
+			// 실제로 파일이 저장되는 명령문 arg로는 파일 경로와 이름을 전달
+			file.transferTo(saveFile);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return sysFileName;
+	}
+
+	@Override
+	public void deleteImage(String imageFileName, String route) {
+		File file = new File(route + "\\" + imageFileName);
+		file.delete();
 	}
 }

@@ -9,6 +9,7 @@ public class BizMemberDTO {
 	private String biznum;
 	private String addr;
 	private String email;
+	private String bizFile;
 	
 	public String getId() {
 		return id;
@@ -58,6 +59,12 @@ public class BizMemberDTO {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
+	public String getBizFile() {
+		return bizFile;
+	}
+	public void setBizFile(String bizFile) {
+		this.bizFile = bizFile;
+	}
+	
 
 }

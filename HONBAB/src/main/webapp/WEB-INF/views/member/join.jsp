@@ -53,6 +53,19 @@ $(document).ready(function(){
 
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script> <!-- 주소 API END-->
 
+<script type="text/javascript">
+<!-- File 미리보기 -->
+	function readURL(input) {
+		var file = input.files[0]; // 파일 정보
+		if (file != "") {
+			var reader = new FileReader();
+			reader.readAsDataURL(file); // 파일 정보 읽어오기
+			reader.onload = function(e) {// 읽기에 성공하면 결과 표시
+				$("#preview").attr("src", e.target.result)
+			}
+		}
+	}
+</script>
 
 <style type="text/css">
 body>.join_form_wrap {
@@ -138,7 +151,7 @@ li>#gender, #city{
 	<!-- 사장님 회원가입 -->
 	<div id="biz_join_form_wrap" class="join_form_wrap">
 		<h1 align="center">사업자 회원 가입</h1>
-		<form class="join_form" id="biz_join_form" action="${contextPath}/member/biz_join" method="post">
+		<form class="join_form" id="biz_join_form" action="${contextPath}/member/biz_join" enctype="multipart/form-data" method="post">
 			<ul>
 				<li>
 					<span class="index">아이디</span>
@@ -177,7 +190,11 @@ li>#gender, #city{
 					<span class="index">이메일</span>
 					<input type="text" id="biz_email" name="email" placeholder="이메일을 입력하세요.">
 				</li>
-
+				<li class="upload_file">
+					<span class="index_kr">사업자등록증</span> 
+					<input type="file" name="image_file_name" onchange="readURL(this)">
+					<img src="#" id="preview" width="100px" height="50px">
+				</li>
 			</ul>
 			<button type="button" name="join" onclick="biz_joinform_check(); return false;"> Biz-JOIN</button>
 		</form>	

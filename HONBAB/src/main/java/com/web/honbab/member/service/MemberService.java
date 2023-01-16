@@ -19,7 +19,7 @@ public interface MemberService {
 	/*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ회원가입ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
 	public int join(MemberDTO member);
 	
-	public int bizJoin(BizMemberDTO member);
+	public String bizJoin(BizMemberDTO member, MultipartHttpServletRequest mul, HttpServletRequest request);
 
 	
 	/*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ마이페이지ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
@@ -38,6 +38,7 @@ public interface MemberService {
 	public String getMessage(HttpServletRequest request, String msg, String url);
 
 
+	
 
 
 }

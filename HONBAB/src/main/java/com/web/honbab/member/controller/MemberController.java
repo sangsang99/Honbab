@@ -125,7 +125,6 @@ public class MemberController implements MemberSession, AdminSession {
 	
 	@RequestMapping("join")
 	public String join(MemberDTO member) {
-		System.out.println(member.getId());
 		int result = ms.join(member);
 		if (result == 1) {
 			return "redirect:login";
@@ -134,12 +133,11 @@ public class MemberController implements MemberSession, AdminSession {
 	}
 	
 	@RequestMapping("biz_join")
-	public String bizJoin(BizMemberDTO member) {
-		int result = ms.bizJoin(member);
-		if (result == 1) {
-			return "redirect:login";
-		}
-		return "redirect:join_form";
+	public void bizJoin(BizMemberDTO member, MultipartHttpServletRequest mul, HttpServletRequest request, HttpServletResponse response) throws IOException {
+		String message = ms.bizJoin(member, mul, request);
+		response.setContentType("text/html; charset=utf-8");
+		PrintWriter out = response.getWriter();
+		out.println(message);
 	}
 	
 	

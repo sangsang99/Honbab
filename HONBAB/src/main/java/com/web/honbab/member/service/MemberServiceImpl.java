@@ -3,11 +3,15 @@ package com.web.honbab.member.service;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.web.honbab.aacommon.service.CommonService;
 import com.web.honbab.member.dto.BizMemberDTO;
 import com.web.honbab.member.dto.MemberDTO;
 import com.web.honbab.mybatis.member.MemberMapper;
@@ -22,6 +26,10 @@ public class MemberServiceImpl implements MemberService, MemberSession {
 	@Autowired
 	private HttpSession session;
 
+	@Autowired
+	private CommonService cms;
+	
+	public static final String IMAGE_BIZJOIN = "D:\\kukbee\\Project_honbab\\Honbab\\HONBAB\\src\\main\\webapp\\resources\\assets\\bizjoin";
 	
 	/*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ로그인ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
 	@Override
@@ -60,15 +68,37 @@ public class MemberServiceImpl implements MemberService, MemberSession {
 	}
 	
 	@Override
-	public int bizJoin(BizMemberDTO member) {
+	public String bizJoin(BizMemberDTO member, MultipartHttpServletRequest mul, HttpServletRequest request) {
+		
+		MultipartFile file = mul.getFile("image_file_name");
+
+		if (file.getSize() != 0) {
+			member.setBizFile(cms.saveFile(file, IMAGE_BIZJOIN));
+		} else {
+			member.setBizFile("None");
+		}
+
+		int result = 0;
+		
 		try {
-			return mapper.biz_join(member);
+			result =  mapper.bizJoin(member);
 		} catch (Exception e) {
 			e.printStackTrace();
-			return 0;
 		}
+		
+		String msg, url;
+		if (result == 1) {
+			msg = "사업자 회원가입 완료!";
+			url = "/member/login";
+		} else {
+			msg = "문제가 있습니다.";
+			url = "/member/join_form";
+		}
+
+		return cms.getMessage(request, msg, url);
 	}
 	
+
 	
 	/*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ마이페이지ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
 	@Override

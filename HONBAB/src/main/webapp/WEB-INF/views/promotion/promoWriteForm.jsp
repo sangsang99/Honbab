@@ -124,7 +124,7 @@
 					<hr />
 					<div class="line"></div>
 
-					<li class="upload_file"><span class="index_kr">사진 첨부</span> <input
+					<li class="upload_file"><span class="index_kr">사진첨부</span> <input
 						type="file" name="image_file_name" onchange="readURL(this)">
 						<img src="#" id="preview" width="100px"></li>
 					<hr />

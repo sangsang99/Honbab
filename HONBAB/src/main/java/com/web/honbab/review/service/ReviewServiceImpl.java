@@ -49,12 +49,13 @@ public class ReviewServiceImpl implements ReviewService, SearchSession {
 		}
 
 		int result = 0;
+		
 		try {
 			result = mapper.reviewSave(dto);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
+		
 		String msg, url;
 		if (result == 1) {
 			msg = "혼밥후기 작성 완료!";

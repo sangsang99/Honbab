@@ -194,6 +194,13 @@ input {
 		font-family: "Noto Sans KR", sans-serif;
 }
 
+.upload_file > input{
+	width: 350px;
+	height: 50px;
+	position: relative;
+	right: 150px;
+}
+
 input:focus {
 	outline: none;
 }
@@ -210,7 +217,10 @@ span, input {
 	font-size: 50px;
 }
 
-
+img#preview {
+    position: relative;
+    left: 450px;
+}
 /*
 --------------------------------------
   2 page. 사장님 회원가입

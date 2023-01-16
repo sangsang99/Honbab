@@ -2,6 +2,8 @@ package com.web.honbab.mybatis.member;
 
 import java.util.ArrayList;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.web.honbab.member.dto.BizMemberDTO;
 import com.web.honbab.member.dto.MemberDTO;
 
@@ -16,7 +18,7 @@ public interface MemberMapper {
 	/*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ회원가입ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
 	public int join(MemberDTO member);
 	
-	public int biz_join(BizMemberDTO member);
+	public int bizJoin(@Param("biz") BizMemberDTO member);
 	
 	
 	/*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ마이페이지ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/

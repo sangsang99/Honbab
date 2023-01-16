@@ -27,6 +27,7 @@
 		<result property="biznum" column="biznum"></result>
 		<result property="addr" column="addr"></result>
 		<result property="email" column="email"></result>
+		<result property="bizFile" column="biz_File"></result>
 	</resultMap>
 
 <!--ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ로그인 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ-->
@@ -42,13 +43,13 @@
 
 <!--ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ회원가입 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ-->
 	<insert id="join">
-		insert into USER_JOIN values(#{id}, #{pw}, #{name},
-		#{nickName}, #{tel}, #{region}, #{gender}, #{email})
+		insert into USER_JOIN
+		values(#{id}, #{pw}, #{name}, #{nickName}, #{tel}, #{region}, #{gender}, #{email})
 	</insert>
 
-	<insert id="biz_join">
+	<insert id="bizJoin" parameterType="com.web.honbab.member.dto.BizMemberDTO">
 		insert into BUSINES_JOIN
-		values(#{id}, #{pw}, #{name}, #{comName}, #{tel}, #{addr}, #{biznum}, #{email})
+		values(#{biz.id}, #{biz.pw}, #{biz.name}, #{biz.comName}, #{biz.tel}, #{biz.addr}, #{biz.biznum}, #{biz.email}, #{biz.bizFile})
 	</insert>
 
 <!--ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ마이페이지 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ-->
