@@ -1,26 +1,26 @@
 package com.web.honbab.mybatis.member;
 
+import org.apache.ibatis.annotations.Param;
+
+import com.web.honbab.member.dto.BizMemberDTO;
 import com.web.honbab.member.dto.MemberDTO;
 
-public interface MemberMapper {
+public interface bizMemberMapper {
 	
 	/*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ로그인ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
-	public MemberDTO user_check(String id);
+	public BizMemberDTO user_check(String id);
 
 	
 	/*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ회원가입ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
-	public int join(MemberDTO member);
+	public int join(@Param("biz") BizMemberDTO member);
 	
 	
 	/*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ마이페이지ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
-	public MemberDTO getMember(String id); 
+	public BizMemberDTO getMember(String id); 
 	
 	public int delete(String id);
 	
 	public int modifySave(MemberDTO dto);
-
-
-
 	
 	/*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ기타공통ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
 }

@@ -22,6 +22,7 @@ import com.web.honbab.challenge.service.ChallengeService;
 import com.web.honbab.find.service.FindService;
 import com.web.honbab.member.dto.BizMemberDTO;
 import com.web.honbab.member.dto.MemberDTO;
+import com.web.honbab.member.service.BizMemberService;
 import com.web.honbab.member.service.MemberService;
 import com.web.honbab.review.service.ReviewService;
 import com.web.honbab.session.admin.AdminSession;
@@ -33,6 +34,10 @@ public class MemberController implements MemberSession, AdminSession {
 
 	@Autowired
 	private MemberService ms;
+
+	//TODO Service클래스 분리 (함수명 통일)
+	@Autowired
+	private BizMemberService bms;
 
 	@Autowired
 	private OperService os;
@@ -55,20 +60,20 @@ public class MemberController implements MemberSession, AdminSession {
 	}
 	
 	@PostMapping("user_check")
-	public String userCheck(HttpServletRequest request, RedirectAttributes rs) {
+	public String userCheck(HttpServletRequest request, RedirectAttributes ra) {
 		int result = ms.user_check(request);
 		if (result == 0) {
-			rs.addAttribute("id", request.getParameter("id"));
+			ra.addAttribute("id", request.getParameter("id"));
 			return "redirect:successLogin";
 		}
 		return "redirect:login";
 	}
 
 	@PostMapping("bizuser_check")
-	public String bizuserCheck(HttpServletRequest request,  HttpSession session, RedirectAttributes rs) {
-		int result = ms.bizuser_check(request);
+	public String bizuserCheck(HttpServletRequest request,  HttpSession session, RedirectAttributes ra) {
+		int result = bms.user_check(request);
 		if (result == 0) {
-			rs.addAttribute("id", request.getParameter("id"));
+			ra.addAttribute("id", request.getParameter("id"));
 			session.setAttribute(BIZ, true);
 			return "redirect:successLogin";
 		}
@@ -87,10 +92,10 @@ public class MemberController implements MemberSession, AdminSession {
 	}
 
 	@RequestMapping("adminUserCheck")
-	public String adminUserCheck(HttpServletRequest request, RedirectAttributes rs) {
+	public String adminUserCheck(HttpServletRequest request, RedirectAttributes ra) {
 		int result = os.adminUserCheck(request);
 		if (result == 0) {
-			rs.addAttribute("id", request.getParameter("id"));
+			ra.addAttribute("id", request.getParameter("id"));
 			return "redirect:successADMLogin";
 		}
 		return "redirect:login";
@@ -134,7 +139,7 @@ public class MemberController implements MemberSession, AdminSession {
 	
 	@RequestMapping("biz_join")
 	public void bizJoin(BizMemberDTO member, MultipartHttpServletRequest mul, HttpServletRequest request, HttpServletResponse response) throws IOException {
-		String message = ms.bizJoin(member, mul, request);
+		String message = bms.join(member, mul, request);
 		response.setContentType("text/html; charset=utf-8");
 		PrintWriter out = response.getWriter();
 		out.println(message);
@@ -151,7 +156,7 @@ public class MemberController implements MemberSession, AdminSession {
 
 	@RequestMapping("bizInfo")
 	public String bizInfo(@RequestParam("id") String id, Model model) {
-		ms.bizInfo(id, model);
+		bms.info(id, model);
 		return "member/bizInfo";
 	}
 	
@@ -167,7 +172,7 @@ public class MemberController implements MemberSession, AdminSession {
 	@GetMapping("bizDelete")
 	public void bizDelete(@RequestParam("id") String id, HttpServletResponse response, HttpServletRequest request)
 			throws IOException {
-		String message = ms.bizMemberDelete(id, request);
+		String message = bms.memberDelete(id, request);
 		response.setContentType("text/html; charset=utf-8");
 		PrintWriter out = response.getWriter();
 		out.println(message);
@@ -187,7 +192,7 @@ public class MemberController implements MemberSession, AdminSession {
 
 	@RequestMapping("bizModifyForm")
 	public String bizModifyForm(@RequestParam("id") String id, Model model) {
-		ms.bizInfo(id, model);
+		bms.info(id, model);
 		return "member/bizModifyForm";
 	}
 
