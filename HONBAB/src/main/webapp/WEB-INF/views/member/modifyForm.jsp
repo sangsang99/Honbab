@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<c:set var="contextPath" value="${pageContext.request.contextPath }" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +17,7 @@
 <link href="${pageContext.request.contextPath}/resources/css/home.css?ver=4" rel="stylesheet"/> 
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script type="text/javascript">
-$.getScript( '../resources/js/modify.js');
+$.getScript( '${contextPath}/resources/js/modify.js');
 </script>
 <style type="text/css">
 body>.join_form_wrap {

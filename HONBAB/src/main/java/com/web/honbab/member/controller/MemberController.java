@@ -1,5 +1,7 @@
 package com.web.honbab.member.controller;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -10,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,16 +32,19 @@ import com.web.honbab.session.admin.AdminSession;
 import com.web.honbab.session.name.MemberSession;
 
 @Controller
-@RequestMapping("member")
+@RequestMapping(value = "member")
 public class MemberController implements MemberSession, AdminSession {
 
 	@Autowired
 	private MemberService ms;
 
-	//TODO Service클래스 분리 (함수명 통일)
 	@Autowired
 	private BizMemberService bms;
 
+	@Autowired
+	private HttpSession session;
+	
+	/*index페이지 이동시 Best게시글 import */
 	@Autowired
 	private OperService os;
 
@@ -51,7 +57,6 @@ public class MemberController implements MemberSession, AdminSession {
 	@Autowired
 	private ChallengeService cs;
 
-	
 	/*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ 로그인 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
 	
 	@GetMapping("login")
@@ -149,7 +154,8 @@ public class MemberController implements MemberSession, AdminSession {
 	/*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ 마이페이지 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
 		
 	@RequestMapping("/info")
-	public String info(@RequestParam("id") String id, Model model) {
+	public String info(Model model) {
+		String id = (String) session.getAttribute(LOGIN);
 		ms.info(id, model);
 		return "member/info";
 	}
@@ -158,6 +164,16 @@ public class MemberController implements MemberSession, AdminSession {
 	public String bizInfo(@RequestParam("id") String id, Model model) {
 		bms.info(id, model);
 		return "member/bizInfo";
+	}
+	
+	@GetMapping("download") //file
+	public void download(@RequestParam("imageFileName") String imageFileName, HttpServletResponse response) throws Exception {
+		response.addHeader("Context-disposition", "attachment; fileName=" + imageFileName);
+		System.out.println(imageFileName);
+		File file = new File(BizMemberService.IMAGE_BIZJOIN + "\\" + imageFileName);
+		FileInputStream in = new FileInputStream(file);
+		FileCopyUtils.copy(in, response.getOutputStream());
+		in.close();
 	}
 	
 	@GetMapping("delete")
@@ -184,14 +200,16 @@ public class MemberController implements MemberSession, AdminSession {
 		return "redirect:register_form";
 	}
 
-	@RequestMapping("modifyForm")
-	public String modifyForm(@RequestParam("id") String id, Model model) {
+	@RequestMapping("/modifyForm")
+	public String modifyForm(Model model) {
+		String id = (String) session.getAttribute(LOGIN);
 		ms.info(id, model);
 		return "member/modifyForm";
 	}
 
 	@RequestMapping("bizModifyForm")
-	public String bizModifyForm(@RequestParam("id") String id, Model model) {
+	public String bizModifyForm(Model model) {
+		String id = (String) session.getAttribute(LOGIN);
 		bms.info(id, model);
 		return "member/bizModifyForm";
 	}
@@ -200,6 +218,15 @@ public class MemberController implements MemberSession, AdminSession {
 	public void modifySave(MultipartHttpServletRequest mul, HttpServletRequest request, HttpServletResponse response)
 			throws IOException {
 		String message = ms.modifySave(mul, request);
+		response.setContentType("text/html; charset=utf-8");
+		PrintWriter out = response.getWriter();
+		out.println(message);
+	}
+
+	@PostMapping("bizModifySave")
+	public void bizModifySave(MultipartHttpServletRequest mul, HttpServletRequest request, HttpServletResponse response)
+			throws IOException {
+		String message = bms.modifySave(mul, request);
 		response.setContentType("text/html; charset=utf-8");
 		PrintWriter out = response.getWriter();
 		out.println(message);

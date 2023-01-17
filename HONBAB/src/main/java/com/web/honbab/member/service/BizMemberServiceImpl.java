@@ -26,9 +26,7 @@ public class BizMemberServiceImpl implements BizMemberService, MemberSession{
 
 	@Autowired
 	private CommonService cms;
-	
-	public static final String IMAGE_BIZJOIN = "D:\\kukbee\\Project_honbab\\Honbab\\HONBAB\\src\\main\\webapp\\resources\\assets\\bizjoin";
-	
+		
 	/*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ로그인ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
 
 	public int user_check(HttpServletRequest request) {
@@ -102,6 +100,7 @@ public class BizMemberServiceImpl implements BizMemberService, MemberSession{
 		return getMessage(request, msg, url);
 	}
 
+	//TODO 사진 포함해서 수정하기
 	@Override
 	public String modifySave(MultipartHttpServletRequest mul, HttpServletRequest request) {
 

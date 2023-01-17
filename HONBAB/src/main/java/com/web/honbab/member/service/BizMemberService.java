@@ -8,6 +8,9 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import com.web.honbab.member.dto.BizMemberDTO;
 
 public interface BizMemberService {
+	
+	public static final String IMAGE_BIZJOIN = "D:\\kukbee\\Project_honbab\\Honbab\\HONBAB\\src\\main\\webapp\\resources\\assets\\bizjoin";
+
 	/*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ로그인ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
 	public int user_check(HttpServletRequest request);
 

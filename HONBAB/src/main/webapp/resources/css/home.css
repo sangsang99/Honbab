@@ -185,13 +185,21 @@ main {
 	font-family: "Ramabhadra", sans-serif;
 }
 
-input {
+input{
 	width: 500px;
 	height: 30px;
 	float: right;
 	border: none;
 	background-color: rgba(200, 200, 200, 0);
-		font-family: "Noto Sans KR", sans-serif;
+	font-family: "Noto Sans KR", sans-serif;
+}
+
+#modyImage{
+	width: 400px;
+	height: 30px;
+	border: none;
+	background-color: rgba(200, 200, 200, 0);
+	font-family: "Noto Sans KR", sans-serif;
 }
 
 .upload_file > input{
@@ -221,6 +229,7 @@ img#preview {
     position: relative;
     left: 450px;
 }
+
 /*
 --------------------------------------
   2 page. 사장님 회원가입

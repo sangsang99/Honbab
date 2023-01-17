@@ -23,6 +23,21 @@ function test() {
     	window.location.href ='${contextPath}/member/bizDelete?id=${info.id }';
     }
 }
+
+function goModify() {
+	window.location.href ='${contextPath}/member/bizModifyForm?id=${loginUser}';
+}
+
+function readURL(input) {
+	var file = input.files[0]; // 파일 정보
+	if (file != "") {
+		var reader = new FileReader();
+		reader.readAsDataURL(file); // 파일 정보 읽어오기
+		reader.onload = function(e) {// 읽기에 성공하면 결과 표시
+			$("#preview").attr("src", e.target.result)
+		}
+	}
+}
 </script>
 
 <style type="text/css">
@@ -83,10 +98,13 @@ li>#gender{
 					<span class="index">이메일</span>
 					<input type="text" value="${info.email }" disabled>
 				</li>
-				<li>
-				
-				<button onclick="window.open('${contextPath}/member/bizModifyForm?id=${loginUser}');">수정</button>
-				
+				<li class="upload_file"><!-- 사업자등록증 -->
+					<span class="index_kr">사업자등록증</span> 
+					<input type="file" name="image_file_name" onchange="readURL(this)">
+					<img src="#" id="preview" width="100px" height="50px">
+				</li>
+				<li>				
+				<button type="button" onclick="goModify();">수정</button>				
 				<button type="button" onclick="test();">삭제</button>
 				</li>
 			</ul>

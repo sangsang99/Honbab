@@ -23,6 +23,10 @@ function test() {
     	window.location.href ='${contextPath}/member/delete?id=${info.id }';
     }
 }
+
+function goModify() {
+	window.location.href ='${contextPath}/member/modifyForm';
+}
 </script>
 
 <style type="text/css">
@@ -85,7 +89,7 @@ li>#gender{
 				</li>
 				<li>
 				
-				<button onclick="window.open('${contextPath}/member/modifyForm?id=${loginUser}');">수정</button>
+				<button type="button" onclick="goModify();">수정</button>
 				
 				<button type="button" onclick="test();">삭제</button>
 				</li>
