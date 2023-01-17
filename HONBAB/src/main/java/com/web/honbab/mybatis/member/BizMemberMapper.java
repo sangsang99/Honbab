@@ -5,7 +5,7 @@ import org.apache.ibatis.annotations.Param;
 import com.web.honbab.member.dto.BizMemberDTO;
 import com.web.honbab.member.dto.MemberDTO;
 
-public interface bizMemberMapper {
+public interface BizMemberMapper {
 	
 	/*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ로그인ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
 	public BizMemberDTO user_check(String id);

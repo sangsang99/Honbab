@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -11,13 +12,14 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import com.web.honbab.aacommon.service.CommonService;
 import com.web.honbab.member.dto.BizMemberDTO;
 import com.web.honbab.member.dto.MemberDTO;
-import com.web.honbab.mybatis.member.bizMemberMapper;
+import com.web.honbab.mybatis.member.BizMemberMapper;
 import com.web.honbab.session.name.MemberSession;
 
+@Service
 public class BizMemberServiceImpl implements BizMemberService, MemberSession{
 	
 	@Autowired
-	private bizMemberMapper mapper;
+	private BizMemberMapper mapper;
 
 	@Autowired
 	private HttpSession session;
@@ -81,7 +83,7 @@ public class BizMemberServiceImpl implements BizMemberService, MemberSession{
 	@Override
 	public void info(String id, Model model) {
 		BizMemberDTO dto = mapper.getMember(id);
-		model.addAttribute("info",dto);
+		model.addAttribute("info", dto);
 	}
 
 	@Override
