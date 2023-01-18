@@ -169,7 +169,6 @@ public class MemberController implements MemberSession, AdminSession {
 	@GetMapping("download") //file
 	public void download(@RequestParam("imageFileName") String imageFileName, HttpServletResponse response) throws Exception {
 		response.addHeader("Context-disposition", "attachment; fileName=" + imageFileName);
-		System.out.println(imageFileName);
 		File file = new File(BizMemberService.IMAGE_BIZJOIN + "\\" + imageFileName);
 		FileInputStream in = new FileInputStream(file);
 		FileCopyUtils.copy(in, response.getOutputStream());

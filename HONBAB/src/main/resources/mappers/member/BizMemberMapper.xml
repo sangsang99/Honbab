@@ -40,14 +40,15 @@
 	</select>
 
 	<update id="modifySave">
-		update USER_JOIN set
+		update BUSINES_JOIN set
 		pw=#{pw},
 		name=#{name},
-		nickname=#{nickName},
+		comname=#{comName},
 		tel=#{tel},
-		region=#{region},
-		gender=#{gender},
-		email=#{email}
+		addr=#{addr},
+		biznum=#{biznum},
+		email=#{email},
+		biz_File=#{bizFile}
 		where id=#{id}
 	</update>
 

@@ -82,7 +82,7 @@ public class ReviewServiceImpl implements ReviewService, SearchSession {
 		} else {
 			dto.setImgName(mul.getParameter("originFileName"));
 		}
-		System.out.println(dto.getImgName());
+		
 		int result = 0;
 		try {
 			result = mapper.modifyReview(dto);

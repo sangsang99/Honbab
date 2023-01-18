@@ -1,5 +1,7 @@
 package com.web.honbab.member.service;
 
+import java.io.File;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -100,20 +102,28 @@ public class BizMemberServiceImpl implements BizMemberService, MemberSession{
 		return getMessage(request, msg, url);
 	}
 
-	//TODO 사진 포함해서 수정하기
 	@Override
 	public String modifySave(MultipartHttpServletRequest mul, HttpServletRequest request) {
 
-		MemberDTO dto = new MemberDTO();
-		dto.setEmail(mul.getParameter("email"));
-		dto.setGender(mul.getParameter("gender"));
+		BizMemberDTO dto = new BizMemberDTO();
 		dto.setId(mul.getParameter("id"));
-		dto.setName(mul.getParameter("name"));
-		dto.setNickName(mul.getParameter("nickName"));
 		dto.setPw(mul.getParameter("pw"));
-		dto.setRegion(mul.getParameter("region"));
+		dto.setName(mul.getParameter("name"));
+		dto.setComName(mul.getParameter("comName"));
 		dto.setTel(mul.getParameter("tel"));
-
+		dto.setBiznum(mul.getParameter("biznum"));
+		dto.setEmail(mul.getParameter("email"));
+		dto.setAddr(mul.getParameter("addr"));
+		
+		MultipartFile file= mul.getFile("image_file_name");
+		String originalFileName = mul.getParameter("originFileName");	
+		if(file.getSize() != 0 ) {
+			dto.setBizFile(cms.saveFile(file, IMAGE_BIZJOIN));
+			cms.deleteImage(originalFileName, IMAGE_BIZJOIN);
+		} else {
+			dto.setBizFile(originalFileName);
+		}
+		
 		int result = 0;
 		try {
 			result = mapper.modifySave(dto);
@@ -124,10 +134,10 @@ public class BizMemberServiceImpl implements BizMemberService, MemberSession{
 		String msg, url;
 		if (result == 1) {
 			msg = "회원정보를 수정하였습니다.";
-			url = "/member/info?id=" + dto.getId();
+			url = "/member/bizInfo?id=" + dto.getId();
 		} else {
 			msg = "회원정보 수정에 실패하였습니다. 다시 시도해주세요.";
-			url = "/member/modifyForm?id=" + dto.getId();
+			url = "/member/bizModifyForm?id=" + dto.getId();
 		}
 		return getMessage(request, msg, url);
 	}

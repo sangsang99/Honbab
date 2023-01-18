@@ -20,7 +20,7 @@ public interface BizMemberMapper {
 	
 	public int delete(String id);
 	
-	public int modifySave(MemberDTO dto);
+	public int modifySave(BizMemberDTO dto);
 	
 	/*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ기타공통ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
 }

@@ -76,24 +76,25 @@ li>#gender{
 					<input type="text" value="${info.pw }" disabled>
 				</li>
 				<li>
-					<span class="index">이름</span>
+					<span class="index">상호명</span>
 					<input type="text" value="${info.name }" disabled>
 				</li>
 				<li>
-					<span class="index">닉네임</span>
+					<span class="index">사업자명</span>
 					<input type="text" value="${info.comName }" disabled>
 				</li>
 				<li>
-					<span class="index">전화번호</span>
+					<span class="index">전화번호(사업자)</span>
 					<input type="text" value="${info.tel }" disabled>
 				</li>
 				<li>
-					<span class="index">거주지</span>
+					<span class="index">전화번호(고객노출)</span>
 					<input type="text" value="${info.biznum }" disabled>
 				</li>
 				<li>
-					<span class="index">성별</span>
+					<span class="index">주소</span>
 					<input type="text" value="${info.addr }" disabled>
+				</li>
 				<li>
 					<span class="index">이메일</span>
 					<input type="text" value="${info.email }" disabled>
@@ -101,7 +102,8 @@ li>#gender{
 				<li class="upload_file"><!-- 사업자등록증 -->
 					<span class="index_kr">사업자등록증</span> 
 					<input type="file" name="image_file_name" onchange="readURL(this)">
-					<img src="#" id="preview" width="100px" height="50px">
+					<img src="${contextPath }/member/download?imageFileName=${info.bizFile}"
+					 id="preview" width="100px" height="50px">
 				</li>
 				<li>				
 				<button type="button" onclick="goModify();">수정</button>				

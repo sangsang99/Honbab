@@ -37,6 +37,18 @@ function readURL(input) {
 }
 </script>
 
+<!-- 주소 API START-->
+<script type="text/javascript"> 
+	function goPopup(){
+		var pop = window.open("../juso/jusoPopup","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 0
+	}
+	
+	function jusoCallBack(roadFullAddr, roadAddrPart1,addrDetail,roadAddrPart2,engAddr, jibunAddr, zipNo, admCd, rnMgtSn, bdMgtSn,detBdNmList,bdNm,bdKdcd,siNm,sggNm,emdNm,liNm,rn,udrtYn,buldMnnm,buldSlno,mtYn,lnbrMnnm,lnbrSlno,emdNo){
+/* 			document.bizRegister.roadFullAddr.value = roadFullAddr; */
+			document.querySelector('#roadFullText') = roadFullAddr;
+	}
+</script>
+
 <style type="text/css">
 body>.join_form_wrap {
 	width: 650px;
@@ -47,13 +59,14 @@ body>.join_form_wrap {
 </head>
 <body>
 	<c:import url="../main/header.jsp"/>
-	<div class="join_form_wrap">
+	
+	<div class="join_form_wrap modi_form_wrap">
 		<h1 align="center">회원정보 수정</h1>
-		<form class="join_form" id="modify" action="modifySave" enctype="multipart/form-data" method="post">
+		<form class="join_form modi_form" id="biz_modify_frm" action="${contextPath }/member/bizModifySave" enctype="multipart/form-data" method="post">
 			<ul>
 				<li>
 					<span class="index">아이디</span>
-					<input type="text" id="biz_id" name="id" value="${info.id }">
+					<input type="text" id="biz_id" name="id" value="${info.id }" readonly>
 				</li>
 				<li>
 					<span class="index">비밀번호</span>
@@ -69,7 +82,7 @@ body>.join_form_wrap {
 				</li>
 				<li>
 					<span class="index">사업자명</span>
-					<input type="text" id="biz_comName" name="comName" value="${info.comName }">
+					<input type="text" id="biz_comName" name="comName" value="${info.comName }" readonly>
 				</li>
 				<li>
 					<span class="index">연락처(사업자용)</span>
@@ -81,7 +94,7 @@ body>.join_form_wrap {
 				</li>
 				<li class="callBackDiv">
 					<span class="index">식당위치</span>
-					<input type="text" id="roadFullText" name="roadFullAddr" width="400px" value="${info.addr }">
+					<input type="text" id="roadFullText" name="addr" width="400px" value="${info.addr }">
 					<input type="button" id="FullAddrBtn" width="100px" onClick="goPopup();" value="주소검색"/>				
 				</li>
 				<li>
@@ -102,7 +115,7 @@ body>.join_form_wrap {
 					<input type="hidden" name="originFileName" value="${info.bizFile}"> <!-- 기존파일삭제시 -->					
 				</li>
 			</ul>
-			<button type="button" name="join" onclick="joinform_check(); return false;"> EDIT</button>
+			<button type="button" name="modify" onclick="biz_modi_form_check(); return false;"> EDIT</button>
 		</form>
 	</div>
 	
