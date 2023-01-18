@@ -105,10 +105,8 @@ li>#gender{
 					<img src="${contextPath }/member/download?imageFileName=${info.bizFile}"
 					 id="preview" width="100px" height="50px">
 				</li>
-				<li>				
 				<button type="button" onclick="goModify();">수정</button>				
 				<button type="button" onclick="test();">삭제</button>
-				</li>
 			</ul>
 		</form>
 	</div>

@@ -44,10 +44,9 @@ function readURL(input) {
 	}
 	
 	function jusoCallBack(roadFullAddr, roadAddrPart1,addrDetail,roadAddrPart2,engAddr, jibunAddr, zipNo, admCd, rnMgtSn, bdMgtSn,detBdNmList,bdNm,bdKdcd,siNm,sggNm,emdNm,liNm,rn,udrtYn,buldMnnm,buldSlno,mtYn,lnbrMnnm,lnbrSlno,emdNo){
-/* 			document.bizRegister.roadFullAddr.value = roadFullAddr; */
-			document.querySelector('#roadFullText') = roadFullAddr;
+			document.querySelector('input[name=addr]').value = roadFullAddr;
 	}
-</script>
+</script> <!-- 주소 END -->
 
 <style type="text/css">
 body>.join_form_wrap {
