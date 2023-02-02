@@ -87,6 +87,7 @@
 		<result property="imageFileName" column="image_file_name" />
 		<result property="id" column="id" />
 		<result property="comName" column="comName" />
+		<result property="address" column="address" />
 		<collection property="addto" resultMap="AD" />
 	</resultMap>
 
