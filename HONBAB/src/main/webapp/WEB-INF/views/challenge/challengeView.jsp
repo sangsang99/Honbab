@@ -85,8 +85,8 @@
 
 		<div class="writer_wrap">
 			<!-- <div class="wri_date"> -->
-			<span class="writer">by. ${challengeData.nickName }</span> <span
-				class="date">${challengeData.saveDate }</span>
+			<span class="writer">by. ${challengeData.nickName }</span>
+			<span class="date">${challengeData.saveDate }</span>
 			<!-- </div> -->
 
 			<div class="like">
@@ -100,8 +100,7 @@
 					
 			</div>
 				
-				<!-- </button> -->
-			</div>
+			<!-- </button> -->
 
 			<c:if test="${challengeData.imgName == 'nan'}">
 				<div id="imgx">
