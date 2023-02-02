@@ -104,8 +104,7 @@
 			<form name="promoWriteForm"
 				action="${contextPath}/promotion/writeSave"
 				enctype="multipart/form-data" method="post" onsubmit="AllChk()">
-				<!-- input 작성자id(세션), 글쓴이nick(세션), 제목, 게시글내용, 이미지 -->
-				<!-- other 조회수(controller), 게시글번호(sql-seq), 작성일자(sql-default), 좋아요(content-button),-->
+				
 				<ul>
 					<li><span class="index_kr">작성자</span> <input type="hidden"
 						value="${loginUser}" name="id"> <input type="text"

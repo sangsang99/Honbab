@@ -66,15 +66,16 @@
 	                            <c:if test="${promoListAD[0].imageFileName == 'nan' || promoListAD[0] == null}">
                                 	<img class="img-fluid" src="${contextPath }/resources/img/none.png" alt="..." /></c:if>
 								<c:if test="${promoListAD[0].imageFileName != 'nan' && promoListAD[0] != null}">
-	                            	<img class="img-fluid" src="${contextPath }/promotion/download?imageFileName=${promoListAD[0].imageFileName}"/></c:if>	                        </a>
+	                            	<img class="img-fluid" src="${contextPath }/promotion/download?imageFileName=${promoListAD[0].imageFileName}"/></c:if>
+	                        </a>
 	                        <div class="portfolio-caption">
 	                            <div class="portfolio-caption-heading">
 	                            	<c:if test="${promoListAD[0]==none}">NONE</c:if>
-	                            	<c:if test="${promoListAD[0]!=none}">${promoListAD[1].title }</c:if>                        	
+	                            	<c:if test="${promoListAD[0]!=none}">${promoListAD[0].title }</c:if>                        	
 	                            	</div>
 	                            <div class="portfolio-caption-subheading text-muted">
 	                           		<c:if test="${promoListAD[0]==none}">NONE</c:if>
-	                            	<c:if test="${promoListAD[0]!=none}">${promoListAD[1].content }</c:if> 
+	                            	<c:if test="${promoListAD[0]!=none}">${promoListAD[0].content }</c:if> 
 	                            </div>
 	                        </div>
 	                    </div>
@@ -89,7 +90,8 @@
 	                            <c:if test="${promoListAD[1].imageFileName == 'nan' || promoListAD[1] == null}">
                                 	<img class="img-fluid" src="${contextPath }/resources/img/none.png" alt="..." /></c:if>
 								<c:if test="${promoListAD[1].imageFileName != 'nan' && promoListAD[1] != null}">
-	                            	<img class="img-fluid" src="${contextPath }/promotion/download?imageFileName=${promoListAD[1].imageFileName}"/></c:if>	                        </a>
+	                            	<img class="img-fluid" src="${contextPath }/promotion/download?imageFileName=${promoListAD[1].imageFileName}"/></c:if>
+	                        </a>
 	                        <div class="portfolio-caption">
 	                            <div class="portfolio-caption-heading">
 	                            	<c:if test="${promoListAD[1]==none}">NONE</c:if>
@@ -112,7 +114,8 @@
 	                            <c:if test="${promoListAD[2].imageFileName == 'nan' || promoListAD[2] == null}">
                                 	<img class="img-fluid" src="${contextPath }/resources/img/none.png" alt="..." /></c:if>
 								<c:if test="${promoListAD[2].imageFileName != 'nan' && promoListAD[2] != null}">
-	                            	<img class="img-fluid" src="${contextPath }/promotion/download?imageFileName=${promoListAD[2].imageFileName}"/></c:if>	                        </a>
+	                            	<img class="img-fluid" src="${contextPath }/promotion/download?imageFileName=${promoListAD[2].imageFileName}"/></c:if>
+	                        </a>
 	                        <div class="portfolio-caption">
 	                            <div class="portfolio-caption-heading">
 		                            <c:if test="${promoListAD[2]==none}">NONE</c:if>
@@ -168,7 +171,8 @@
 	                            <c:if test="${promoListAD[4].imageFileName == 'nan' || promoListAD[4] == null}">
                                 	<img class="img-fluid" src="${contextPath }/resources/img/none.png" alt="..." /></c:if>
 								<c:if test="${promoListAD[4].imageFileName != 'nan' && promoListAD[4] != null}">
-	                            	<img class="img-fluid" src="${contextPath }/promotion/download?imageFileName=${promoListAD[4].imageFileName}"/></c:if>	                        </a>
+	                            	<img class="img-fluid" src="${contextPath }/promotion/download?imageFileName=${promoListAD[4].imageFileName}"/></c:if>
+	                        </a>
 	                        <div class="portfolio-caption">
 	                            <div class="portfolio-caption-heading">
 	                            	<c:if test="${promoListAD[4]==none}">NONE</c:if>
@@ -191,7 +195,8 @@
 	                            <c:if test="${promoListAD[5].imageFileName == 'nan' || promoListAD[5] == null}">
                                 	<img class="img-fluid" src="${contextPath }/resources/img/none.png" alt="..." /></c:if>
 								<c:if test="${promoListAD[5].imageFileName != 'nan' && promoListAD[5] != null}">
-	                            	<img class="img-fluid" src="${contextPath }/promotion/download?imageFileName=${promoListAD[5].imageFileName}"/></c:if>	                        </a>
+	                            	<img class="img-fluid" src="${contextPath }/promotion/download?imageFileName=${promoListAD[5].imageFileName}"/></c:if>
+	                        </a>
 	                        <div class="portfolio-caption">
 	                            <div class="portfolio-caption-heading">
 		                            <c:if test="${promoListAD[5]==none}">NONE</c:if>
@@ -259,18 +264,21 @@
                         <div class="col-lg-8">
                             <div class="modal-body">
                                 <!-- Project details-->
-                                <h2 class="text-uppercase">Project Name</h2>
-                                <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                                <img class="img-fluid d-block mx-auto" src="${contextPath }/resources/assets/img/portfolio/1.jpg" alt="..." />
-                                <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
+                                <h2 class="text-uppercase">${promoListAD[0].title }</h2>
+                                <p class="item-intro text-muted">${promoListAD[0].address }</p>
+                                <c:if test="${promoListAD[0].imageFileName == 'nan' || promoListAD[0] == null}">
+                                	<img class="img-fluid d-block mx-auto" src="${contextPath }/resources/img/none.png" alt="..." /></c:if>
+								<c:if test="${promoListAD[0].imageFileName != 'nan' && promoListAD[0] != null}">
+	                            	<img class="img-fluid d-block mx-auto" src="${contextPath }/promotion/download?imageFileName=${promoListAD[0].imageFileName}"/></c:if>
+                                <p>${promoListAD[0].content }</p>
                                 <ul class="list-inline">
                                     <li>
-                                        <strong>Client:</strong>
-                                        Threads
+                                        <strong>by :</strong>
+                                        ${promoListAD[0].id}
                                     </li>
                                     <li>
-                                        <strong>Category:</strong>
-                                        Illustration
+                                        <strong>지점명 :</strong>
+                                        ${promoListAD[0].comName}
                                     </li>
                                 </ul>
                                 <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
@@ -294,18 +302,21 @@
                         <div class="col-lg-8">
                             <div class="modal-body">
                                 <!-- Project details-->
-                                <h2 class="text-uppercase">Project Name</h2>
-                                <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                                <img class="img-fluid d-block mx-auto" src="${contextPath }/resources/assets/img/portfolio/2.jpg" alt="..." />
-                                <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
+                                <h2 class="text-uppercase">${promoListAD[1].title }</h2>
+                                <p class="item-intro text-muted">${promoListAD[1].address }</p>
+                                <c:if test="${promoListAD[1].imageFileName == 'nan' || promoListAD[1] == null}">
+                                	<img class="img-fluid d-block mx-auto" src="${contextPath }/resources/img/none.png" alt="..." /></c:if>
+								<c:if test="${promoListAD[1].imageFileName != 'nan' && promoListAD[1] != null}">
+	                            	<img class="img-fluid d-block mx-auto" src="${contextPath }/promotion/download?imageFileName=${promoListAD[1].imageFileName}"/></c:if>
+                                <p>${promoListAD[1].content }</p>
                                 <ul class="list-inline">
                                     <li>
-                                        <strong>Client:</strong>
-                                        Explore
+                                        <strong>by :</strong>
+                                        ${promoListAD[1].id}
                                     </li>
                                     <li>
-                                        <strong>Category:</strong>
-                                        Graphic Design
+                                        <strong>지점명 :</strong>
+                                        ${promoListAD[1].comName}
                                     </li>
                                 </ul>
                                 <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
@@ -329,18 +340,21 @@
                         <div class="col-lg-8">
                             <div class="modal-body">
                                 <!-- Project details-->
-                                <h2 class="text-uppercase">Project Name</h2>
-                                <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                                <img class="img-fluid d-block mx-auto" src="${contextPath }/resources/assets/img/portfolio/3.jpg" alt="..." />
-                                <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
+                                <h2 class="text-uppercase">${promoListAD[2].title }</h2>
+                                <p class="item-intro text-muted">${promoListAD[2].address }</p>
+                                <c:if test="${promoListAD[2].imageFileName == 'nan' || promoListAD[2] == null}">
+                                	<img class="img-fluid d-block mx-auto" src="${contextPath }/resources/img/none.png" alt="..." /></c:if>
+								<c:if test="${promoListAD[2].imageFileName != 'nan' && promoListAD[2] != null}">
+	                            	<img class="img-fluid d-block mx-auto" src="${contextPath }/promotion/download?imageFileName=${promoListAD[2].imageFileName}"/></c:if>
+                                <p>${promoListAD[2].content }</p>
                                 <ul class="list-inline">
                                     <li>
-                                        <strong>Client:</strong>
-                                        Finish
+                                        <strong>by :</strong>
+                                        ${promoListAD[2].id}
                                     </li>
                                     <li>
-                                        <strong>Category:</strong>
-                                        Identity
+                                        <strong>지점명 :</strong>
+                                        ${promoListAD[2].comName}
                                     </li>
                                 </ul>
                                 <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
@@ -364,18 +378,21 @@
                         <div class="col-lg-8">
                             <div class="modal-body">
                                 <!-- Project details-->
-                                <h2 class="text-uppercase">Project Name</h2>
-                                <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                                <img class="img-fluid d-block mx-auto" src="${contextPath }/resources/assets/img/portfolio/4.jpg" alt="..." />
-                                <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
+                                <h2 class="text-uppercase">${promoListAD[3].title }</h2>
+                                <p class="item-intro text-muted">${promoListAD[3].address }</p>
+                                <c:if test="${promoListAD[3].imageFileName == 'nan' || promoListAD[3] == null}">
+                                	<img class="img-fluid d-block mx-auto" src="${contextPath }/resources/img/none.png" alt="..." /></c:if>
+								<c:if test="${promoListAD[3].imageFileName != 'nan' && promoListAD[3] != null}">
+	                            	<img class="img-fluid d-block mx-auto" src="${contextPath }/promotion/download?imageFileName=${promoListAD[3].imageFileName}"/></c:if>
+                                <p>${promoListAD[3].content }</p>
                                 <ul class="list-inline">
                                     <li>
-                                        <strong>Client:</strong>
-                                        Lines
+                                        <strong>by :</strong>
+                                        ${promoListAD[3].id}
                                     </li>
                                     <li>
-                                        <strong>Category:</strong>
-                                        Branding
+                                        <strong>지점명 :</strong>
+                                        ${promoListAD[3].comName}
                                     </li>
                                 </ul>
                                 <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
@@ -399,18 +416,21 @@
                         <div class="col-lg-8">
                             <div class="modal-body">
                                 <!-- Project details-->
-                                <h2 class="text-uppercase">Project Name</h2>
-                                <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                                <img class="img-fluid d-block mx-auto" src="${contextPath }/resources/assets/img/portfolio/5.jpg" alt="..." />
-                                <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
+                                <h2 class="text-uppercase">${promoListAD[4].title }</h2>
+                                <p class="item-intro text-muted">${promoListAD[4].address }</p>
+                                <c:if test="${promoListAD[4].imageFileName == 'nan' || promoListAD[4] == null}">
+                                	<img class="img-fluid d-block mx-auto" src="${contextPath }/resources/img/none.png" alt="..." /></c:if>
+								<c:if test="${promoListAD[4].imageFileName != 'nan' && promoListAD[4] != null}">
+	                            	<img class="img-fluid d-block mx-auto" src="${contextPath }/promotion/download?imageFileName=${promoListAD[4].imageFileName}"/></c:if>
+                                <p>${promoListAD[4].content }</p>
                                 <ul class="list-inline">
                                     <li>
-                                        <strong>Client:</strong>
-                                        Southwest
+                                        <strong>by :</strong>
+                                        ${promoListAD[4].id}
                                     </li>
                                     <li>
-                                        <strong>Category:</strong>
-                                        Website Design
+                                        <strong>지점명 :</strong>
+                                        ${promoListAD[4].comName}
                                     </li>
                                 </ul>
                                 <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
@@ -434,18 +454,21 @@
                         <div class="col-lg-8">
                             <div class="modal-body">
                                 <!-- Project details-->
-                                <h2 class="text-uppercase">Project Name</h2>
-                                <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                                <img class="img-fluid d-block mx-auto" src="${contextPath }/resources/assets/img/portfolio/6.jpg" alt="..." />
-                                <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
+                                <h2 class="text-uppercase">${promoListAD[5].title }</h2>
+                                <p class="item-intro text-muted">${promoListAD[5].address }</p>
+                                <c:if test="${promoListAD[5].imageFileName == 'nan' || promoListAD[5] == null}">
+                                	<img class="img-fluid d-block mx-auto" src="${contextPath }/resources/img/none.png" alt="..." /></c:if>
+								<c:if test="${promoListAD[5].imageFileName != 'nan' && promoListAD[5] != null}">
+	                            	<img class="img-fluid d-block mx-auto" src="${contextPath }/promotion/download?imageFileName=${promoListAD[5].imageFileName}"/></c:if>
+                                <p>${promoListAD[5].content }</p>
                                 <ul class="list-inline">
                                     <li>
-                                        <strong>Client:</strong>
-                                        Window
+                                        <strong>by :</strong>
+                                        ${promoListAD[5].id}
                                     </li>
                                     <li>
-                                        <strong>Category:</strong>
-                                        Photography
+                                        <strong>지점명 :</strong>
+                                        ${promoListAD[5].comName}
                                     </li>
                                 </ul>
                                 <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">

@@ -108,16 +108,16 @@ main {
 .date {
 	font-size: 16px;
 	font-weight: 600;
-	position: absolute;
+	position: relative;
 	text-align: right;
-	right: 780px;
+	left: 580px;
 }
 
 .like {
 	font-size: 14px;
 	font-weight: 500;
 	font-family: "Nunito Sans", sans-serif;
-	width: 50px;
+	width: 120px;
 	position: absolute;
 	top: 380px;
 }

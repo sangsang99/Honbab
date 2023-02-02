@@ -152,13 +152,15 @@
 		<div class="line"></div>
 
 		<div class="writer_wrap">
-			<span class="writer">by. ${reviewContent.nickname}</span> <span
-				class="date">${reviewContent.writeDate}</span> <span class="view">${reviewContent.views}</span>
+			<span class="writer">by. ${reviewContent.nickname}</span>
+			<span class="date">${reviewContent.writeDate}</span>
 
 			<div class="like">
 				<button type="button" class="heart" id="heart" onclick="isLogin()">
 				</button>
+				조회수 <span class="view">${reviewContent.views}</span>
 			</div>
+
 
 			<c:if test="${reviewContent.imgName == 'None'}">
 				<div id="imgx">
