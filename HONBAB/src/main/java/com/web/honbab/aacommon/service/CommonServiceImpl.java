@@ -17,8 +17,8 @@ public class CommonServiceImpl implements CommonService {
 	public int[] paging(Model model, int num, int allCount) {
 		// page부여
 		int pageLetter = 8; // 한 페이지당 글 목록수
-		int repeat = allCount / pageLetter; // 마지막 페이지 번호 jsp에서 foreach에 사용할 값, 2/3=0
-		if (allCount % pageLetter != 0) // 2/3일 때 마지막 페이지는 1, 5/3일때 마지막페이지는 2
+		int repeat = allCount / pageLetter; // 마지막 페이지 번호
+		if (allCount % pageLetter != 0) // 글이 한개라도 나머지가 있으면 추가페이지 필요
 			repeat += 1;
 		int end = num * pageLetter; // numDefault는 1, pageLetter는 3 이면 end는 3 // 3의 배수만 나옴
 		int start = end + 1 - pageLetter; // 끝번호가 15면 첫번호는 13 이런식
@@ -34,6 +34,7 @@ public class CommonServiceImpl implements CommonService {
 		model.addAttribute("startPage", startPage); // jsp파일에 보낼값
 		model.addAttribute("endPage", endPage); // jsp파일에 보낼값
 		model.addAttribute("repeat", repeat); // jsp파일에 보낼값
+		model.addAttribute("nowPage", num); 
 
 		return new int[] { start, end };
 	}

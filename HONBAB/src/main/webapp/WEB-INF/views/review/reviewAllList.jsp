@@ -109,7 +109,10 @@
 					<a href="reviewAllList?num=${startPage-1}" id="paging">◀</a>
 				</c:if>
 				<c:forEach var="num" begin="${startPage}" end="${endPage }">
-					<a href="reviewAllList?num=${num }">${num }</a>
+					<c:if test="${num == nowPage}">
+					<a href="reviewAllList?num=${num }" ><mark>${num }</mark></a></c:if>
+					<c:if test="${num != nowPage}">
+					<a href="reviewAllList?num=${num }">${num }</a></c:if>
 				</c:forEach>
 				<c:if test="${endPage < repeat}">
 					<a href="reviewAllList?num=${endPage + 1}" id="paging">▶</a>
@@ -122,7 +125,10 @@
 					<a href="search?num=${startPage-1}" id="paging">◀</a>
 				</c:if>
 				<c:forEach var="num" begin="${startPage}" end="${endPage }">
-					<a href="search?num=${num }">${num }</a>
+					<c:if test="${num == nowPage}">
+					<a href="search?num=${num }" ><mark>${num }</mark></a></c:if>
+					<c:if test="${num != nowPage}">
+					<a href="search?num=${num }">${num }</a></c:if>
 				</c:forEach>
 				<c:if test="${endPage < repeat}">
 					<a href="search?num=${endPage + 1}" id="paging">▶</a>
