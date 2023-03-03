@@ -1,5 +1,5 @@
 <h1> Honbab </h1>
-<h3>팀프로젝트 → 개인프로젝트 전환 예정</h3>
+<h3>팀프로젝트 → 개인프로젝트 전환 </h3>
 
 <h4>[현재] 개발 환경</h4>
 <b>machine</b> : desktop(LG Gram), 16GB RAM, intel i5-11세대 <br>
