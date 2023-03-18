@@ -324,15 +324,15 @@ li>span {
 	width: 1200px;
 	margin: 0 auto;
 	text-align: center;
-	position: absolute;
-	bottom: 60px;	
+	position: relative;
+	padding-top : 3rem;
 	font-weight: 400;
 	font-family: 'Kumbh Sans', sans-serif;
 }
 
 .paging>a {
 	width: 20px;
-	margin: 0 20px;
+	margin-left: 50px;
 	text-align: center;
 	font-size: 16px;
 }

@@ -6,10 +6,10 @@
 <html lang="en">
 <head>
 <title>Main</title>
-<!-- index CSS -->
+<!-- index CSS
 	<link
 	href="${pageContext.request.contextPath}/resources/css/main.css?ver=4.4"
-	rel="stylesheet" />
+	rel="stylesheet" /> -->
 	
 <!-- font -->
 	<link rel="preconnect" href="https://fonts.googleapis.com" />
